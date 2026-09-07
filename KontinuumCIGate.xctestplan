@@ -1,0 +1,44 @@
+{
+  "configurations" : [
+    {
+      "id" : "9C1D9B9E-6C1A-4C1B-9A1E-4B2F6C7D8E9A",
+      "name" : "CI Gate",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Kontinuum.xcodeproj",
+      "identifier" : "29F43E98302E258E00907F14",
+      "name" : "Kontinuum"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Kontinuum.xcodeproj",
+        "identifier" : "29F43EA9302E258F00907F14",
+        "name" : "KontinuumTests"
+      }
+    },
+    {
+      "skippedTests" : [
+        "Phase2BlockReferencesFeatureTests",
+        "Phase2CanvasFeatureTests",
+        "Phase2PluginManagementFeatureTests",
+        "Phase2TaskDashboardAndSavedViewsFeatureTests\/testSavedSearchReappearsAsChipAndReruns()",
+        "Phase2TemplatesAndPropertiesFeatureTests",
+        "Phase3Journey2DailyCaptureFlowTests",
+        "Phase3Journey4GraphResurfaceFlowTests"
+      ],
+      "target" : {
+        "containerPath" : "container:Kontinuum.xcodeproj",
+        "identifier" : "29F43EB3302E258F00907F14",
+        "name" : "KontinuumUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

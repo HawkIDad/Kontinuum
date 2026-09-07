@@ -1,0 +1,2387 @@
+[
+  {
+    "packId": "common-km-essentials",
+    "version": 1,
+    "category": "Essentials",
+    "displayName": "Common / KM Essentials",
+    "summary": "Universal notes every knowledge worker needs — meetings, decisions, one-on-ones, reviews.",
+    "note": null,
+    "roleAliases": [],
+    "templates": [
+      {
+        "name": "Meeting Notes",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Scheduled"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Meeting Notes\n\n**Date:**\n**Attendees:**\n\n## Agenda\n\n-\n\n## Discussion\n\n-\n\n## Decisions\n\n-\n\n## Action Items\n\n- [ ]\n- [ ]\n"
+      },
+      {
+        "name": "One-on-One",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# One-on-One\n\n**With:**\n**Date:**\n\n## Since last time\n\n-\n\n## Their topics\n\n-\n\n## My topics\n\n-\n\n## Growth / feedback\n\n-\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Decision Record",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Proposed"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Decision Record\n\n## Context\n\nWhat situation forces a decision now.\n\n## Options considered\n\n1.\n2.\n\n## Decision\n\nWhat we are doing, and why.\n\n## Consequences\n\n- Trade-offs accepted:\n- Follow-ups:\n\n## Action Items\n\n- [ ] Communicate the decision\n"
+      },
+      {
+        "name": "Status Update",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "On Track"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Status Update\n\n**Period:**\n\n## Summary\n\nOne or two sentences on where things stand.\n\n## Progress\n\n-\n\n## Risks / blockers\n\n-\n\n## Next\n\n-\n"
+      },
+      {
+        "name": "Retrospective",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Retrospective\n\n**Scope:**\n**Date:**\n\n## What went well\n\n-\n\n## What didn't\n\n-\n\n## What we'll change\n\n-\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Weekly Review",
+        "fields": [
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Weekly Review\n\n**Week of:**\n\n## Wins\n\n-\n\n## Open loops\n\n-\n\n## Did not get to\n\n-\n\n## Focus for next week\n\n- [ ]\n- [ ]\n- [ ]\n"
+      }
+    ]
+  },
+  {
+    "packId": "software-engineering",
+    "version": 1,
+    "category": "Engineering & Data",
+    "displayName": "Software Engineering",
+    "summary": "Design docs, ADRs, runbooks, postmortems, and service notes.",
+    "note": null,
+    "roleAliases": [
+      "Software Engineer"
+    ],
+    "templates": [
+      {
+        "name": "Design Doc",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Design Doc\n\n## Problem\n\nWhat we're solving and why now.\n\n## Goals / non-goals\n\n- Goals:\n- Non-goals:\n\n## Proposed design\n\n## Alternatives considered\n\n## Rollout & risks\n\n## Action Items\n\n- [ ] Circulate for review\n- [ ] Record the decision as an ADR\n"
+      },
+      {
+        "name": "Architecture Decision Record",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Proposed"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# ADR: <short title>\n\n## Status\n\nProposed\n\n## Context\n\n## Decision\n\n## Consequences\n\n- Positive:\n- Negative:\n"
+      },
+      {
+        "name": "Runbook",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Runbook: <system / task>\n\n## When to use this\n\n## Preconditions\n\n## Steps\n\n1.\n2.\n3.\n\n## Verification\n\n## Rollback\n\n## Escalation\n"
+      },
+      {
+        "name": "Incident Postmortem",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "High"
+          }
+        ],
+        "bodyTemplate": "# Incident Postmortem\n\n**Incident:**\n**Date / duration:**\n**Impact:**\n\n## Timeline\n\n-\n\n## Root cause\n\n## What went well\n\n## What went poorly\n\n## Action Items\n\n- [ ] Preventive fix\n- [ ] Detection improvement\n- [ ] Follow-up review\n"
+      },
+      {
+        "name": "Service Overview",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          }
+        ],
+        "bodyTemplate": "# Service: <name>\n\n## Purpose\n\n## Interfaces\n\n- Inbound:\n- Outbound:\n\n## Dependencies\n\n## Operational notes\n\n- Dashboards:\n- Alerts:\n- On-call:\n"
+      },
+      {
+        "name": "Tech Spike",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "In Progress"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Spike: <question>\n\n## Question\n\n## Time box\n\n## Findings\n\n## Recommendation\n\n## Action Items\n\n- [ ] Share findings\n"
+      }
+    ]
+  },
+  {
+    "packId": "technical-writing",
+    "version": 1,
+    "category": "Engineering & Data",
+    "displayName": "Technical Writing",
+    "summary": "Doc plans, how-to guides, reference topics, release notes, and doc reviews.",
+    "note": null,
+    "roleAliases": [
+      "Technical Writer"
+    ],
+    "templates": [
+      {
+        "name": "Doc Plan",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Planning"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Doc Plan: <feature / release>\n\n## Audience\n\n## Deliverables\n\n- [ ] Topic:\n- [ ] Topic:\n\n## Sources & SMEs\n\n## Timeline\n\n## Open questions\n"
+      },
+      {
+        "name": "How-To Guide",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# How to <accomplish task>\n\n## Before you begin\n\n## Steps\n\n1.\n2.\n3.\n\n## Result\n\n## Troubleshooting\n\n## Related\n"
+      },
+      {
+        "name": "Reference Topic",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# <API / setting / command>\n\n## Summary\n\n## Syntax / signature\n\n## Parameters\n\n| Name | Type | Description |\n|---|---|---|\n|  |  |  |\n\n## Examples\n\n## Notes\n"
+      },
+      {
+        "name": "Release Notes",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Release Notes — <version>\n\n## Highlights\n\n-\n\n## New\n\n-\n\n## Changed\n\n-\n\n## Fixed\n\n-\n\n## Known issues\n\n-\n"
+      },
+      {
+        "name": "Style / Terminology Entry",
+        "fields": [
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Term: <term>\n\n**Use:**\n**Don't use:**\n**Definition:**\n**Example sentence:**\n**Notes:**\n"
+      },
+      {
+        "name": "Doc Review",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Open"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Doc Review: <document>\n\n## Scope\n\n## Findings\n\n| Location | Issue | Severity | Fix |\n|---|---|---|---|\n|  |  |  |  |\n\n## Action Items\n\n- [ ]\n"
+      }
+    ]
+  },
+  {
+    "packId": "data-architecture-governance",
+    "version": 1,
+    "category": "Engineering & Data",
+    "displayName": "Data Architecture & Governance",
+    "summary": "Data domains, models, dictionary terms, quality rules, and stewardship.",
+    "note": null,
+    "roleAliases": [
+      "Data Architect",
+      "Data Governance Manager"
+    ],
+    "templates": [
+      {
+        "name": "Data Domain",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Data Domain: <name>\n\n## Description\n\n## Systems of record\n\n## Key entities\n\n## Stewards\n\n## Policies that apply\n"
+      },
+      {
+        "name": "Data Model",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Data Model: <subject area>\n\n## Entities\n\n- **<Entity>** — description\n  - Attributes:\n  - Keys:\n\n## Relationships\n\n-\n\n## Open questions\n"
+      },
+      {
+        "name": "Glossary Term",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Term: <business term>\n\n**Definition:**\n**Also known as:**\n**Data element(s):**\n**Owner / steward:**\n**Allowed values / format:**\n**Notes:**\n"
+      },
+      {
+        "name": "Data Quality Rule",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Proposed"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          }
+        ],
+        "bodyTemplate": "# DQ Rule: <name>\n\n## Applies to\n\nDataset / field:\n\n## Rule\n\n## Threshold\n\n## Measurement\n\n## On failure\n\n## Action Items\n\n- [ ] Implement check\n- [ ] Assign remediation owner\n"
+      },
+      {
+        "name": "Steward Assignment",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Steward Assignment\n\n**Domain / dataset:**\n**Steward:**\n**Backup:**\n**Responsibilities:**\n**Review cadence:**\n"
+      },
+      {
+        "name": "Governance Issue",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Open"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Governance Issue: <title>\n\n## Description\n\n## Impact\n\n## Proposed remediation\n\n## Action Items\n\n- [ ]\n"
+      }
+    ]
+  },
+  {
+    "packId": "knowledge-organization",
+    "version": 1,
+    "category": "Engineering & Data",
+    "displayName": "Knowledge Organization",
+    "summary": "Taxonomies, content models, catalog items, retention schedules, and records series.",
+    "note": null,
+    "roleAliases": [
+      "Information Architect",
+      "Librarian",
+      "Records Manager"
+    ],
+    "templates": [
+      {
+        "name": "Taxonomy Entry",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Taxonomy Entry: <term>\n\n**Parent:**\n**Definition (scope note):**\n**Use for (synonyms):**\n**Related terms:**\n**Where used:**\n"
+      },
+      {
+        "name": "Content Model",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Content Model: <content type>\n\n## Purpose\n\n## Fields\n\n| Field | Type | Required | Notes |\n|---|---|---|---|\n|  |  |  |  |\n\n## Relationships\n\n## Governance (who creates / approves)\n"
+      },
+      {
+        "name": "Catalog Item",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Catalog Item\n\n**Title:**\n**Creator / author:**\n**Identifier:**\n**Format / medium:**\n**Location:**\n**Subjects / tags:**\n**Description:**\n"
+      },
+      {
+        "name": "Retention Schedule",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Retention Schedule: <records series>\n\n**Description:**\n**Retention period:**\n**Trigger event:**\n**Disposition:** (destroy / archive / transfer)\n**Legal / regulatory basis:**\n**Review date:**\n"
+      },
+      {
+        "name": "Records Series",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          }
+        ],
+        "bodyTemplate": "# Records Series: <name>\n\n## Description\n\n## Formats\n\n## Volume / growth\n\n## Access restrictions\n\n## Applicable retention schedule\n"
+      },
+      {
+        "name": "Reference Query",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Open"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Reference Query\n\n**Requester:**\n**Date:**\n**Question:**\n\n## Sources checked\n\n-\n\n## Answer provided\n\n## Follow-up\n\n- [ ]\n"
+      }
+    ]
+  },
+  {
+    "packId": "project-management",
+    "version": 1,
+    "category": "Product & Delivery",
+    "displayName": "Project Management",
+    "summary": "Charters, status reports, risk and stakeholder registers, change requests, lessons learned.",
+    "note": null,
+    "roleAliases": [
+      "Project Manager"
+    ],
+    "templates": [
+      {
+        "name": "Project Charter",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Project Charter: <name>\n\n## Purpose / business case\n\n## Objectives & success criteria\n\n-\n\n## Scope\n\n- In:\n- Out:\n\n## Milestones\n\n| Milestone | Target date |\n|---|---|\n|  |  |\n\n## Team & stakeholders\n\n## Assumptions & constraints\n\n## Action Items\n\n- [ ] Confirm sponsor sign-off\n"
+      },
+      {
+        "name": "Status Report",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "On Track"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Status Report\n\n**Reporting period:**\n**Overall:** On Track / At Risk / Off Track\n\n## Accomplishments\n\n-\n\n## Planned next period\n\n-\n\n## Risks / issues\n\n-\n\n## Decisions / help needed\n\n-\n"
+      },
+      {
+        "name": "Risk Register Entry",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Open"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          }
+        ],
+        "bodyTemplate": "# Risk: <title>\n\n**Probability:** Low / Medium / High\n**Impact:** Low / Medium / High\n\n## Description\n\n## Mitigation\n\n## Contingency\n\n## Trigger / early warning\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Stakeholder Register Entry",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Stakeholder: <name / group>\n\n**Role / interest:**\n**Influence:** Low / Medium / High\n**Support:** Blocker / Neutral / Champion\n**Communication needs:**\n**Notes:**\n"
+      },
+      {
+        "name": "Change Request",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Submitted"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Change Request: <title>\n\n## Description of change\n\n## Reason\n\n## Impact (scope / schedule / cost / risk)\n\n## Decision\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Lessons Learned",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Lessons Learned: <project / phase>\n\n## What worked\n\n-\n\n## What didn't\n\n-\n\n## Recommendations for next time\n\n-\n"
+      }
+    ]
+  },
+  {
+    "packId": "product-management",
+    "version": 1,
+    "category": "Product & Delivery",
+    "displayName": "Product Management",
+    "summary": "PRDs, requirements and user stories, discovery interviews, competitor profiles, roadmap themes.",
+    "note": null,
+    "roleAliases": [
+      "Product Manager",
+      "Business Analyst"
+    ],
+    "templates": [
+      {
+        "name": "Product Requirements (PRD)",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# PRD: <feature>\n\n## Problem & opportunity\n\n## Target users\n\n## Goals & success metrics\n\n-\n\n## Requirements\n\n- Must:\n- Should:\n- Won't (this release):\n\n## UX notes / flows\n\n## Open questions\n\n## Action Items\n\n- [ ] Review with engineering\n- [ ] Review with design\n"
+      },
+      {
+        "name": "User Story",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Backlog"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          }
+        ],
+        "bodyTemplate": "# <As a …, I want …, so that …>\n\n## Acceptance criteria\n\n- [ ] Given / when / then\n- [ ]\n\n## Notes / edge cases\n\n## Out of scope\n"
+      },
+      {
+        "name": "Discovery Interview",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Discovery Interview\n\n**Participant (role):**\n**Date:**\n\n## Context / current workflow\n\n## Pain points\n\n-\n\n## Quotes\n\n>\n\n## Signals / hypotheses\n\n## Follow-up\n\n- [ ]\n"
+      },
+      {
+        "name": "Competitor Profile",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Competitor: <name>\n\n## Positioning\n\n## Strengths\n\n## Weaknesses\n\n## Pricing\n\n## Where we win / lose\n\n## Watch list\n"
+      },
+      {
+        "name": "Roadmap Theme",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Proposed"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Roadmap Theme: <name>\n\n## Outcome we're pursuing\n\n## Why now\n\n## Bets / initiatives\n\n-\n\n## Success measures\n\n## Dependencies\n"
+      },
+      {
+        "name": "Requirements / Process Doc",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Requirements: <process / capability>\n\n## Current state\n\n## Desired state\n\n## Functional requirements\n\n-\n\n## Non-functional requirements\n\n-\n\n## Assumptions & constraints\n\n## Action Items\n\n- [ ]\n"
+      }
+    ]
+  },
+  {
+    "packId": "operations-service-management",
+    "version": 1,
+    "category": "Product & Delivery",
+    "displayName": "Operations & Service Management",
+    "summary": "SOPs, incidents, problem records, change requests, service/asset notes, and metric reviews.",
+    "note": null,
+    "roleAliases": [
+      "Operations Manager",
+      "IT Service Desk Analyst"
+    ],
+    "templates": [
+      {
+        "name": "Standard Operating Procedure",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# SOP: <process>\n\n## Purpose & scope\n\n## Roles\n\n## Procedure\n\n1.\n2.\n3.\n\n## Exceptions\n\n## Records produced\n\n## Review cadence\n"
+      },
+      {
+        "name": "Incident Ticket",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Open"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "High"
+          }
+        ],
+        "bodyTemplate": "# Incident: <short description>\n\n**Reported by / when:**\n**Affected service / users:**\n\n## Symptoms\n\n## Timeline\n\n-\n\n## Resolution / workaround\n\n## Follow-up (link problem record if root cause unknown)\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Problem Record",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Under Investigation"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          }
+        ],
+        "bodyTemplate": "# Problem: <title>\n\n## Related incidents\n\n-\n\n## Investigation\n\n## Root cause\n\n## Permanent fix\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Change Request",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Submitted"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Change Request: <title>\n\n## What is changing\n\n## Reason / benefit\n\n## Risk & backout plan\n\n## Implementation window\n\n## Approvals\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Service / Asset",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          }
+        ],
+        "bodyTemplate": "# Service / Asset: <name>\n\n**Type:**\n**Owner / support group:**\n**Environment / location:**\n**Dependencies:**\n**Support hours / SLA:**\n**Notes:**\n"
+      },
+      {
+        "name": "Metric Review",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Metric Review\n\n**Period:**\n\n## KPIs\n\n| Metric | Target | Actual | Trend |\n|---|---|---|---|\n|  |  |  |  |\n\n## Observations\n\n## Action Items\n\n- [ ]\n"
+      }
+    ]
+  },
+  {
+    "packId": "consulting-research",
+    "version": 1,
+    "category": "Product & Delivery",
+    "displayName": "Consulting & Research",
+    "summary": "Engagement briefs, client profiles, interviews, findings & recommendations, workshops, research questions.",
+    "note": null,
+    "roleAliases": [
+      "Management Consultant",
+      "Research Analyst"
+    ],
+    "templates": [
+      {
+        "name": "Engagement Brief",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Engagement: <client / name>\n\n## Objective\n\n## Scope & deliverables\n\n-\n\n## Approach\n\n## Team & roles\n\n## Timeline / milestones\n\n## Risks\n\n## Action Items\n\n- [ ] Confirm scope with sponsor\n"
+      },
+      {
+        "name": "Client Profile",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Client: <organization>\n\n## Overview\n\n## Key contacts\n\n| Name | Role | Notes |\n|---|---|---|\n|  |  |  |\n\n## History with us\n\n## Strategic context\n\n## Sensitivities\n"
+      },
+      {
+        "name": "Interview Notes",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Interview\n\n**Interviewee (role):**\n**Date:**\n\n## Topics\n\n-\n\n## Key points\n\n-\n\n## Notable quotes\n\n>\n\n## Implications / hypotheses\n\n## Follow-up\n\n- [ ]\n"
+      },
+      {
+        "name": "Findings & Recommendations",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Findings & Recommendations\n\n## Executive summary\n\n## Findings\n\n1.\n2.\n\n## Recommendations\n\n| # | Recommendation | Impact | Effort | Owner |\n|---|---|---|---|---|\n|  |  |  |  |  |\n\n## Next steps\n\n- [ ]\n"
+      },
+      {
+        "name": "Workshop Plan",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Workshop: <topic>\n\n## Objective & outcomes\n\n## Participants\n\n## Agenda\n\n| Time | Segment | Facilitator |\n|---|---|---|\n|  |  |  |\n\n## Materials / prework\n\n## Parking lot\n"
+      },
+      {
+        "name": "Research Question",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Open"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          }
+        ],
+        "bodyTemplate": "# Research Question\n\n## Question\n\n## Why it matters\n\n## Hypothesis\n\n## Method / sources\n\n## Findings\n\n## Answer / confidence\n\n## Action Items\n\n- [ ]\n"
+      }
+    ]
+  },
+  {
+    "packId": "customer-success",
+    "version": 1,
+    "category": "Go-to-Market",
+    "displayName": "Customer Success",
+    "summary": "Account health, business reviews, onboarding plans, escalations, and renewal risk.",
+    "note": null,
+    "roleAliases": [
+      "Customer Success Manager"
+    ],
+    "templates": [
+      {
+        "name": "Account Health",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Green"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Account Health: <customer>\n\n**Overall:** Green / Yellow / Red\n**ARR / plan:**\n**Renewal date:**\n\n## Usage & adoption\n\n## Relationship (champions, detractors)\n\n## Open issues\n\n## Opportunities (expansion)\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Business Review (QBR)",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Business Review\n\n**Customer:**\n**Period:**\n\n## Goals set last time\n\n## Results & value delivered\n\n## Roadmap / what's next\n\n## Risks & asks\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Onboarding Plan",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "In Progress"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Onboarding Plan: <customer>\n\n## Success criteria (first value by …)\n\n## Milestones\n\n- [ ] Kickoff\n- [ ] Configuration complete\n- [ ] First workflow live\n- [ ] Team trained\n- [ ] Go-live review\n\n## Stakeholders\n\n## Risks\n"
+      },
+      {
+        "name": "Support Escalation",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Open"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "High"
+          }
+        ],
+        "bodyTemplate": "# Escalation: <summary>\n\n**Customer:**\n**Raised:**\n**Impact:**\n\n## Background\n\n## Current state\n\n## Path to resolution\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Renewal / Churn Risk",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "At Risk"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Renewal: <customer>\n\n**Renewal date:**\n**Risk level:** Low / Medium / High\n\n## Risk drivers\n\n## Value story / proof points\n\n## Mitigation plan\n\n## Action Items\n\n- [ ]\n"
+      }
+    ]
+  },
+  {
+    "packId": "sales",
+    "version": 1,
+    "category": "Go-to-Market",
+    "displayName": "Sales",
+    "summary": "Opportunities, account plans, discovery calls, proposals, and competitor battlecards.",
+    "note": null,
+    "roleAliases": [
+      "Sales Specialist"
+    ],
+    "templates": [
+      {
+        "name": "Opportunity",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Qualifying"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Opportunity: <account — deal>\n\n**Stage:**\n**Amount:**\n**Close date:**\n\n## Pain / compelling event\n\n## Decision process & criteria\n\n## Champion / economic buyer\n\n## Competition\n\n## Next step\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Account Plan",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Account Plan: <account>\n\n## Overview & whitespace\n\n## Buying centers / contacts\n\n| Name | Role | Disposition |\n|---|---|---|\n|  |  |  |\n\n## Strategy for the year\n\n## Risks\n"
+      },
+      {
+        "name": "Discovery Call",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Discovery Call\n\n**Account / contact:**\n**Date:**\n\n## Current situation\n\n## Pain & impact\n\n## Desired outcome\n\n## Timeline & budget signals\n\n## Next step agreed\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Proposal Outline",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Proposal: <account>\n\n## Understanding of needs\n\n## Recommended solution\n\n## Scope & deliverables\n\n## Pricing summary\n\n## Timeline\n\n## Terms / assumptions\n"
+      },
+      {
+        "name": "Competitor Battlecard",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Battlecard: <competitor>\n\n## Their pitch\n\n## Where we win\n\n## Where they win\n\n## Landmines to set\n\n## Objection handling\n\n| Objection | Response |\n|---|---|\n|  |  |\n"
+      }
+    ]
+  },
+  {
+    "packId": "marketing",
+    "version": 1,
+    "category": "Go-to-Market",
+    "displayName": "Marketing",
+    "summary": "Campaign briefs, content calendar entries, personas, channel plans, and launch plans.",
+    "note": null,
+    "roleAliases": [
+      "Marketing Specialist"
+    ],
+    "templates": [
+      {
+        "name": "Campaign Brief",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Campaign Brief: <name>\n\n## Objective & KPI\n\n## Audience\n\n## Key message & proof points\n\n## Channels & tactics\n\n-\n\n## Budget\n\n## Timeline\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Content Calendar Entry",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Idea"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Content: <working title>\n\n**Format:**\n**Channel:**\n**Publish date:**\n\n## Angle / hook\n\n## Key points\n\n-\n\n## CTA\n\n## Assets needed\n\n- [ ]\n"
+      },
+      {
+        "name": "Persona",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Persona: <name>\n\n**Role / segment:**\n\n## Goals\n\n## Frustrations\n\n## Where they get information\n\n## Buying triggers\n\n## Objections\n\n## Messaging that resonates\n"
+      },
+      {
+        "name": "Channel Plan",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          }
+        ],
+        "bodyTemplate": "# Channel Plan: <channel>\n\n## Role in the mix\n\n## Audience & targeting\n\n## Cadence & formats\n\n## Budget & KPIs\n\n## Experiments to run\n\n- [ ]\n"
+      },
+      {
+        "name": "Launch Plan",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Planning"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Launch Plan: <product / feature>\n\n## Positioning & messaging\n\n## Launch tier\n\n## Timeline (T-minus)\n\n| When | Activity | Owner |\n|---|---|---|\n|  |  |  |\n\n## Assets checklist\n\n- [ ] Announcement\n- [ ] Docs\n- [ ] Sales enablement\n\n## Success metrics\n"
+      }
+    ]
+  },
+  {
+    "packId": "people-ops-hr",
+    "version": 1,
+    "category": "People",
+    "displayName": "People Ops (HR)",
+    "summary": "Job descriptions, candidates, interview debriefs, onboarding plans, policies, and headcount planning.",
+    "note": null,
+    "roleAliases": [
+      "Human Resources Specialist",
+      "Human Resources Manager"
+    ],
+    "templates": [
+      {
+        "name": "Job Description",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Job Description: <title>\n\n**Team / manager:**\n**Level:**\n**Location / type:**\n\n## Mission of the role\n\n## Responsibilities\n\n-\n\n## Requirements\n\n- Must:\n- Nice to have:\n\n## Interview loop\n"
+      },
+      {
+        "name": "Candidate",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Screening"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          }
+        ],
+        "bodyTemplate": "# Candidate: <name>\n\n**Role:**\n**Source:**\n\n## Snapshot\n\n## Screen notes\n\n## Loop feedback\n\n| Interviewer | Signal | Notes |\n|---|---|---|\n|  |  |  |\n\n## Decision\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Interview Debrief",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Interview Debrief\n\n**Candidate:**\n**Role:**\n\n## Recommendation\n\nStrong Yes / Yes / No / Strong No\n\n## Strengths\n\n## Concerns\n\n## Areas for others to probe\n"
+      },
+      {
+        "name": "Onboarding Plan",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "In Progress"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Onboarding Plan: <new hire>\n\n## Week 1\n\n- [ ] Accounts & access\n- [ ] Team intros\n- [ ] First task\n\n## 30 / 60 / 90 day goals\n\n- 30:\n- 60:\n- 90:\n\n## Buddy / manager check-ins\n"
+      },
+      {
+        "name": "Policy",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Policy: <name>\n\n## Purpose\n\n## Scope (who it applies to)\n\n## Policy\n\n## Procedure\n\n## Exceptions & approvals\n\n## Effective date / review date\n"
+      },
+      {
+        "name": "Headcount Plan",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Headcount Plan: <team / period>\n\n## Current headcount\n\n## Planned hires\n\n| Role | Level | Target start | Justification |\n|---|---|---|---|\n|  |  |  |  |\n\n## Backfills\n\n## Budget impact\n"
+      }
+    ]
+  },
+  {
+    "packId": "learning-development",
+    "version": 1,
+    "category": "People",
+    "displayName": "Learning & Development",
+    "summary": "Curricula, lesson plans, learning objectives, session notes, assessments, and needs analyses.",
+    "note": null,
+    "roleAliases": [
+      "Learning and Development Specialist",
+      "Corporate Trainer"
+    ],
+    "templates": [
+      {
+        "name": "Course / Curriculum",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Course: <title>\n\n## Audience & prerequisites\n\n## Learning outcomes\n\n- By the end, learners can:\n\n## Modules\n\n| # | Module | Duration | Method |\n|---|---|---|---|\n|  |  |  |  |\n\n## Assessment approach\n\n## Materials\n"
+      },
+      {
+        "name": "Lesson Plan",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Lesson Plan: <topic>\n\n**Duration:**\n**Objective:**\n\n## Opening (hook)\n\n## Content & activities\n\n| Time | Activity | Notes |\n|---|---|---|\n|  |  |  |\n\n## Practice / check for understanding\n\n## Close & next steps\n"
+      },
+      {
+        "name": "Learning Objective",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Learning Objective\n\n**Statement (observable, measurable):**\n**Bloom level:**\n**How it's assessed:**\n**Maps to (competency / course):**\n"
+      },
+      {
+        "name": "Session Delivery Notes",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Session Delivery Notes\n\n**Course / cohort:**\n**Date:**\n**Attendance:**\n\n## What went well\n\n## What to adjust\n\n## Learner questions to follow up\n\n- [ ]\n"
+      },
+      {
+        "name": "Assessment",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Assessment: <name>\n\n## Purpose (formative / summative)\n\n## Objectives covered\n\n## Items\n\n1.\n2.\n\n## Scoring / rubric\n\n## Pass criteria\n"
+      },
+      {
+        "name": "Training Needs Analysis",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Training Needs Analysis: <audience>\n\n## Business driver\n\n## Current vs. required capability\n\n## Gaps\n\n-\n\n## Recommended interventions\n\n## Action Items\n\n- [ ]\n"
+      }
+    ]
+  },
+  {
+    "packId": "legal-operations",
+    "version": 1,
+    "category": "Governance & Compliance",
+    "displayName": "Legal Operations",
+    "summary": "Matters, contract summaries, outside counsel, policies, compliance obligations, and approvals.",
+    "note": null,
+    "roleAliases": [
+      "Legal Operations Specialist"
+    ],
+    "templates": [
+      {
+        "name": "Matter",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Open"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Matter: <name>\n\n**Type:**\n**Business sponsor:**\n**Outside counsel:**\n\n## Summary\n\n## Key dates / deadlines\n\n## Risk & exposure\n\n## Budget / spend\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Contract Summary",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "In Review"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Contract Summary\n\n**Counterparty:**\n**Type:**\n**Effective / expiry:**\n**Renewal / notice:**\n\n## Key terms\n\n- Payment:\n- Liability / indemnity:\n- Termination:\n- IP / confidentiality:\n\n## Deviations from standard\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Outside Counsel / Vendor",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          }
+        ],
+        "bodyTemplate": "# Outside Counsel / Vendor: <firm>\n\n**Practice areas:**\n**Primary contact:**\n**Rates / arrangement:**\n**Engagement letter on file:** yes / no\n\n## Performance notes\n"
+      },
+      {
+        "name": "Policy",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Policy: <name>\n\n## Purpose\n\n## Scope\n\n## Requirements\n\n## Roles & responsibilities\n\n## Effective / review date\n"
+      },
+      {
+        "name": "Compliance Obligation",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Tracked"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          }
+        ],
+        "bodyTemplate": "# Compliance Obligation: <regulation / requirement>\n\n## What it requires\n\n## How we comply (controls)\n\n## Evidence / records\n\n## Gaps\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Approval Log",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Approval Log: <item>\n\n| Date | Approver | Decision | Notes |\n|---|---|---|---|\n|  |  |  |  |\n"
+      }
+    ]
+  },
+  {
+    "packId": "healthcare-administration",
+    "version": 1,
+    "category": "Governance & Compliance",
+    "displayName": "Healthcare Administration",
+    "summary": "Administrative policies, accreditation items, department notes, vendors, safety reports, and committees.",
+    "note": "Administrative use only — policies, credentialing, committees, compliance, vendors. Not a store for patient health information (PHI) or clinical records.",
+    "roleAliases": [
+      "Healthcare Administrator"
+    ],
+    "templates": [
+      {
+        "name": "Policy & Procedure",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Policy & Procedure: <name>\n\n## Purpose\n\n## Scope (departments / roles)\n\n## Policy statement\n\n## Procedure\n\n1.\n2.\n\n## References / regulatory basis\n\n## Approval / next review date\n"
+      },
+      {
+        "name": "Accreditation Item",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "In Progress"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "High"
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Accreditation Item: <standard / element>\n\n## Requirement\n\n## Current compliance status\n\n## Evidence / documentation\n\n## Gaps & corrective actions\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Department / Unit",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          }
+        ],
+        "bodyTemplate": "# Department / Unit: <name>\n\n**Manager:**\n**Staffing model:**\n**Key services:**\n**Hours of operation:**\n\n## Current priorities\n\n## Notes\n"
+      },
+      {
+        "name": "Vendor / Contract",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Active"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Vendor / Contract: <vendor>\n\n**Service:**\n**Term / renewal:**\n**Cost:**\n**BAA on file:** yes / no\n\n## Performance / SLA notes\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Incident / Safety Report",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Open"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "High"
+          }
+        ],
+        "bodyTemplate": "# Incident / Safety Report\n\n**Date / location:**\n**Type:** (no patient identifiers in this note)\n\n## Description\n\n## Immediate actions taken\n\n## Contributing factors\n\n## Corrective / preventive actions\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Committee Meeting Notes",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Committee Meeting Notes\n\n**Committee:**\n**Date / attendees:**\n\n## Agenda\n\n-\n\n## Discussion & decisions\n\n-\n\n## Action Items\n\n- [ ]\n"
+      }
+    ]
+  },
+  {
+    "packId": "culinary-food-craft",
+    "version": 1,
+    "category": "Food & Hospitality",
+    "displayName": "Culinary & Food Craft",
+    "summary": "Recipes, menus, prep lists, production batches, tastings, and supplier notes.",
+    "note": null,
+    "roleAliases": [
+      "Chef",
+      "Confectioner",
+      "Chocolatier"
+    ],
+    "templates": [
+      {
+        "name": "Recipe",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Testing"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Recipe: <name>\n\n**Yield / portions:**\n**Prep / cook time:**\n**Allergens:**\n\n## Ingredients\n\n| Ingredient | Quantity | Notes |\n|---|---|---|\n|  |  |  |\n\n## Method\n\n1.\n2.\n3.\n\n## Finishing / plating\n\n## Costing\n\n- Batch cost:\n- Cost per portion:\n- Target price / margin:\n\n## Notes & variations\n"
+      },
+      {
+        "name": "Menu",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Draft"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Stakeholders",
+            "valueType": "list",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Menu: <service / event>\n\n**Date / service:**\n**Covers:**\n\n## Courses\n\n| Course | Dish | Recipe link | Price |\n|---|---|---|---|\n|  |  |  |  |\n\n## Dietary coverage\n\n- Vegetarian / vegan:\n- Gluten-free:\n- Nut-free:\n\n## Costing summary\n\n- Food cost %:\n- Notes:\n\n## Action Items\n\n- [ ] Confirm ingredient availability\n- [ ] Brief the team\n"
+      },
+      {
+        "name": "Prep List",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Prep List: <service / date>\n\n## Larder / cold\n\n- [ ]\n- [ ]\n\n## Hot / sauces\n\n- [ ]\n- [ ]\n\n## Pastry / bake\n\n- [ ]\n\n## Pass / assembly\n\n- [ ]\n\n## Order / receiving\n\n- [ ]\n"
+      },
+      {
+        "name": "Production Batch",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "In Progress"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Start Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Production Batch: <product>\n\n**Recipe / version:**\n**Batch size (target):**\n\n## Parameters\n\n- Temper / cook temp:\n- Time:\n- Humidity / conditions:\n\n## Quality checks\n\n- [ ] Appearance / gloss / set\n- [ ] Texture / snap\n- [ ] Flavour\n- [ ] Weight / count per unit\n\n## Results\n\n- Yield (actual vs target):\n- Rework / waste:\n- Notes for next batch:\n"
+      },
+      {
+        "name": "Tasting / QC Note",
+        "fields": [
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Tasting / QC Note\n\n**Item / batch:**\n**Date:**\n\n## Appearance\n\n## Aroma\n\n## Texture / mouthfeel\n\n## Flavour\n\n## Verdict\n\nPass / adjust / reject\n\n## Adjustments for next time\n\n-\n"
+      },
+      {
+        "name": "Ingredient & Supplier",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Approved"
+          },
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Ingredient & Supplier: <ingredient>\n\n**Product / grade:**\n**Supplier:**\n**Pack size / unit cost:**\n**Lead time:**\n**Allergens:**\n**Storage:**\n\n## Approved substitutes\n\n-\n\n## Notes (seasonality, quality history)\n"
+      }
+    ]
+  },
+  {
+    "packId": "fiction-writing",
+    "version": 1,
+    "category": "Personal & Creative",
+    "displayName": "Fiction Writing",
+    "summary": "Characters, locations, and scenes for a novel or series.",
+    "note": null,
+    "roleAliases": [],
+    "templates": [
+      {
+        "name": "Character",
+        "fields": [
+          {
+            "name": "Species",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Homeworld",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Affiliation",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Alive"
+          },
+          {
+            "name": "Alive",
+            "valueType": "checkbox",
+            "defaultValue": "true"
+          }
+        ],
+        "bodyTemplate": "# <Character name>\n\n## One-line\n\n## Appearance\n\n## Voice & mannerisms\n\n## Wants vs. needs\n\n## Backstory\n\n## Relationships\n\n## Arc across the story\n"
+      },
+      {
+        "name": "Location",
+        "fields": [
+          {
+            "name": "Region",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Description",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# <Location name>\n\n## Sensory snapshot\n\n## History\n\n## Who is here, and why it matters\n\n## Scenes set here\n"
+      },
+      {
+        "name": "Scene",
+        "fields": [
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Drafting"
+          },
+          {
+            "name": "Priority",
+            "valueType": "text",
+            "defaultValue": "Medium"
+          }
+        ],
+        "bodyTemplate": "# Scene: <slug>\n\n**POV:**\n**Location:**\n**Time:**\n\n## Goal (whose, and what)\n\n## Conflict / turn\n\n## Outcome / new situation\n\n## Notes / continuity\n"
+      }
+    ]
+  },
+  {
+    "packId": "wedding-planning",
+    "version": 1,
+    "category": "Personal & Creative",
+    "displayName": "Wedding Planning",
+    "summary": "Vendors, guests, and the day-of timeline.",
+    "note": null,
+    "roleAliases": [],
+    "templates": [
+      {
+        "name": "Vendor",
+        "fields": [
+          {
+            "name": "Category",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Contact Email",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Booked",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          },
+          {
+            "name": "Due Date",
+            "valueType": "date",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Vendor: <name>\n\n**Category:**\n**Phone / email:**\n**Quote:**\n**Deposit paid:** yes / no\n\n## What's included\n\n## Questions to ask\n\n## Action Items\n\n- [ ]\n"
+      },
+      {
+        "name": "Guest",
+        "fields": [
+          {
+            "name": "RSVP",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          },
+          {
+            "name": "Plus One",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Guest: <name>\n\n**Side:**\n**Invitation sent:** yes / no\n**RSVP:** yes / no / pending\n**Meal choice:**\n**Dietary needs:**\n**Table:**\n**Notes:**\n"
+      },
+      {
+        "name": "Day-Of Timeline",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Day-Of Timeline\n\n| Time | What | Who | Location |\n|---|---|---|---|\n|  |  |  |  |\n\n## Key contacts\n\n## Contingencies (weather, delays)\n"
+      }
+    ]
+  },
+  {
+    "packId": "photography-client-work",
+    "version": 1,
+    "category": "Personal & Creative",
+    "displayName": "Photography Client Work",
+    "summary": "Clients, shoot locations, and shot lists.",
+    "note": null,
+    "roleAliases": [],
+    "templates": [
+      {
+        "name": "Client",
+        "fields": [
+          {
+            "name": "Shoot Date",
+            "valueType": "date",
+            "defaultValue": ""
+          },
+          {
+            "name": "Package Type",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Status",
+            "valueType": "text",
+            "defaultValue": "Inquiry"
+          }
+        ],
+        "bodyTemplate": "# Client: <name>\n\n**Contact:**\n**Occasion:**\n**Package:**\n**Balance due:**\n\n## Preferences & must-have shots\n\n## Logistics\n\n## Action Items\n\n- [ ] Send contract\n- [ ] Confirm timeline\n"
+      },
+      {
+        "name": "Shoot Location",
+        "fields": [
+          {
+            "name": "Address",
+            "valueType": "text",
+            "defaultValue": ""
+          }
+        ],
+        "bodyTemplate": "# Shoot Location: <name>\n\n**Address:**\n**Permit needed:** yes / no\n**Best light / time:**\n**Parking / access:**\n\n## Backup location\n\n## Notes\n"
+      },
+      {
+        "name": "Shot List",
+        "fields": [
+          {
+            "name": "Owner",
+            "valueType": "text",
+            "defaultValue": ""
+          },
+          {
+            "name": "Reviewed",
+            "valueType": "checkbox",
+            "defaultValue": "false"
+          }
+        ],
+        "bodyTemplate": "# Shot List: <session>\n\n## Must-have\n\n- [ ]\n- [ ]\n\n## Nice-to-have\n\n- [ ]\n\n## Group shots\n\n- [ ]\n"
+      }
+    ]
+  }
+]
