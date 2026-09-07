@@ -58,6 +58,16 @@ Everything else stays semantic (`.green` / `.orange` / `.red` / `Color(.systemBa
 - Standard SwiftUI `NavigationSplitView` insets on Mac/iPad; standard `List`/`Form` insets on iPhone. No custom margins.
 - Minimum tap target 44×44pt on all interactive elements (checkbox toggles, restore buttons, graph node targets).
 
+### App icon & launch screen
+
+- **App icon** (`Assets.xcassets/AppIcon.appiconset`): the text-free teal owl+brain mark
+  (`images/logos/NoteBytez-Mark-2048x2048.png`) centered on white. iOS light + dark
+  (deep teal `#0F2E2B`) + tinted (grayscale) 1024² variants, plus the macOS 16–512 @1x/@2x set.
+  Opaque, no alpha. No text in the icon (HIG).
+- **Launch screen** (iOS only): `UILaunchScreen` in `Info.plist` — `NoteBytez-Text-FullCollor`
+  centered (`LaunchImage.imageset`) on black (`LaunchBackground` colorset).
+- Design sources (PSD/PNG lockups) live in `images/logos/` and are excluded from the app target.
+
 ### Iconography
 
 SF Symbols exclusively — no custom icon set. Symbols in use:
@@ -175,6 +185,15 @@ Inventory of every shared component, for reuse rather than one-off screens:
 | Bound-canvas chrome badge | Small "↔ <Note title>" capsule — a board-list row subtitle, and a top-leading overlay on the board itself | S16 |
 | `BindBoardSheet` | Note picker for binding a board (reuses the wikilink fuzzy-picker layout) | S16 |
 | Connector-creates-link confirm | Alert raised when a connector is drawn between two note cards on a bound board — confirm writes the underlying `[[link]]`, cancel simply never creates the connector | S16 |
+
+### Entitlement gate additions (`NoteBytez20260907v1-Security.md`)
+
+| Component | Description | Used in |
+|---|---|---|
+| `LapsedBanner` | Non-dismissable orange strip above the full app UI during the post-lapse grace window — icon + text + "Resubscribe", never color alone | `EntitlementGateContainer` (`.warning`) |
+| `PaywallView` | Monthly/Annual product list, free-trial framing, Restore Purchases, Terms/Privacy links, read-only export escape hatch | Blocked-state `neverSubscribed`; resubscribe sheet |
+| `BlockedView` | Full-screen block for `subscriptionLapsed` / `offlineTooLong` / `provenanceFailed` — calm explanation ("nothing has been deleted"), Resubscribe / Restore / Manage / Export | `EntitlementGateContainer` (`.blocked`) |
+| `SubscriptionActionButtons` | Cross-platform Manage Subscription / Redeem Code (iOS sheets, macOS App Store URLs) | `PaywallView`, `BlockedView`, `SubscriptionSettingsView` |
 
 Every component maps to a native SwiftUI primitive (`Button`, `List`/`Form` row, `NavigationSplitView`, `TabView`, system `ProgressView`) — none require custom rendering to hit this design system, consistent with NoteBytez's own `CLAUDE.md` guidance to leverage the Swift Standard Library/Apple frameworks before reaching for anything custom.
 

@@ -30,6 +30,31 @@ enum ExportDAL {
         return documents.count
     }
 
+    /// Every active library, each into its own sanitized sub-folder of `directory`. Backs the
+    /// blocked-state "Export my notes" escape hatch (NoteBytez20260907v1-Security.md G16) — a
+    /// lapsed subscriber can always get their data out, read-only, without resubscribing.
+    @discardableResult
+    static func exportAllActiveLibraries(to directory: URL, in context: ModelContext) -> Int {
+        let didStartAccessing = directory.startAccessingSecurityScopedResource()
+        defer { if didStartAccessing { directory.stopAccessingSecurityScopedResource() } }
+
+        var exportedCount = 0
+        for library in LibraryDAL.fetchActive(in: context) {
+            guard let libraryId = library.libraryId else { continue }
+            let libraryFolder = directory.appendingPathComponent(
+                sanitizedFilename(for: library.name ?? "Library"),
+                isDirectory: true
+            )
+            try? FileManager.default.createDirectory(at: libraryFolder, withIntermediateDirectories: true)
+
+            for document in DocumentDAL.fetchActive(libraryId: libraryId, in: context) {
+                guard (try? exportDocument(document, to: libraryFolder, in: context)) != nil else { continue }
+                exportedCount += 1
+            }
+        }
+        return exportedCount
+    }
+
     /// `document.content` with Notebook membership woven in for export, so it round-trips
     /// back into Kontinuum (`NotebookParser.extractFrontmatterNotebooks`) and is immediately
     /// usable in Obsidian/Logseq (their native nested-tag support), per

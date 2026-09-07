@@ -37,6 +37,16 @@
 		29F43EBC302E258F00907F14 /* Exceptions for "Kontinuum" folder in "Kontinuum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"images/logos/NoteBytez-Artwork-1024x1024.png",
+				"images/logos/NoteBytez-Artwork-2048x2048.png",
+				"images/logos/NoteBytez-Artwork-2048x2048.psd",
+				"images/logos/NoteBytez-Mark-1024x1024.png",
+				"images/logos/NoteBytez-Mark-2048x2048.png",
+				"images/logos/NoteBytez-Text-2048x2048.psd",
+				"images/logos/NoteBytez-Text-FullCollor-1024x1024.png",
+				"images/logos/NoteBytez-Text-FullCollor-2048x2048.png",
+				"images/logos/NoteBytez-Text-FullCollor-2048x2048.psd",
+				images/logos/quill.psd,
 				"Info-macOS.plist",
 				Info.plist,
 			);
@@ -309,7 +319,6 @@
 				"INFOPLIST_FILE[sdk=macosx*]" = "Kontinuum/Info-macOS.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -347,7 +356,6 @@
 				"INFOPLIST_FILE[sdk=macosx*]" = "Kontinuum/Info-macOS.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

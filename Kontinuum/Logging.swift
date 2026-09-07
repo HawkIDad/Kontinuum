@@ -11,6 +11,7 @@ enum LogCategory: String {
     case sync
     case data
     case ui
+    case entitlement
 }
 
 enum Log {

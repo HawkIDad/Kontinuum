@@ -16,6 +16,14 @@ struct RootView: View {
     @State private var didFinishTemplateOnboarding = false
 
     var body: some View {
+        // App Store provenance + subscription gate (NoteBytez20260907v1-Security.md). Renders
+        // the app below only when entitled; otherwise a paywall / blocked screen.
+        EntitlementGateContainer(viewModel: .makeDefault()) {
+            libraryContent
+        }
+    }
+
+    private var libraryContent: some View {
         Group {
             if let libraryViewModel {
                 if let selectedLibrary = libraryViewModel.selectedLibrary {

@@ -60,7 +60,13 @@
             reference = "container:KontinuumCIGate.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:KontinuumEntitlement.xctestplan">
+         </TestPlanReference>
       </TestPlans>
+      <StoreKitConfigurationFileReference
+         identifier = "Kontinuum/StoreKit/Kontinuum.storekit">
+      </StoreKitConfigurationFileReference>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

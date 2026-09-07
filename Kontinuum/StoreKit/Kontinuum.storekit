@@ -1,0 +1,100 @@
+{
+  "identifier" : "A5BCCC2C-B62F-4635-B391-64FB8FDE4141",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_billingIssuesEnabled" : false,
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      { "current" : null, "enabled" : false, "name" : "Load Products" },
+      { "current" : null, "enabled" : false, "name" : "Purchase" },
+      { "current" : null, "enabled" : false, "name" : "Verification" },
+      { "current" : null, "enabled" : false, "name" : "App Store Sync" },
+      { "current" : null, "enabled" : false, "name" : "Subscription Status" },
+      { "current" : null, "enabled" : false, "name" : "App Transaction" },
+      { "current" : null, "enabled" : false, "name" : "Manage Subscriptions Sheet" },
+      { "current" : null, "enabled" : false, "name" : "Refund Request Sheet" },
+      { "current" : null, "enabled" : false, "name" : "Offer Code Redeem Sheet" }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "319F4A59-CB24-4AE5-AAAC-61CF37CA9579",
+      "localizations" : [
+
+      ],
+      "name" : "NoteBytez",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "4.99",
+          "familyShareable" : true,
+          "groupNumber" : 1,
+          "internalID" : "1E440FEA-F761-4BFC-A3FE-D30FBF585EF0",
+          "introductoryOffer" : {
+            "internalID" : "A47E557F-F632-4808-8076-2FB84548564A",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Full access to NoteBytez, billed monthly.",
+              "displayName" : "NoteBytez Monthly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.g9Consulting.Kontinuum.sub.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "NoteBytez Monthly",
+          "subscriptionGroupID" : "319F4A59-CB24-4AE5-AAAC-61CF37CA9579",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "39.99",
+          "familyShareable" : true,
+          "groupNumber" : 1,
+          "internalID" : "009EEE20-FDD1-4573-90AC-53615A09E244",
+          "introductoryOffer" : {
+            "internalID" : "1D36C2C4-ADF4-44C6-AA26-16BAC783EE50",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Full access to NoteBytez, billed annually.",
+              "displayName" : "NoteBytez Annual",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.g9Consulting.Kontinuum.sub.annual",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "NoteBytez Annual",
+          "subscriptionGroupID" : "319F4A59-CB24-4AE5-AAAC-61CF37CA9579",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

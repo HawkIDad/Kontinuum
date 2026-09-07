@@ -19,6 +19,9 @@ struct SettingsView: View {
 
     var body: some View {
         List {
+            NavigationLink("Subscription") {
+                SubscriptionSettingsView()
+            }
             NavigationLink("Sync & Conflicts") {
                 ConflictStrategySettingsView()
             }

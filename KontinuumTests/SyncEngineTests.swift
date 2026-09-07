@@ -107,4 +107,58 @@ struct SyncEngineTests {
         #expect(SyncStatusStore.shared.logEntries.count == previousErrorCount)
     }
 
+    // MARK: - Entitlement suspension (NoteBytez20260907v1-Security.md Phase 5)
+    //
+    // In this same serialized suite deliberately: `suspend()` flips shared `SyncEngine.shared`
+    // state, and the attribution tests above would see their `recordChanged` calls suppressed
+    // if a suspension test ran concurrently. Every test here restores the unsuspended state.
+
+    @Test func suspendedRecordChangedIsSuppressedBeforeEvenTheReadOnlyCheck() throws {
+        let context = try makeContext()
+        let library = Library(name: "Shared Research")
+        context.insert(library)
+        guard let libraryId = library.libraryId else { Issue.record("Library has no id"); return }
+
+        SharingPermissionStore.shared.setPermission(.readOnly, forLibraryId: libraryId)
+        defer { SharingPermissionStore.shared.update(forLibraryId: libraryId, share: nil) }
+
+        SyncEngine.shared.suspend()
+        defer { SyncEngine.shared.resume() }
+
+        let previousErrorCount = SyncStatusStore.shared.logEntries.count
+        SyncEngine.shared.recordChanged(library, in: context)
+
+        // Suppressed before the read-only rejection is reached, so nothing is recorded.
+        #expect(SyncStatusStore.shared.logEntries.count == previousErrorCount)
+    }
+
+    @Test func resumeRestoresNormalChangeHandling() throws {
+        let context = try makeContext()
+        let library = Library(name: "Shared Research")
+        context.insert(library)
+        guard let libraryId = library.libraryId else { Issue.record("Library has no id"); return }
+
+        SharingPermissionStore.shared.setPermission(.readOnly, forLibraryId: libraryId)
+        defer { SharingPermissionStore.shared.update(forLibraryId: libraryId, share: nil) }
+
+        SyncEngine.shared.suspend()
+        SyncEngine.shared.resume()
+
+        let previousErrorCount = SyncStatusStore.shared.logEntries.count
+        SyncEngine.shared.recordChanged(library, in: context)
+
+        // Back to normal: the read-only participant's write is rejected and recorded again.
+        #expect(SyncStatusStore.shared.logEntries.count == previousErrorCount + 1)
+    }
+
+    @Test func suspendAndResumeAreIdempotent() {
+        SyncEngine.shared.resume() // no-op when not suspended
+        SyncEngine.shared.suspend()
+        SyncEngine.shared.suspend()
+        SyncEngine.shared.resume()
+        SyncEngine.shared.resume()
+        // Reaching here without a crash / double-drain is the assertion; leave unsuspended.
+        #expect(Bool(true))
+    }
+
 }

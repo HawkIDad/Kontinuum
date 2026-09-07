@@ -25,6 +25,11 @@ authorization, the plugin sandbox, untrusted-input parsing, platform hardening, 
 pipeline — measured against Apple guidance and recognised industry standards — so that a release
 can be signed off against explicit criteria rather than assumption.
 
+> App Store provenance + auto-renewable-subscription enforcement (blocking side-loaded/patched
+> copies and gating use on an active subscription) is **owned by `NoteBytez20260907v1-Security.md`**,
+> not this plan. This assessment still covers the entitlement cache's at-rest posture (WS2) and
+> the RESILIENCE stance it inherits (WS9.5).
+
 ## Standards & Frameworks (authoritative references)
 
 | Ref | Source | Used for |

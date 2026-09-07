@@ -48,6 +48,20 @@ final class SyncEngine: @unchecked Sendable {
     private var sharedDatabase: CKDatabase?
     private var sharedEngine: CKSyncEngine?
 
+    /// Entitlement suspension (NoteBytez20260907v1-Security.md Phase 5). While the app is in its
+    /// blocked state, no local change is pushed and no fetched change is applied — fetched
+    /// batches are buffered and replayed on `resume()` so nothing is lost and nothing is
+    /// destructively deleted from a user who has simply lapsed. Guarded by its own lock; the
+    /// rest of `SyncEngine`'s mutable state is serialized by `CKSyncEngine`'s own delegate
+    /// dispatch, but `suspend()`/`resume()` are called from the entitlement gate on `MainActor`.
+    private let suspensionLock = NSLock()
+    private var isEntitlementSuspended = false
+    private var bufferedFetchedChanges: [CKSyncEngine.Event.FetchedRecordZoneChanges] = []
+
+    private var isSuspendedSnapshot: Bool {
+        suspensionLock.withLock { isEntitlementSuspended }
+    }
+
     private init() {}
 
     /// Called once at app launch (Release builds only — see `KontinuumApp`) with the shared
@@ -91,6 +105,7 @@ final class SyncEngine: @unchecked Sendable {
     /// doesn't say which database changed, so this just checks both; a `fetchChanges()` with
     /// nothing new is cheap.
     func handleRemoteNotification() async {
+        guard !isSuspendedSnapshot else { return }
         do {
             try await engine?.fetchChanges()
         } catch {
@@ -106,6 +121,7 @@ final class SyncEngine: @unchecked Sendable {
     /// S9's manual "Sync Now" trigger — otherwise `CKSyncEngine` schedules sync passes on its
     /// own (`configuration.automaticallySync`), the same event stream either way.
     func syncNow() async {
+        guard !isSuspendedSnapshot else { return }
         if let engine {
             do {
                 try await engine.sendChanges()
@@ -220,6 +236,12 @@ final class SyncEngine: @unchecked Sendable {
     ///   (every DAL funnels here) "rejected at the sync layer" (this is that layer), per this
     ///   phase's own plan wording, rather than scattering a permission check across every DAL.
     func recordChanged<T: SyncableRecord>(_ model: T, in context: ModelContext) {
+        // Entitlement-suspended: the local edit stands in SwiftData (the app is read-only in
+        // the blocked state, so this is only reachable defensively) but nothing is pushed.
+        guard !isSuspendedSnapshot else {
+            logger.notice("Suppressed local change to \(T.ckRecordType) — sync is entitlement-suspended")
+            return
+        }
         applyAttribution(to: model)
         guard let syncId = model.syncId, let libraryId = model.resolvedLibraryId(in: context) else { return }
 
@@ -280,8 +302,14 @@ extension SyncEngine: CKSyncEngineDelegate {
             SyncStatusStore.shared.syncDidFinish()
 
         case .fetchedRecordZoneChanges(let changes):
-            applyFetchedChanges(changes)
-            SyncStatusStore.shared.recordSyncedNotes(count: changes.modifications.count, received: true)
+            if isSuspendedSnapshot {
+                // Hold, don't apply — a lapsed user's local data is never mutated or deleted
+                // out from under them. Replayed verbatim by `resume()`.
+                suspensionLock.withLock { bufferedFetchedChanges.append(changes) }
+            } else {
+                applyFetchedChanges(changes)
+                SyncStatusStore.shared.recordSyncedNotes(count: changes.modifications.count, received: true)
+            }
 
         case .sentRecordZoneChanges(let changes):
             await logSentChanges(changes)
@@ -299,6 +327,7 @@ extension SyncEngine: CKSyncEngineDelegate {
     /// plain dictionary lookup — sidesteps needing `ModelContext` (not `Sendable`) inside a
     /// `@Sendable` closure that may be invoked from another context.
     func nextRecordZoneChangeBatch(_ context: CKSyncEngine.SendChangesContext, syncEngine: CKSyncEngine) async -> CKSyncEngine.RecordZoneChangeBatch? {
+        guard !isSuspendedSnapshot else { return nil }
         guard let modelContainer else { return nil }
         let scope = context.options.scope
         let changes = syncEngine.state.pendingRecordZoneChanges.filter { scope.contains($0) }
@@ -407,4 +436,44 @@ extension SyncEngine: CKSyncEngineDelegate {
         await resolveConflict(conflict, choice: choice, in: ModelContext(modelContainer))
     }
 
+}
+
+/// Lets the entitlement gate (`EntitlementGateViewModel`) pause and resume sync without taking a
+/// dependency on the concrete `SyncEngine` singleton — an in-test fake conforms to this instead.
+protocol SyncEngineControlling: AnyObject, Sendable {
+    func suspend()
+    func resume()
+}
+
+extension SyncEngine: SyncEngineControlling {
+
+    /// Enter the entitlement-suspended state: stop pushing local changes, stop applying fetched
+    /// changes (they buffer). Idempotent.
+    func suspend() {
+        let didChange = suspensionLock.withLock {
+            guard !isEntitlementSuspended else { return false }
+            isEntitlementSuspended = true
+            return true
+        }
+        if didChange { logger.notice("Sync suspended — entitlement blocked") }
+    }
+
+    /// Leave the suspended state, replay every buffered fetched batch, then catch up. Idempotent.
+    func resume() {
+        let buffered: [CKSyncEngine.Event.FetchedRecordZoneChanges]? = suspensionLock.withLock {
+            guard isEntitlementSuspended else { return nil }
+            isEntitlementSuspended = false
+            let drained = bufferedFetchedChanges
+            bufferedFetchedChanges.removeAll()
+            return drained
+        }
+        guard let buffered else { return }
+
+        logger.notice("Sync resumed — replaying \(buffered.count) buffered fetch batch(es)")
+        for changes in buffered {
+            applyFetchedChanges(changes)
+            SyncStatusStore.shared.recordSyncedNotes(count: changes.modifications.count, received: true)
+        }
+        Task { await syncNow() }
+    }
 }

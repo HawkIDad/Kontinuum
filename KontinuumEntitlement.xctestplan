@@ -1,0 +1,41 @@
+{
+  "configurations" : [
+    {
+      "id" : "1D89A144-1242-4410-A702-AFDC3E7E0565",
+      "name" : "Entitlement",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "storeKitConfigurationFileReference" : {
+      "identifier" : "Kontinuum\/StoreKit\/Kontinuum.storekit"
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Kontinuum.xcodeproj",
+      "identifier" : "29F43E98302E258E00907F14",
+      "name" : "Kontinuum"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Kontinuum.xcodeproj",
+        "identifier" : "29F43EA9302E258F00907F14",
+        "name" : "KontinuumTests"
+      }
+    },
+    {
+      "selectedTests" : [
+        "Phase6EntitlementGateTests"
+      ],
+      "target" : {
+        "containerPath" : "container:Kontinuum.xcodeproj",
+        "identifier" : "29F43EB3302E258F00907F14",
+        "name" : "KontinuumUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -78,6 +78,12 @@ struct KontinuumApp: App {
         // unless `-EnableLiveSync` explicitly opted this Debug launch in.
 #if !DEBUG
         SyncEngine.shared.start(modelContainer: self.sharedModelContainer)
+        // Entitlement gate (NoteBytez20260907v1-Security.md Phase 5): if the cached entitlement
+        // already says "blocked", start sync suspended so a lapsed/never-subscribed launch
+        // never pushes or destructively applies before `EntitlementGateViewModel` re-checks.
+        if EntitlementGateViewModel.launchShouldSuspendSync() {
+            SyncEngine.shared.suspend()
+        }
 #else
         if isLiveSyncTestingEnabled {
             SyncEngine.shared.start(modelContainer: self.sharedModelContainer)

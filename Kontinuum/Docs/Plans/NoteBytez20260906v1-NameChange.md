@@ -97,7 +97,7 @@ casing).
 | # | Question | Resolution |
 |---|---|---|
 | **OQ1** | Canonical styling exactly "NoteBytez" (one word, `N`/`B` caps, trailing `z`)? | **Yes.** Proceed as stated under **Canonical name**. |
-| **OQ2** | Does the AppIcon / logo art contain the "Kontinuum" wordmark? | **N/A — app icon and logo are still in design, currently undefined.** No existing wordmark to remove. The visual-rename DoD does **not** depend on art; the only constraint is that whatever art lands later must read "NoteBytez", never "Kontinuum". Phase 4 shrinks to renaming the placeholder JPG. |
+| **OQ2** | Does the AppIcon / logo art contain the "Kontinuum" wordmark? | Originally deferred (art undefined). **Resolved 2026-09-07:** the product owner supplied NoteBytez artwork; the app icon and iOS launch screen were built from it in Phase 4. No "Kontinuum" anywhere in the art. |
 | **OQ3** | Existing App Store Connect record / TestFlight build to update? | **No — nothing submitted to App Store Connect yet.** The ASC metadata step is dropped from Phase 5; it will simply be created as "NoteBytez" when the time comes. |
 | **OQ4** | Any pilot plugin written against `kontinuum.*` we own? | **No plugins created.** Phase 2 touches only `PluginBridge.swift`, `PluginBridgeTests`, and `PluginSDK.md`. |
 | **OQ5** | External references to `Kontinuum*.md` doc paths? | **None.** Phase 3 link-fixing is entirely repo-internal. |
@@ -181,10 +181,27 @@ Everything else is string/asset substitution verified by build + the Phase 5 gre
 ### Phase 4 — Assets
 - [x] `Kontinuum/images/logos/Kontinuum-V1.jpg` → `NoteBytez-V1.jpg` (placeholder, unreferenced
   in code).
-- [x] No AppIcon/logo change — art is undefined (OQ2), separate design track; constraint handed
-  forward: finished icon/logo must read "NoteBytez".
-- [x] → verify: iOS + macOS builds green; asset catalog unaffected (logo JPG is not a catalog
-  asset).
+- [x] **App icon + launch screen built (2026-09-07)** from the artwork the product owner
+  supplied (`images/logos/NoteBytez-Artwork-*` and `NoteBytez-Text-FullCollor-*`), so OQ2 no
+  longer defers anything:
+  - **App icon** (`Assets.xcassets/AppIcon.appiconset`): the text-free teal owl+brain mark
+    extracted from `NoteBytez-Artwork` (saved as `images/logos/NoteBytez-Mark-{1024,2048}.png`),
+    centered on white. iOS light + a dark-appearance (deep teal `#0F2E2B`) + a tinted-appearance
+    (grayscale) 1024² variant, plus the classic macOS `mac` idiom sizes (16–512 @1x/@2x). All
+    RGB, **no alpha** (App Store requirement). `CFBundleIconName = AppIcon` confirmed in both
+    built bundles; no `actool` warnings.
+  - **Launch screen** (iOS): `UILaunchScreen` dict added to `Info.plist` →
+    `UIImageName = LaunchImage` (`NoteBytez-Text-FullCollor` downscaled to a
+    `LaunchImage.imageset` @1x/@2x/@3x) on `UIColorName = LaunchBackground` (black, matches the
+    artwork's own background for a seamless full-screen splash). Removed the now-redundant
+    `INFOPLIST_KEY_UILaunchScreen_Generation` flags. macOS has no launch screen.
+  - Design-source files (`images/logos/*.psd`, `*.png`, `*.jpg`, `quill.psd`) were being copied
+    into the app bundle by the synchronized-folder group and one carried a `com.apple.FinderInfo`
+    xattr that broke macOS `codesign`. Added per-file `membershipExceptions` in `project.pbxproj`
+    so `images/logos/**` is excluded from the target — those raw assets no longer ship.
+- [x] → verify: clean iOS + macOS builds green; `KontinuumTests` 727/727; icon renders on the
+  simulator home screen and the launch image shows on cold start; `Scripts/verify-rename.sh`
+  still passes.
 
 ### Phase 5 — Verification gate
 - [x] `Scripts/verify-rename.sh` created and passing (exit 0). Checks (a) Swift string literals,
@@ -239,5 +256,5 @@ Everything else is string/asset substitution verified by build + the Phase 5 gre
 green; `KontinuumTests` 727/727; screenshot pass done; `ARCHITECTURE.md` "Legacy Identifiers"
 section added. `PRODUCT_NAME = NoteBytez` applied (macOS app menu + built `NoteBytez.app`),
 with `PRODUCT_MODULE_NAME` pinned to `Kontinuum` so the module name is retained. No open
-items. App icon / logo art is **out of this plan's DoD** (undefined, separate design track,
-OQ2) — carried-forward constraint: the finished art must read "NoteBytez".
+items. App icon + iOS launch screen were built from product-owner-supplied NoteBytez artwork
+(Phase 4, 2026-09-07); the earlier "art undefined" caveat (OQ2) is closed.
