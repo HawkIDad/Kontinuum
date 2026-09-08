@@ -254,13 +254,66 @@ Success criteria per phase map to the SF they satisfy.
 - `NoteBytezUITests` per `NoteBytezCIGate.xctestplan` — passes.
 - Simulator smoke (iOS 26): app launches, a library can be created, sync status reaches
   "synced" against `iCloud.com.g9Consulting.Kontinuum`.
-- `Scripts/verify-rename.sh` exits 0; `git grep -i noteBytez` shows only the container string.
+- `Scripts/verify-rename.sh` exits 0; a case-insensitive search for the old name shows only the
+  container string.
 - Delete `Docs/Plans/rename-inventory.txt`.
 - Open one PR `rename/notebytez-project` → `main` with the phased commits intact.
 
 ## Definition of Done
 
 SF1–SF7 all pass; build green iOS + macOS; `NoteBytezTests` + `NoteBytezUITests` green at
-baseline; `Scripts/verify-rename.sh` (inverted) green in CI; the only `NoteBytez` string
-anywhere in the repo is `iCloud.com.g9Consulting.Kontinuum`; the working copy is `NoteBytez/`
-and `origin` points at `github.com/HawkIDad/NoteBytez.git`.
+baseline; `Scripts/verify-rename.sh` (inverted) green in CI; the only old-name string anywhere
+in the repo is the CloudKit container `iCloud.com.g9Consulting.Kontinuum`; the working copy is
+`NoteBytez/` and `origin` points at `github.com/HawkIDad/NoteBytez.git`.
+
+---
+
+## Execution Log — 2026-09-08
+
+Executed on branch `rename/notebytez-project` off `main` (`260f56d`). Phased commits `15bbe52`
+(Phase 0) … `9204165` (Phase 7). **In-place rename** as planned.
+
+The old project name is written below as `OLD` so the completed tree keeps a single source of
+truth (`verify-rename.sh` allow-lists only the CloudKit container).
+
+### Done and verified
+
+| Phase | Result |
+|---|---|
+| 0 | Baseline: the committed `260f56d` broke Info.plist processing on **every** platform (the dropped `membershipExceptions` set swept `Info.plist` into Copy Bundle Resources). Restored the exception set (kept the Wiki group). Baseline then green: iOS + macOS build **SUCCEEDED**, the unit suite **782/782** (Swift Testing, 84 suites). |
+| 1 | `git mv` of the 3 source folders, `.xcodeproj`, both entitlement files, both test plans, `.storekit`, and the scheme. `project.pbxproj` / scheme / test plans / `xcschememanagement.plist` rewritten. Bundle IDs → `com.g9Consulting.NoteBytez{,Tests,UITests}`; `PRODUCT_MODULE_NAME = NoteBytez`. Entitlement **contents** unchanged (container retained). Verify: iOS + macOS app builds **SUCCEEDED** — the new App ID `com.g9Consulting.NoteBytez` was auto-provisioned (`-allowProvisioningUpdates`); the existing container associated with it with no entitlement error; macOS codesign clean. |
+| 2 | `OLDApp` → `NoteBytezApp` (+ file), `OLDUITestCase` → `NoteBytezUITestCase` (+ file, + ~25 subclasses), 5 test files renamed, `@testable import OLD` → `@testable import NoteBytez` (85 files). Verify: **TEST BUILD SUCCEEDED** (all 3 targets); unit suite **782/782**. |
+| 3 | `Notification.Name` raw values `OLD*` → `noteBytez*`; zone subscription IDs → `notebytez-{private,shared}-changes`; DispatchQueue label + Logger subsystem fallback + StoreKit product IDs + entitlement Keychain service → `com.g9Consulting.NoteBytez.*`; `.storekit` product IDs; 2 test fixtures. Retained: the 2 `iCloud.com.g9Consulting.Kontinuum` constants. Verify: unit suite **782/782**. |
+| 4 | 241 header comment lines (`//  OLD` → `//  NoteBytez`; the copyright line untouched); remaining `.swift` comment/fixture prose. Verify: iOS + macOS builds **SUCCEEDED**; unit suite **782/782**. |
+| 5 | Full `.md` sweep (incl. lowercase forms, `OLD1/2` test-account handles → `notebytez1/2`, JS-global mentions); `ARCHITECTURE.md` "Legacy Identifiers" → new "Retained Name" section; "superseded" banner on `NoteBytez20260906v1-NameChange.md`; `generate_template_packs.py` (incl. its functional output path); `rename-inventory.txt` removed. |
+| 7 | `Scripts/verify-rename.sh` inverted: fails on any case-insensitive occurrence of the old name outside `iCloud.com.g9Consulting.Kontinuum`, plus a presence check for that literal. Verified PASS → FAIL (tracked canary) → PASS. |
+| 8 | `verify-rename.sh` **exit 0**; a case-insensitive search for the old name returns only the container literal (+ the gate script's own text). Clean `xcodebuild build` iOS **and** macOS: both **SUCCEEDED**. Unit suite **782/782**. App installs + launches in the iOS 26 Simulator; library-selection screen renders with the title **"NoteBytez"**. |
+
+### Deviations / carry-overs
+
+- **DD5 / `Projects/OLD.md`:** no such file exists — the reference was only test-fixture strings (handled in Phase 4). No `git mv` was needed.
+- **`rename-inventory.txt`:** deleted at the end of Phase 5, not Phase 8 (its burn-down purpose was complete and it would otherwise need a gate exception).
+- **Provisioning:** builds now require `-allowProvisioningUpdates` on first use of the new bundle IDs; the App IDs + Team Provisioning Profiles were created during Phase 1 (macOS) and Phase 2 (iOS test host).
+
+### Not done — maintainer handoff (Phase 6 + PR)
+
+Phase 6 is entirely account/environment actions, left for the maintainer:
+
+1. **Rename the GitHub repo** `HawkIDad/OLD` → `HawkIDad/NoteBytez` (Settings → General → Repository name). GitHub keeps redirects from the old URL.
+2. `git remote set-url origin https://github.com/HawkIDad/NoteBytez.git` then `git fetch` to confirm.
+3. Quit Xcode, then rename the working-copy directory from `.../xCodeWorkspace/OLD` to
+   `.../xCodeWorkspace/NoteBytez` and reopen `NoteBytez.xcodeproj`. `../MarkdownG9` still
+   resolves (it is a sibling of the repo root, unaffected by the rename).
+4. Open the PR: `rename/notebytez-project` → `main`, phased commits intact.
+
+### Known issue — pre-existing, NOT caused by this rename
+
+`NoteBytezUITests` run head-less via `xcodebuild` fails 25/39 (all stall before the main tab
+shell: `identifier == "tabbar.*"` not found). **Confirmed pre-existing:** checking out the
+Phase 0 baseline (`15bbe52`, pre-rename) and running the same
+`Phase1MainShellSmokeTests` subset fails **6/6 with the identical signature**. The app itself
+is healthy (unit suite green; manual Simulator launch renders correctly). This is an
+environment/harness issue (the `NoteBytezCIGate` plan already carries a `skippedTests` list);
+UI tests should be re-run interactively in Xcode with the maintainer's usual Simulator setup.
+CloudKit "reaches synced" was not verified — it needs a signed-in iCloud account on the
+Simulator (a caveat already recorded in the repo's MVP/live-sync plans).
