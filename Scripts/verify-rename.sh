@@ -1,43 +1,41 @@
 #!/bin/bash
-# verify-rename.sh — enforces the Kontinuum → NoteBytez rename (see Kontinuum/Docs/Plans/NoteBytez.md).
+# verify-rename.sh — enforces the completed Kontinuum -> NoteBytez rename
+# (see NoteBytez/Docs/Plans/NoteBytez20260908v1-ProjectRename.md).
 #
-# Fails (exit 1) if a user-visible "Kontinuum" reappears in:
-#   (a) Swift string literals under Kontinuum/
-#   (b) non-z_ Markdown body text under Kontinuum/
-#       (NoteBytez.md and ARCHITECTURE.md's "Legacy Identifiers" section document both names — excepted)
-#   (c) INFOPLIST_KEY_CFBundle{Display,}Name build settings
-# Deliberate retentions (build/account identity — see ARCHITECTURE.md "Legacy Identifiers") are
-# allow-listed below and never counted.
-set -u
-cd "$(dirname "$0")/.." || exit 2
-fail=0
+# Fails (exit 1) if a case-insensitive "kontinuum" appears in ANY git-tracked
+# text file, with exactly one allowed exception:
+#
+#   iCloud.com.g9Consulting.Kontinuum   — the CloudKit container. Containers
+#   cannot be renamed; with pre-launch disposable data there is no reason to
+#   make a new one. This is the sole retained legacy identifier.
+#
+# Binary files are skipped (git grep -I). This script excludes itself.
+set -euo pipefail
 
-# Retained identifiers / paths — a line matching any of these is not a violation.
-ALLOW='KontinuumTests|KontinuumUITests|KontinuumApp|KontinuumCIGate|KontinuumSecurity|Kontinuum/|Kontinuum\.xcodeproj|Kontinuum\.xcscheme|Kontinuum\.app|Kontinuum\.entitlements|Kontinuum-macOS\.entitlements|com\.g9Consulting\.Kontinuum|iCloud\.com\.g9Consulting\.Kontinuum|kontinuum-private-changes|kontinuum-shared-changes|import Kontinuum|-scheme Kontinuum|-project Kontinuum|-target Kontinuum'
+cd "$(git rev-parse --show-toplevel)"
 
-echo "== (a) Swift string literals =="
-while IFS= read -r hit; do
-  echo "$hit" | grep -Eq "$ALLOW" && continue
-  echo "  $hit"; fail=1
-done < <(grep -rn '"[^"]*Kontinuum[^"]*"' --include='*.swift' Kontinuum/ 2>/dev/null | grep -v '^[0-9]*:[[:space:]]*//')
+ALLOWED='iCloud\.com\.g9Consulting\.Kontinuum'
 
-echo "== (b) Markdown body text =="
-while IFS= read -r f; do
-  case "$f" in */z_*|*/Docs/Plans/NoteBytez.md) continue;; esac
-  # For ARCHITECTURE.md, drop the "## Legacy Identifiers" section (it names the retained identifiers).
-  body=$(awk 'BEGIN{skip=0} /^## Legacy Identifiers/{skip=1;next} /^## /{skip=0} skip==0{print NR": "$0}' "$f")
-  while IFS= read -r hit; do
-    [ -z "$hit" ] && continue
-    echo "$hit" | grep -q 'Kontinuum' || continue
-    echo "$hit" | grep -Eq "$ALLOW" && continue
-    echo "  $f: $hit"; fail=1
-  done <<< "$body"
-done < <(find Kontinuum -name '*.md')
+# Every case-insensitive "kontinuum" hit in tracked text, minus this script,
+# minus lines that are only the allowed container literal.
+hits="$(git grep -nI -i -e kontinuum -- ':!Scripts/verify-rename.sh' \
+        | grep -viE "$ALLOWED" || true)"
 
-echo "== (c) Info.plist display-name keys =="
-if grep -Eq 'INFOPLIST_KEY_CFBundle(Display)?Name = Kontinuum' Kontinuum.xcodeproj/project.pbxproj; then
-  echo "  project.pbxproj still sets a Kontinuum display name"; fail=1
+if [ -n "$hits" ]; then
+  echo "FAIL — disallowed 'Kontinuum' reference(s) found:"
+  echo "$hits"
+  echo
+  echo "The only permitted occurrence is the CloudKit container literal"
+  echo "  iCloud.com.g9Consulting.Kontinuum"
+  exit 1
 fi
 
-if [ "$fail" -eq 0 ]; then echo "PASS — no user-visible Kontinuum references"; else echo "FAIL"; fi
-exit $fail
+# Sanity: the container literal must still be present (guards against an
+# over-eager sweep that also renamed the container).
+if ! git grep -qI "$ALLOWED"; then
+  echo "FAIL — CloudKit container literal iCloud.com.g9Consulting.Kontinuum not found;"
+  echo "       it must be retained in the entitlement files and sync/dal constants."
+  exit 1
+fi
+
+echo "PASS — no Kontinuum references outside the retained CloudKit container."
