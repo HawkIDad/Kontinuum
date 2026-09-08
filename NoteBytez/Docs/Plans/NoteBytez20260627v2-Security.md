@@ -129,7 +129,7 @@ can be signed off against explicit criteria rather than assumption.
   `MigrationArchiveDAL`. Add a test that fails if a new local-file writer appears without a
   protection attribute (enumerate Application Support tree post-exercise). Standard:
   Apple Data Protection; MASVS-STORAGE-1.
-- [ ] **2.3 macOS at-rest gap.** macOS has no per-file Data Protection API; `Kontinuum-macOS.entitlements`
+- [ ] **2.3 macOS at-rest gap.** macOS has no per-file Data Protection API; `NoteBytez-macOS.entitlements`
   sets no protection key. Document the resulting posture (rest security == FileVault only).
   Decide + record: is FileVault a stated requirement? Evaluate `NSFileProtectionComplete`
   no-op on macOS and whether Keychain-wrapped or `CryptoKit` envelope encryption is warranted
@@ -197,7 +197,7 @@ can be signed off against explicit criteria rather than assumption.
 
 ## WS5 — Plugin sandbox (MASVS-CODE / RESILIENCE)
 
-- [ ] **5.1 Bridge surface enumeration.** Confirm the JS context exposes only `kontinuum.*`
+- [ ] **5.1 Bridge surface enumeration.** Confirm the JS context exposes only `noteBytez.*`
   (7 functions + `invokedCommand`) and standard ECMAScript — no `JSContext` globals leaking
   host objects, no `ObjC`/`JSExport` bridged classes, no `setTimeout`/network/`XMLHttpRequest`,
   no `require`/module loader. Method: from a test plugin, reflect `Object.getOwnPropertyNames`
@@ -297,7 +297,7 @@ can be signed off against explicit criteria rather than assumption.
 
 ## WS9 — Platform hardening, entitlements, signing (MASVS-RESILIENCE / CM)
 
-- [ ] **9.1 macOS App Sandbox.** `Kontinuum-macOS.entitlements` has **no
+- [ ] **9.1 macOS App Sandbox.** `NoteBytez-macOS.entitlements` has **no
   `com.apple.security.app-sandbox`**. Required for Mac App Store and strongly recommended
   otherwise. Add sandbox + minimal entitlements (`files.user-selected.read-write` for import/
   attachments, iCloud, network client for CloudKit) and retest all file flows. **Finding: High.**
@@ -383,14 +383,14 @@ can be signed off against explicit criteria rather than assumption.
 
 ## WS14 — Secure build, CI & release pipeline (NIST SSDF)
 
-- [ ] **14.1 Security gates in CI.** Add to the pipeline (alongside `KontinuumCIGate.xctestplan`):
+- [ ] **14.1 Security gates in CI.** Add to the pipeline (alongside `NoteBytezCIGate.xctestplan`):
   static analyzer, SwiftLint security rules, `gitleaks`, `osv-scanner`, the parser-fuzz
   nightly. Fail the build on new High/Critical. SSDF PW.7/PW.8/RV.1.
 - [ ] **14.2 Reproducible, signed builds.** Release built only by CI from a tagged commit;
   signing identities in a sece enclave/keychain not on disk; provenance recorded (SLSA-style
   attestation aspiration). SSDF PS.2/PS.3.
 - [ ] **14.3 Test-plan coverage.** Ensure this plan's automated items are in a dedicated
-  `KontinuumSecurity.xctestplan` run on every PR; manual items tracked as release-checklist
+  `NoteBytezSecurity.xctestplan` run on every PR; manual items tracked as release-checklist
   gates.
 - [ ] **14.4 Vulnerability disclosure & response.** Publish a `SECURITY.md` (contact, scope,
   SLA). Define severity → fix-SLA (Critical 7d, High 30d…) and a regression test requirement for
@@ -423,7 +423,7 @@ can be signed off against explicit criteria rather than assumption.
 - [ ] `Docs/Security/threat-model.md` — assets, DFDs, STRIDE/LINDDUN registers (WS0).
 - [ ] `Docs/Security/findings/NNNN-slug.md` per finding — description, CVSS v3.1 vector + score,
   affected code (`file:line`), reproduction, evidence, recommended fix, MASVS/CWE refs, status.
-- [ ] `KontinuumSecurity.xctestplan` — automated regression suite for every codified check.
+- [ ] `NoteBytezSecurity.xctestplan` — automated regression suite for every codified check.
 - [ ] `SECURITY.md` (repo root) + `PrivacyInfo.xcprivacy` (app target).
 - [ ] Assessment report: executive summary, methodology, standards-coverage matrix
   (MASVS control → result), findings table, residual-risk acceptance sign-off.
@@ -437,7 +437,7 @@ can be signed off against explicit criteria rather than assumption.
 3. `PrivacyInfo.xcprivacy` present and accurate; App Store export-compliance keys set.
 4. macOS build sandboxed + hardened + notarised (WS9.1–9.2) or a documented, signed risk
    acceptance for not shipping to the Mac App Store.
-5. Every fixed finding has a regression test in `KontinuumSecurity.xctestplan`.
+5. Every fixed finding has a regression test in `NoteBytezSecurity.xctestplan`.
 6. Threat model reviewed and signed off; residual-risk register accepted by the app owner.
 
 ## Assumptions

@@ -79,7 +79,7 @@ authoritative record.
 1. **These features may add CloudKit schema; v1's "zero schema" rule does not apply here.**
    Every new `@Model` follows `ARCHITECTURE.md` Model Conventions (all fields optional, no
    `@Attribute(.unique)`, `{model}Id` identity, audit fields last, foreign-key-by-UUID joins)
-   and is reviewed for additive-only compatibility before registration in `KontinuumApp.swift`'s
+   and is reviewed for additive-only compatibility before registration in `NoteBytezApp.swift`'s
    `Schema`. CloudKit schema is ship-once — a mistake here is not cheaply reversible.
 2. **Local-only vs. synced, per data class:** derived/large/device-regenerable state is
    local-only (plain `Codable` files, the `BackupSnapshot` precedent), never a `@Model`. This
@@ -350,11 +350,11 @@ Decisions 9–12. Extends v1 Phase 5 + R1 Phase 9.
   holds it as `pendingConnector` and raises a confirm alert; on confirm,
   `DocumentDAL.appendWikilink` writes `[[Target]]` into the source-side document and the board
   reloads; on cancel, the connector is simply never created (nothing to discard).
-- [x] **C7. `AppCommand`** — `.bindCurrentCanvasToNote` (posts `.kontinuumTriggerBindCanvas` to
-  the active `CanvasBoardView`, tracked via `.kontinuumActiveCanvasBoardChanged`) and
+- [x] **C7. `AppCommand`** — `.bindCurrentCanvasToNote` (posts `.noteBytezTriggerBindCanvas` to
+  the active `CanvasBoardView`, tracked via `.noteBytezActiveCanvasBoardChanged`) and
   `.openNoteAsBoundCanvas` (`CanvasDAL.boundBoard(for:)` — reuses an existing bound board or
   creates one) added to the palette.
-- [x] **C8. Tests green + manual** — `CanvasBindingTests` (8/8) plus the full `KontinuumTests`
+- [x] **C8. Tests green + manual** — `CanvasBindingTests` (8/8) plus the full `NoteBytezTests`
   suite (722/722) green after C1–C7 landed, no regressions. Manual simulator walkthrough of the
   bind/connector-confirm/export round trip not performed this session (no interactive simulator
   session available) — flagged to the user as an open item, matching Plans 1 and 2's own
@@ -500,7 +500,7 @@ Compute automatically; a third-party `ModelConnector` is an opt-in extra (Decisi
   (a single-use controller would have been speculative, `CLAUDE.md` §2). View/VM glue
   (`GraphViewModel` 40.6%, `CanvasViewModel.bind`) excluded per the established `views/` gap.
   D-tier targets (`EmbeddingProvider`, `SemanticIndexStore`, `AIEngine`, …) deferred with D.
-- [x] **E2. Mac build green (A/B/C)** — `xcodebuild build -scheme Kontinuum -destination
+- [x] **E2. Mac build green (A/B/C)** — `xcodebuild build -scheme NoteBytez -destination
   'platform=macOS,arch=arm64'` → **BUILD SUCCEEDED** (2026-09-06), after the Workstream E view
   edits. Still open: D's iOS 27/macOS 27 deployment-bump (target is currently 26.5) +
   `#if os()`/`#available` audit, blocked on the D-gate. Note: `xcodebuild test` on the macOS
@@ -511,7 +511,7 @@ Compute automatically; a third-party `ModelConnector` is an opt-in extra (Decisi
   a `graphDefinition` accessor reusing `definitionJSON`; **no column added**, fully additive.
   `CanvasBoard.boundDocumentId: UUID?`: optional, no `.unique`, in `CodingKeys`/`init(from:)`/
   `encode(to:)`, `CanvasBoard+Sync` `writeFields`/`readFields`, `BackupDAL` capture+restore,
-  registered in `KontinuumApp.swift` `Schema`. Added `SyncMappingTests` coverage: the existing
+  registered in `NoteBytezApp.swift` `Schema`. Added `SyncMappingTests` coverage: the existing
   `canvasBoardFieldsRoundTrip` now exercises `boundDocumentId`, plus a new
   `canvasBoardBoundDocumentIdDefaultsNilAndRoundTrips`. `.graph` saved-view round-trip already
   covered by `SavedViewDALTests.createGraphViewStoresItsFilterSet`. D-tier models
@@ -546,7 +546,7 @@ Compute automatically; a third-party `ModelConnector` is an opt-in extra (Decisi
   on-disk sigil untouched; (c) bind a board → mutate links via `DocumentViewModel.save()`
   reconcile → cards track, user positions + web card intact → `appendWikilink` from a confirmed
   connector adds the backlink and its card. Journeys (d)/(e)/(e′)/(f) are D-tier — deferred
-  with Workstream D. Full `KontinuumTests` suite: **727/727 pass** on the iOS 26 simulator.
+  with Workstream D. Full `NoteBytezTests` suite: **727/727 pass** on the iOS 26 simulator.
 
 ---
 
@@ -577,8 +577,8 @@ Compute automatically; a third-party `ModelConnector` is an opt-in extra (Decisi
 
 ## Verification Gate (all workstreams)
 
-- [ ] Per-workstream test suites + `V2IntegrationTests` green; full `KontinuumTests` /
-  `KontinuumUITests` / `../MarkdownG9` unaffected, 0 failures.
+- [ ] Per-workstream test suites + `V2IntegrationTests` green; full `NoteBytezTests` /
+  `NoteBytezUITests` / `../MarkdownG9` unaffected, 0 failures.
 - [ ] `xcodebuild build -destination 'platform=macOS'` succeeds; iOS 27 / macOS 27 deployment
   floor confirmed and compiling on all three destinations.
 - [ ] Every decision gate (B, C, D) recorded as resolved in this document before its

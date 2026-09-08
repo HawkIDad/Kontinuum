@@ -203,28 +203,28 @@ navigation path that doesn't depend on sidebar structure.
   - `CommandPaletteViewModelTests`: empty query returns all commands in stable declared order;
     a query routes `.navigation(dest)` cases and `.action(id)` cases to distinct callbacks.
   - Verify: both fail.
-- [x] **1.2 `AppCommand` enum** (`Kontinuum/` root, beside `AppCommands.swift`) —
+- [x] **1.2 `AppCommand` enum** (`NoteBytez/` root, beside `AppCommands.swift`) —
   `enum AppCommand: CaseIterable, Identifiable` with `.navigate(AppDestination)` and
   `.action(AppAction)` payloads, `title`, `systemImage`, and `matches(query:)` delegating to
   `WikilinkParser.fuzzyMatches` (no second fuzzy implementation, per every prior phase's rule).
 - [x] **1.3 `CommandPaletteViewModel`** (`viewModels/`) — holds the filtered list, exposes
-  `select(_:)` which posts the existing `.kontinuum*` notifications for navigation and new
-  `.kontinuumRun(AppAction)` for actions. `@Observable`, no `ModelContext` needed.
+  `select(_:)` which posts the existing `.noteBytez*` notifications for navigation and new
+  `.noteBytezRun(AppAction)` for actions. `@Observable`, no `ModelContext` needed.
 - [x] **1.4 `CommandPaletteView`** (`views/Search/`) — sheet, single text field +
   `List` of `CommandPaletteRow`, first result actioned on Return. Reuses `QuickSwitcherField`'s
   layout idiom.
-- [x] **1.5 Wire ⌘P / global ⌘O in `KontinuumApp.swift` `.commands`** — add a
+- [x] **1.5 Wire ⌘P / global ⌘O in `NoteBytezApp.swift` `.commands`** — add a
   `CommandGroup(after: .toolbar)` "Command Palette…" `keyboardShortcut("p", modifiers: .command)`
-  posting `.kontinuumOpenCommandPalette`; the existing ⌘O "Search" button is repurposed to post
-  `.kontinuumOpenQuickSwitcher` (note-jump), distinct from the Search *destination* (which moves
+  posting `.noteBytezOpenCommandPalette`; the existing ⌘O "Search" button is repurposed to post
+  `.noteBytezOpenQuickSwitcher` (note-jump), distinct from the Search *destination* (which moves
   to the palette). `ContentView` gains `.sheet` presenters for both, plus
-  `.onReceive(.kontinuumRun)` dispatching `AppAction`s (New Note → `.allNotes` + trigger,
+  `.onReceive(.noteBytezRun)` dispatching `AppAction`s (New Note → `.allNotes` + trigger,
   Sync Now → `SyncEngine.shared.syncNow()`, etc.).
 - [x] **1.6 iPhone reachability** — `TodayJournalView` keeps its Quick Switcher toolbar item;
   the Explore hub (Phase 2) lists "Command Palette" as a row. No hardware-shortcut assumption.
 - [ ] **1.7 Tests green + manual** — palette opens on ⌘P from every destination, Quick Switcher
   opens on ⌘O from every destination (not just Today), Return actions the top hit. Full
-  `KontinuumTests` target passes.
+  `NoteBytezTests` target passes.
 
 ---
 
@@ -257,7 +257,7 @@ Decision 2. Depends on Phase 1 (keyboard nav path exists before sidebar structur
   Graph / Insights, matching the new spine, each posting a navigation notification.
 - [x] **2.7 Tests green + manual on all three form factors** — sidebar shows 3 sections +
   Settings; iPhone shows 5 tabs ending Explore, Settings; every previously-reachable screen
-  still reachable in ≤2 taps. `KontinuumUITests` sidebar/tab identifiers updated
+  still reachable in ≤2 taps. `NoteBytezUITests` sidebar/tab identifiers updated
   (`sidebar.*` / `tabbar.*` in `ContentView`).
 
 ---
@@ -327,7 +327,7 @@ Decision 1. The marquee differentiator. Depends on Phase 2 (its nav slot). Indep
   insight query returns in < 250 ms on the CI simulator (scan-on-demand's known ceiling; if it
   regresses past this, that's the signal to revisit the no-persisted-index decision, not
   before).
-- [x] **4.9 Full `KontinuumTests` + `KontinuumUITests` pass**; manual pass on iPhone + iPad
+- [x] **4.9 Full `NoteBytezTests` + `NoteBytezUITests` pass**; manual pass on iPhone + iPad
   simulator (Mac build per Phase 7).
 
 ---
@@ -408,7 +408,7 @@ Decision 5. Independent of 2–5 (touches parser + `DocumentPreviewView` render 
   content inline; editing the source and returning updates it; a `.md` export of the embedding
   note contains the literal `!((anchor))` text (round-trips, no proprietary expansion written
   to disk); Obsidian opening that file shows inert text, not a broken embed. Full
-  `KontinuumTests` + `MarkdownG9` package tests pass.
+  `NoteBytezTests` + `MarkdownG9` package tests pass.
 
 ---
 
@@ -427,10 +427,10 @@ permission — verify Mac *builds* and unit tests pass, note the GUI gap honestl
   the bar — `AppCommand.systemImage`/`.id` and `CommandPaletteViewModel`'s empty-query reset path
   were untouched by the original test set).
 - [x] **7.2 Mac build green** — `xcodebuild build -destination 'platform=macOS'` succeeds with no
-  `#if os()` gaps. `xcodebuild test -destination 'platform=macOS'` cannot isolate `KontinuumTests`
-  from `KontinuumUITests` via `-only-testing`, and the latter fails to *build* for macOS on a
+  `#if os()` gaps. `xcodebuild test -destination 'platform=macOS'` cannot isolate `NoteBytezTests`
+  from `NoteBytezUITests` via `-only-testing`, and the latter fails to *build* for macOS on a
   pre-existing, unrelated issue (`XCUIDevice.orientation` is iOS-only — predates this plan). Full
-  `KontinuumTests` (685 tests) verified green on iOS simulator instead; the Mac app build itself,
+  `NoteBytezTests` (685 tests) verified green on iOS simulator instead; the Mac app build itself,
   which is what this task actually gates, is green.
 - [ ] **7.3 iPad pass** — sectioned sidebar renders with 3 sections + Settings; landscape split
   view and portrait collapse both keep every destination reachable; "Send to Canvas" and
@@ -495,8 +495,8 @@ permission — verify Mac *builds* and unit tests pass, note the GUI gap honestl
 - [x] `GraphInsightsDALTests`, `DisjointSetTests`, `AppCommandTests`,
   `CommandPaletteViewModelTests`, `AppDestinationTests`, `BlockReferenceParserTests`,
   `DocumentViewModelTests`, `CanvasDALTests`, `FlowEnhancementsIntegrationTests` — all green.
-- [x] Existing suites unaffected: full `KontinuumTests` (685 tests) passes, 0 failures, on iOS
-  simulator; `../MarkdownG9` package tests (46 tests) pass. `KontinuumUITests` builds clean
+- [x] Existing suites unaffected: full `NoteBytezTests` (685 tests) passes, 0 failures, on iOS
+  simulator; `../MarkdownG9` package tests (46 tests) pass. `NoteBytezUITests` builds clean
   (`build-for-testing`) but was not executed — running the suite is slow/flaky in this
   environment per this phase's own caveat, and wasn't required to validate the logic changes
   here (none of this plan's UI-layer edits touch the UI tests' own assertions beyond the

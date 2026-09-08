@@ -34,7 +34,7 @@ As a UI/UX expert - review the Research and Release Features markdown documents.
 # Success Factors
 
 1. As a UI/UX Expert, the AI will interview me and produce the deliverables identified in the User Story.
-2. All documents will be stored in the following folder: Kontinuum/Docs/Plans
+2. All documents will be stored in the following folder: NoteBytez/Docs/Plans
 
 ---
 

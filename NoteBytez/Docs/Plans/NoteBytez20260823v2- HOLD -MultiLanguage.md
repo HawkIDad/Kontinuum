@@ -51,7 +51,7 @@ English") and the three Success Factors leave the scope, the language list, the 
 pipeline, and every localization-adjacent technical concern unspecified. Gaps below were
 identified against the current codebase (state: `LOCALIZATION_PREFERS_STRING_CATALOGS = YES`
 in the project, but **no String Catalog exists yet**; `knownRegions = (en, Base)`;
-`developmentRegion = en`; ~227 user-facing string literals in `Kontinuum/views/`; English
+`developmentRegion = en`; ~227 user-facing string literals in `NoteBytez/views/`; English
 pluralization hand-rolled in code; title sort is a raw `<` comparison; tag canonicalization
 case-folds without locale awareness). Decisions were made in an interview on 2026-08-29.
 
@@ -216,7 +216,7 @@ exposes them. No new UI language yet.
   First-day-of-week from `Calendar.current`.
 - [ ] **1.7** Audit and register any Swift-side manually assembled date/number strings; none
   should survive.
-- [ ] **1.8** Tests green; full `KontinuumTests` + `../MarkdownG9` suites pass; a quick manual
+- [ ] **1.8** Tests green; full `NoteBytezTests` + `../MarkdownG9` suites pass; a quick manual
   pass under the `tr`, `de`, `sv` pseudo-run to confirm no regression in en behavior.
 
 ---
@@ -225,7 +225,7 @@ exposes them. No new UI language yet.
 
 Every user-facing literal into `Localizable.xcstrings`, with context, plurals refactored.
 
-- [ ] **2.1** Sweep `Kontinuum/views/` + `Kontinuum/*.swift`: confirm each `Text`, `Label`,
+- [ ] **2.1** Sweep `NoteBytez/views/` + `NoteBytez/*.swift`: confirm each `Text`, `Label`,
   `Button`, `.navigationTitle`, `Section`, `.accessibilityLabel`, `Toggle`, `TextField`
   placeholder, `Picker`, `.help`, `ContentUnavailableView`, `.alert`, menu-bar `.commands`
   string is a `LocalizedStringKey` literal (SwiftUI auto-extracts) or is explicitly
@@ -243,7 +243,7 @@ Every user-facing literal into `Localizable.xcstrings`, with context, plurals re
   `ExportDAL` still emits literal `notebooks:` and `#notebook/<kebab>` regardless of locale).
 - [ ] **2.6** Pseudolocalization pass (Double-Length + RTL) over every screen S1–S24; file
   bugs for truncation / clipping / layout breaks; fix.
-- [ ] **2.7** `KontinuumUITests`: assert no screen shows a raw key (`%@`, `SOME_KEY`) under the
+- [ ] **2.7** `NoteBytezUITests`: assert no screen shows a raw key (`%@`, `SOME_KEY`) under the
   pseudo-locale; full suite green.
 
 ---
@@ -293,10 +293,10 @@ Decision G4 / G4a.
 - [ ] **5.2** `LocalePreferenceStore` (UserDefaults, mirrors `ConflictStrategyStore`).
 - [ ] **5.3** `SettingsView` → "Language" row: a `Picker` of the 24 locales (endonym labels —
   "Deutsch", "日本語", "العربية") + "System default", with a "takes effect after restart" caption.
-- [ ] **5.4** Apply on launch in `KontinuumApp.init` (set `AppleLanguages` before the window
+- [ ] **5.4** Apply on launch in `NoteBytezApp.init` (set `AppleLanguages` before the window
   builds); confirm interaction with iOS's own per-app language setting is documented (in-app
   override wins; clearing it returns control to iOS).
-- [ ] **5.5** `KontinuumUITests`: set override to `fr`, relaunch, assert a known screen renders
+- [ ] **5.5** `NoteBytezUITests`: set override to `fr`, relaunch, assert a known screen renders
   French.
 
 ---
@@ -360,7 +360,7 @@ editor work is complete.
   tab bar, toolbars, chevrons (`chevron.left`/`right` day-nav), and row layouts mirror; the
   sync glyph and disclosure indicators sit on the correct edge.
 - [ ] **9.2** Audit every explicit `.left` / `.right` / `.leading` / `.trailing` in
-  `Kontinuum/views/`; replace directional-but-not-semantic uses with `.leading`/`.trailing`;
+  `NoteBytez/views/`; replace directional-but-not-semantic uses with `.leading`/`.trailing`;
   keep semantic ones (e.g. a deliberately LTR code block) with `.environment(\.layoutDirection, .leftToRight)`.
 - [ ] **9.3** Custom / directional glyphs get `.flipsForRightToLeftLayoutDirection(true)` where
   they indicate direction; verify SF Symbols that auto-mirror do so.
@@ -404,7 +404,7 @@ Steady state after tiers ship.
 - [ ] **11.3** Drift report: 0 missing keys across all shipped tiers; `stale` count reviewed.
 - [ ] **11.4** Pseudolocalization (Double-Length + RTL): no truncation or layout break on
   S1–S24.
-- [ ] **11.5** `KontinuumTests` + `KontinuumUITests` + `../MarkdownG9` suites green, including
+- [ ] **11.5** `NoteBytezTests` + `NoteBytezUITests` + `../MarkdownG9` suites green, including
   the Phase-1 Unicode tests and the Phase-2 "no raw key visible" UI test.
 - [ ] **11.6** `ARCHITECTURE.md`, `docs/styleGuide.md`, and `Docs/Localization/*` reflect the
   shipped state; `NoteBytez-ReleaseFeatures.md` notes multi-language support as delivered.

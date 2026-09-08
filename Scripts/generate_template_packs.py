@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Authoring source for the bundled Template Packs.
 
-Run to regenerate Kontinuum/Resources/TemplatePacks.json:
+Run to regenerate NoteBytez/Resources/TemplatePacks.json:
 
     python3 Scripts/generate_template_packs.py
 
-Per Kontinuum20260824v1-Templates.md (Phases 2-3). English-only for now; when multi-language
+Per NoteBytez20260824v1-Templates.md (Phases 2-3). English-only for now; when multi-language
 support resumes, the literal strings here become String Catalog keys resolved at add-time.
 
 Canonical fields (must use these exact spellings / types where the concept applies):
@@ -16,7 +16,7 @@ Canonical fields (must use these exact spellings / types where the concept appli
 import json
 import pathlib
 
-OUT = pathlib.Path(__file__).resolve().parent.parent / "Kontinuum" / "Resources" / "TemplatePacks.json"
+OUT = pathlib.Path(__file__).resolve().parent.parent / "NoteBytez" / "Resources" / "TemplatePacks.json"
 
 
 def f(name, kind="text", default=""):

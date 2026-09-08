@@ -13,9 +13,9 @@ editable/deletable rows. Per
 | File | Role |
 |---|---|
 | `Scripts/generate_template_packs.py` | **Authoring source of truth.** Edit here. |
-| `Kontinuum/Resources/TemplatePacks.json` | Generated bundle resource. Do not hand-edit. |
-| `Kontinuum/models/TemplatePackDefinition.swift` | Decodable shapes + `CanonicalField` + `TemplatePackLint`. |
-| `Kontinuum/dal/TemplatePackDAL.swift` | Read / add / update packs. |
+| `NoteBytez/Resources/TemplatePacks.json` | Generated bundle resource. Do not hand-edit. |
+| `NoteBytez/models/TemplatePackDefinition.swift` | Decodable shapes + `CanonicalField` + `TemplatePackLint`. |
+| `NoteBytez/dal/TemplatePackDAL.swift` | Read / add / update packs. |
 
 Regenerate after editing the script:
 

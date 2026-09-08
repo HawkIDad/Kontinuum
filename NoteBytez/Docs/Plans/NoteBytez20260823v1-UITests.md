@@ -5,9 +5,9 @@
 #  User Story
 
 As a user (senior software engineer), I want an automated XCUITest suite — built out from the
-existing `KontinuumUITests` target — that exercises NoteBytez's screens and the 9 documented user
+existing `NoteBytezUITests` target — that exercises NoteBytez's screens and the 9 documented user
 journeys ([UIUX/02-Journeys.md](UIUX/02-Journeys.md)) across all three shipping platform
-destinations (Mac, iPad, iPhone, per `Kontinuum.xcodeproj`'s
+destinations (Mac, iPad, iPhone, per `NoteBytez.xcodeproj`'s
 `SUPPORTED_PLATFORMS`/`TARGETED_DEVICE_FAMILY`). This replaces manual click-through verification
 with a repeatable, CI-runnable gate so UI regressions and platform-specific layout/accessibility
 issues are caught automatically instead of relying on someone walking every screen by hand.
@@ -72,13 +72,13 @@ issues are caught automatically instead of relying on someone walking every scre
 
 # Implementation Plan
 
-Builds out the existing (currently stub) `KontinuumUITests` target. Checkbox convention: `[ ]` not
+Builds out the existing (currently stub) `NoteBytezUITests` target. Checkbox convention: `[ ]` not
 started, `[x]` done and verified (builds, runs, and actually passes — not merely written).
 
 ## Phase 0 — Foundation
 
 - [x] Move the two test-account credentials out of any doc and into local storage — **done**: both
-      Apple ID accounts for the `kontinuum1.ipad` / `kontinuum2.iphone` roles are created, with their
+      Apple ID accounts for the `notebytez1.ipad` / `notebytez2.iphone` roles are created, with their
       addresses and passwords stored in the Apple Passwords app — which is the current front end for
       iCloud Keychain, same underlying encrypted storage a `security add-generic-password` Keychain
       entry would give, so the separate CLI step originally suggested here is unnecessary (it only
@@ -88,14 +88,14 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
 - [x] ~~Add a launch-argument/environment flag (e.g. `-CloudKitEnvironment Development`) so the app
       under test always resolves to the CloudKit Development container~~ — **corrected**: CloudKit's
       Development-vs-Production environment is resolved from the app's provisioning/entitlements at
-      build time, not selectable by a runtime flag; both `Kontinuum.entitlements` and
-      `Kontinuum-macOS.entitlements` already declare `iCloud.com.g9Consulting.Kontinuum` under a
+      build time, not selectable by a runtime flag; both `NoteBytez.entitlements` and
+      `NoteBytez-macOS.entitlements` already declare `iCloud.com.g9Consulting.Kontinuum` under a
       development-signed build, so any non-distribution build already targets Development. The
-      actual gap was narrower: `KontinuumApp.swift` only starts `SyncEngine` in Release builds
+      actual gap was narrower: `NoteBytezApp.swift` only starts `SyncEngine` in Release builds
       (Debug uses an in-memory store precisely so automated tests can't touch CloudKit at all) —
       which meant Phase 4's manual live-sync test had no way to opt in without a full Release
       build. Added a `-EnableLiveSync` launch argument
-      ([KontinuumApp.swift](../../KontinuumApp.swift)) that makes a Debug build use a persistent
+      ([NoteBytezApp.swift](../../NoteBytezApp.swift)) that makes a Debug build use a persistent
       store and start `SyncEngine`, for Phase 4's manual procedure only — every other Debug/test
       launch is unaffected and stays fully local.
       → verify: `xcodebuild test` (below) builds and passes with the flag compiled in but unused;
@@ -123,15 +123,15 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
       System Settings so Mac XCUITest runs can drive the native app window (distinct from any
       simulator-only tooling limitation noted in prior plans — this is a real macOS XCUITest
       capability once permission is granted)
-      → verify: `xcodebuild test -scheme Kontinuum -destination 'platform=macOS'
-      -only-testing:KontinuumUITests` — currently fails with "Authentication canceled. System
+      → verify: `xcodebuild test -scheme NoteBytez -destination 'platform=macOS'
+      -only-testing:NoteBytezUITests` — currently fails with "Authentication canceled. System
       authentication is running.", confirming the permission is not yet granted. **Blocked on user
       action**: grant it interactively (System Settings → Privacy & Security → Automation/Accessibility)
       on this Mac, then re-run.
-- [x] Establish a lightweight Page-Object/screen-helper structure under `KontinuumUITests/` (one
+- [x] Establish a lightweight Page-Object/screen-helper structure under `NoteBytezUITests/` (one
       helper per screen, mirroring `views/` folder groupings) so journey tests stay readable
-      → verify: existing `KontinuumUITests.swift` stub rewritten to use
-      [MainShellScreen.swift](../../../KontinuumUITests/Screens/MainShellScreen.swift) — passing on
+      → verify: existing `NoteBytezUITests.swift` stub rewritten to use
+      [MainShellScreen.swift](../../../NoteBytezUITests/Screens/MainShellScreen.swift) — passing on
       iPhone 17 (see above).
 
 ## Phase 0.a — User Creation
@@ -143,8 +143,8 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
       to support CloudKit private-database sync or `CKShare` invite/accept, which Journeys 3 and 8
       both need. Remaining manual steps for the user:
       1. Both Apple ID accounts are created; credentials are in Apple Passwords (see Phase 0 above).
-      2. On the **iPad simulator**, Settings → Sign in as ***`kontinuum1@2thumbsupapps.com`***'s Apple ID.
-      3. On the **iPhone simulator**, same for ***`kontinuum2@2thumbsupapps.com`***.
+      2. On the **iPad simulator**, Settings → Sign in as ***`notebytez1@2thumbsupapps.com`***'s Apple ID.
+      3. On the **iPhone simulator**, same for ***`notebytez2@2thumbsupapps.com`***.
       4. **Confirm both accounts have iCloud Drive/CloudKit enabled for the container's app.**
       5. **Launch NoteBytez on each simulator with the `-EnableLiveSync` launch argument (added in
          Phase 0) at least once, so CloudKit registers both identities — confirm via CloudKit
@@ -154,14 +154,14 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
 
 - [x] One smoke test per screen in [UIUX/05-Wireframes.md](UIUX/05-Wireframes.md) (S1-S24):
       navigate to it and assert its key elements render — **done**: page objects for all 24
-      screens under `KontinuumUITests/Screens/`, smoke tests across
+      screens under `NoteBytezUITests/Screens/`, smoke tests across
       `Phase1MainShellSmokeTests`, `Phase1NotebookDocumentSmokeTests`,
       `Phase1JournalFlowSmokeTests`, `Phase1SettingsSmokeTests`,
       `Phase1ConflictResolutionSmokeTests`, `Phase1ImportMigrationEntryPointSmokeTests`,
       `Phase1SidebarOnlyScreenSmokeTests`. Reached every screen via real navigation a user would
       actually take (Notebooks → "+" → Template Picker → Document, journal tag chip → Tag
       Browser, etc.), not synthetic shortcuts.
-      → verify: `xcodebuild test -only-testing:KontinuumUITests` on iPhone 17 (iOS 26.5) —
+      → verify: `xcodebuild test -only-testing:NoteBytezUITests` on iPhone 17 (iOS 26.5) —
       **27/27 passing, 2 correctly skipped** (All Notes / Saved Views are sidebar-only, no
       compact-width entry point — see below), confirmed on two consecutive full runs.
       **Two real app bugs found and fixed along the way** (not test-only issues):
@@ -196,7 +196,7 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
       create/edit/delete or execute path through the real UI (Properties, Note Templates, Block
       References, Advanced Search, Task Dashboards, Saved Views, Attachments, Canvas, Migration
       Assistant, Plugin management, Backup/Restore) — **done, mixed verification**: 8 new test
-      files under `KontinuumUITests/`, one per feature area (or a pair). Reliably green on
+      files under `NoteBytezUITests/`, one per feature area (or a pair). Reliably green on
       iPhone 17 (confirmed on repeated full runs):
         - **Advanced Search** (`Phase2AdvancedSearchFeatureTests`) — a real `#tag AND #tag`
           boolean query narrows to the one matching document.
@@ -267,14 +267,14 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
           its own header comment for the specific timing category). Every individual step is
           independently proven passing elsewhere: `Phase1JournalFlowSmokeTests` (tag chip -> Tag
           Browser, Promote), `Phase2TaskDashboardAndSavedViewsFeatureTests` (journal task ->
-          Dashboard), and `KontinuumTests/JourneyIntegrationTests.journeyTwoDailyCapture...`
+          Dashboard), and `NoteBytezTests/JourneyIntegrationTests.journeyTwoDailyCapture...`
           (in-process, the cross-device toggle half this UI test can't reach at all).
         - **Journey 3** (sync status -> conflict -> resolved) — satisfied by
           `Phase1ConflictResolutionSmokeTests` (both passing): S9's conflict badge/log, S10 in
           both the Keep-All-Versions and Diff-Merge layouts, via the same `-SeedTestConflict`
           seam this phase's own plan called for. Status-indicator transitions (Synced ->
           Conflict -> Synced) specifically aren't re-proven here since completing a resolution
-          for real needs `-EnableLiveSync` (Phase 4) — `KontinuumTests`'
+          for real needs `-EnableLiveSync` (Phase 4) — `NoteBytezTests`'
           `journeyThreeConflictDetectedThroughEachStrategyToResolved` covers that transition
           in-process instead.
         - **Journey 4** (search/graph miss -> Tag Browser find -> link back) —
@@ -287,7 +287,7 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
           Every individual step is independently proven passing elsewhere (Phase 1's Search/
           Graph/Tag Browser smoke tests, this journey's own tag-chip and Backlinks pattern
           reused verbatim from `Phase1JournalFlowSmokeTests`) and in-process by
-          `KontinuumTests/JourneyIntegrationTests.journeyFourSearchMissesGraphMissesTagBrowser...`.
+          `NoteBytezTests/JourneyIntegrationTests.journeyFourSearchMissesGraphMissesTagBrowser...`.
         - **Journey 5** (promote a journal idea into a Notebook) — satisfied by
           `Phase1JournalFlowSmokeTests.testPromoteToNotebookFlowRenders` (passing): the full
           storyboard — write in the journal, Promote to Notebook, name a new Notebook, land on
@@ -310,10 +310,10 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
       iPad/Mac destinations still blocked on this environment's simulator-infra issues (Phase 0/1).
 - [x] Journey 3 — automate every step downstream of conflict detection (status indicator
       transitions, sync log entry, all three resolution strategies), using the same
-      test-triggered-conflict pattern as `JourneyIntegrationTests` in `KontinuumTests`, adapted to
+      test-triggered-conflict pattern as `JourneyIntegrationTests` in `NoteBytezTests`, adapted to
       drive the actual Conflict Resolution UI — **done**, see Journey 3 above:
       `Phase1ConflictResolutionSmokeTests` (UI, both strategy layouts) +
-      `KontinuumTests.journeyThreeConflictDetectedThroughEachStrategyToResolved` (in-process,
+      `NoteBytezTests.journeyThreeConflictDetectedThroughEachStrategyToResolved` (in-process,
       the status-transition half).
       → verify: passes without requiring a live second device — confirmed, `-SeedTestConflict`
       needs no CloudKit at all.
@@ -336,7 +336,7 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
 ## Phase 4 — Manual/Exploratory: Live Two-Account Sync
 
 - [ ] Documented manual test procedure (not XCUITest) for the actual cross-device conflict race in
-      Journeys 3 and 8, using the `kontinuum1.ipad` / `kontinuum2.iphone` Development-environment
+      Journeys 3 and 8, using the `notebytez1.ipad` / `notebytez2.iphone` Development-environment
       accounts from Phase 0
       → verify: procedure run at least once, results logged in this doc's Progress Summary
 - [ ] Manual pass confirming collaborator-attributed conflict UI (Journey 8 step 5) shows the
@@ -370,10 +370,10 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
       CI-gating set; exclude Phase 4's manual procedure from CI — **done**: the "NoteBytez"
       scheme was previously Xcode-autocreated (no checked-in `.xcscheme` at all — not usable
       headlessly by a real CI runner). Added
-      [Kontinuum.xcodeproj/xcshareddata/xcschemes/Kontinuum.xcscheme](../../../Kontinuum.xcodeproj/xcshareddata/xcschemes/Kontinuum.xcscheme),
+      [NoteBytez.xcodeproj/xcshareddata/xcschemes/NoteBytez.xcscheme](../../../NoteBytez.xcodeproj/xcshareddata/xcschemes/NoteBytez.xcscheme),
       a real shared scheme whose Test action references a new
-      [KontinuumCIGate.xctestplan](../../../KontinuumCIGate.xctestplan) at the project root.
-      The plan runs `KontinuumTests` (unit, fully deterministic) and `KontinuumUITests` in full,
+      [NoteBytezCIGate.xctestplan](../../../NoteBytezCIGate.xctestplan) at the project root.
+      The plan runs `NoteBytezTests` (unit, fully deterministic) and `NoteBytezUITests` in full,
       `skippedTests`-excluding the specific tests/classes this session's own work identified as
       not-yet-reliable (each already documented with *why* in its own file's header comment —
       see Phases 2/3 above): `Phase2BlockReferencesFeatureTests`, `Phase2CanvasFeatureTests`,
@@ -382,7 +382,7 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
       `Phase2TaskDashboardAndSavedViewsFeatureTests/testSavedSearchReappearsAsChipAndReruns()`.
       Phase 4 was never automated (it's an XCTest-free manual procedure by design), so there was
       nothing to exclude there.
-      → verify: `xcodebuild test -scheme Kontinuum -testPlan KontinuumCIGate` — **not yet a clean
+      → verify: `xcodebuild test -scheme NoteBytez -testPlan NoteBytezCIGate` — **not yet a clean
       exit 0**. Every test in the gate passes reliably when its own file is run in isolation
       (confirmed individually throughout this session), but two full end-to-end gate runs back
       to back (~9.5 minutes each) each failed the same 7 tests, 5 of them with
@@ -409,10 +409,10 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
 | 0.a User Creation | 0 / 1 | **Blocked on the user** — the two alt Apple ID accounts won't sign into the iPad/iPhone simulators; everything in this table outside this row and Phase 4 was completed without needing them |
 | 1. Screen Smoke Coverage | 1 / 2 | iPhone: done, 27/27 passing + 2 correctly-skipped (sidebar-only). iPad/Mac re-run still blocked on this environment's own simulator-infra issues (Phase 0), unrelated to 0.a |
 | 2. Feature Coverage | 1 / 1 | Done, mixed verification — 5 of 8 feature tests reliably passing; 3 (+1 method) documented as not-yet-passing with root-cause notes in each file, excluded from the CI gate |
-| 3. Journey Coverage (single-device) | 2 / 3 | Journeys 1/2/4/5/6/7/9 and Journey 3 done (mixed verification, cross-referenced against Phase 1/2/`KontinuumTests`); Journey 8 partial — invite/permission UI blocked without a `CKShare.Participant` test seam (flagged, not built unilaterally) |
+| 3. Journey Coverage (single-device) | 2 / 3 | Journeys 1/2/4/5/6/7/9 and Journey 3 done (mixed verification, cross-referenced against Phase 1/2/`NoteBytezTests`); Journey 8 partial — invite/permission UI blocked without a `CKShare.Participant` test seam (flagged, not built unilaterally) |
 | 4. Manual/Exploratory: Live Two-Account Sync | 0 / 2 | Not started — **blocked on 0.a** |
 | 5. Accessibility Pass | 2 / 2 | Done, both tests passing reliably |
-| 6. CI Gate | 1 / 1 | Wired (real shared scheme + `KontinuumCIGate.xctestplan`, known-flaky tests excluded) but not yet a clean `exit 0` end-to-end — see Phase 6's own note on likely simulator resource degradation over one long (~9.5 min) continuous run |
+| 6. CI Gate | 1 / 1 | Wired (real shared scheme + `NoteBytezCIGate.xctestplan`, known-flaky tests excluded) but not yet a clean `exit 0` end-to-end — see Phase 6's own note on likely simulator resource degradation over one long (~9.5 min) continuous run |
 | **Total** | **11 / 17** | **65%** — everything not blocked on 0.a/Phase 4 is at least attempted; see each phase for what's reliably green today |
 
 

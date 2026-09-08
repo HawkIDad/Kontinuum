@@ -133,7 +133,7 @@ Produces `Block.headingPath` and switches collision disambiguation from `-N` to 
 - [x] **A3. `Block.headingPath` field + plumbing.** Add `var headingPath: String?` to `Block`
   (domain-field position), `CodingKeys`, `init(from:)`, `encode(to:)`, and
   `Block+Sync.writeFields` / `readFields` (`record["headingPath"]`). Register nothing new in
-  `KontinuumApp.swift` `Schema` (same `Block` type). → verify: `SyncMappingTests` still green;
+  `NoteBytezApp.swift` `Schema` (same `Block` type). → verify: `SyncMappingTests` still green;
   add one asserting `headingPath` round-trips through `writeFields`/`readFields`.
 
 - [x] **A4. `syncBlocks` sets `headingPath`; path-based disambiguation.**
@@ -149,7 +149,7 @@ Produces `Block.headingPath` and switches collision disambiguation from `-N` to 
 - [x] **A5. One-time backfill.** On app launch, if any active `Block` has `nil` `headingPath`,
   re-run `syncBlocks` for its owning documents once. Cheapest correct place: a guarded pass in
   the same startup path that the Phase-4 block work already uses (confirm where; if none,
-  `KontinuumApp` `.task`). → verify: integration test — seed a pre-migration block (nil path),
+  `NoteBytezApp` `.task`). → verify: integration test — seed a pre-migration block (nil path),
   launch, assert path populated and `blockId` **unchanged**.
 
 - [x] **A6. Surface `headingPath` in pickers/backlinks.** `BlockReferenceText` and the
@@ -174,7 +174,7 @@ Depends on A (uses `headingPath`). Stops `blockId`/`anchor` churn on in-place ed
   - Two near-identical blocks both edited → deterministic 1:1 mapping (document order).
   - Verify: all fail.
 
-- [x] **B2. `StringSimilarity.swift`** (`Kontinuum/dal/` or a `Utilities/` group to match repo
+- [x] **B2. `StringSimilarity.swift`** (`NoteBytez/dal/` or a `Utilities/` group to match repo
   layout). `similarity(_:_:) -> Double` = `1 - levenshtein / max(len)`, two-row DP, `Character`
   arrays. Bounds per Decision 5. Unit tests: identical → 1.0; disjoint → ~0.0; one-word edit in
   a sentence → > 0.9; length-ratio bail returns a sentinel the caller treats as "not similar".

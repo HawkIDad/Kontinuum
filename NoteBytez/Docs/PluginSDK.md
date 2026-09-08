@@ -8,7 +8,7 @@
 
 # NoteBytez Plugin SDK (Preview)
 
-> **Breaking change (pre-release rename):** the bridge global was named `kontinuum` in earlier
+> **Breaking change (pre-release rename):** the bridge global was named `noteBytez` in earlier
 > pre-release builds. It is now `noteBytez`. Update any script written against the old name —
 > there is no compatibility alias.
 

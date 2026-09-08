@@ -183,7 +183,7 @@ feature. Checkbox convention: `[ ]` not started / in progress, `[x]` done and ve
 | 4. Template Gallery screen (S28) | 7 / 7 | Complete (wireframe/UIUX-doc updates deferred; component added to styleGuide) |
 | 5. First-run role-picker onboarding | 5 / 6 | Complete — VM covered by `TemplateOnboardingViewModelTests`; the dedicated XCUITest (5.6) deferred to a manual pass (simulator tap flakiness, same as prior phases) |
 | 6. Localization wiring (after MultiLanguage Phase 0) | — | **Deferred — multi-language support is on hold. This build ships US English only.** |
-| 7. Verification Gate | 6 / 6 | Complete — full `KontinuumTests` (585 tests) green; iOS + macOS builds green |
+| 7. Verification Gate | 6 / 6 | Complete — full `NoteBytezTests` (585 tests) green; iOS + macOS builds green |
 | **Total (ex-Phase 6)** | **46 / 47** | **~98%** |
 
 ### Execution notes (2026-08-29, US-English-only pass)
@@ -191,7 +191,7 @@ feature. Checkbox convention: `[ ]` not started / in progress, `[x]` done and ve
 - **Single bundled JSON, not per-file + copy step.** Task 1.4's `Docs/Templates/packs/*.json` +
   validated-copy design was collapsed to one authored generator
   (`Scripts/generate_template_packs.py`) emitting one bundled resource
-  (`Kontinuum/Resources/TemplatePacks.json`). Reason: the app target is a
+  (`NoteBytez/Resources/TemplatePacks.json`). Reason: the app target is a
   `PBXFileSystemSynchronizedRootGroup`, so one file auto-bundles with no pbxproj work, and a
   19-file + sync-script setup only earns its keep once per-language catalogs exist (Phase 6).
   Split it when localization resumes.
@@ -227,7 +227,7 @@ Decision G1/G2/G15. Additive schema; unblocks everything else.
 - [x] **0.2** Add `var bodyTemplate: String?` to `NoteTemplate` (domain-field position),
   `CodingKeys`, `init(from:)`, `encode(to:)`.
 - [x] **0.3** `NoteTemplate+Sync`: `writeFields`/`readFields` carry `record["bodyTemplate"]`.
-  Register nothing new in `KontinuumApp.swift`'s `Schema` (same type). Additive CloudKit change.
+  Register nothing new in `NoteBytezApp.swift`'s `Schema` (same type). Additive CloudKit change.
 - [x] **0.4** `NoteTemplate.init` gains `bodyTemplate: String? = nil`;
   `TemplateDAL.createTemplate` + `updateFields` (rename to `updateContent` or add
   `updateBody`) accept it.
@@ -240,7 +240,7 @@ Decision G1/G2/G15. Additive schema; unblocks everything else.
   regression test from 0.1 so a future edit can't silently start injecting the body.
 - [x] **0.8** Extend `BackupDAL` capture/restore (`NoteTemplate` branch hand-copies fields —
   add `bodyTemplate`, same lesson as R1's `recurrenceRule` gap). Tests green; full
-  `KontinuumTests` passes.
+  `NoteBytezTests` passes.
 
 ---
 
@@ -278,7 +278,7 @@ Decision G5/G7/G13/G14.
   (valid `PropertyValueType`, canonical-name near-miss rejection).
 - [x] **1.8** `TemplatePackDAL` no-ops safely when `SyncEngine` isn't started (every DAL test,
   Debug builds) — matches the existing DAL convention.
-- [x] **1.9** Tests green; full `KontinuumTests` passes.
+- [x] **1.9** Tests green; full `NoteBytezTests` passes.
 
 ---
 
@@ -357,7 +357,7 @@ Decision G6. Depends on Phase 4 (shares the pack list/preview).
   + multi-select + Skip.
 - [x] **5.4** Confirm-before-bulk-add (R7) when >4 packs selected.
 - [x] **5.5** Reachable again later only via the Gallery (Phase 4) — no re-prompt.
-- [ ] **5.6** `KontinuumUITests`: first launch → create library → onboarding appears → pick 2
+- [ ] **5.6** `NoteBytezUITests`: first launch → create library → onboarding appears → pick 2
   packs → land in `ContentView` with 3 new groups (2 + Common); relaunch → no onboarding.
 
 ---
@@ -390,7 +390,7 @@ Phase 0** (String Catalog + `translate-strings` script exist).
 
 - [x] **7.1** `NoteTemplateTests`, `TemplateDALTests`, `TemplatePackDALTests`,
   `TemplateGalleryViewModelTests`, `OnboardingViewModelTests`, `SyncMappingTests`,
-  `BackupDALTests`, `LibraryDALTests` — all green; full `KontinuumTests` + `KontinuumUITests`
+  `BackupDALTests`, `LibraryDALTests` — all green; full `NoteBytezTests` + `NoteBytezUITests`
   + `../MarkdownG9`, 0 failures.
 - [x] **7.2** `xcodebuild build` green for iOS + macOS destinations.
 - [x] **7.3** Every `Docs/Templates/packs/*.json` passes the canonical-field / valueType lint;
@@ -430,4 +430,4 @@ every existing decision — bundled resource, editable-on-add, versioned, opt-in
 and first-run picker (not auto-seeded). Six templates: Recipe, Menu, Prep List, Production
 Batch, Tasting / QC Note, Ingredient & Supplier. All three roles are in its `roleAliases`.
 `TemplateRoles.all` and `TemplateGalleryViewModel.categoryOrder` updated; the bundled JSON is
-now 20 packs / 108 templates; lint + full `KontinuumTests` green.
+now 20 packs / 108 templates; lint + full `NoteBytezTests` green.

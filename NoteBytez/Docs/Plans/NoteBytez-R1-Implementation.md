@@ -93,7 +93,7 @@ its data model. The model shapes below are this plan's proposal, following `ARCH
 existing conventions (`{model}Id` identity, foreign-key-by-UUID joins mirroring `DocumentTag`/
 `DocumentNotebook`, all-optional CloudKit-safe fields, audit fields last). They are a starting
 point for Phase-by-phase design review, not a final schema — flag disagreements before a phase's
-models are registered in `KontinuumApp.swift`'s `Schema`, since CloudKit schema changes are
+models are registered in `NoteBytezApp.swift`'s `Schema`, since CloudKit schema changes are
 additive-only once shipped.
 
 ---
@@ -109,7 +109,7 @@ Not a Release Features bullet itself — prerequisite scaffolding, mirrors MVP's
       `Attachment`, `SavedView`): every field is optional, none use `@Attribute(.unique)`, every
       model carries a `{model}Id`, all joins follow the foreign-key-by-UUID pattern. No violations
       found; no changes needed to the Assumptions section as a result of this pass
-- [x] Track the aggregate `KontinuumApp.swift` `Schema` change as each phase adds its models —
+- [x] Track the aggregate `NoteBytezApp.swift` `Schema` change as each phase adds its models —
       confirmed every feature phase (2, 3, 7, 8, 9) carries its own "Register in `Schema`" task;
       this item exists only to catch a phase that forgets one, none do
 - [x] Confirm `createdBy`/`updatedBy` audit fields (reserved since MVP, unpopulated) start being
@@ -129,7 +129,7 @@ Not a Release Features bullet itself — prerequisite scaffolding, mirrors MVP's
       hand-copies fields rather than relying on `Codable`, and had not been updated for the new
       field — a restored backup would have silently dropped `recurrenceRule` without this fix.
       Extended `SyncMappingTests.taskItemFieldsRoundTripIncludingUnusedMVPFields` to assert the
-      new field round-trips through `CKRecord`. Full `KontinuumTests` target builds and passes on
+      new field round-trips through `CKRecord`. Full `NoteBytezTests` target builds and passes on
       the iPhone 17 simulator (`xcodebuild test`)
 - [x] Extend `docs/styleGuide.md` / `UIUX/06-DesignSystem.md`'s component inventory for V1's new
       components — done via Phase 1 (both files now carry a "Version 1 additions" component table)
@@ -237,7 +237,7 @@ Release Features: "Properties". Depends on Phase 1.
       edits (already flagged when Phase 1 closed out)
 - [x] Search/filter by property — `SearchDAL.searchByProperty`, mirroring `searchByTag`'s shape
       (case-insensitive substring match against `DocumentProperty.value`, deduped per document)
-- [x] Registered `Property`/`DocumentProperty` in `KontinuumApp.swift`'s `Schema`; extended
+- [x] Registered `Property`/`DocumentProperty` in `NoteBytezApp.swift`'s `Schema`; extended
       `BackupSnapshot`/`BackupDAL` capture and restore (manual `Decodable` keeps old snapshot
       files decoding, same pattern as every prior field addition to that struct)
 - [x] Unit tests: `PropertyParserTests.swift` (18 tests — type inference per value, reserved-key
@@ -246,7 +246,7 @@ Release Features: "Properties". Depends on Phase 1.
       round-trip + rewired the "all N tables" dispatch tests from eight to ten),
       `BackupDALTests.swift` (capture + restore-after-delete), `SearchDALTests.swift`
       (`searchByProperty` match/no-match), `DocumentViewModelTests.swift`
-      (`setPropertyValue`/`removePropertyValue` integration). Full `KontinuumTests` target builds
+      (`setPropertyValue`/`removePropertyValue` integration). Full `NoteBytezTests` target builds
       and passes on the iPhone 17 simulator, 0 failures (`xcodebuild test`)
 
 ---
@@ -315,7 +315,7 @@ fields), MVP Phase 8 (Notebooks — `NotebookTemplateGroup`), MVP Phase 6 (Daily
       wired into `LibraryDAL.create`. Fiction Writing ships Character/Location templates,
       Wedding Planning ships Vendor/Guest, Photography Client Work ships Client/Shoot Location
 - [x] Registered `TemplateGroup`/`NoteTemplate`/`NotebookTemplateGroup`/`JournalTemplateGroup` in
-      `KontinuumApp.swift`'s `Schema`; extended `BackupSnapshot`/`BackupDAL` capture and restore
+      `NoteBytezApp.swift`'s `Schema`; extended `BackupSnapshot`/`BackupDAL` capture and restore
 - [x] Unit tests: `TemplateDALTests.swift` (17 tests — CRUD, cascade delete, join
       attach/detach idempotency, all three picker scopes, apply-at-creation, apply-after-the-fact
       non-destructive backfill, starter-content idempotency and library-isolation), extended
@@ -323,7 +323,7 @@ fields), MVP Phase 8 (Notebooks — `NotebookTemplateGroup`), MVP Phase 6 (Daily
       `seedStarterContent` in isolation — found this was otherwise untested), extended
       `SyncMappingTests.swift` (4 new field round-trips, dispatch tests rewired from ten to all
       fourteen tables), extended `BackupDALTests.swift` (capture + restore-after-cascade-delete).
-      Full `KontinuumTests` target builds and passes on the iPhone 17 simulator, 0 failures
+      Full `NoteBytezTests` target builds and passes on the iPhone 17 simulator, 0 failures
       (`xcodebuild test`, ~300 tests). App also launches clean on-device with the 4-model schema
       addition (screenshot-verified); deeper simulator tap interaction hit this environment's
       already-documented tap-delivery flakiness (MVP Phases 4/7/15), not a Phase 3 regression
@@ -381,7 +381,7 @@ Phase 4 (Backlinks — `WikilinkParser`/`BacklinkDAL` pattern this mirrors).
       `BlockReferenceParser.applying` was assembling `((anchor))` with an extra/missing closing
       paren depending on how the string-interpolation was written — easy to miscount by eye;
       switched to explicit `"((" + anchor + ")) "` concatenation instead of interpolation so the
-      paren count is visually unambiguous. Full `KontinuumTests` target (326 tests) and the
+      paren count is visually unambiguous. Full `NoteBytezTests` target (326 tests) and the
       MarkdownG9 package's own test target (39 tests) both build and pass, 0 failures
 
 ---
@@ -452,7 +452,7 @@ syntax with no relationship to `((anchor))` block references.
       — same class of mistake already seen in Phase 4, now doubly confirmed as worth watching
       for; (2) `SearchDAL`'s private `truncate(_:limit:)` has no default for `limit` (unlike the
       sibling `snippet` helper), causing an initial build failure, fixed by passing it
-      explicitly. Full `KontinuumTests` target (365 tests) builds and passes, 0 failures
+      explicitly. Full `NoteBytezTests` target (365 tests) builds and passes, 0 failures
       (`xcodebuild test`, iPhone 17 simulator)
 
 ---
@@ -520,7 +520,7 @@ Release Features: "Task dashboards". Depends on MVP Phase 7 (Basic Tasks — `Ta
       even for a just-soft-deleted original block. Added a dedicated regression test
       (`syncTasksPreservesTaskItemIdentityAndCustomFieldsAcrossAToggleDespiteTheBlockIdChanging`)
       independent of the recurrence feature, since this bug could otherwise resurface silently.
-      Full `KontinuumTests` target (390 tests) builds and passes, 0 failures (`xcodebuild test`,
+      Full `NoteBytezTests` target (390 tests) builds and passes, 0 failures (`xcodebuild test`,
       iPhone 17 simulator)
 
 ---
@@ -562,7 +562,7 @@ Dashboards) — a Saved View pins either kind of query.
       [SavedViewResultsView.swift](../../views/SavedView/SavedViewResultsView.swift) (the actual
       live re-evaluation, reached from either the list or a new `SavedViewChip` pinned row atop
       S7/S19 on every platform, per Phase 1's navigation plan)
-- [x] Registered `SavedView` in `KontinuumApp.swift`'s `Schema`; extended `BackupSnapshot`/
+- [x] Registered `SavedView` in `NoteBytezApp.swift`'s `Schema`; extended `BackupSnapshot`/
       `BackupDAL` capture and restore
 - [x] Unit tests: Saved View CRUD, query-definition round-trip for both query types, live
       re-evaluation returns current results, not stale ones — `SavedViewDALTests.swift` (9
@@ -570,7 +570,7 @@ Dashboards) — a Saved View pins either kind of query.
       saved search picks up a document created *after* it was saved, drops a document that
       stops matching, and a saved task view drops a task the moment it's completed elsewhere,
       all without re-saving the view), extended `SyncMappingTests.swift`/`BackupDALTests.swift`.
-      Full `KontinuumTests` target (410 tests) builds and passes, 0 failures (`xcodebuild test`,
+      Full `NoteBytezTests` target (410 tests) builds and passes, 0 failures (`xcodebuild test`,
       iPhone 17 simulator)
 
 ---
@@ -602,8 +602,8 @@ custom File Provider extension (no second Xcode target). Requires a new
       subfolder (the only part Files.app surfaces) — these are NoteBytez-managed files, not
       something a user should rename/delete out from under the app. Added
       `com.apple.developer.ubiquity-container-identifiers` to both
-      [Kontinuum.entitlements](../../Kontinuum.entitlements) and
-      [Kontinuum-macOS.entitlements](../../Kontinuum-macOS.entitlements). Not-yet-downloaded iCloud
+      [NoteBytez.entitlements](../../NoteBytez.entitlements) and
+      [NoteBytez-macOS.entitlements](../../NoteBytez-macOS.entitlements). Not-yet-downloaded iCloud
       files get a `startDownloadingUbiquitousItem`-triggered fetch with a simple "downloading…"
       placeholder, no progress bar — scope-matched to what a preview thumbnail needs
 - [x] Attachment DAL — [AttachmentDAL.swift](../../dal/AttachmentDAL.swift): `attach` (copies
@@ -651,7 +651,7 @@ custom File Provider extension (no second Xcode target). Requires a new
       (fileName)` line actually sits in content). Removed the separate strip; the thumbnail grid
       is exactly where its embed line falls in the body, rendered by `DocumentPreviewView`'s
       line-based path (previous task), full-screen `AttachmentPreview` sheet on tap
-- [x] Registered `Attachment` in `KontinuumApp.swift`'s `Schema`; extended
+- [x] Registered `Attachment` in `NoteBytezApp.swift`'s `Schema`; extended
       `BackupSnapshot`/`BackupDAL` capture and restore with attachment metadata (file bytes are
       the iCloud ubiquity container's own backup responsibility, not this app's)
 - [x] Unit tests: `AttachmentParserTests.swift` (11 tests — embed detection/match/extraction/
@@ -667,7 +667,7 @@ custom File Provider extension (no second Xcode target). Requires a new
       `fileExists` whenever the status itself is `nil`, not just when the whole call throws.
       Extended `SyncMappingTests.swift` (field round-trip + all three dispatch tests rewired from
       fifteen to all sixteen tables) and `BackupDALTests.swift` (capture + restore-after-delete).
-      Full `KontinuumTests` target (435 tests) builds and passes on the iPhone 17 simulator, 0
+      Full `NoteBytezTests` target (435 tests) builds and passes on the iPhone 17 simulator, 0
       failures (`xcodebuild test`). **Found but out of scope, flagged rather than fixed**: native
       macOS build (`xcodebuild build -destination 'platform=macOS'`) currently fails to compile —
       unrelated to this phase, `SavedViewsListView.swift` (Phase 7) uses `EditButton()`, which is
@@ -779,7 +779,7 @@ card, consistent with "everything is a real note," not a special 5th type.
       04-InteractionDesign.md's own line on `CanvasBoard` being library-scoped like Notebooks/Tags
       rather than Notebook-owned. Widened `NotebookViewModel.libraryId` from `private` to
       `internal` for this (Phase 7's own precedent on `SearchViewModel`/`TaskDashboardViewModel`)
-- [x] Registered `CanvasBoard`/`CanvasCard`/`CanvasConnector` in `KontinuumApp.swift`'s `Schema`;
+- [x] Registered `CanvasBoard`/`CanvasCard`/`CanvasConnector` in `NoteBytezApp.swift`'s `Schema`;
       extended `BackupSnapshot`/`BackupDAL` capture (per-library board fetch, per-board card/
       connector fetch, mirroring how blocks/tasks/attachments are captured inside the
       per-document loop) and restore. Registered all three in `SyncRecordFactory`'s three
@@ -793,7 +793,7 @@ card, consistent with "everything is a real note," not a special 5th type.
       unresolved-file-reference and text-node-becomes-a-Document cases run as their own explicit
       tests, not just asserted inline). Extended `SyncMappingTests.swift` (3 new field round-trip
       tests, all three dispatch tests rewired from sixteen to all nineteen tables) and
-      `BackupDALTests.swift` (capture + restore-after-cascade-delete). Full `KontinuumTests`
+      `BackupDALTests.swift` (capture + restore-after-cascade-delete). Full `NoteBytezTests`
       target (457 tests) builds and passes on the iPhone 17 simulator, 0 failures, 0 warnings
       (`xcodebuild test`). **Also found and fixed, unrelated to Canvas logic but discovered while
       finishing this phase**: Swift's type-checker timed out on `CanvasBoardView`'s `body` (one
@@ -952,7 +952,7 @@ own forward-compatibility design).
       real, correct code paths (verified by full read of the CloudKit headers actually shipped in
       this Xcode installation — e.g., confirming `CKContainer.accept(_:)`'s exact async signature,
       `CKRecord.parent`, `NSCloudSharingServiceDelegate`'s real method names — and building clean
-      for both `iOS Simulator` and native `macOS`, 0 warnings 0 errors, full `KontinuumTests`
+      for both `iOS Simulator` and native `macOS`, 0 warnings 0 errors, full `NoteBytezTests`
       target green) but not exercisable end-to-end here, per MVP Phase 12's own precedent for this
       exact class of gap. **One scope cut, stated not silent**: `Migration Assistant`-style
       leaving/losing access to a shared library (`SharedLibraryRegistry.unmarkShared`) has no
@@ -1024,7 +1024,7 @@ Release Features: "Security-Local Files". Depends on MVP Phase 2 (Backups) and P
       `CKSyncEngine` — so `SyncStateStore.save`'s actual encoding step can't be unit-tested at
       all. Split the write mechanics into `SyncStateStore.writeProtected(_:to:)`, which doesn't
       depend on the payload and so is testable with arbitrary `Data`, exercising the exact same
-      code path `save` uses in production. Full `KontinuumTests` target builds and passes on the
+      code path `save` uses in production. Full `NoteBytezTests` target builds and passes on the
       iPhone 17 simulator, 0 failures; both `platform=iOS Simulator` and native `platform=macOS`
       build clean, 0 warnings 0 errors
 
@@ -1133,7 +1133,7 @@ established for Tags; the user re-creates that grouping manually post-import if 
       checked via `PropertyDAL`/`CanvasDAL`; a real `logseq`-marked vault with `TODO`/`DONE`
       tasks and a `journals/yyyy_MM_dd.md` file, spot-checked via `TaskDAL`/`JournalDAL`; the
       unsupported-query flag surviving all the way into committed `Document.content`; archive
-      preservation after a full `confirmMigration`-shaped commit). Full `KontinuumTests` target
+      preservation after a full `confirmMigration`-shaped commit). Full `NoteBytezTests` target
       builds and passes on the iPhone 17 simulator, 0 failures; both `platform=iOS Simulator` and
       native `platform=macOS` build clean, 0 warnings 0 errors. **One real bug found and fixed
       while writing these**: `LogseqImporter`'s `page-tags` pattern didn't account for the
@@ -1164,7 +1164,7 @@ execution, every permission explicitly user-granted per plugin.
       finishes. **Execution model** (a genuine design decision, not just an implementation
       detail): a script runs once per invocation with no live `JSContext`/`JSValue` callback ever
       kept around — a registration pass (`invokedCommand == nil`) is expected to call
-      `kontinuum.addCommand(name)` per command it offers, and a later invocation pass re-runs the
+      `noteBytez.addCommand(name)` per command it offers, and a later invocation pass re-runs the
       whole script with `invokedCommand` set to the chosen name, which the script itself branches
       on. Simpler than capturing a per-command JS callback, and every invocation re-checks
       permissions from scratch since nothing persists between runs. **`insertAtCursor` scope
@@ -1192,7 +1192,7 @@ execution, every permission explicitly user-granted per plugin.
 - [x] Sandbox enforcement: verify at the bridge layer (not just by omission) that a plugin without
       a granted permission cannot reach that API — e.g. an ungranted write call throws/no-ops
       rather than relying on the script simply not being offered the function —
-      `PluginBridge.installBridge` defines every `kontinuum.*` function unconditionally and has
+      `PluginBridge.installBridge` defines every `noteBytez.*` function unconditionally and has
       each one check `grantedPermissions` internally, throwing a JS `Error` ("Permission denied:
       …") on denial rather than omitting the function; covered by
       `PluginBridgeTests.swift`'s permission-boundary and "every function exists regardless of
@@ -1244,7 +1244,7 @@ execution, every permission explicitly user-granted per plugin.
       for the script's own longer busy-loop. The test itself uses a bounded (~4s) busy-loop
       rather than a literal `while (true) {}`, specifically so the leaked thread self-terminates
       instead of pinning a core for the rest of the suite — a literal infinite loop is exactly
-      what caused the 20-minute hang above. Full `KontinuumTests` target (565 tests) builds and
+      what caused the 20-minute hang above. Full `NoteBytezTests` target (565 tests) builds and
       passes on the iPhone 17 simulator, 0 failures (`xcodebuild test`)
 
 ---

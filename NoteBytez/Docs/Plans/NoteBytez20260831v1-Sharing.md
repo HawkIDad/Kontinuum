@@ -44,20 +44,20 @@ This plan is additive to that code and adds no CloudKit schema.
 | 5. Quality gate | 2 / 2 | Done — new unit tests 11/11; macOS + iOS-sim builds green |
 | **Total** | **15 / 18** | **~83%** — feature implemented, unit-tested, tri-platform-compiled, and demonstrably unblocks the cross-account flow; only the iPad accept tap-through (harness limitation) is outstanding |
 
-Run on 2026-08-31 (Debug + `-EnableLiveSync`, CloudKit Sandbox, iPhone 17 Pro Max = `kontinuum1`,
-iPad Pro 11 M5 = `kontinuum2@2thumbsupapps.com`).
+Run on 2026-08-31 (Debug + `-EnableLiveSync`, CloudKit Sandbox, iPhone 17 Pro Max = `notebytez1`,
+iPad Pro 11 M5 = `notebytez2@2thumbsupapps.com`).
 
 **What was verified live:**
 - `SharingService.addParticipant` → `CKContainer.shareParticipant(forEmailAddress:)` fired a
   real `CKFetchShareParticipantsOperation`; server returned
-  `CKUserIdentity(email=kontinuum2@2thumbsupapps.com, hasiCloudAccount=true)` — **the Simulator
+  `CKUserIdentity(email=notebytez2@2thumbsupapps.com, hasiCloudAccount=true)` — **the Simulator
   sandbox DOES resolve a sandbox account by email** (the plan's main risk, resolved favorably).
-- Participant added to the `CKShare` and saved; S22 shows `kontinuum2@2thumbsupapps.com — Read &
+- Participant added to the `CKShare` and saved; S22 shows `notebytez2@2thumbsupapps.com — Read &
   Write` (email fallback + "?" avatar since `nameComponents` is empty until they accept —
   correct `ParticipantRow` behavior); `UICloudSharingController` lists it as **"Invited"**.
 - **iPad, opening the Copy Link URL, now gets the real system accept prompt** — *"NoteBytez1
   TestUser wants to collaborate. You'll join as NoteBytez2 TestUser
-  (kontinuum2@2thumbsupapps.com)."* — instead of the pre-feature *"Item Unavailable … doesn't
+  (notebytez2@2thumbsupapps.com)."* — instead of the pre-feature *"Item Unavailable … doesn't
   have permission."* The blocker is cleared.
 - New unit tests: `SharingServiceTests` (email-format matrix, new `SharingError` messages,
   pre-network `invalidEmail` guard) — 11/11 with `SharingPermissionStoreTests`.
@@ -100,7 +100,7 @@ flow (which isn't available to me).
    `ParticipantRow` / `SharingPermissionStore.displayName` path.
 3. The recipient can then accept the library via the existing **Copy Link** URL (or a system
    invite) and gains access at exactly the granted permission — verified live between the
-   `kontinuum1` / `kontinuum2` accounts on the iPad + iPhone simulators, against the CloudKit
+   `notebytez1` / `notebytez2` accounts on the iPad + iPhone simulators, against the CloudKit
    **Development/Sandbox** environment only.
 4. Input is validated: a malformed address is rejected locally before any network call; an
    address that doesn't resolve to an iCloud account produces a **specific** error ("No Apple
@@ -144,7 +144,7 @@ It has no fallback. On the iPhone + iPad simulators used for the Phase 4 two-acc
    sets `share.publicPermission = .none`, so an account that isn't already an invited
    participant opening that URL gets *"Item Unavailable … doesn't have permission."*
 
-So there is no route to add `kontinuum2@2thumbsupapps.com` as a participant, and every
+So there is no route to add `notebytez2@2thumbsupapps.com` as a participant, and every
 cross-account item (data created on A appears on B, cross-account conflict, Journey 8
 named-participant attribution) is untestable.
 
@@ -224,7 +224,7 @@ private-share model.
       6. `try await database.modifyRecords(saving: [share], deleting: [])` (matches
          `updatePermission` / `removeParticipant`)
       7. `SharingPermissionStore.shared.update(forLibraryId:, share: savedShare)`
-      → verify: builds; exercised live in Phase 4 (resolves `kontinuum2`, adds, saves).
+      → verify: builds; exercised live in Phase 4 (resolves `notebytez2`, adds, saves).
 - [x] `addParticipantThrowsInvalidEmailBeforeAnyNetworkCall` — malformed address throws
       `.invalidEmail` from the local guard, never touching `container`.
       → verify: green (the resolver/CloudKit path is unreachable in this test).
@@ -258,26 +258,26 @@ private-share model.
       (`isNewParticipantEmailValid` calls `SharingService.isValidEmailFormat` on the trimmed
       value). Accessibility ids `sharing.addByEmail.field` / `.permission` / `.button`.
       → verify: **renders on iPhone 17 sim**; "Add" grey/disabled when empty, turns teal/enabled
-      once `kontinuum2@2thumbsupapps.com` is typed.
+      once `notebytez2@2thumbsupapps.com` is typed.
 - [x] Button wired: `Task { await viewModel.addParticipant(…); if viewModel.errorMessage == nil { newParticipantEmail = "" } }`.
       → verify: **live** — tapping Add resolved the email and the "Participants" section now
-      shows `kontinuum2@2thumbsupapps.com — Read & Write`; the field cleared on success.
+      shows `notebytez2@2thumbsupapps.com — Read & Write`; the field cleared on success.
 - [x] Style — reused the plain `Section("Add by Email")` header + default List row rhythm,
       consistent with `ParticipantRow` and the existing button.
       → verify: visual check on iPhone (compact) — matches S22.
 
 ### Phase 4 — Live two-account verification (drives [NoteBytez20260823v1-UITests.md](NoteBytez20260823v1-UITests.md) Phase 4)
 
-- [x] iPhone (`kontinuum1`, `-EnableLiveSync`): "Sync test" → Settings → Sharing → Add by
-      Email → `kontinuum2@2thumbsupapps.com` as **Read & Write** → **participant appears** as
-      `kontinuum2@2thumbsupapps.com — Read & Write` ("?" avatar / email fallback — no name until
+- [x] iPhone (`notebytez1`, `-EnableLiveSync`): "Sync test" → Settings → Sharing → Add by
+      Email → `notebytez2@2thumbsupapps.com` as **Read & Write** → **participant appears** as
+      `notebytez2@2thumbsupapps.com — Read & Write` ("?" avatar / email fallback — no name until
       accept). Logs confirm `CKFetchShareParticipantsOperation` → `CKUserIdentity(…,
       hasiCloudAccount=true)`. `UICloudSharingController` lists it as **"Invited"**.
       → verified: screenshots + `cloudd` log.
 - [x] iPhone: got the share URL (`[EnableLiveSync] Share URL …` log →
-      `https://www.icloud.com/share/…#Sync_test`). iPad (`kontinuum2`, `-EnableLiveSync`):
+      `https://www.icloud.com/share/…#Sync_test`). iPad (`notebytez2`, `-EnableLiveSync`):
       `xcrun simctl openurl …` → **real system accept prompt appears**: *"NoteBytez1 TestUser
-      wants to collaborate. You'll join as NoteBytez2 TestUser (kontinuum2@2thumbsupapps.com)."*
+      wants to collaborate. You'll join as NoteBytez2 TestUser (notebytez2@2thumbsupapps.com)."*
       (Pre-feature this was *"Item Unavailable … doesn't have permission."*)
       → verified: screenshot. **Tapping "Open" not completed** — the iPad sim runs
       landscape-rotated and `control` tap coordinates don't map onto that system alert reliably
@@ -298,10 +298,10 @@ private-share model.
       `rejectsEmptyWhitespaceOrMissingParts`, `rejectsADomainWithoutAValidDot`,
       `newErrorCasesCarrySpecificMessages`, `addParticipantThrowsInvalidEmailBeforeAnyNetworkCall`)
       run alongside `SharingPermissionStoreTests` — deterministic, no live network. Picked up
-      automatically by the `KontinuumTests` filesystem-synchronized group.
-      → verify: `xcodebuild test -only-testing:KontinuumTests/SharingServiceTests
-      -only-testing:KontinuumTests/SharingPermissionStoreTests` — **11/11 pass** on iPhone 17.
-      Full `KontinuumCIGate` run not re-executed this session.
+      automatically by the `NoteBytezTests` filesystem-synchronized group.
+      → verify: `xcodebuild test -only-testing:NoteBytezTests/SharingServiceTests
+      -only-testing:NoteBytezTests/SharingPermissionStoreTests` — **11/11 pass** on iPhone 17.
+      Full `NoteBytezCIGate` run not re-executed this session.
 - [x] Mac + iPhone build green (`xcodebuild build -destination platform=macOS` → **BUILD
       SUCCEEDED**; the `#if os(iOS)` guards on `.keyboardType`/`.textInputAutocapitalization`/
       `.textContentType` compile clean on macOS). iPhone: build + renders. iPad regular-width
@@ -311,7 +311,7 @@ private-share model.
 ## Gaps / Open Questions
 
 - **Sandbox account resolution by email — RESOLVED FAVORABLY (2026-08-31).**
-  `container.shareParticipant(forEmailAddress: "kontinuum2@2thumbsupapps.com")` in the Simulator
+  `container.shareParticipant(forEmailAddress: "notebytez2@2thumbsupapps.com")` in the Simulator
   Sandbox returned `CKUserIdentity(hasiCloudAccount=true)` and the participant added + saved
   cleanly. The main risk this plan flagged does not apply here.
 - **iPad accept tap-through — the actual remaining blocker.** The iPad simulator is
@@ -321,7 +321,7 @@ private-share model.
   did not fire the default button. Re-run on a **portrait** iPad sim (or physical devices) to
   finish Phase 4 steps 3–5.
 - **Abandoned-share teardown — CONFIRMED SIDESTEPPED.** In the 2026-08-31 run, adding
-  `kontinuum2` by email *before* opening `UICloudSharingController` kept the `CKShare` alive
+  `notebytez2` by email *before* opening `UICloudSharingController` kept the `CKShare` alive
   through the controller's dismissal (S22 still showed the participant + "Stop Sharing"),
   unlike the participant-less shares in earlier sessions which were torn down on dismiss.
 - **Pre-existing `fetchShare` flakiness (out of scope).** During the 2026-08-30/31 runs, S9

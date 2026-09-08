@@ -62,12 +62,12 @@ Consequences for the code:
 - **Platform-conditional app lifecycle.** `AppDelegate.swift` bridges silent CloudKit push into
   `SyncEngine` and is the one place with real platform-specific logic — `#if os(iOS)` keeps the
   `UIApplicationDelegate` path, `#if os(macOS)` adds an `NSApplicationDelegate` counterpart,
-  both funneling into the same `SyncEngine.shared.handleRemoteNotification()`. `KontinuumApp.swift`
+  both funneling into the same `SyncEngine.shared.handleRemoteNotification()`. `NoteBytezApp.swift`
   gates `@UIApplicationDelegateAdaptor`/`@NSApplicationDelegateAdaptor` the same way. Nothing
   below the view layer (`dal/`, `sync/`, `models/`, `viewModels/`) needs to know which platform
   it's running on.
-- **Per-platform entitlements/Info.plist, not per-platform code.** `Kontinuum.entitlements` /
-  `Info.plist` (iOS) and `Kontinuum-macOS.entitlements` / `Info-macOS.plist` (Mac, selected via
+- **Per-platform entitlements/Info.plist, not per-platform code.** `NoteBytez.entitlements` /
+  `Info.plist` (iOS) and `NoteBytez-macOS.entitlements` / `Info-macOS.plist` (Mac, selected via
   `[sdk=macosx*]`-suffixed build settings) both point at the same `iCloud.com.g9Consulting.Kontinuum`
   container, so a library syncs across all three platforms with no extra plumbing. The Mac
   entitlements file omits `com.apple.developer.default-data-protection` — the specific key that
@@ -82,10 +82,10 @@ Full build-out plan and status: [NoteBytez-MacImplementation.md](Docs/Plans/Note
 
 ## Design Pattern — MVVM
 
-- `Kontinuum/models/` — SwiftData models
-- `Kontinuum/dal/` — data access layer (one DAL per model: create/read/update/soft-delete)
-- `Kontinuum/viewModels/`
-- `Kontinuum/views/{model name}/`
+- `NoteBytez/models/` — SwiftData models
+- `NoteBytez/dal/` — data access layer (one DAL per model: create/read/update/soft-delete)
+- `NoteBytez/viewModels/`
+- `NoteBytez/views/{model name}/`
 
 Views bind to ViewModels; ViewModels talk to the DAL; the DAL is the only layer that touches
 `ModelContext` directly. `GraphInsightsDAL` (Orphans/Stale/Notes-with-Open-Tasks/Hubs/Clusters)
@@ -202,35 +202,22 @@ re-decoding before returning.
 - Booleans: prefixed `is`/`has`/`can`/`should`
 - No single-letter variable names, no global variables
 
-## Legacy Identifiers
+## Retained Name
 
-The product was renamed **Kontinuum → NoteBytez** pre-launch
-([NoteBytez.md](Docs/Plans/NoteBytez.md)). What users and plugin authors see reads
-**NoteBytez**: on-screen text, the built app (`NoteBytez.app` — `PRODUCT_NAME`,
-`CFBundleName`, `CFBundleExecutable`, `CFBundleDisplayName`, so the macOS app menu too),
-documentation, and the plugin SDK's `noteBytez.*` global.
+The project was renamed to **NoteBytez** in two passes: a surface (user- and
+plugin-visible) rename ([NoteBytez20260906v1-NameChange.md](Docs/Plans/NoteBytez20260906v1-NameChange.md)),
+then a full internal rename of the Xcode project, targets, scheme, folders, Swift module,
+bundle identifiers, embedded identifier strings, file headers, and documentation
+([NoteBytez20260908v1-ProjectRename.md](Docs/Plans/NoteBytez20260908v1-ProjectRename.md)).
 
-The following identifiers **intentionally keep the `Kontinuum` name** — they are invisible to
-users, and changing them would mean a new App Store record, a CloudKit data migration, or
-churn across the whole codebase for no user benefit. Do not "fix" these:
+Exactly **one** identifier keeps the old name: the CloudKit container
+**`iCloud.com.g9Consulting.Kontinuum`** (both entitlement files' `icloud-container` /
+`ubiquity-container` keys, and the `containerIdentifier` / `ubiquityContainerIdentifier`
+constants in `sync/SyncEngine.swift` and `dal/AttachmentStorage.swift`). CloudKit containers
+cannot be renamed, and with pre-launch disposable data there is no reason to create a new one.
 
-- **Xcode project / targets / scheme / source directory**: `Kontinuum.xcodeproj`,
-  `Kontinuum.xcscheme` (its `BlueprintName`), targets `Kontinuum` / `KontinuumTests` /
-  `KontinuumUITests`, the `Kontinuum/` source folder, `KontinuumApp.swift` (and the
-  `KontinuumApp` type).
-- **Swift module name**: `import Kontinuum` / `@testable import Kontinuum`. Held explicitly by
-  `PRODUCT_MODULE_NAME = Kontinuum` on the app target (so the `NoteBytez` `PRODUCT_NAME` does
-  **not** drag the module name with it).
-- **Bundle identifier**: `com.g9Consulting.Kontinuum` (and `…KontinuumTests` / `…KontinuumUITests`).
-- **CloudKit container**: `iCloud.com.g9Consulting.Kontinuum`, plus the subscription IDs
-  `kontinuum-private-changes` / `kontinuum-shared-changes`.
-- **Entitlements files**: `Kontinuum.entitlements`, `Kontinuum-macOS.entitlements`.
-- **Test plans**: `KontinuumCIGate.xctestplan`, `KontinuumSecurity.xctestplan`.
-- **`Notification.Name` raw values** (`kontinuumNewNote`, `kontinuumNavigate`, …),
-  `DispatchQueue` labels, and the `Logger` subsystem fallback string.
-- **The `//  Kontinuum` second line** in every `.swift` file header.
-
-`Scripts/verify-rename.sh` enforces this split.
+`Scripts/verify-rename.sh` enforces this: it fails on any case-insensitive occurrence of the old name in a
+tracked file except that container literal.
 
 ## Testing
 
@@ -242,7 +229,7 @@ churn across the whole codebase for no user benefit. Do not "fix" these:
 ## Template Packs
 
 Bundled, curated `TemplateGroup` + `NoteTemplate` sets for knowledge-management roles, shipped
-as an app resource (`Kontinuum/Resources/TemplatePacks.json`, authored via
+as an app resource (`NoteBytez/Resources/TemplatePacks.json`, authored via
 `Scripts/generate_template_packs.py`) and materialized into a library as ordinary editable rows
 by `TemplatePackDAL`. See [Docs/Templates/README.md](Docs/Templates/README.md) and
 [NoteBytez20260824v1-Templates.md](Docs/Plans/NoteBytez20260824v1-Templates.md).

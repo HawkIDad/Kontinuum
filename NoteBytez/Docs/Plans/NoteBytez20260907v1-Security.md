@@ -56,7 +56,7 @@ that the implementation needs a decision on. All are now resolved.
 | **G20** | Cached-entitlement storage & tamper. | Stored in the **Keychain**, `kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly`, not synced: last-verified timestamp, entitlement expiry, product id, environment. No signed payload (on-device threat model accepts local tamper — G6). | Avoids `UserDefaults`/plist for a security-relevant value (v2 WS2.4). |
 | **G21** | "Restore Purchases" is an App Review requirement (Guideline 3.1.1 / 3.1.2). | Explicit **Restore Purchases** button on the paywall **and** in Settings, calling `AppStore.sync()`. Plus "Manage Subscription" (`showManageSubscriptions`) and "Redeem Code". | Required for approval; also the recovery path for a new device or reinstall. |
 | **G22** | Minimum OS / StoreKit availability. | Deployment target is iOS/macOS **26.5**; StoreKit 2 `AppTransaction` (iOS 16+/macOS 13+) is fully available. No legacy `SKReceiptRefreshRequest` / `exit(173)` fallback needed. | Removes a whole class of macOS receipt-refresh complexity. |
-| **G23** | Universal Purchase / single app record. | One app record; identical bundle id `com.g9Consulting.Kontinuum` is already shared by the iOS and macOS targets. Confirm **Universal Purchase** is enabled on the app record and both platforms are attached to it. | Precondition for SF3/SF4 cross-platform entitlement. |
+| **G23** | Universal Purchase / single app record. | One app record; identical bundle id `com.g9Consulting.NoteBytez` is already shared by the iOS and macOS targets. Confirm **Universal Purchase** is enabled on the app record and both platforms are attached to it. | Precondition for SF3/SF4 cross-platform entitlement. |
 | **G24** | Export-compliance key. | Unchanged. StoreKit uses only Apple TLS; keep `ITSAppUsesNonExemptEncryption` as set in v2 WS9.4. | No new crypto is introduced. |
 
 **Deferred to the product owner (do not block the build):** exact trial length (placeholder 7 days),
@@ -65,7 +65,7 @@ the Terms of Use (EULA) + Privacy Policy URLs the paywall must link.
 
 # Implementation Plan
 
-MVVM per `Kontinuum/CLAUDE.md`: models in `models/`, data-access in `dal/`, view models in
+MVVM per `NoteBytez/CLAUDE.md`: models in `models/`, data-access in `dal/`, view models in
 `viewModels/`, views in `views/Entitlement/`. Every new `.swift` file carries the copyright
 header. `OSLog.Logger` for events. TDD — write the failing test first; 100% coverage on new
 types. Phases are dependency-ordered: 0 → 1 → 2 → 3 → (4, 5, 6 in parallel) → 7 → 8.
@@ -74,12 +74,12 @@ types. Phases are dependency-ordered: 0 → 1 → 2 → 3 → (4, 5, 6 in parall
 
 1. Confirm the single app record has **Universal Purchase** enabled and both iOS and macOS builds attached (G23).
 2. Create subscription group **`NoteBytez`**. Add two auto-renewable products:
-   - `com.g9Consulting.Kontinuum.sub.monthly`
-   - `com.g9Consulting.Kontinuum.sub.annual` (priced at a discount vs. 12× monthly)
+   - `com.g9Consulting.NoteBytez.sub.monthly`
+   - `com.g9Consulting.NoteBytez.sub.annual` (priced at a discount vs. 12× monthly)
 3. Add one **Introductory Offer** (free trial, 7-day placeholder) at group level.
 4. **Enable Family Sharing** on the subscription group (G3).
 5. **Enable Billing Grace Period** for the group (G13).
-6. Add `Kontinuum.storekit` StoreKit configuration file to the repo; attach it to the Debug scheme and to a new `KontinuumStoreKit.xctestplan` for `StoreKitTest`.
+6. Add `NoteBytez.storekit` StoreKit configuration file to the repo; attach it to the Debug scheme and to a new `NoteBytezStoreKit.xctestplan` for `StoreKitTest`.
 7. **Verify:** a unit test loads both `Product`s from the config file and asserts ids, type, and group.
 
 ## Phase 1 — Entitlement domain model + cache DAL
@@ -126,7 +126,7 @@ types. Phases are dependency-ordered: 0 → 1 → 2 → 3 → (4, 5, 6 in parall
 - `views/Entitlement/PaywallView.swift` — loads Monthly + Annual `Product`s, trial-eligibility badge, `product.purchase()` → on `.success(verification)` verify, `transaction.finish()`, `await viewModel.evaluate()`. **Restore Purchases** (`AppStore.sync()`), Terms & Privacy links. Styled per `Docs/styleGuide.md`.
 - `views/Entitlement/BlockedView.swift` — explains the state (lapsed / offline-too-long / provenance), and offers: **Resubscribe** (→ paywall), **Restore Purchases**, **Manage Subscription** (`showManageSubscriptions` / `AppStore.showManageSubscriptions(in:)`), and **Export my notes** → read-only export of every local `Library` via existing `ExportDAL` (`NSSavePanel` on macOS, share sheet on iOS).
 - `RootView.swift` — wrap existing content: `EntitlementGateContainer(viewModel: gate) { <existing RootView body> }`; hold `gate` as `@State`; drive `evaluate()` from `.onChange(of: scenePhase)` and a timer.
-- **DEBUG seam** (mirrors `-SeedTestConflict` in `KontinuumApp.swift`): launch arg `-SimulateEntitlement full|warning|trial|lapsed|provenanceFailed` injects a fake provider so UI tests and manual QA can drive every screen without StoreKit.
+- **DEBUG seam** (mirrors `-SeedTestConflict` in `NoteBytezApp.swift`): launch arg `-SimulateEntitlement full|warning|trial|lapsed|provenanceFailed` injects a fake provider so UI tests and manual QA can drive every screen without StoreKit.
 - **Tests**: `EntitlementGateUITests` (iOS + macOS) — one test per simulated state; assert the block screen shows Export + Restore, warning shows the banner over a usable app, full shows the app. Snapshot/ViewInspector tests for each subview's copy across `BlockReason`s.
 
 ## Phase 5 — SyncEngine suspension
@@ -179,7 +179,7 @@ Status as built. Verified with Xcode 26.6 (iOS/macOS 26.5 SDK) on 2026-09-07.
 |---|---|
 | **iOS build** | ✅ `BUILD SUCCEEDED` |
 | **macOS build** | ✅ `BUILD SUCCEEDED` |
-| **Unit tests** | ✅ **782 pass** (baseline 776 + ~45 new entitlement tests), 0 failures — via `KontinuumEntitlement.xctestplan` |
+| **Unit tests** | ✅ **782 pass** (baseline 776 + ~45 new entitlement tests), 0 failures — via `NoteBytezEntitlement.xctestplan` |
 | **Gate UI tests** | ✅ `Phase6EntitlementGateTests` 5/5, stable across 3 consecutive runs |
 | **Outstanding** | App Store Connect record setup (account work); real `SKTestSession` + two-account manual matrix (needs sandbox accounts / devices); product-owner inputs (trial length, prices, final product IDs, EULA/Privacy URLs) |
 
@@ -189,26 +189,26 @@ Status as built. Verified with Xcode 26.6 (iOS/macOS 26.5 SDK) on 2026-09-07.
 
 ### Phase 0 — StoreKit configuration — ⚠️ partial (code done; ASC account work outstanding)
 
-- [x] `Kontinuum/StoreKit/Kontinuum.storekit` — subscription group `NoteBytez`, products `com.g9Consulting.Kontinuum.sub.monthly` / `…annual`, `familyShareable = true`, 7-day free `introductoryOffer` on each.
-- [x] `KontinuumEntitlement.xctestplan` created; runs the full `KontinuumTests` target + `Phase6EntitlementGateTests`, with `storeKitConfigurationFileReference` → the `.storekit` file.
-- [x] Scheme (`Kontinuum.xcscheme`) — added the test-plan reference and a `StoreKitConfigurationFileReference`. *(Xcode may re-normalise the relative path on first open.)*
+- [x] `NoteBytez/StoreKit/NoteBytez.storekit` — subscription group `NoteBytez`, products `com.g9Consulting.NoteBytez.sub.monthly` / `…annual`, `familyShareable = true`, 7-day free `introductoryOffer` on each.
+- [x] `NoteBytezEntitlement.xctestplan` created; runs the full `NoteBytezTests` target + `Phase6EntitlementGateTests`, with `storeKitConfigurationFileReference` → the `.storekit` file.
+- [x] Scheme (`NoteBytez.xcscheme`) — added the test-plan reference and a `StoreKitConfigurationFileReference`. *(Xcode may re-normalise the relative path on first open.)*
 - [ ] App Store Connect: create the app record with **Universal Purchase**, the subscription group, the two products, the introductory offer, **enable Family Sharing**, **enable Billing Grace Period** — account/console work, not code.
 
 ### Phase 1 — Entitlement model + cache DAL — ✅ complete
 
-- [x] `Kontinuum/models/Entitlement.swift` — `Entitlement.Products` (ids + `offlineCacheWindow` 7d / `postLapseGrace` 3d), `EntitlementEnvironment` (`.production/.sandbox/.xcode` + `isSubscriptionWaived`), `SubscriptionSnapshot` (with `isActive(asOf:)`), `BlockReason`, `AccessLevel` (`.full` / `.warning(daysRemaining:)` / `.blocked(reason:)`).
-- [x] `Kontinuum/dal/EntitlementCache.swift` — `EntitlementCaching` protocol; `CachedEntitlement` (Codable); `KeychainEntitlementCache` (`kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly`, not synced, overridable `service` for test isolation, corrupt value → discard); `InMemoryEntitlementCache` (tests/previews).
+- [x] `NoteBytez/models/Entitlement.swift` — `Entitlement.Products` (ids + `offlineCacheWindow` 7d / `postLapseGrace` 3d), `EntitlementEnvironment` (`.production/.sandbox/.xcode` + `isSubscriptionWaived`), `SubscriptionSnapshot` (with `isActive(asOf:)`), `BlockReason`, `AccessLevel` (`.full` / `.warning(daysRemaining:)` / `.blocked(reason:)`).
+- [x] `NoteBytez/dal/EntitlementCache.swift` — `EntitlementCaching` protocol; `CachedEntitlement` (Codable); `KeychainEntitlementCache` (`kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly`, not synced, overridable `service` for test isolation, corrupt value → discard); `InMemoryEntitlementCache` (tests/previews).
 - [x] Tests — `EntitlementModelTests` (17), `EntitlementCacheTests` (7: Codable round-trip, in-memory, Keychain round-trip / overwrite / clear).
 
 ### Phase 2 — StoreKit verification service — ✅ complete (test approach adjusted)
 
-- [x] `Kontinuum/dal/StoreKitEntitlementProvider.swift` — `EntitlementProviding` protocol; `verifyProvenance()` via `AppTransaction.shared` (unverified/throws → `nil`); `currentSubscription()` iterates `Transaction.currentEntitlements`, filters to the group, `.autoRenewable` only, accepts `ownershipType ∈ {.purchased, .familyShared}`, reads `revocationDate`, cross-references `Product.SubscriptionInfo.Status.state == .inGracePeriod`; `transactionUpdates: AsyncStream<Void>` wrapping `Transaction.updates` (calls `finish()` per event).
-- [x] `Kontinuum/EntitlementSimulation.swift` — DEBUG `SimulatedEntitlementProvider` (scenarios `full / warning / trial / lapsed / provenanceFailed / neverSubscribed`), parsed from `-SimulateEntitlement`.
+- [x] `NoteBytez/dal/StoreKitEntitlementProvider.swift` — `EntitlementProviding` protocol; `verifyProvenance()` via `AppTransaction.shared` (unverified/throws → `nil`); `currentSubscription()` iterates `Transaction.currentEntitlements`, filters to the group, `.autoRenewable` only, accepts `ownershipType ∈ {.purchased, .familyShared}`, reads `revocationDate`, cross-references `Product.SubscriptionInfo.Status.state == .inGracePeriod`; `transactionUpdates: AsyncStream<Void>` wrapping `Transaction.updates` (calls `finish()` per event).
+- [x] `NoteBytez/EntitlementSimulation.swift` — DEBUG `SimulatedEntitlementProvider` (scenarios `full / warning / trial / lapsed / provenanceFailed / neverSubscribed`), parsed from `-SimulateEntitlement`.
 - **Deviation:** the planned `SKTestSession`-based `StoreKitEntitlementProviderTests` are replaced by `SimulatedEntitlementProviderTests` (8, hermetic + deterministic) plus full behavioural coverage through the gate's fake provider. A live `SKTestSession` pass remains a Phase 8 manual/Xcode task. `transaction.subscriptionStatus` is non-optional / non-throwing on the 26.5 SDK — handled accordingly.
 
 ### Phase 3 — EntitlementGateViewModel state machine — ✅ complete
 
-- [x] `Kontinuum/viewModels/EntitlementGateViewModel.swift` — `@MainActor @Observable`; deps `EntitlementProviding` / `EntitlementCaching` / `SyncEngineControlling` / injectable `now: () -> Date` / `offlineWindow` / `postLapseGrace`.
+- [x] `NoteBytez/viewModels/EntitlementGateViewModel.swift` — `@MainActor @Observable`; deps `EntitlementProviding` / `EntitlementCaching` / `SyncEngineControlling` / injectable `now: () -> Date` / `offlineWindow` / `postLapseGrace`.
 - [x] `evaluate()` — the ordered decision table exactly as specified (provenance → waived env → active sub + cache write → 7-day offline cache → 3-day grace `.warning` / `.blocked(.subscriptionLapsed|.offlineTooLong)` → `.blocked(.neverSubscribed)`). `effectiveEnd(of:)` clamps a revoked sub's anchor to its `revocationDate` (refund → 3-day grace → block).
 - [x] `apply(_:)` — drives `syncEngine.suspend()/resume()` across blocked⇄unblocked; first evaluation forces the side-effect to match the resolved state (engine may already have started).
 - [x] `startObserving()` — first `evaluate()` then re-evaluates on every `transactionUpdates` tick; the view adds `scenePhase == .active` and a 6-hour timer.
@@ -224,13 +224,13 @@ Status as built. Verified with Xcode 26.6 (iOS/macOS 26.5 SDK) on 2026-09-07.
 - [x] `views/Entitlement/LapsedBanner.swift`, `views/Entitlement/SubscriptionActions.swift` (iOS `manageSubscriptionsSheet` / `offerCodeRedemption`; macOS → App Store account URLs).
 - [x] `RootView.swift` — wrapped in `EntitlementGateContainer(viewModel: .makeDefault()) { … }`.
 - [x] DEBUG seam — `-SimulateEntitlement <scenario>`; `EntitlementGateViewModel.makeDefault()` resolves DEBUG builds to `.full` unless the arg is present, so the existing UI suite is untouched.
-- [x] Tests — `KontinuumUITests/Phase6EntitlementGateTests` (5): provenance-failed / lapsed / never-subscribed / warning-over-usable-app / full-no-gate-UI. *(ViewInspector snapshot tests not added — the 5 XCUITests cover the states end-to-end.)*
+- [x] Tests — `NoteBytezUITests/Phase6EntitlementGateTests` (5): provenance-failed / lapsed / never-subscribed / warning-over-usable-app / full-no-gate-UI. *(ViewInspector snapshot tests not added — the 5 XCUITests cover the states end-to-end.)*
 - **Bugs found & fixed while testing:** (1) action buttons inside a SwiftUI `List` don't expose `.accessibilityIdentifier` to XCUITest → paywall rebuilt as `ScrollView`+`VStack`; (2) the banner in a plain `VStack` occluded the S1 "Create" button in landscape → `.safeAreaInset`; (3) a container-level `.accessibilityIdentifier` on the banner shadowed the child button's id → removed.
 
 ### Phase 5 — SyncEngine suspension — ✅ complete
 
 - [x] `sync/SyncEngine.swift` — `SyncEngineControlling` protocol; `suspend()` / `resume()` (idempotent, lock-guarded). While suspended: `recordChanged` returns before enqueue, `nextRecordZoneChangeBatch` returns `nil`, `handleRemoteNotification` / `syncNow` no-op, fetched batches buffer into `bufferedFetchedChanges` (no destructive apply). `resume()` replays the buffer then `syncNow()`.
-- [x] `KontinuumApp.swift` — Release launch calls `EntitlementGateViewModel.launchShouldSuspendSync()` and `SyncEngine.shared.suspend()` before the gate's first async check.
+- [x] `NoteBytezApp.swift` — Release launch calls `EntitlementGateViewModel.launchShouldSuspendSync()` and `SyncEngine.shared.suspend()` before the gate's first async check.
 - [x] Tests — added to `SyncEngineTests` (the existing `@Suite(.serialized)`, since they mutate the shared `SyncEngine.shared`): suspended `recordChanged` is suppressed before even the read-only check; `resume()` restores normal handling; suspend/resume idempotent.
 - **Deviation:** tests live in `SyncEngineTests.swift`, not a separate `SyncEngineSuspensionTests` file — cross-suite serialization isn't guaranteed and these share singleton state with the attribution tests.
 
@@ -244,7 +244,7 @@ Status as built. Verified with Xcode 26.6 (iOS/macOS 26.5 SDK) on 2026-09-07.
 ### Phase 7 — Logging, privacy, docs — ✅ complete
 
 - [x] `Logging.swift` — `LogCategory.entitlement`; the gate logs each `AccessLevel` transition with `%{public}` only on the case name, dates/ids kept private.
-- [x] `Kontinuum/PrivacyInfo.xcprivacy` — **created** (did not exist from v2). `NSPrivacyTracking = false`, no collected data types, required-reason entries for `UserDefaults` (CA92.1) and `FileTimestamp` (C617.1). Full data-type audit still tracked in v2 WS10.1/10.2. StoreKit is not a required-reason API → no entries added for it.
+- [x] `NoteBytez/PrivacyInfo.xcprivacy` — **created** (did not exist from v2). `NSPrivacyTracking = false`, no collected data types, required-reason entries for `UserDefaults` (CA92.1) and `FileTimestamp` (C617.1). Full data-type audit still tracked in v2 WS10.1/10.2. StoreKit is not a required-reason API → no entries added for it.
 - [x] `NoteBytez20260627v2-Security.md` — cross-link note added under Objective.
 - [x] `Docs/styleGuide.md` — "Entitlement gate additions" component table (`LapsedBanner`, `PaywallView`, `BlockedView`, `SubscriptionActionButtons`).
 
@@ -252,30 +252,30 @@ Status as built. Verified with Xcode 26.6 (iOS/macOS 26.5 SDK) on 2026-09-07.
 
 - [x] **Automated state table** — every row expressible by the fake provider is an `EntitlementGateViewModelTests` case; the screens are `Phase6EntitlementGateTests` cases. All green (see Summary).
 - [x] iOS + macOS **build** green; **782** unit tests green.
-- [ ] **Live `SKTestSession`** run of `StoreKitEntitlementProvider` against `Kontinuum.storekit` — needs Xcode StoreKit testing.
+- [ ] **Live `SKTestSession`** run of `StoreKitEntitlementProvider` against `NoteBytez.storekit` — needs Xcode StoreKit testing.
 - [ ] **Two-account manual matrix** (buy → all devices; cancel → warning → +3d block; family Apple ID → full; clock +8d offline → block; TestFlight no-sub → full; export from every blocked screen) — needs sandbox accounts + devices.
 - [ ] **App Review self-check** of the finished paywall against Guideline 3.1.1 / 3.1.2.
 
 ## Files delivered
 
 **New**
-- `Kontinuum/StoreKit/Kontinuum.storekit`
-- `Kontinuum/models/Entitlement.swift`
-- `Kontinuum/dal/EntitlementCache.swift`, `Kontinuum/dal/StoreKitEntitlementProvider.swift`
-- `Kontinuum/viewModels/EntitlementGateViewModel.swift`, `PaywallViewModel.swift`, `BlockedViewModel.swift`, `SubscriptionSettingsViewModel.swift`
-- `Kontinuum/views/Entitlement/{EntitlementGateContainer,PaywallView,BlockedView,LapsedBanner,SubscriptionActions}.swift`
-- `Kontinuum/views/Settings/SubscriptionSettingsView.swift`
-- `Kontinuum/EntitlementSimulation.swift` (DEBUG)
-- `Kontinuum/PrivacyInfo.xcprivacy`
-- `KontinuumEntitlement.xctestplan`
-- `KontinuumTests/{EntitlementModelTests,EntitlementCacheTests,EntitlementGateViewModelTests,SimulatedEntitlementProviderTests,SubscriptionSettingsViewModelTests}.swift`
-- `KontinuumUITests/Phase6EntitlementGateTests.swift`
+- `NoteBytez/StoreKit/NoteBytez.storekit`
+- `NoteBytez/models/Entitlement.swift`
+- `NoteBytez/dal/EntitlementCache.swift`, `NoteBytez/dal/StoreKitEntitlementProvider.swift`
+- `NoteBytez/viewModels/EntitlementGateViewModel.swift`, `PaywallViewModel.swift`, `BlockedViewModel.swift`, `SubscriptionSettingsViewModel.swift`
+- `NoteBytez/views/Entitlement/{EntitlementGateContainer,PaywallView,BlockedView,LapsedBanner,SubscriptionActions}.swift`
+- `NoteBytez/views/Settings/SubscriptionSettingsView.swift`
+- `NoteBytez/EntitlementSimulation.swift` (DEBUG)
+- `NoteBytez/PrivacyInfo.xcprivacy`
+- `NoteBytezEntitlement.xctestplan`
+- `NoteBytezTests/{EntitlementModelTests,EntitlementCacheTests,EntitlementGateViewModelTests,SimulatedEntitlementProviderTests,SubscriptionSettingsViewModelTests}.swift`
+- `NoteBytezUITests/Phase6EntitlementGateTests.swift`
 
 **Modified**
-- `Kontinuum/RootView.swift` (gate wrap), `Kontinuum/KontinuumApp.swift` (suspend-at-launch), `Kontinuum/sync/SyncEngine.swift` (`SyncEngineControlling` + suspension), `Kontinuum/Logging.swift` (category), `Kontinuum/dal/ExportDAL.swift` (`exportAllActiveLibraries`), `Kontinuum/views/SettingsView.swift` (Subscription row)
-- `KontinuumTests/SyncEngineTests.swift` (suspension tests)
-- `Kontinuum.xcodeproj/xcshareddata/xcschemes/Kontinuum.xcscheme`
-- `Kontinuum/Docs/Plans/NoteBytez20260627v2-Security.md`, `Kontinuum/Docs/styleGuide.md`
+- `NoteBytez/RootView.swift` (gate wrap), `NoteBytez/NoteBytezApp.swift` (suspend-at-launch), `NoteBytez/sync/SyncEngine.swift` (`SyncEngineControlling` + suspension), `NoteBytez/Logging.swift` (category), `NoteBytez/dal/ExportDAL.swift` (`exportAllActiveLibraries`), `NoteBytez/views/SettingsView.swift` (Subscription row)
+- `NoteBytezTests/SyncEngineTests.swift` (suspension tests)
+- `NoteBytez.xcodeproj/xcshareddata/xcschemes/NoteBytez.xcscheme`
+- `NoteBytez/Docs/Plans/NoteBytez20260627v2-Security.md`, `NoteBytez/Docs/styleGuide.md`
 
 ## Still needs a decision (product owner)
 
