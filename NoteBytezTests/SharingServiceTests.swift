@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  SharingServiceTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import CloudKit
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Covers the parts of the add-participant-by-email feature
 /// (Docs/Plans/NoteBytez20260831v1-Sharing.md) that don't need a live CloudKit account: the

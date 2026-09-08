@@ -8,7 +8,7 @@
 import Foundation
 
 /// DEBUG-only canned `EntitlementProviding` driven by a `-SimulateEntitlement <scenario>` launch
-/// argument, mirroring `KontinuumApp`'s existing `-SeedTestConflict` / `-EnableLiveSync` seams.
+/// argument, mirroring `NoteBytezApp`'s existing `-SeedTestConflict` / `-EnableLiveSync` seams.
 /// Lets `Phase6EntitlementGateTests` and manual QA reach every gate state without a live
 /// StoreKit environment. Never compiled into a Release build.
 struct SimulatedEntitlementProvider: EntitlementProviding {

@@ -1,12 +1,12 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  SyncStatusStoreTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Each test constructs its own `SyncStatusStore()` rather than using `.shared` — a fresh
 /// instance never calls `startMonitoringNetwork()`, so `isOffline` stays deterministically

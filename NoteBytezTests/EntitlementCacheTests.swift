@@ -1,12 +1,12 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  EntitlementCacheTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// `InMemoryEntitlementCache` (used everywhere else in tests) and the real
 /// `KeychainEntitlementCache`, each with an isolated backing item — mirrors how the

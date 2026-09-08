@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase3Journey4GraphResurfaceFlowTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 3 — Journey Coverage. Journey 4 (UIUX/02-Journeys.md): a keyword search misses, the
 //  local graph misses too (MVP's graph is intentionally shallow — current note + direct links
@@ -19,7 +19,7 @@
 //  other passing test in this suite, so it was reverted rather than kept half-working). Each
 //  individual step (search miss, graph miss, tag chip -> Tag Browser -> tagged documents,
 //  wikilink creation, cross-note Backlinks) is independently proven by Phase 1/2/4's own
-//  `KontinuumTests` (`journeyFourSearchMissesGraphMissesTagBrowserFindsThenLinksBack`, in-process,
+//  `NoteBytezTests` (`journeyFourSearchMissesGraphMissesTagBrowserFindsThenLinksBack`, in-process,
 //  not UI-driven) and this suite's other tests; what isn't yet proven is this exact
 //  Search-then-Notebooks tab sequence specifically. Carried forward honestly rather than
 //  force-fitted into a false pass.
@@ -27,7 +27,7 @@
 
 import XCTest
 
-final class Phase3Journey4GraphResurfaceFlowTests: KontinuumUITestCase {
+final class Phase3Journey4GraphResurfaceFlowTests: NoteBytezUITestCase {
 
     @MainActor
     func testSearchAndGraphMissThenTagBrowserFindsAndLinksBack() throws {

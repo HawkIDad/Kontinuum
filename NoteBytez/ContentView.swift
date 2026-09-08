@@ -193,7 +193,7 @@ struct ContentView: View {
         } message: {
             Text(infoAlertMessage ?? "")
         }
-        // Menu-bar commands (`KontinuumApp`'s `.commands {}`) live at the `App` level, above
+        // Menu-bar commands (`NoteBytezApp`'s `.commands {}`) live at the `App` level, above
         // this view's navigation state, so they post here rather than calling in directly.
         .onReceive(NotificationCenter.default.publisher(for: .kontinuumNewNote)) { _ in
             navigate(to: .allNotes)

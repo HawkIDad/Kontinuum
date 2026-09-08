@@ -1,6 +1,6 @@
 //
-//  KontinuumUITests.swift
-//  KontinuumUITests
+//  NoteBytezUITests.swift
+//  NoteBytezUITests
 //
 //  Created by David Collison on 8/13/26.
 //
@@ -12,7 +12,7 @@ import XCTest
 /// queryable, and that a `MainShellScreen` page object can drive navigation across platforms.
 /// Full per-screen and per-journey coverage is built out in later phases (see
 /// Docs/Plans/NoteBytez20260823v1-UITests.md).
-final class KontinuumUITests: XCTestCase {
+final class NoteBytezUITests: XCTestCase {
 
     private var app: XCUIApplication!
 
@@ -26,7 +26,7 @@ final class KontinuumUITests: XCTestCase {
 
     @MainActor
     func testCreateLibraryThenNavigateMainShellByAccessibilityIdentifier() throws {
-        // Debug builds run against an in-memory store (see KontinuumApp.swift), so every launch
+        // Debug builds run against an in-memory store (see NoteBytezApp.swift), so every launch
         // starts with zero libraries and lands on S1 — Library Selection.
         let createLibraryButton = app.buttons["primaryButton.Create New Library"]
         XCTAssertTrue(createLibraryButton.waitForExistence(timeout: 5))

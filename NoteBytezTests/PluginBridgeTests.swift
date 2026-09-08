@@ -1,12 +1,12 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  PluginBridgeTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Covers Phase 13's own required guarantees: permission-boundary enforcement (an ungranted
 /// call throws rather than silently no-oping through omission), sandbox isolation (no

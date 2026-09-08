@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase1NotebookDocumentSmokeTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 1 — Screen Smoke Coverage. Covers S14 (Notebook Browser), S18's Picker sub-flow, S4
 //  (Document View), S17 (Properties Editor, inline in S4), S5 (Backlinks Pane), S8 (Graph, from
@@ -12,7 +12,7 @@
 
 import XCTest
 
-final class Phase1NotebookDocumentSmokeTests: KontinuumUITestCase {
+final class Phase1NotebookDocumentSmokeTests: NoteBytezUITestCase {
 
     @MainActor
     func testNotebookDocumentPropertiesAndBacklinksFlowRenders() throws {

@@ -1,11 +1,11 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  AdvancedSearchParserTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
-@testable import Kontinuum
+@testable import NoteBytez
 
 struct AdvancedSearchParserTests {
 

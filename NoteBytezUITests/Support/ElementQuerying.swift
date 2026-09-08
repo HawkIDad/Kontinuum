@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  ElementQuerying.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 
 import XCTest
@@ -9,7 +9,7 @@ import XCTest
 /// Shared lookup helpers for elements that carry no explicit `.accessibilityIdentifier` — most
 /// stock `Button`/`Text` elements in this codebase, which only `PrimaryButton`, the sidebar/tab
 /// bar rows, and a handful of other controls (see `SyncStatusGlyph`) set one for. Falls back to
-/// matching on `label`, the same convention `KontinuumUITests.swift`'s own foundation test
+/// matching on `label`, the same convention `NoteBytezUITests.swift`'s own foundation test
 /// already established for "Search" before any page objects existed.
 extension XCUIApplication {
 

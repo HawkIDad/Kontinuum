@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase1JournalFlowSmokeTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 1 — Screen Smoke Coverage. Covers S13 (Tag Browser, reached on iPhone via a journal
 //  tag chip tap — the one compact-width path into it, since it has no tab bar/sidebar slot on
@@ -12,7 +12,7 @@
 
 import XCTest
 
-final class Phase1JournalFlowSmokeTests: KontinuumUITestCase {
+final class Phase1JournalFlowSmokeTests: NoteBytezUITestCase {
 
     @MainActor
     func testJournalTagChipOpensTagBrowserAndTaggedDocuments() throws {

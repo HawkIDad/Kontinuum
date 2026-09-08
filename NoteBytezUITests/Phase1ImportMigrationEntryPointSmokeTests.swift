@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase1ImportMigrationEntryPointSmokeTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 1 — Screen Smoke Coverage. S2 (Import Scan & Confirm), S23 (Migration Assistant), and
 //  S20 (Attachment Preview) all only render *after* a system file/folder picker (`fileImporter`)
@@ -20,7 +20,7 @@
 
 import XCTest
 
-final class Phase1ImportMigrationEntryPointSmokeTests: KontinuumUITestCase {
+final class Phase1ImportMigrationEntryPointSmokeTests: NoteBytezUITestCase {
 
     @MainActor
     func testImportFolderEntryPointOpensSystemPicker() throws {

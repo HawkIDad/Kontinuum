@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase2BackupRestoreFeatureTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 2 — Feature Coverage: Backups (MVP). Creates a manual snapshot, then actually performs
 //  a Restore through the confirmation dialog — not just that tapping "Create Backup" leaves the
@@ -10,7 +10,7 @@
 
 import XCTest
 
-final class Phase2BackupRestoreFeatureTests: KontinuumUITestCase {
+final class Phase2BackupRestoreFeatureTests: NoteBytezUITestCase {
 
     @MainActor
     func testManualBackupCanBeRestored() throws {

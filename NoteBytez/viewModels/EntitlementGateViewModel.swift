@@ -194,7 +194,7 @@ final class EntitlementGateViewModel {
     }
 
     /// Whether a launch should start `SyncEngine` already suspended (Phase 5) — read
-    /// synchronously from the Keychain cache in `KontinuumApp.init`.
+    /// synchronously from the Keychain cache in `NoteBytezApp.init`.
     nonisolated static func launchShouldSuspendSync(cache: EntitlementCaching = KeychainEntitlementCache(), now: Date = Date()) -> Bool {
         provisionalAccessLevel(
             cache: cache.load(),

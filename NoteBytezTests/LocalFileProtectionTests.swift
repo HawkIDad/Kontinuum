@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  LocalFileProtectionTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Phase 11 (Security-Local Files) — file-protection coverage for every local-only file write
 /// this phase audited: `BackupDAL`'s snapshot files, `SyncStateStore`'s serialized engine state,

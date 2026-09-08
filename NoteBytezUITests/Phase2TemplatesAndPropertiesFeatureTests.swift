@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase2TemplatesAndPropertiesFeatureTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 2 — Feature Coverage: Note Templates (V1) and Properties (V1). Builds a real
 //  TemplateGroup → NoteTemplate → Property field through the Template Manager (Settings), then
@@ -31,7 +31,7 @@
 
 import XCTest
 
-final class Phase2TemplatesAndPropertiesFeatureTests: KontinuumUITestCase {
+final class Phase2TemplatesAndPropertiesFeatureTests: NoteBytezUITestCase {
 
     @MainActor
     func testCustomNoteTemplateAppliesPropertyDefaultOnCreate() throws {

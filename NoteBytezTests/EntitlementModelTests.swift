@@ -1,12 +1,12 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  EntitlementModelTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Pure value-type behaviour behind the entitlement gate — no StoreKit, no cache, no clock.
 struct EntitlementModelTests {

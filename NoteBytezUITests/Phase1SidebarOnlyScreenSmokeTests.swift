@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase1SidebarOnlyScreenSmokeTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 1 — Screen Smoke Coverage. Covers "All Notes" and S21 (Saved Views) — both sidebar-only
 //  destinations on Mac/iPad regular width (see `ContentView.AppDestination.tabBarDestinations`,
@@ -12,7 +12,7 @@
 
 import XCTest
 
-final class Phase1SidebarOnlyScreenSmokeTests: KontinuumUITestCase {
+final class Phase1SidebarOnlyScreenSmokeTests: NoteBytezUITestCase {
 
     @MainActor
     func testAllNotesRendersOnRegularWidth() throws {

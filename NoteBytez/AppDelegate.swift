@@ -12,7 +12,7 @@ import CloudKit
 
 /// SwiftUI's `App` protocol has no hook for silent push receipt, which `SyncEngine`'s
 /// `CKDatabaseSubscription`-driven incremental sync needs — bridged in via
-/// `@UIApplicationDelegateAdaptor` in `KontinuumApp`. See the `#elseif os(macOS)` branch below
+/// `@UIApplicationDelegateAdaptor` in `NoteBytezApp`. See the `#elseif os(macOS)` branch below
 /// for the Mac counterpart.
 final class AppDelegate: NSObject, UIApplicationDelegate {
 
@@ -59,7 +59,7 @@ import AppKit
 import CloudKit
 
 /// Mac counterpart to the iOS `AppDelegate` above — same role (bridge silent CloudKit push into
-/// `SyncEngine`), bridged in via `@NSApplicationDelegateAdaptor` in `KontinuumApp`. macOS has no
+/// `SyncEngine`), bridged in via `@NSApplicationDelegateAdaptor` in `NoteBytezApp`. macOS has no
 /// background-fetch-budget concept, so remote-notification receipt here has no completion
 /// handler to call back, unlike the iOS path.
 final class AppDelegate: NSObject, NSApplicationDelegate {

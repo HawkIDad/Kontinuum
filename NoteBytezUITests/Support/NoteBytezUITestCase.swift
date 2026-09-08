@@ -1,15 +1,15 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
-//  KontinuumUITestCase.swift
-//  KontinuumUITests
+//  NoteBytezUITestCase.swift
+//  NoteBytezUITests
 //
 
 import XCTest
 
 /// Shared launch/setup for every phase's UI tests. Debug builds run against an in-memory store
-/// (see `KontinuumApp.swift`), so every launch starts with zero libraries and lands on S1 —
+/// (see `NoteBytezApp.swift`), so every launch starts with zero libraries and lands on S1 —
 /// there is no persisted state to clean up between tests.
-class KontinuumUITestCase: XCTestCase {
+class NoteBytezUITestCase: XCTestCase {
 
     var app: XCUIApplication!
 

@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  SyncScreen.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 
 import XCTest
@@ -17,7 +17,7 @@ struct SyncStatusScreen {
     var needsAttentionSection: XCUIElement { app.element(labeled: "Needs Your Attention") }
 
     /// The queued-conflict row for a given note title — present only once a conflict has been
-    /// queued into `ConflictStore.shared` (see `-SeedTestConflict`, `KontinuumApp.swift`).
+    /// queued into `ConflictStore.shared` (see `-SeedTestConflict`, `NoteBytezApp.swift`).
     func conflictRow(title: String) -> XCUIElement {
         app.button(labeled: "Conflict — \"\(title)\"")
     }

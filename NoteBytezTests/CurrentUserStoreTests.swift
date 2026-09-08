@@ -1,12 +1,12 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  CurrentUserStoreTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Covers the synchronous cache/persistence half of `CurrentUserStore` — `resolveCurrentUser`
 /// itself needs a live `CKContainer`, out of scope here (same class of gap as the rest of

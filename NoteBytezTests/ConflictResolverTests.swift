@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  ConflictResolverTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import CloudKit
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Covers `ConflictResolver`'s pure record-merging decisions — no network, no `ModelContext`,
 /// same "compiled + unit-tested" scope as the rest of `sync/` that doesn't need a live

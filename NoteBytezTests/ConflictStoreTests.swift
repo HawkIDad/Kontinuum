@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  ConflictStoreTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import CloudKit
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Each test constructs its own `ConflictStore()` (not `.shared`), matching the isolation
 /// pattern already established for `SyncStatusStoreTests`.

@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase3Journey2DailyCaptureFlowTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 3 — Journey Coverage. Journey 2 (UIUX/02-Journeys.md): daily capture -> journal ->
 //  link -> tag -> task, the single highest-frequency flow in the product. Single-device only
 //  (the journey's "opens on Mac later" beat is a second-device step, out of this XCUITest's
 //  reach the same way Journeys 3/8's live sync race is — Phase 2's
-//  `journeyTwoDailyCaptureLinkTagTaskAndCrossDeviceToggle` in `KontinuumTests` already covers
+//  `journeyTwoDailyCaptureLinkTagTaskAndCrossDeviceToggle` in `NoteBytezTests` already covers
 //  that half locally, via a second `DocumentViewModel` over the same store).
 //
 //  The `[[wikilink autocomplete row itself is exercised separately by Phase 1's journal/S4
@@ -28,7 +28,7 @@
 
 import XCTest
 
-final class Phase3Journey2DailyCaptureFlowTests: KontinuumUITestCase {
+final class Phase3Journey2DailyCaptureFlowTests: NoteBytezUITestCase {
 
     @MainActor
     func testCaptureLinkTagAndTaskInOneJournalEntry() throws {

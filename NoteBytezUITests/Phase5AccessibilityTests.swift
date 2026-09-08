@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase5AccessibilityTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 5 — Accessibility Pass (docs/styleGuide.md §Accessibility, a "hard requirement, not a
 //  nice-to-have"). Two checks: every icon-only control exposes a non-empty VoiceOver label, and
@@ -10,7 +10,7 @@
 
 import XCTest
 
-final class Phase5AccessibilityTests: KontinuumUITestCase {
+final class Phase5AccessibilityTests: NoteBytezUITestCase {
 
     /// Walks every button currently on screen and flags any whose accessibility label is empty
     /// — an icon-only control that forgot `.accessibilityLabel`, since a labeled control (even

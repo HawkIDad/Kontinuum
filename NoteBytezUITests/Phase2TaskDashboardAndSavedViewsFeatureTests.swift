@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase2TaskDashboardAndSavedViewsFeatureTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 2 — Feature Coverage: Task Dashboards (V1) and Saved Views (V1). Writes a real task via
 //  the journal, confirms it's cross-note-listed on the Task Dashboard, then saves both a search
@@ -13,7 +13,7 @@
 
 import XCTest
 
-final class Phase2TaskDashboardAndSavedViewsFeatureTests: KontinuumUITestCase {
+final class Phase2TaskDashboardAndSavedViewsFeatureTests: NoteBytezUITestCase {
 
     @MainActor
     func testJournalTaskAppearsOnDashboardAndFilterIsSavable() throws {

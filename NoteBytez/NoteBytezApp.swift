@@ -1,6 +1,6 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
-//  KontinuumApp.swift
+//  NoteBytezApp.swift
 //  Kontinuum
 //
 //  Created by David Collison on 8/13/26.
@@ -11,7 +11,7 @@ import SwiftData
 import CloudKit
 
 @main
-struct KontinuumApp: App {
+struct NoteBytezApp: App {
 
 #if os(iOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
@@ -93,7 +93,7 @@ struct KontinuumApp: App {
         // at launch, so the UI test suite can drive S9/S10 (and Journey 3/8's downstream
         // conflict-resolution UI) without a live CloudKit `.serverRecordChanged` error — the
         // same test-only, DEBUG-gated seam `-EnableLiveSync` establishes above. Mirrors the
-        // fixture in `KontinuumTests/JourneyIntegrationTests.swift`'s
+        // fixture in `NoteBytezTests/JourneyIntegrationTests.swift`'s
         // `journeyThreeConflictDetectedThroughEachStrategyToResolved`. Resolving it through the
         // UI still no-ops (no live `CKSyncEngine` to save against without `-EnableLiveSync` too)
         // — this seam only unblocks reaching and rendering the conflict UI itself.

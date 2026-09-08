@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  DocumentViewModelTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// `toggleTask` already has coverage via `TaskDALTests`; this fills in the rest of
 /// `DocumentViewModel`'s pure logic — save propagation, wikilink/tag autocomplete, and the

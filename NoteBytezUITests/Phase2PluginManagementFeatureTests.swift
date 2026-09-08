@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase2PluginManagementFeatureTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 2 — Feature Coverage: Plugin SDK (preview, V1). Installs a real plugin with one
 //  explicitly granted permission and confirms it appears enabled with that permission named on
@@ -20,7 +20,7 @@
 
 import XCTest
 
-final class Phase2PluginManagementFeatureTests: KontinuumUITestCase {
+final class Phase2PluginManagementFeatureTests: NoteBytezUITestCase {
 
     @MainActor
     func testInstalledPluginShowsGrantedPermissionAndCanBeDisabled() throws {

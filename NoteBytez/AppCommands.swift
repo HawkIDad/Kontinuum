@@ -6,7 +6,7 @@
 
 import Foundation
 
-/// Bridges `KontinuumApp`'s menu-bar `.commands {}` — declared at the `App` level, with no
+/// Bridges `NoteBytezApp`'s menu-bar `.commands {}` — declared at the `App` level, with no
 /// access to `ContentView`'s navigation state — to the views that actually act on them.
 extension Notification.Name {
 

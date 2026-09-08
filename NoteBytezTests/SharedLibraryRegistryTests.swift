@@ -1,12 +1,12 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  SharedLibraryRegistryTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Each test uses its own `UserDefaults` suite, mirroring `LibraryDALTests`'s existing
 /// injected-defaults convention for `LibraryDAL.selectedLibraryId`.

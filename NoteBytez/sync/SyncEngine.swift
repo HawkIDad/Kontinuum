@@ -64,7 +64,7 @@ final class SyncEngine: @unchecked Sendable {
 
     private init() {}
 
-    /// Called once at app launch (Release builds only — see `KontinuumApp`) with the shared
+    /// Called once at app launch (Release builds only — see `NoteBytezApp`) with the shared
     /// `ModelContainer`. Ensures every already-active library has a zone, so a library created
     /// before the engine started (or restored from a fresh install) still gets synced.
     func start(modelContainer: ModelContainer) {

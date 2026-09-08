@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase1SettingsSmokeTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 1 — Screen Smoke Coverage. Covers every screen reached from Settings: S11 (Sync &
 //  Conflicts strategy), S12 (Backup & Restore), S18's Manager sub-flow (Template Groups), S24
@@ -10,7 +10,7 @@
 
 import XCTest
 
-final class Phase1SettingsSmokeTests: KontinuumUITestCase {
+final class Phase1SettingsSmokeTests: NoteBytezUITestCase {
 
     @MainActor
     func testConflictStrategySettingsRendersAllThreeOptions() throws {

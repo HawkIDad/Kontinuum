@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase6EntitlementGateTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  NoteBytez20260907v1-Security.md Phase 4 — the entitlement gate's user-facing states, driven
 //  by the DEBUG `-SimulateEntitlement <scenario>` launch argument (see `EntitlementSimulation.swift`
@@ -11,7 +11,7 @@
 
 import XCTest
 
-final class Phase6EntitlementGateTests: KontinuumUITestCase {
+final class Phase6EntitlementGateTests: NoteBytezUITestCase {
 
     private let uiTimeout: TimeInterval = 15
 

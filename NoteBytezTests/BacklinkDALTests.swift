@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  BacklinkDALTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 struct BacklinkDALTests {
 

@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  TransclusionEditTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Workstream B (`NoteBytez20260829v2-Enhancements.md`) — editable-in-place transclusion.
 /// Decision 6(a): optimistic write, last-write-wins within the device. No diff-merge prompt —

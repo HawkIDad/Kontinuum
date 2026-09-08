@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  ImportExportIntegrationTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Journey 1 end-to-end: scan a folder of real `.md` files → confirm import (with its
 /// auto-snapshot) → spot-check the resulting library → export it back out → verify round-trip

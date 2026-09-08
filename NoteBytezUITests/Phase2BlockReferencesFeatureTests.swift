@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase2BlockReferencesFeatureTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 2 — Feature Coverage: Block References (V1). Writes a block in one document, then
 //  inserts a `((anchor))` reference to it from a second document via the `((` autocomplete row,
@@ -20,7 +20,7 @@
 
 import XCTest
 
-final class Phase2BlockReferencesFeatureTests: KontinuumUITestCase {
+final class Phase2BlockReferencesFeatureTests: NoteBytezUITestCase {
 
     @MainActor
     func testBlockReferenceCreatesBlockLevelBacklink() throws {

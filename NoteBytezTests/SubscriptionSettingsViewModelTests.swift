@@ -1,12 +1,12 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  SubscriptionSettingsViewModelTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Settings → Subscription status strings across the entitlement states (Phase 6). Reuses
 /// `FakeEntitlementProvider` from `EntitlementGateViewModelTests`.

@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  MigrationIntegrationTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Journey 9 end-to-end: scan a fixture vault → confirm migration → spot-check the resulting
 /// library, for both source formats plus the two cross-cutting requirements (unsupported-query

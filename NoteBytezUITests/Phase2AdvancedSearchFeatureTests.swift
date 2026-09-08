@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase2AdvancedSearchFeatureTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 2 — Feature Coverage: Advanced Search (V1). Creates two real documents with distinct
 //  tag combinations, then confirms a boolean `#tag AND #tag` query actually narrows results to
@@ -11,7 +11,7 @@
 
 import XCTest
 
-final class Phase2AdvancedSearchFeatureTests: KontinuumUITestCase {
+final class Phase2AdvancedSearchFeatureTests: NoteBytezUITestCase {
 
     @MainActor
     func testBooleanTagQueryNarrowsToMatchingDocument() throws {

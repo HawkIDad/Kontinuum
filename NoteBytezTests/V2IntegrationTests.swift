@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  V2IntegrationTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// `NoteBytez20260829v2-Enhancements.md` Workstream E, E6 journey acceptance — the shipped
 /// slice (A/B/C). Journeys (d)/(e)/(e′)/(f) belong to Workstream D and are omitted until the

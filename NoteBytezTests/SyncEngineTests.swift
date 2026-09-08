@@ -1,14 +1,14 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  SyncEngineTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import CloudKit
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Covers the two cross-cutting concerns Phase 10 added to `SyncEngine.recordChanged` —
 /// attribution and read-only enforcement — both deliberately placed *before* the

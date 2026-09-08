@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase1MainShellSmokeTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 1 — Screen Smoke Coverage (see Docs/Plans/NoteBytez20260823v1-UITests.md). Covers every
 //  screen reachable directly from the main navigation shell: S3 (Today), S9 (Sync Status), S14
@@ -10,7 +10,7 @@
 
 import XCTest
 
-final class Phase1MainShellSmokeTests: KontinuumUITestCase {
+final class Phase1MainShellSmokeTests: NoteBytezUITestCase {
 
     @MainActor
     func testTodayJournalRenders() throws {

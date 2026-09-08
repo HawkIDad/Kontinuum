@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  FlowEnhancementsIntegrationTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// `NoteBytez20260829v1-FlowEnhancements.md` Phase 7.6 acceptance: the five journeys the plan
 /// names end-to-end, matching `JourneyIntegrationTests`'s existing shape for the MVP/R1 journeys.

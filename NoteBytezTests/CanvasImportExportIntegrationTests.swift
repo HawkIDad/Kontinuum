@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  CanvasImportExportIntegrationTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// The "JSON Canvas import/export round-trip fidelity" task from
 /// NoteBytez-R1-Implementation.md Phase 9 — one of each card type plus a labeled connector,

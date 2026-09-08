@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  CanvasBindingTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Workstream C (`NoteBytez20260829v2-Enhancements.md`) — bidirectional graph ↔ canvas binding.
 /// Decision 9(a): links → canvas, read-mostly. Decision 10: fixed at 1 hop.

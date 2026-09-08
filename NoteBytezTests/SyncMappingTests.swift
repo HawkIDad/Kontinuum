@@ -1,14 +1,14 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  SyncMappingTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import CloudKit
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Covers everything about Phase 12's sync layer that's verifiable without a live, signed-in
 /// iCloud account: zone-ID determinism, model<->CKRecord field mapping, library-reference

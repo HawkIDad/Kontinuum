@@ -1,6 +1,6 @@
 //
 //  KontinuumUITestsLaunchTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Created by David Collison on 8/13/26.
 //

@@ -1,14 +1,14 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  JourneyIntegrationTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import SwiftData
 import CloudKit
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Phase 16 acceptance: Journeys 2-4 end-to-end, matching UIUX/02-Journeys.md. Journey 1
 /// already has its own dedicated round-trip coverage in `ImportExportIntegrationTests`.

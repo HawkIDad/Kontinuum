@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase2CanvasFeatureTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 2 — Feature Coverage: Canvas (V1). Creates a board, adds a note card that references a
 //  real existing document, and adds a group card — confirming both actually appear on the board
@@ -16,7 +16,7 @@
 
 import XCTest
 
-final class Phase2CanvasFeatureTests: KontinuumUITestCase {
+final class Phase2CanvasFeatureTests: NoteBytezUITestCase {
 
     @MainActor
     func testAddNoteCardAndGroupCardAppearOnBoard() throws {

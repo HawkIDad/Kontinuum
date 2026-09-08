@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Phase1ConflictResolutionSmokeTests.swift
-//  KontinuumUITests
+//  NoteBytezUITests
 //
 //  Phase 1 — Screen Smoke Coverage. Covers S10 (Conflict Resolution) — reachable only when
 //  `ConflictStore.shared` has a queued conflict, which needs a real CloudKit
-//  `.serverRecordChanged` error in production. `-SeedTestConflict` (see `KontinuumApp.swift`)
+//  `.serverRecordChanged` error in production. `-SeedTestConflict` (see `NoteBytezApp.swift`)
 //  queues a synthetic one at launch so this screen is reachable without live sync, mirroring
-//  `KontinuumTests/JourneyIntegrationTests.swift`'s own in-process fixture. Resolving the
+//  `NoteBytezTests/JourneyIntegrationTests.swift`'s own in-process fixture. Resolving the
 //  conflict for real still needs `-EnableLiveSync` (Phase 4, manual-only) — tapping a resolve
 //  action here safely no-ops rather than persisting anything (see `SyncEngine.resolveConflict`'s
 //  own early-return when no `CKSyncEngine` is running).
@@ -15,7 +15,7 @@
 
 import XCTest
 
-final class Phase1ConflictResolutionSmokeTests: KontinuumUITestCase {
+final class Phase1ConflictResolutionSmokeTests: NoteBytezUITestCase {
 
     @MainActor
     func testConflictResolutionRendersKeepAllVersionsLayoutWhenStrategySelected() throws {

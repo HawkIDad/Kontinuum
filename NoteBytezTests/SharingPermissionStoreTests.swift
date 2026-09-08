@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  SharingPermissionStoreTests.swift
-//  KontinuumTests
+//  NoteBytezTests
 //
 
 import Testing
 import CloudKit
 import Foundation
-@testable import Kontinuum
+@testable import NoteBytez
 
 /// Each test constructs its own `SharingPermissionStore()` rather than using `.shared` —
 /// mirrors `SyncStatusStoreTests`'s isolation rationale. `update(forLibraryId:share:)` itself
