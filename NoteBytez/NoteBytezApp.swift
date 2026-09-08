@@ -131,23 +131,23 @@ struct NoteBytezApp: App {
         .commands {
             CommandGroup(replacing: .newItem) {
                 Button("New Note") {
-                    NotificationCenter.default.post(name: .kontinuumNewNote, object: nil)
+                    NotificationCenter.default.post(name: .noteBytezNewNote, object: nil)
                 }
                 .keyboardShortcut("n", modifiers: .command)
             }
             CommandGroup(after: .toolbar) {
                 Button("Command Palette…") {
-                    NotificationCenter.default.post(name: .kontinuumOpenCommandPalette, object: nil)
+                    NotificationCenter.default.post(name: .noteBytezOpenCommandPalette, object: nil)
                 }
                 .keyboardShortcut("p", modifiers: .command)
                 Button("Quick Switcher") {
-                    NotificationCenter.default.post(name: .kontinuumOpenQuickSwitcher, object: nil)
+                    NotificationCenter.default.post(name: .noteBytezOpenQuickSwitcher, object: nil)
                 }
                 .keyboardShortcut("o", modifiers: .command)
             }
             CommandGroup(replacing: .appSettings) {
                 Button("Settings…") {
-                    NotificationCenter.default.post(name: .kontinuumOpenSettings, object: nil)
+                    NotificationCenter.default.post(name: .noteBytezOpenSettings, object: nil)
                 }
                 .keyboardShortcut(",", modifiers: .command)
             }
@@ -155,16 +155,16 @@ struct NoteBytezApp: App {
             // Library vs. Explore, with Graph/Insights promoted to top-level Explore items.
             CommandMenu("View") {
                 Button("Today") {
-                    NotificationCenter.default.post(name: .kontinuumNavigate, object: AppDestination.today)
+                    NotificationCenter.default.post(name: .noteBytezNavigate, object: AppDestination.today)
                 }
                 Button("Notebooks") {
-                    NotificationCenter.default.post(name: .kontinuumNavigate, object: AppDestination.notebooks)
+                    NotificationCenter.default.post(name: .noteBytezNavigate, object: AppDestination.notebooks)
                 }
                 Button("Graph") {
-                    NotificationCenter.default.post(name: .kontinuumNavigate, object: AppDestination.graph)
+                    NotificationCenter.default.post(name: .noteBytezNavigate, object: AppDestination.graph)
                 }
                 Button("Insights") {
-                    NotificationCenter.default.post(name: .kontinuumNavigate, object: AppDestination.insights)
+                    NotificationCenter.default.post(name: .noteBytezNavigate, object: AppDestination.insights)
                 }
             }
         }

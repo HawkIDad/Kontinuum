@@ -21,7 +21,7 @@ struct SharingServiceTests {
     // MARK: - isValidEmailFormat
 
     @Test func acceptsAWellFormedAddress() {
-        #expect(SharingService.isValidEmailFormat("kontinuum2@2thumbsupapps.com"))
+        #expect(SharingService.isValidEmailFormat("notebytez2@2thumbsupapps.com"))
         #expect(SharingService.isValidEmailFormat("a.b+tag@example.co.uk"))
     }
 

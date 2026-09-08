@@ -74,7 +74,7 @@ final class SyncStatusStore {
             let isOffline = path.status != .satisfied
             Task { @MainActor in SyncStatusStore.shared.isOffline = isOffline }
         }
-        monitor.start(queue: DispatchQueue(label: "com.g9Consulting.Kontinuum.SyncStatusStore"))
+        monitor.start(queue: DispatchQueue(label: "com.g9Consulting.NoteBytez.SyncStatusStore"))
         pathMonitor = monitor
     }
 

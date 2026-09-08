@@ -47,10 +47,10 @@ struct TodayJournalView: View {
             }
         }
         .onDisappear {
-            NotificationCenter.default.post(name: .kontinuumActiveDocumentChanged, object: nil)
+            NotificationCenter.default.post(name: .noteBytezActiveDocumentChanged, object: nil)
         }
         .onChange(of: viewModel?.documentViewModel.document) { _, newDocument in
-            NotificationCenter.default.post(name: .kontinuumActiveDocumentChanged, object: newDocument)
+            NotificationCenter.default.post(name: .noteBytezActiveDocumentChanged, object: newDocument)
         }
         .navigationTitle("Today")
         .noteBytezInlineNavigationTitle()
@@ -81,7 +81,7 @@ struct TodayJournalView: View {
             if viewModel == nil {
                 viewModel = JournalViewModel(libraryId: libraryId, modelContext: modelContext)
             }
-            NotificationCenter.default.post(name: .kontinuumActiveDocumentChanged, object: viewModel?.documentViewModel.document)
+            NotificationCenter.default.post(name: .noteBytezActiveDocumentChanged, object: viewModel?.documentViewModel.document)
         }
         .navigationDestination(item: $wikilinkTarget) { target in
             DocumentView(viewModel: DocumentViewModel(document: target, modelContext: modelContext), scrollTargetLineText: pendingScrollTargetLineText)
@@ -116,7 +116,7 @@ struct TodayJournalView: View {
                 TaskDashboardView(viewModel: TaskDashboardViewModel(libraryId: libraryId, modelContext: modelContext))
             }
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumTriggerPromote)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezTriggerPromote)) { _ in
             isPresentingPromote = true
         }
     }

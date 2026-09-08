@@ -89,7 +89,7 @@ struct CanvasBoardListView: View {
             guard let jsonString = try? String(contentsOf: fileURL, encoding: .utf8) else { return }
             viewModel.importBoard(named: fileURL.deletingPathExtension().lastPathComponent, jsonString: jsonString)
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumTriggerNewCanvasBoard)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezTriggerNewCanvasBoard)) { _ in
             isPresentingCreateBoard = true
         }
     }

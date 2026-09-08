@@ -298,11 +298,11 @@ struct DocumentView: View {
             if templateViewModel == nil, let libraryId = viewModel.document.libraryId {
                 templateViewModel = TemplateViewModel(libraryId: libraryId, modelContext: modelContext)
             }
-            NotificationCenter.default.post(name: .kontinuumActiveDocumentChanged, object: viewModel.document)
+            NotificationCenter.default.post(name: .noteBytezActiveDocumentChanged, object: viewModel.document)
         }
         .onDisappear {
             viewModel.save()
-            NotificationCenter.default.post(name: .kontinuumActiveDocumentChanged, object: nil)
+            NotificationCenter.default.post(name: .noteBytezActiveDocumentChanged, object: nil)
         }
         .sheet(isPresented: $isPresentingTemplatePicker) {
             if let templateViewModel {

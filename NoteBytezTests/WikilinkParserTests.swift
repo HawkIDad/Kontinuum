@@ -86,8 +86,8 @@ struct WikilinkParserTests {
     }
 
     @Test func fuzzyMatchesSubsequenceRegardlessOfCase() {
-        #expect(WikilinkParser.fuzzyMatches("Project Kontinuum", query: "pkon"))
-        #expect(!WikilinkParser.fuzzyMatches("Project Kontinuum", query: "xyz"))
+        #expect(WikilinkParser.fuzzyMatches("Project NoteBytez", query: "pnot"))
+        #expect(!WikilinkParser.fuzzyMatches("Project NoteBytez", query: "xyz"))
     }
 
     @Test func fuzzyMatchesEmptyQueryMatchesEverything() {

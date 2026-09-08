@@ -120,12 +120,12 @@ struct CanvasBoardView: View {
             .toolbar { toolbarContent }
             .onAppear {
                 viewModel.load(board)
-                NotificationCenter.default.post(name: .kontinuumActiveCanvasBoardChanged, object: board)
+                NotificationCenter.default.post(name: .noteBytezActiveCanvasBoardChanged, object: board)
             }
             .onDisappear {
-                NotificationCenter.default.post(name: .kontinuumActiveCanvasBoardChanged, object: nil)
+                NotificationCenter.default.post(name: .noteBytezActiveCanvasBoardChanged, object: nil)
             }
-            .onReceive(NotificationCenter.default.publisher(for: .kontinuumTriggerBindCanvas)) { _ in
+            .onReceive(NotificationCenter.default.publisher(for: .noteBytezTriggerBindCanvas)) { _ in
                 isPresentingBindPicker = true
             }
     }

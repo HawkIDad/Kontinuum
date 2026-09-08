@@ -25,7 +25,7 @@ struct ExploreHubView: View {
                 }
             }
             Button {
-                NotificationCenter.default.post(name: .kontinuumOpenCommandPalette, object: nil)
+                NotificationCenter.default.post(name: .noteBytezOpenCommandPalette, object: nil)
             } label: {
                 Label("Command Palette", systemImage: "command")
             }

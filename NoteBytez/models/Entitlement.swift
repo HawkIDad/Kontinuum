@@ -15,8 +15,8 @@ enum Entitlement {
     /// The two auto-renewable products in the `NoteBytez` subscription group (Phase 0). A live
     /// transaction for any other product id is ignored by the gate.
     enum Products {
-        static let monthly = "com.g9Consulting.Kontinuum.sub.monthly"
-        static let annual = "com.g9Consulting.Kontinuum.sub.annual"
+        static let monthly = "com.g9Consulting.NoteBytez.sub.monthly"
+        static let annual = "com.g9Consulting.NoteBytez.sub.annual"
         static let all: Set<String> = [monthly, annual]
     }
 

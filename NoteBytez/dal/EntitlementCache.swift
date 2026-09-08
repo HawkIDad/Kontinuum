@@ -42,7 +42,7 @@ struct KeychainEntitlementCache: EntitlementCaching {
     /// `service` is overridable so each `KeychainEntitlementCacheTests` case can use an isolated
     /// keychain item and clean it up, mirroring how the `UserDefaults`-backed stores take a
     /// suite name in their tests.
-    init(service: String = "com.g9Consulting.Kontinuum.entitlement", account: String = "cachedEntitlement") {
+    init(service: String = "com.g9Consulting.NoteBytez.entitlement", account: String = "cachedEntitlement") {
         self.service = service
         self.account = account
     }

@@ -48,7 +48,7 @@ struct DocumentListView: View {
         .onAppear {
             reload()
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumNewNote)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezNewNote)) { _ in
             isPresentingTemplatePicker = true
         }
         .sheet(isPresented: $isPresentingTemplatePicker) {

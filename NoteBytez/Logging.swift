@@ -17,7 +17,7 @@ enum LogCategory: String {
 enum Log {
 
     static func logger(_ category: LogCategory) -> Logger {
-        return Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.g9Consulting.Kontinuum", category: category.rawValue)
+        return Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.g9Consulting.NoteBytez", category: category.rawValue)
     }
 
 }

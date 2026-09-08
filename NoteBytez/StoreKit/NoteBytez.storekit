@@ -55,7 +55,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.g9Consulting.Kontinuum.sub.monthly",
+          "productID" : "com.g9Consulting.NoteBytez.sub.monthly",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "NoteBytez Monthly",
           "subscriptionGroupID" : "319F4A59-CB24-4AE5-AAAC-61CF37CA9579",
@@ -84,7 +84,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.g9Consulting.Kontinuum.sub.annual",
+          "productID" : "com.g9Consulting.NoteBytez.sub.annual",
           "recurringSubscriptionPeriod" : "P1Y",
           "referenceName" : "NoteBytez Annual",
           "subscriptionGroupID" : "319F4A59-CB24-4AE5-AAAC-61CF37CA9579",

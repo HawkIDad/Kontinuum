@@ -195,30 +195,30 @@ struct ContentView: View {
         }
         // Menu-bar commands (`NoteBytezApp`'s `.commands {}`) live at the `App` level, above
         // this view's navigation state, so they post here rather than calling in directly.
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumNewNote)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezNewNote)) { _ in
             navigate(to: .allNotes)
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumOpenSettings)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezOpenSettings)) { _ in
             navigate(to: .settings)
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumOpenCommandPalette)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezOpenCommandPalette)) { _ in
             isPresentingCommandPalette = true
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumOpenQuickSwitcher)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezOpenQuickSwitcher)) { _ in
             isPresentingQuickSwitcher = true
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumRunAction)) { notification in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezRunAction)) { notification in
             guard let action = notification.object as? AppAction else { return }
             run(action)
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumNavigate)) { notification in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezNavigate)) { notification in
             guard let destination = notification.object as? AppDestination else { return }
             navigate(to: destination)
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumActiveDocumentChanged)) { notification in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezActiveDocumentChanged)) { notification in
             activeDocument = notification.object as? Document
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumActiveCanvasBoardChanged)) { notification in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezActiveCanvasBoardChanged)) { notification in
             activeCanvasBoard = notification.object as? CanvasBoard
         }
     }
@@ -231,22 +231,22 @@ struct ContentView: View {
     }
 
     /// Executes a palette/menu `AppAction`. Navigation-then-trigger actions post a
-    /// destination-local notification (`.kontinuumTrigger*`) that the freshly-navigated screen
+    /// destination-local notification (`.noteBytezTrigger*`) that the freshly-navigated screen
     /// picks up to open the same sheet its own toolbar button would — same two-hop shape
-    /// `.kontinuumOpenSettings` already established.
+    /// `.noteBytezOpenSettings` already established.
     private func run(_ action: AppAction) {
         switch action {
         case .newNote:
             navigate(to: .allNotes)
         case .newNotebook:
             navigate(to: .notebooks)
-            NotificationCenter.default.post(name: .kontinuumTriggerNewNotebook, object: nil)
+            NotificationCenter.default.post(name: .noteBytezTriggerNewNotebook, object: nil)
         case .newCanvasBoard:
             navigate(to: .canvas)
-            NotificationCenter.default.post(name: .kontinuumTriggerNewCanvasBoard, object: nil)
+            NotificationCenter.default.post(name: .noteBytezTriggerNewCanvasBoard, object: nil)
         case .promoteToNotebook:
             navigate(to: .today)
-            NotificationCenter.default.post(name: .kontinuumTriggerPromote, object: nil)
+            NotificationCenter.default.post(name: .noteBytezTriggerPromote, object: nil)
         case .sendCurrentNoteToCanvas:
             guard let document = activeDocument, let libraryId = document.libraryId else {
                 infoAlertMessage = "Open a note first, then send its map to Canvas."
@@ -264,7 +264,7 @@ struct ContentView: View {
                 infoAlertMessage = "Open a canvas board first, then bind it to a note."
                 return
             }
-            NotificationCenter.default.post(name: .kontinuumTriggerBindCanvas, object: nil)
+            NotificationCenter.default.post(name: .noteBytezTriggerBindCanvas, object: nil)
         case .openNoteAsBoundCanvas:
             guard let document = activeDocument, let libraryId = document.libraryId else {
                 infoAlertMessage = "Open a note first, then open it as a bound canvas."

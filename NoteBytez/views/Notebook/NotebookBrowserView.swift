@@ -63,7 +63,7 @@ struct NotebookBrowserView: View {
         .sheet(isPresented: $isPresentingCreateNotebook) {
             CreateNotebookSheet(viewModel: viewModel, isPresented: $isPresentingCreateNotebook)
         }
-        .onReceive(NotificationCenter.default.publisher(for: .kontinuumTriggerNewNotebook)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .noteBytezTriggerNewNotebook)) { _ in
             isPresentingCreateNotebook = true
         }
     }

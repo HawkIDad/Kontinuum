@@ -24,11 +24,11 @@ final class SyncEngine: @unchecked Sendable {
 
     static let shared = SyncEngine()
 
-    static let subscriptionID: CKSubscription.ID = "kontinuum-private-changes"
+    static let subscriptionID: CKSubscription.ID = "notebytez-private-changes"
     /// A second, distinct subscription for the shared database (Phase 10) — the private and
     /// shared databases are separate CloudKit endpoints, each needing its own subscription and
     /// its own `CKSyncEngine` instance (see `sharedEngine` below).
-    static let sharedSubscriptionID: CKSubscription.ID = "kontinuum-shared-changes"
+    static let sharedSubscriptionID: CKSubscription.ID = "notebytez-shared-changes"
     /// `internal`, not `private` — `SharingService` needs the same container identifier for its
     /// own direct `CKShare` CRUD, and duplicating the literal string would risk the two ever
     /// drifting (same rationale as this codebase's other `private` → `internal` widenings, e.g.

@@ -10,7 +10,7 @@ import Observation
 /// Backs `CommandPaletteView` (⌘P). No `ModelContext` — the palette is a static registry over
 /// `AppCommand.allCases`, not a data query. Routing is callback-injected rather than posting
 /// `NotificationCenter` directly, so selection logic is unit-testable without a live app/scene;
-/// `ContentView` supplies the callbacks that actually post `.kontinuum*` notifications.
+/// `ContentView` supplies the callbacks that actually post `.noteBytez*` notifications.
 @Observable
 final class CommandPaletteViewModel {
 
