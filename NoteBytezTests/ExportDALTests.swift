@@ -138,13 +138,13 @@ struct ExportDALTests {
         let context = try makeContext()
         let libraryId = UUID()
         let document = DocumentDAL.create(title: "Note", content: "---\ntags: [roadmap]\n---\nBody text.", libraryId: libraryId, in: context)
-        let notebook = NotebookDAL.create(name: "Kontinuum Roadmap", libraryId: libraryId, in: context)
+        let notebook = NotebookDAL.create(name: "NoteBytez Roadmap", libraryId: libraryId, in: context)
         NotebookDAL.attach(documentId: try #require(document.documentId), notebookId: try #require(notebook.notebookId), libraryId: libraryId, in: context)
 
         let exported = ExportDAL.exportableContent(for: document, in: context)
 
         #expect(exported.contains("tags: [roadmap]"))
-        #expect(exported.contains("notebooks: [\"Kontinuum Roadmap\"]"))
+        #expect(exported.contains("notebooks: [\"NoteBytez Roadmap\"]"))
         #expect(exported.contains("Body text."))
     }
 
@@ -152,7 +152,7 @@ struct ExportDALTests {
         let context = try makeContext()
         let libraryId = UUID()
         let document = DocumentDAL.create(title: "Note", content: "Original body.", libraryId: libraryId, in: context)
-        let notebook = NotebookDAL.create(name: "Kontinuum Roadmap", libraryId: libraryId, in: context)
+        let notebook = NotebookDAL.create(name: "NoteBytez Roadmap", libraryId: libraryId, in: context)
         NotebookDAL.attach(documentId: try #require(document.documentId), notebookId: try #require(notebook.notebookId), libraryId: libraryId, in: context)
 
         let firstExport = ExportDAL.exportableContent(for: document, in: context)

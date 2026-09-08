@@ -12,7 +12,7 @@ import Foundation
 
 /// The DEBUG `-SimulateEntitlement` seam that `Phase6EntitlementGateTests` and manual QA rely
 /// on. The live `StoreKitEntitlementProvider` is exercised via `SKTestSession` in Xcode with the
-/// `Kontinuum.storekit` configuration attached to the test plan (Phase 0 / Phase 8); here we
+/// `NoteBytez.storekit` configuration attached to the test plan (Phase 0 / Phase 8); here we
 /// only lock down the fake's scenario → snapshot mapping.
 struct SimulatedEntitlementProviderTests {
 

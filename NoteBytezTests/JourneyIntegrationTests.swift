@@ -29,7 +29,7 @@ struct JourneyIntegrationTests {
     // MARK: - Journey 2: Daily capture -> journal -> link -> task
 
     @Test func journeyTwoDailyCaptureLinkTagTaskAndCrossDeviceToggle() throws {
-        // A[Open Kontinuum on iPhone] -> B[Today's journal page already created and open]
+        // A[Open NoteBytez on iPhone] -> B[Today's journal page already created and open]
         let context = try makeContext()
         let library = LibraryDAL.create(name: "Mine", in: context)
         let libraryId = try #require(library.libraryId)

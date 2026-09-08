@@ -1,5 +1,5 @@
 //
-//  KontinuumUITestsLaunchTests.swift
+//  NoteBytezUITestsLaunchTests.swift
 //  NoteBytezUITests
 //
 //  Created by David Collison on 8/13/26.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class KontinuumUITestsLaunchTests: XCTestCase {
+final class NoteBytezUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

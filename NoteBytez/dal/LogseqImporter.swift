@@ -1,14 +1,14 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  LogseqImporter.swift
-//  Kontinuum
+//  NoteBytez
 //
 
 import Foundation
 
-/// Rewrites a Logseq page's raw Markdown into Kontinuum-native Markdown, pure/stateless like
+/// Rewrites a Logseq page's raw Markdown into NoteBytez-native Markdown, pure/stateless like
 /// `PropertyParser`/`TagParser` — no `ModelContext`. Logseq's own on-disk format is already
-/// plain Markdown, but three things differ enough to need translation before Kontinuum's
+/// plain Markdown, but three things differ enough to need translation before NoteBytez's
 /// existing block-splitting/task/search machinery can treat it as its own:
 ///
 /// 1. **Tasks are keyword-prefixed, not GFM checkboxes.** `- TODO Buy milk` / `- DONE Buy milk`
@@ -16,7 +16,7 @@ import Foundation
 ///    free. Scoped to exactly `TODO`/`DONE`, per this phase's own plan wording — Logseq's fuller
 ///    workflow vocabulary (`DOING`/`NOW`/`LATER`/`WAITING`/`CANCELED`) is left as plain text
 ///    rather than guessed at.
-/// 2. **Every bullet is its own block**, with no blank lines between siblings — Kontinuum's
+/// 2. **Every bullet is its own block**, with no blank lines between siblings — NoteBytez's
 ///    `MarkdownBlockSplitter` splits on blank-line boundaries, so a raw Logseq page would
 ///    collapse into one giant `Block`. A blank line is inserted before each top-level (depth-0)
 ///    bullet only; a bullet's own nested children stay attached to it (no block-per-nesting-level

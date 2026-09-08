@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  NoteBytezApp.swift
-//  Kontinuum
+//  NoteBytez
 //
 //  Created by David Collison on 8/13/26.
 //

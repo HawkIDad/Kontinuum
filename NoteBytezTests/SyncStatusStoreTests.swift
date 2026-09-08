@@ -43,7 +43,7 @@ struct SyncStatusStoreTests {
         store.syncWillStart()
         #expect(store.status == .syncing)
 
-        store.recordConflict(noteTitle: "Kontinuum Roadmap")
+        store.recordConflict(noteTitle: "NoteBytez Roadmap")
         store.syncDidFinish()
         #expect(store.status == .conflict)
 

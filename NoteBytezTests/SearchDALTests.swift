@@ -23,13 +23,13 @@ struct SearchDALTests {
         let context = try makeContext()
         let libraryId = UUID()
         _ = DocumentDAL.create(title: "Sync Log", content: "Fixed the reconnect race condition.", libraryId: libraryId, in: context)
-        _ = DocumentDAL.create(title: "Kontinuum Roadmap", content: "Finalize conflict UI, ship by Friday.", libraryId: libraryId, in: context)
+        _ = DocumentDAL.create(title: "NoteBytez Roadmap", content: "Finalize conflict UI, ship by Friday.", libraryId: libraryId, in: context)
         _ = DocumentDAL.create(title: "Unrelated", content: "Nothing relevant here.", libraryId: libraryId, in: context)
 
         let results = SearchDAL.searchContent(query: "conflict", libraryId: libraryId, in: context)
 
         #expect(results.count == 1)
-        #expect(results.first?.document.title == "Kontinuum Roadmap")
+        #expect(results.first?.document.title == "NoteBytez Roadmap")
     }
 
     @Test func searchContentRanksATitleMatchAboveABodyOnlyMatch() throws {

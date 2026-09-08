@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  Block+Sync.swift
-//  Kontinuum
+//  NoteBytez
 //
 
 import CloudKit

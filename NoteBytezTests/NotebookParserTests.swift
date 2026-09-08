@@ -10,13 +10,13 @@ import Testing
 struct NotebookParserTests {
 
     @Test func extractFrontmatterNotebooksParsesFlowList() {
-        let content = "---\nnotebooks: [\"App Onboarding Revamp\", \"Kontinuum Roadmap\"]\n---\nBody text."
-        #expect(NotebookParser.extractFrontmatterNotebooks(from: content) == ["App Onboarding Revamp", "Kontinuum Roadmap"])
+        let content = "---\nnotebooks: [\"App Onboarding Revamp\", \"NoteBytez Roadmap\"]\n---\nBody text."
+        #expect(NotebookParser.extractFrontmatterNotebooks(from: content) == ["App Onboarding Revamp", "NoteBytez Roadmap"])
     }
 
     @Test func extractFrontmatterNotebooksParsesBlockList() {
-        let content = "---\ntitle: Notes\nnotebooks:\n  - App Onboarding Revamp\n  - Kontinuum Roadmap\n---\nBody text."
-        #expect(NotebookParser.extractFrontmatterNotebooks(from: content) == ["App Onboarding Revamp", "Kontinuum Roadmap"])
+        let content = "---\ntitle: Notes\nnotebooks:\n  - App Onboarding Revamp\n  - NoteBytez Roadmap\n---\nBody text."
+        #expect(NotebookParser.extractFrontmatterNotebooks(from: content) == ["App Onboarding Revamp", "NoteBytez Roadmap"])
     }
 
     @Test func extractFrontmatterNotebooksParsesSingleInlineValue() {

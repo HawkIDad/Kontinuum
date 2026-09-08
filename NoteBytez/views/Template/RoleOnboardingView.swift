@@ -1,13 +1,13 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  RoleOnboardingView.swift
-//  Kontinuum
+//  NoteBytez
 //
 
 import SwiftUI
 
 /// First-run role picker — shown once by `RootView` after the first library exists. "What do
-/// you use Kontinuum for?"; selected packs (plus Common / KM Essentials) are added, or Skip.
+/// you use NoteBytez for?"; selected packs (plus Common / KM Essentials) are added, or Skip.
 /// Per NoteBytez20260824v1-Templates.md Phase 5.
 struct RoleOnboardingView: View {
 

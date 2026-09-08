@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  ImportViewModel.swift
-//  Kontinuum
+//  NoteBytez
 //
 
 import Foundation
@@ -30,7 +30,7 @@ final class ImportViewModel {
     var linkCount: Int { files.reduce(0) { $0 + $1.linkCount } }
     var taskCount: Int { files.reduce(0) { $0 + $1.taskCount } }
     /// Distinct notebook names detected across every file — reflects only files carrying a
-    /// `notebooks:` frontmatter field (i.e. previously exported by Kontinuum), not an
+    /// `notebooks:` frontmatter field (i.e. previously exported by NoteBytez), not an
     /// inference from a foreign vault's own tag conventions.
     var notebookCount: Int { Set(files.flatMap { $0.notebookNames }).count }
 

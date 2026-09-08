@@ -48,7 +48,7 @@ final class Phase3Journey2DailyCaptureFlowTests: NoteBytezUITestCase {
         XCTAssertTrue(app.navigationBars["Projects"].waitForExistence(timeout: 5))
         createFixtureDocument(app: app, notebookDocuments: notebookDocuments, title: "Q3 Roadmap")
 
-        // B[Opens Kontinuum, today's journal already there] -> C[Types a quick line]
+        // B[Opens NoteBytez, today's journal already there] -> C[Types a quick line]
         // -> D[[[ links to Q3 Roadmap] -> E[#tag] -> F[- [ ] task]
         MainShellScreen(app: app).navigate(to: "Today")
         let today = TodayJournalScreen(app: app)

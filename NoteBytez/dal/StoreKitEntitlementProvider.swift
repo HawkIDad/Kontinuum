@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  StoreKitEntitlementProvider.swift
-//  Kontinuum
+//  NoteBytez
 //
 
 import Foundation

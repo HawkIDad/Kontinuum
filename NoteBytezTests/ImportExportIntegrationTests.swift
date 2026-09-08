@@ -115,7 +115,7 @@ struct ImportExportIntegrationTests {
         #expect(restored.first?.content == "Don't lose me.")
     }
 
-    /// A Kontinuum-exported vault re-imported elsewhere (or into a fresh library) should
+    /// A NoteBytez-exported vault re-imported elsewhere (or into a fresh library) should
     /// recreate the same Notebook membership by exact name — the whole point of the
     /// `notebooks:` frontmatter field over the write-only synthetic tag.
     @Test func notebookMembershipRoundTripsThroughExportAndReimport() throws {

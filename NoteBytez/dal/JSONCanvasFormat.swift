@@ -1,14 +1,14 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  JSONCanvasFormat.swift
-//  Kontinuum
+//  NoteBytez
 //
 
 import Foundation
 
 /// Pure [JSON Canvas 1.0](https://jsoncanvas.org) document shape — full spec surface per
 /// NoteBytez-ReleaseFeatures.md's Decisions Log #2 (all 4 node types, edges with
-/// `fromSide`/`toSide`/`color`/`label`). No `ModelContext`, no Kontinuum-specific meaning — same
+/// `fromSide`/`toSide`/`color`/`label`). No `ModelContext`, no NoteBytez-specific meaning — same
 /// "pure format, DB-touching resolution lives in the DAL" shape as `AttachmentParser`/
 /// `PropertyParser`. `CanvasDAL.exportJSONCanvas`/`importJSONCanvas` are the only callers that
 /// should construct or interpret these types. `nonisolated` throughout this file: plain
@@ -88,7 +88,7 @@ nonisolated struct JSONCanvasNode: Codable {
 
 /// **Scope cut, stated not silent**: the spec's `fromEnd`/`toEnd` (arrowhead style) fields aren't
 /// modeled — NoteBytez-R1-Implementation.md Phase 9 only calls out `fromSide`/`toSide`/`color`/
-/// `label`. A foreign vault's arrowhead style is lost on import; every Kontinuum-rendered
+/// `label`. A foreign vault's arrowhead style is lost on import; every NoteBytez-rendered
 /// connector gets a plain arrowhead.
 nonisolated struct JSONCanvasEdge: Codable {
     var id: String

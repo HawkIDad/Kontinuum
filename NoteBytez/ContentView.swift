@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  ContentView.swift
-//  Kontinuum
+//  NoteBytez
 //
 
 import SwiftUI
@@ -275,7 +275,7 @@ struct ContentView: View {
     }
 
     /// Persistent across every destination (not just Today/Document) so sync/conflict state —
-    /// Kontinuum's own visual language, with no equivalent in Obsidian/Logseq's native UI — stays
+    /// NoteBytez's own visual language, with no equivalent in Obsidian/Logseq's native UI — stays
     /// visible regardless of where the user is browsing, per `docs/styleGuide.md`'s "Offline"
     /// convention that a timestamp/status should always be on screen.
     private var syncStatusToolbarItem: some ToolbarContent {

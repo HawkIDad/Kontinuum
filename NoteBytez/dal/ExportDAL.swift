@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  ExportDAL.swift
-//  Kontinuum
+//  NoteBytez
 //
 
 import Foundation
@@ -56,13 +56,13 @@ enum ExportDAL {
     }
 
     /// `document.content` with Notebook membership woven in for export, so it round-trips
-    /// back into Kontinuum (`NotebookParser.extractFrontmatterNotebooks`) and is immediately
+    /// back into NoteBytez (`NotebookParser.extractFrontmatterNotebooks`) and is immediately
     /// usable in Obsidian/Logseq (their native nested-tag support), per
     /// NoteBytez-ReleaseFeatures.md's Markdown import/export section. A document in no
     /// notebooks exports completely unchanged — no empty frontmatter block added.
     ///
     /// The synthetic `#notebook/<kebab-name>` tag is appended to the body rather than folded
-    /// into an existing frontmatter `tags:` list: Kontinuum's own tag index already treats
+    /// into an existing frontmatter `tags:` list: NoteBytez's own tag index already treats
     /// inline and frontmatter tags identically, so this reaches the same result without the
     /// risk of textually rewriting a user-authored `tags:` line.
     static func exportableContent(for document: Document, in context: ModelContext) -> String {

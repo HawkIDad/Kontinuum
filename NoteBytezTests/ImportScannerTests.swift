@@ -25,12 +25,12 @@ struct ImportScannerTests {
     @Test func scanFindsEveryMarkdownFileRecursively() {
         let root = makeTempDirectory()
         write("First note.", to: "Root.md", in: root)
-        write("Nested note.", to: "Projects/Kontinuum.md", in: root)
+        write("Nested note.", to: "Projects/NoteBytez.md", in: root)
 
         let summaries = ImportScanner.scan(folderURL: root)
 
         #expect(summaries.count == 2)
-        #expect(summaries.map { $0.relativePath }.sorted() == ["Projects/Kontinuum.md", "Root.md"])
+        #expect(summaries.map { $0.relativePath }.sorted() == ["Projects/NoteBytez.md", "Root.md"])
     }
 
     @Test func scanIgnoresNonMarkdownFiles() {

@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 //
 //  AttachmentStorage.swift
-//  Kontinuum
+//  NoteBytez
 //
 
 import Foundation
@@ -26,7 +26,7 @@ enum AttachmentStorage {
     }
 
     /// `AttachmentStore/<documentId>/` — deliberately outside the container's `Documents`
-    /// subfolder (the only part Files.app surfaces), since these files are Kontinuum-managed
+    /// subfolder (the only part Files.app surfaces), since these files are NoteBytez-managed
     /// state a user shouldn't rename/delete out from under the app.
     static func documentDirectory(documentId: UUID, containerRoot: URL, fileManager: FileManager = .default) -> URL {
         let directory = containerRoot.appendingPathComponent("AttachmentStore", isDirectory: true)
