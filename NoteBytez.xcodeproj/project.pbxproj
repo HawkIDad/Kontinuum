@@ -16,25 +16,25 @@
 			containerPortal = 29F43E91302E258E00907F14 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 29F43E98302E258E00907F14;
-			remoteInfo = Kontinuum;
+			remoteInfo = NoteBytez;
 		};
 		29F43EB5302E258F00907F14 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29F43E91302E258E00907F14 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 29F43E98302E258E00907F14;
-			remoteInfo = Kontinuum;
+			remoteInfo = NoteBytez;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		29F43E99302E258E00907F14 /* NoteBytez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteBytez.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		29F43EAA302E258F00907F14 /* KontinuumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KontinuumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		29F43EB4302E258F00907F14 /* KontinuumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KontinuumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		29F43EAA302E258F00907F14 /* NoteBytezTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteBytezTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		29F43EB4302E258F00907F14 /* NoteBytezUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteBytezUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		29F43EBC302E258F00907F14 /* Exceptions for "Kontinuum" folder in "Kontinuum" target */ = {
+		29F43EBC302E258F00907F14 /* Exceptions for "NoteBytez" folder in "NoteBytez" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"images/logos/NoteBytez-Artwork-1024x1024.png",
@@ -50,7 +50,7 @@
 				"Info-macOS.plist",
 				Info.plist,
 			);
-			target = 29F43E98302E258E00907F14 /* Kontinuum */;
+			target = 29F43E98302E258E00907F14 /* NoteBytez */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -60,22 +60,22 @@
 			path = Wiki;
 			sourceTree = "<group>";
 		};
-		29F43E9B302E258E00907F14 /* Kontinuum */ = {
+		29F43E9B302E258E00907F14 /* NoteBytez */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				29F43EBC302E258F00907F14 /* Exceptions for "Kontinuum" folder in "Kontinuum" target */,
+				29F43EBC302E258F00907F14 /* Exceptions for "NoteBytez" folder in "NoteBytez" target */,
 			);
-			path = Kontinuum;
+			path = NoteBytez;
 			sourceTree = "<group>";
 		};
-		29F43EAD302E258F00907F14 /* KontinuumTests */ = {
+		29F43EAD302E258F00907F14 /* NoteBytezTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = KontinuumTests;
+			path = NoteBytezTests;
 			sourceTree = "<group>";
 		};
-		29F43EB7302E258F00907F14 /* KontinuumUITests */ = {
+		29F43EB7302E258F00907F14 /* NoteBytezUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = KontinuumUITests;
+			path = NoteBytezUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -109,9 +109,9 @@
 		29F43E90302E258E00907F14 = {
 			isa = PBXGroup;
 			children = (
-				29F43E9B302E258E00907F14 /* Kontinuum */,
-				29F43EAD302E258F00907F14 /* KontinuumTests */,
-				29F43EB7302E258F00907F14 /* KontinuumUITests */,
+				29F43E9B302E258E00907F14 /* NoteBytez */,
+				29F43EAD302E258F00907F14 /* NoteBytezTests */,
+				29F43EB7302E258F00907F14 /* NoteBytezUITests */,
 				29A589D1304EFBEC004AC5E5 /* Wiki */,
 				29F43E9A302E258E00907F14 /* Products */,
 			);
@@ -121,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				29F43E99302E258E00907F14 /* NoteBytez.app */,
-				29F43EAA302E258F00907F14 /* KontinuumTests.xctest */,
-				29F43EB4302E258F00907F14 /* KontinuumUITests.xctest */,
+				29F43EAA302E258F00907F14 /* NoteBytezTests.xctest */,
+				29F43EB4302E258F00907F14 /* NoteBytezUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,9 +130,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		29F43E98302E258E00907F14 /* Kontinuum */ = {
+		29F43E98302E258E00907F14 /* NoteBytez */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 29F43EBD302E258F00907F14 /* Build configuration list for PBXNativeTarget "Kontinuum" */;
+			buildConfigurationList = 29F43EBD302E258F00907F14 /* Build configuration list for PBXNativeTarget "NoteBytez" */;
 			buildPhases = (
 				29F43E95302E258E00907F14 /* Sources */,
 				29F43E96302E258E00907F14 /* Frameworks */,
@@ -144,19 +144,19 @@
 			);
 			fileSystemSynchronizedGroups = (
 				29A589D1304EFBEC004AC5E5 /* Wiki */,
-				29F43E9B302E258E00907F14 /* Kontinuum */,
+				29F43E9B302E258E00907F14 /* NoteBytez */,
 			);
-			name = Kontinuum;
+			name = NoteBytez;
 			packageProductDependencies = (
 				29F43ED1302E258F00907F14 /* MarkdownG9 */,
 			);
-			productName = Kontinuum;
+			productName = NoteBytez;
 			productReference = 29F43E99302E258E00907F14 /* NoteBytez.app */;
 			productType = "com.apple.product-type.application";
 		};
-		29F43EA9302E258F00907F14 /* KontinuumTests */ = {
+		29F43EA9302E258F00907F14 /* NoteBytezTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 29F43EC2302E258F00907F14 /* Build configuration list for PBXNativeTarget "KontinuumTests" */;
+			buildConfigurationList = 29F43EC2302E258F00907F14 /* Build configuration list for PBXNativeTarget "NoteBytezTests" */;
 			buildPhases = (
 				29F43EA6302E258F00907F14 /* Sources */,
 				29F43EA7302E258F00907F14 /* Frameworks */,
@@ -168,18 +168,18 @@
 				29F43EAC302E258F00907F14 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				29F43EAD302E258F00907F14 /* KontinuumTests */,
+				29F43EAD302E258F00907F14 /* NoteBytezTests */,
 			);
-			name = KontinuumTests;
+			name = NoteBytezTests;
 			packageProductDependencies = (
 			);
-			productName = KontinuumTests;
-			productReference = 29F43EAA302E258F00907F14 /* KontinuumTests.xctest */;
+			productName = NoteBytezTests;
+			productReference = 29F43EAA302E258F00907F14 /* NoteBytezTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		29F43EB3302E258F00907F14 /* KontinuumUITests */ = {
+		29F43EB3302E258F00907F14 /* NoteBytezUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 29F43EC5302E258F00907F14 /* Build configuration list for PBXNativeTarget "KontinuumUITests" */;
+			buildConfigurationList = 29F43EC5302E258F00907F14 /* Build configuration list for PBXNativeTarget "NoteBytezUITests" */;
 			buildPhases = (
 				29F43EB0302E258F00907F14 /* Sources */,
 				29F43EB1302E258F00907F14 /* Frameworks */,
@@ -191,13 +191,13 @@
 				29F43EB6302E258F00907F14 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				29F43EB7302E258F00907F14 /* KontinuumUITests */,
+				29F43EB7302E258F00907F14 /* NoteBytezUITests */,
 			);
-			name = KontinuumUITests;
+			name = NoteBytezUITests;
 			packageProductDependencies = (
 			);
-			productName = KontinuumUITests;
-			productReference = 29F43EB4302E258F00907F14 /* KontinuumUITests.xctest */;
+			productName = NoteBytezUITests;
+			productReference = 29F43EB4302E258F00907F14 /* NoteBytezUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -223,7 +223,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 29F43E94302E258E00907F14 /* Build configuration list for PBXProject "Kontinuum" */;
+			buildConfigurationList = 29F43E94302E258E00907F14 /* Build configuration list for PBXProject "NoteBytez" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -240,9 +240,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				29F43E98302E258E00907F14 /* Kontinuum */,
-				29F43EA9302E258F00907F14 /* KontinuumTests */,
-				29F43EB3302E258F00907F14 /* KontinuumUITests */,
+				29F43E98302E258E00907F14 /* NoteBytez */,
+				29F43EA9302E258F00907F14 /* NoteBytezTests */,
+				29F43EB3302E258F00907F14 /* NoteBytezUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -298,12 +298,12 @@
 /* Begin PBXTargetDependency section */
 		29F43EAC302E258F00907F14 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 29F43E98302E258E00907F14 /* Kontinuum */;
+			target = 29F43E98302E258E00907F14 /* NoteBytez */;
 			targetProxy = 29F43EAB302E258F00907F14 /* PBXContainerItemProxy */;
 		};
 		29F43EB6302E258F00907F14 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 29F43E98302E258E00907F14 /* Kontinuum */;
+			target = 29F43E98302E258E00907F14 /* NoteBytez */;
 			targetProxy = 29F43EB5302E258F00907F14 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -314,16 +314,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Kontinuum/Kontinuum.entitlements;
-				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Kontinuum/Kontinuum-macOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = NoteBytez/NoteBytez.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "NoteBytez/NoteBytez-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = S4843K7ZH6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Kontinuum/Info.plist;
-				"INFOPLIST_FILE[sdk=macosx*]" = "Kontinuum/Info-macOS.plist";
+				INFOPLIST_FILE = NoteBytez/Info.plist;
+				"INFOPLIST_FILE[sdk=macosx*]" = "NoteBytez/Info-macOS.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -333,8 +333,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.Kontinuum;
-				PRODUCT_MODULE_NAME = Kontinuum;
+				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.NoteBytez;
+				PRODUCT_MODULE_NAME = NoteBytez;
 				PRODUCT_NAME = NoteBytez;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -351,16 +351,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Kontinuum/Kontinuum.entitlements;
-				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Kontinuum/Kontinuum-macOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = NoteBytez/NoteBytez.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "NoteBytez/NoteBytez-macOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = S4843K7ZH6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Kontinuum/Info.plist;
-				"INFOPLIST_FILE[sdk=macosx*]" = "Kontinuum/Info-macOS.plist";
+				INFOPLIST_FILE = NoteBytez/Info.plist;
+				"INFOPLIST_FILE[sdk=macosx*]" = "NoteBytez/Info-macOS.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -370,8 +370,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.Kontinuum;
-				PRODUCT_MODULE_NAME = Kontinuum;
+				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.NoteBytez;
+				PRODUCT_MODULE_NAME = NoteBytez;
 				PRODUCT_NAME = NoteBytez;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -523,7 +523,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.KontinuumTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.NoteBytezTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -546,7 +546,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.KontinuumTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.NoteBytezTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -567,7 +567,7 @@
 				DEVELOPMENT_TEAM = S4843K7ZH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.KontinuumUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.NoteBytezUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -575,7 +575,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Kontinuum;
+				TEST_TARGET_NAME = NoteBytez;
 			};
 			name = Debug;
 		};
@@ -588,7 +588,7 @@
 				DEVELOPMENT_TEAM = S4843K7ZH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.KontinuumUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.g9Consulting.NoteBytezUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -596,14 +596,14 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Kontinuum;
+				TEST_TARGET_NAME = NoteBytez;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		29F43E94302E258E00907F14 /* Build configuration list for PBXProject "Kontinuum" */ = {
+		29F43E94302E258E00907F14 /* Build configuration list for PBXProject "NoteBytez" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29F43EC0302E258F00907F14 /* Debug */,
@@ -612,7 +612,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		29F43EBD302E258F00907F14 /* Build configuration list for PBXNativeTarget "Kontinuum" */ = {
+		29F43EBD302E258F00907F14 /* Build configuration list for PBXNativeTarget "NoteBytez" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29F43EBE302E258F00907F14 /* Debug */,
@@ -621,7 +621,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		29F43EC2302E258F00907F14 /* Build configuration list for PBXNativeTarget "KontinuumTests" */ = {
+		29F43EC2302E258F00907F14 /* Build configuration list for PBXNativeTarget "NoteBytezTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29F43EC3302E258F00907F14 /* Debug */,
@@ -630,7 +630,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		29F43EC5302E258F00907F14 /* Build configuration list for PBXNativeTarget "KontinuumUITests" */ = {
+		29F43EC5302E258F00907F14 /* Build configuration list for PBXNativeTarget "NoteBytezUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29F43EC6302E258F00907F14 /* Debug */,

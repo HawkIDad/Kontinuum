@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "29F43E98302E258E00907F14"
                BuildableName = "NoteBytez.app"
-               BlueprintName = "Kontinuum"
-               ReferencedContainer = "container:Kontinuum.xcodeproj">
+               BlueprintName = "NoteBytez"
+               ReferencedContainer = "container:NoteBytez.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "29F43EA9302E258F00907F14"
-               BuildableName = "KontinuumTests.xctest"
-               BlueprintName = "KontinuumTests"
-               ReferencedContainer = "container:Kontinuum.xcodeproj">
+               BuildableName = "NoteBytezTests.xctest"
+               BlueprintName = "NoteBytezTests"
+               ReferencedContainer = "container:NoteBytez.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "29F43EB3302E258F00907F14"
-               BuildableName = "KontinuumUITests.xctest"
-               BlueprintName = "KontinuumUITests"
-               ReferencedContainer = "container:Kontinuum.xcodeproj">
+               BuildableName = "NoteBytezUITests.xctest"
+               BlueprintName = "NoteBytezUITests"
+               ReferencedContainer = "container:NoteBytez.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -57,15 +57,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:KontinuumCIGate.xctestplan"
+            reference = "container:NoteBytezCIGate.xctestplan"
             default = "YES">
          </TestPlanReference>
          <TestPlanReference
-            reference = "container:KontinuumEntitlement.xctestplan">
+            reference = "container:NoteBytezEntitlement.xctestplan">
          </TestPlanReference>
       </TestPlans>
       <StoreKitConfigurationFileReference
-         identifier = "Kontinuum/StoreKit/Kontinuum.storekit">
+         identifier = "NoteBytez/StoreKit/NoteBytez.storekit">
       </StoreKitConfigurationFileReference>
    </TestAction>
    <LaunchAction
@@ -84,8 +84,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "29F43E98302E258E00907F14"
             BuildableName = "NoteBytez.app"
-            BlueprintName = "Kontinuum"
-            ReferencedContainer = "container:Kontinuum.xcodeproj">
+            BlueprintName = "NoteBytez"
+            ReferencedContainer = "container:NoteBytez.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -101,8 +101,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "29F43E98302E258E00907F14"
             BuildableName = "NoteBytez.app"
-            BlueprintName = "Kontinuum"
-            ReferencedContainer = "container:Kontinuum.xcodeproj">
+            BlueprintName = "NoteBytez"
+            ReferencedContainer = "container:NoteBytez.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

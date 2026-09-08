@@ -10,20 +10,20 @@
   ],
   "defaultOptions" : {
     "storeKitConfigurationFileReference" : {
-      "identifier" : "Kontinuum\/StoreKit\/Kontinuum.storekit"
+      "identifier" : "NoteBytez\/StoreKit\/NoteBytez.storekit"
     },
     "targetForVariableExpansion" : {
-      "containerPath" : "container:Kontinuum.xcodeproj",
+      "containerPath" : "container:NoteBytez.xcodeproj",
       "identifier" : "29F43E98302E258E00907F14",
-      "name" : "Kontinuum"
+      "name" : "NoteBytez"
     }
   },
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:Kontinuum.xcodeproj",
+        "containerPath" : "container:NoteBytez.xcodeproj",
         "identifier" : "29F43EA9302E258F00907F14",
-        "name" : "KontinuumTests"
+        "name" : "NoteBytezTests"
       }
     },
     {
@@ -31,9 +31,9 @@
         "Phase6EntitlementGateTests"
       ],
       "target" : {
-        "containerPath" : "container:Kontinuum.xcodeproj",
+        "containerPath" : "container:NoteBytez.xcodeproj",
         "identifier" : "29F43EB3302E258F00907F14",
-        "name" : "KontinuumUITests"
+        "name" : "NoteBytezUITests"
       }
     }
   ],

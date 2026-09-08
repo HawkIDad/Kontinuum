@@ -10,17 +10,17 @@
   ],
   "defaultOptions" : {
     "targetForVariableExpansion" : {
-      "containerPath" : "container:Kontinuum.xcodeproj",
+      "containerPath" : "container:NoteBytez.xcodeproj",
       "identifier" : "29F43E98302E258E00907F14",
-      "name" : "Kontinuum"
+      "name" : "NoteBytez"
     }
   },
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:Kontinuum.xcodeproj",
+        "containerPath" : "container:NoteBytez.xcodeproj",
         "identifier" : "29F43EA9302E258F00907F14",
-        "name" : "KontinuumTests"
+        "name" : "NoteBytezTests"
       }
     },
     {
@@ -34,9 +34,9 @@
         "Phase3Journey4GraphResurfaceFlowTests"
       ],
       "target" : {
-        "containerPath" : "container:Kontinuum.xcodeproj",
+        "containerPath" : "container:NoteBytez.xcodeproj",
         "identifier" : "29F43EB3302E258F00907F14",
-        "name" : "KontinuumUITests"
+        "name" : "NoteBytezUITests"
       }
     }
   ],
