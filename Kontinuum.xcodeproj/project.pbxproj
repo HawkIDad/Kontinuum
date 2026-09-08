@@ -33,33 +33,14 @@
 		29F43EB4302E258F00907F14 /* KontinuumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KontinuumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		29F43EBC302E258F00907F14 /* Exceptions for "Kontinuum" folder in "Kontinuum" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"images/logos/NoteBytez-Artwork-1024x1024.png",
-				"images/logos/NoteBytez-Artwork-2048x2048.png",
-				"images/logos/NoteBytez-Artwork-2048x2048.psd",
-				"images/logos/NoteBytez-Mark-1024x1024.png",
-				"images/logos/NoteBytez-Mark-2048x2048.png",
-				"images/logos/NoteBytez-Text-2048x2048.psd",
-				"images/logos/NoteBytez-Text-FullCollor-1024x1024.png",
-				"images/logos/NoteBytez-Text-FullCollor-2048x2048.png",
-				"images/logos/NoteBytez-Text-FullCollor-2048x2048.psd",
-				images/logos/quill.psd,
-				"Info-macOS.plist",
-				Info.plist,
-			);
-			target = 29F43E98302E258E00907F14 /* Kontinuum */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		29A589D1304EFBEC004AC5E5 /* Wiki */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Wiki;
+			sourceTree = "<group>";
+		};
 		29F43E9B302E258E00907F14 /* Kontinuum */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				29F43EBC302E258F00907F14 /* Exceptions for "Kontinuum" folder in "Kontinuum" target */,
-			);
 			path = Kontinuum;
 			sourceTree = "<group>";
 		};
@@ -107,6 +88,7 @@
 				29F43E9B302E258E00907F14 /* Kontinuum */,
 				29F43EAD302E258F00907F14 /* KontinuumTests */,
 				29F43EB7302E258F00907F14 /* KontinuumUITests */,
+				29A589D1304EFBEC004AC5E5 /* Wiki */,
 				29F43E9A302E258E00907F14 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -137,6 +119,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				29A589D1304EFBEC004AC5E5 /* Wiki */,
 				29F43E9B302E258E00907F14 /* Kontinuum */,
 			);
 			name = Kontinuum;
