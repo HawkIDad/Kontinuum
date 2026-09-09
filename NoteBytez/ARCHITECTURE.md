@@ -25,7 +25,7 @@ status.
 - **Persistence:** SwiftData, local-first (all reads/writes hit SwiftData directly; sync is
   async/background only).
 - **Sync:** CloudKit private database via `CKSyncEngine`, single container
-  `iCloud.com.g9Consulting.Kontinuum`.
+  `iCloud.com.kwicksync.NoteBytez`.
 - **Markdown parsing:** local Swift Package `MarkdownG9` (`../MarkdownG9`), extended per-feature
   (wikilinks, tags, task checkboxes). A `[[Title#Heading]]` section link reuses the same
   `wikilink://` URL scheme as a plain `[[Title]]` wikilink, carrying `Heading` as a real
@@ -68,7 +68,7 @@ Consequences for the code:
   it's running on.
 - **Per-platform entitlements/Info.plist, not per-platform code.** `NoteBytez.entitlements` /
   `Info.plist` (iOS) and `NoteBytez-macOS.entitlements` / `Info-macOS.plist` (Mac, selected via
-  `[sdk=macosx*]`-suffixed build settings) both point at the same `iCloud.com.g9Consulting.Kontinuum`
+  `[sdk=macosx*]`-suffixed build settings) both point at the same `iCloud.com.kwicksync.NoteBytez`
   container, so a library syncs across all three platforms with no extra plumbing. The Mac
   entitlements file omits `com.apple.developer.default-data-protection` — the specific key that
   doesn't exist on macOS and broke the Catalyst attempt.
@@ -202,22 +202,29 @@ re-decoding before returning.
 - Booleans: prefixed `is`/`has`/`can`/`should`
 - No single-letter variable names, no global variables
 
-## Retained Name
+## Identifier History
 
-The project was renamed to **NoteBytez** in two passes: a surface (user- and
-plugin-visible) rename ([NoteBytez20260906v1-NameChange.md](Docs/Plans/NoteBytez20260906v1-NameChange.md)),
-then a full internal rename of the Xcode project, targets, scheme, folders, Swift module,
-bundle identifiers, embedded identifier strings, file headers, and documentation
-([NoteBytez20260908v1-ProjectRename.md](Docs/Plans/NoteBytez20260908v1-ProjectRename.md)).
+The build identity was rebased in three passes, all pre-launch with disposable data:
 
-Exactly **one** identifier keeps the old name: the CloudKit container
-**`iCloud.com.g9Consulting.Kontinuum`** (both entitlement files' `icloud-container` /
-`ubiquity-container` keys, and the `containerIdentifier` / `ubiquityContainerIdentifier`
-constants in `sync/SyncEngine.swift` and `dal/AttachmentStorage.swift`). CloudKit containers
-cannot be renamed, and with pre-launch disposable data there is no reason to create a new one.
+1. **Surface rename** to **NoteBytez** — user- and plugin-visible names only
+   ([NoteBytez20260906v1-NameChange.md](Docs/Plans/NoteBytez20260906v1-NameChange.md)).
+2. **Internal rename** — Xcode project, targets, scheme, folders, Swift module, bundle
+   identifiers, embedded identifier strings, file headers, and documentation
+   ([NoteBytez20260908v1-ProjectRename.md](Docs/Plans/NoteBytez20260908v1-ProjectRename.md)).
+   The CloudKit container was the one identifier left on the old name, on the reasoning that
+   containers cannot be renamed.
+3. **Org re-homing** to **`com.kwicksync`**
+   ([NoteBytez20260909v1-Bundle.md](Docs/Plans/NoteBytez20260909v1-Bundle.md)) — the three
+   target bundle identifiers, StoreKit product IDs, the entitlement Keychain service, the
+   `Logger` subsystem fallback, a `DispatchQueue` label, and a **new** CloudKit container
+   `iCloud.com.kwicksync.NoteBytez` (both entitlement files' `icloud-container` /
+   `ubiquity-container` keys, and the `containerIdentifier` / `ubiquityContainerIdentifier`
+   constants in `sync/SyncEngine.swift` and `dal/AttachmentStorage.swift`). The former
+   `iCloud.com.g9Consulting.Kontinuum` container is abandoned in place, not deleted.
 
-`Scripts/verify-rename.sh` enforces this: it fails on any case-insensitive occurrence of the old name in a
-tracked file except that container literal.
+**No legacy identifier is retained.** `Scripts/verify-rename.sh` enforces this: it fails on any
+case-insensitive `kontinuum` or `g9consulting` in tracked text, excluding the script itself and
+the historical plan documents under `Docs/Plans/`.
 
 ## Testing
 

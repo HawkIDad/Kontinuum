@@ -8,6 +8,13 @@
 
 # Project Rename — NoteBytez → NoteBytez (internal)
 
+> **Superseded in part by [NoteBytez20260909v1-Bundle.md](NoteBytez20260909v1-Bundle.md).**
+> That plan moved the organization prefix from `com.g9Consulting` to `com.kwicksync` and
+> replaced the retained CloudKit container `iCloud.com.g9Consulting.Kontinuum` with a new
+> `iCloud.com.kwicksync.NoteBytez`. References below to the container as a "retained" or "sole
+> legacy" identifier, and to `com.g9Consulting.*` bundle / product / service IDs, are historical
+> — the decisions are not rewritten.
+
 ## User Story
 
 **As** the Senior Developer on NoteBytez, **I want** the Xcode project, its targets, folders,

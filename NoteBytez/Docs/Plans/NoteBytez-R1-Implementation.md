@@ -584,7 +584,7 @@ embed within note content).
 the app's own iCloud ubiquity container (iCloud Drive) — not referenced in place, and not a
 custom File Provider extension (no second Xcode target). Requires a new
 `com.apple.developer.ubiquity-container-identifiers` entitlement on the existing
-`iCloud.com.g9Consulting.Kontinuum` container; syncs across devices automatically via the OS.
+`iCloud.com.kwicksync.NoteBytez` container; syncs across devices automatically via the OS.
 
 - [x] `Attachment` model (`attachmentId`, `documentId`, `fileName`, `relativePath`, `mimeType`,
       audit fields) — [Attachment.swift](../../models/Attachment.swift), same shape as `Block`

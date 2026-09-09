@@ -82,7 +82,7 @@
         - View models will be stored in the {application}/viewModels folder.
         - Views will be stored in the {application}/views folder.
             - Views for a given model will be stored in {application}/views/{model name} folder.
-    - Use CloudKit container for data storage: iCloud.com.g9Consulting.Kontinuum
+    - Use CloudKit container for data storage: iCloud.com.kwicksync.NoteBytez
         - CloudKit requires all model variables to be optional.
         - CloudKit does not allow @Attribute(.unique).
     - Models

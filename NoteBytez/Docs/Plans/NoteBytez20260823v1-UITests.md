@@ -35,7 +35,7 @@ issues are caught automatically instead of relying on someone walking every scre
    exploratory test, not a CI-gating one.
 5. Two-user sync/collaboration tests (Journey 8, and the manual conflict-race check in #4) run
    against dedicated **CloudKit Development-environment** test accounts on iPad + iPhone
-   simulators — never against the production `iCloud.com.g9Consulting.Kontinuum` container.
+   simulators — never against the production `iCloud.com.kwicksync.NoteBytez` container.
    Account credentials are **not stored in plaintext in this or any checked-in doc**; they live in
    the Apple Passwords app (iCloud Keychain), referenced here only by role (see Implementation Plan
    Phase 0).
@@ -89,7 +89,7 @@ started, `[x]` done and verified (builds, runs, and actually passes — not mere
       under test always resolves to the CloudKit Development container~~ — **corrected**: CloudKit's
       Development-vs-Production environment is resolved from the app's provisioning/entitlements at
       build time, not selectable by a runtime flag; both `NoteBytez.entitlements` and
-      `NoteBytez-macOS.entitlements` already declare `iCloud.com.g9Consulting.Kontinuum` under a
+      `NoteBytez-macOS.entitlements` already declare `iCloud.com.kwicksync.NoteBytez` under a
       development-signed build, so any non-distribution build already targets Development. The
       actual gap was narrower: `NoteBytezApp.swift` only starts `SyncEngine` in Release builds
       (Debug uses an in-memory store precisely so automated tests can't touch CloudKit at all) —

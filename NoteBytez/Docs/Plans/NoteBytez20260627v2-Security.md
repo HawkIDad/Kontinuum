@@ -57,7 +57,7 @@ can be signed off against explicit criteria rather than assumption.
   `views/`, `models/` code.
 - Local packages `MarkdownG9` and `SwiftRPT` (`../MarkdownG9`, `../SwiftRPT`) as bundled
   dependencies.
-- CloudKit container `iCloud.com.g9Consulting.Kontinuum`: schema, share permissions, zone
+- CloudKit container `iCloud.com.kwicksync.NoteBytez`: schema, share permissions, zone
   layout — the client's *use* of it.
 - Local persisted artefacts: SwiftData store, `Backups/`, `SyncState/`, `AttachmentStore/`,
   `MigrationArchives/`.

@@ -5,11 +5,14 @@
     Interview answers (2026-09-06) are recorded under Resolutions R1-R4.
 -->
 
-> **Superseded by [NoteBytez20260908v1-ProjectRename.md](NoteBytez20260908v1-ProjectRename.md).**
+> **Superseded by [NoteBytez20260908v1-ProjectRename.md](NoteBytez20260908v1-ProjectRename.md)**
+> and, in part, by [NoteBytez20260909v1-Bundle.md](NoteBytez20260909v1-Bundle.md).
 > This plan deliberately kept the internal build identity on the old name; the 2026-09-08 plan
-> renamed everything except the CloudKit container. Historical record — decisions below are not
-> rewritten, but every occurrence of the old name in the body has been swept to `NoteBytez`,
-> so the original before/after name pair no longer reads as a contrast.
+> renamed everything except the CloudKit container; the 2026-09-09 plan moved the org prefix to
+> `com.kwicksync` and re-homed the container to `iCloud.com.kwicksync.NoteBytez`. Historical
+> record — decisions below are not rewritten, but every occurrence of the old name in the body
+> has been swept to `NoteBytez`, so the original before/after name pair no longer reads as a
+> contrast.
 
 # Product Rename to NoteBytez (surface pass)
 

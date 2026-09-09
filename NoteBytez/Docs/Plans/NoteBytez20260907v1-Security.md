@@ -56,7 +56,7 @@ that the implementation needs a decision on. All are now resolved.
 | **G20** | Cached-entitlement storage & tamper. | Stored in the **Keychain**, `kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly`, not synced: last-verified timestamp, entitlement expiry, product id, environment. No signed payload (on-device threat model accepts local tamper — G6). | Avoids `UserDefaults`/plist for a security-relevant value (v2 WS2.4). |
 | **G21** | "Restore Purchases" is an App Review requirement (Guideline 3.1.1 / 3.1.2). | Explicit **Restore Purchases** button on the paywall **and** in Settings, calling `AppStore.sync()`. Plus "Manage Subscription" (`showManageSubscriptions`) and "Redeem Code". | Required for approval; also the recovery path for a new device or reinstall. |
 | **G22** | Minimum OS / StoreKit availability. | Deployment target is iOS/macOS **26.5**; StoreKit 2 `AppTransaction` (iOS 16+/macOS 13+) is fully available. No legacy `SKReceiptRefreshRequest` / `exit(173)` fallback needed. | Removes a whole class of macOS receipt-refresh complexity. |
-| **G23** | Universal Purchase / single app record. | One app record; identical bundle id `com.g9Consulting.NoteBytez` is already shared by the iOS and macOS targets. Confirm **Universal Purchase** is enabled on the app record and both platforms are attached to it. | Precondition for SF3/SF4 cross-platform entitlement. |
+| **G23** | Universal Purchase / single app record. | One app record; identical bundle id `com.kwicksync.NoteBytez` is already shared by the iOS and macOS targets. Confirm **Universal Purchase** is enabled on the app record and both platforms are attached to it. | Precondition for SF3/SF4 cross-platform entitlement. |
 | **G24** | Export-compliance key. | Unchanged. StoreKit uses only Apple TLS; keep `ITSAppUsesNonExemptEncryption` as set in v2 WS9.4. | No new crypto is introduced. |
 
 **Deferred to the product owner (do not block the build):** exact trial length (placeholder 7 days),
@@ -74,8 +74,8 @@ types. Phases are dependency-ordered: 0 → 1 → 2 → 3 → (4, 5, 6 in parall
 
 1. Confirm the single app record has **Universal Purchase** enabled and both iOS and macOS builds attached (G23).
 2. Create subscription group **`NoteBytez`**. Add two auto-renewable products:
-   - `com.g9Consulting.NoteBytez.sub.monthly`
-   - `com.g9Consulting.NoteBytez.sub.annual` (priced at a discount vs. 12× monthly)
+   - `com.kwicksync.NoteBytez.sub.monthly`
+   - `com.kwicksync.NoteBytez.sub.annual` (priced at a discount vs. 12× monthly)
 3. Add one **Introductory Offer** (free trial, 7-day placeholder) at group level.
 4. **Enable Family Sharing** on the subscription group (G3).
 5. **Enable Billing Grace Period** for the group (G13).
@@ -189,7 +189,7 @@ Status as built. Verified with Xcode 26.6 (iOS/macOS 26.5 SDK) on 2026-09-07.
 
 ### Phase 0 — StoreKit configuration — ⚠️ partial (code done; ASC account work outstanding)
 
-- [x] `NoteBytez/StoreKit/NoteBytez.storekit` — subscription group `NoteBytez`, products `com.g9Consulting.NoteBytez.sub.monthly` / `…annual`, `familyShareable = true`, 7-day free `introductoryOffer` on each.
+- [x] `NoteBytez/StoreKit/NoteBytez.storekit` — subscription group `NoteBytez`, products `com.kwicksync.NoteBytez.sub.monthly` / `…annual`, `familyShareable = true`, 7-day free `introductoryOffer` on each.
 - [x] `NoteBytezEntitlement.xctestplan` created; runs the full `NoteBytezTests` target + `Phase6EntitlementGateTests`, with `storeKitConfigurationFileReference` → the `.storekit` file.
 - [x] Scheme (`NoteBytez.xcscheme`) — added the test-plan reference and a `StoreKitConfigurationFileReference`. *(Xcode may re-normalise the relative path on first open.)*
 - [ ] App Store Connect: create the app record with **Universal Purchase**, the subscription group, the two products, the introductory offer, **enable Family Sharing**, **enable Billing Grace Period** — account/console work, not code.

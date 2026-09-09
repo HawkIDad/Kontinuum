@@ -69,7 +69,7 @@ Source: [NoteBytez20260813-Research.md](NoteBytez20260813-Research.md) §8 Roadm
   - **Delivered ([NoteBytez20260829v2-Enhancements.md](NoteBytez20260829v2-Enhancements.md) Workstream A):** a "Force" mode alongside the original radial layout — hand-rolled Fruchterman-Reingold layout (no third-party physics dependency), drag-to-pin, node-type/tag filters, and filtered force views save as a `SavedView`
 - **CloudKit private sync**
   - CKSyncEngine wiring against the private database
-  - Single container (`iCloud.com.g9Consulting.Kontinuum`); one custom `CKRecordZone` per library — default zone unused (can't be shared, mixes library boundaries)
+  - Single container (`iCloud.com.kwicksync.NoteBytez`); one custom `CKRecordZone` per library — default zone unused (can't be shared, mixes library boundaries)
   - Root "Library" record per zone; documents/blocks/tags/links/tasks chain to it via parent references, so V1 hierarchical `CKShare` sharing needs no re-parenting later
   - Record IDs reuse the model's existing `{model}Id` UUID as `CKRecord.ID.recordName` — no separate identity mapping
   - Single-user sync only in MVP (private database only); V1 shared database support reuses this same engine, not a new one
@@ -158,7 +158,7 @@ Source: [NoteBytez20260813-Research.md](NoteBytez20260813-Research.md) §8 Roadm
 
 - **MVP platforms:** iPhone + iPad + Mac.
 - **Local encryption:** rely on platform-native encryption only — Data Protection locally, CloudKit server-side encryption for synced data. No custom crypto layer.
-- **CloudKit container:** single container, `iCloud.com.g9Consulting.Kontinuum`.
+- **CloudKit container:** single container, `iCloud.com.kwicksync.NoteBytez`.
 - **Zone strategy:** one custom `CKRecordZone` per library, root Library record per zone, default zone unused — sets up V1 hierarchical sharing without a schema change.
 - **Conflict handling:** user-selectable strategy (Keep All Versions / Last-Write-Wins + Banner / Markdown Diff-Merge), shipped in MVP, single-user scope only. Built on a revision concept so V1 can extend to multi-user without rearchitecting.
 - **Task data model:** due-date and priority fields present in MVP schema, surfaced in UI starting V1.
