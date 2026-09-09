@@ -241,7 +241,8 @@ final class DocumentViewModel {
 
     /// The raw title text of an ATX heading line (hashes and surrounding whitespace stripped),
     /// or `nil` if `content` isn't a heading line at all.
-    private static func headingTitle(of content: String) -> String? {
+    /// `nonisolated` — pure string parse, passed by reference to `compactMap`.
+    nonisolated private static func headingTitle(of content: String) -> String? {
         guard content.hasPrefix("#") else { return nil }
         let stripped = content.drop(while: { $0 == "#" })
         guard stripped.isEmpty || stripped.first == " " || stripped.first == "\t" else { return nil }

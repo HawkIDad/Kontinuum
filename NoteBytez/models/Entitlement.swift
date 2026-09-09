@@ -10,7 +10,9 @@ import Foundation
 /// These are plain value types — never a `@Model`, never synced. The gate that consumes them is
 /// `EntitlementGateViewModel`; the sources are `StoreKitEntitlementProvider` (live) and
 /// `EntitlementCache` (the last-good result, for the offline window).
-enum Entitlement {
+/// `nonisolated` — compile-time constants read from the `nonisolated` launch path
+/// (`EntitlementGateViewModel.launchShouldSuspendSync`, called in `NoteBytezApp.init`).
+nonisolated enum Entitlement {
 
     /// The two auto-renewable products in the `NoteBytez` subscription group (Phase 0). A live
     /// transaction for any other product id is ignored by the gate.
@@ -87,7 +89,7 @@ enum BlockReason: String, Sendable, Equatable, CaseIterable {
 
 /// The resolved access state. Exactly three levels — the container renders app UI, app UI plus
 /// a lapse banner, or a block / paywall screen.
-enum AccessLevel: Sendable, Equatable {
+nonisolated enum AccessLevel: Sendable, Equatable {
     case full
     case warning(daysRemaining: Int)
     case blocked(reason: BlockReason)

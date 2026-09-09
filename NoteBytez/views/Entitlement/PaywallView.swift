@@ -5,7 +5,10 @@
 //
 
 import SwiftUI
+import SwiftData
+
 import StoreKit
+
 import UniformTypeIdentifiers
 
 /// Blocked-state primary surface for a user who has never subscribed (`BlockReason.neverSubscribed`),

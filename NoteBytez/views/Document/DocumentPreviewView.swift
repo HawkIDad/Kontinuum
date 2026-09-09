@@ -5,6 +5,8 @@
 //
 
 import SwiftUI
+import SwiftData
+
 import MarkdownG9
 
 /// Shared preview renderer for S3 (Today/Journal) and S4 (Document View) — using the same

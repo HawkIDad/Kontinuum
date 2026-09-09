@@ -5,6 +5,8 @@
 //
 
 import SwiftUI
+import SwiftData
+
 import UniformTypeIdentifiers
 
 /// Full-screen block for a user who had access and lost it (`subscriptionLapsed`,

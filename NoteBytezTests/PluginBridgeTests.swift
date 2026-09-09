@@ -13,7 +13,12 @@ import Foundation
 /// filesystem/network/other-document surface reachable from script code), and
 /// malformed/malicious-script resilience (a syntax error or an infinite loop never takes down
 /// the test process, i.e. never takes down the host app).
-struct PluginBridgeTests {
+///
+/// `nonisolated` — `PluginBridge` and its helpers are all explicitly `nonisolated` and evaluate
+/// JavaScript on a background `DispatchQueue`; the timeout test in particular must not run on
+/// the main actor (the target's default isolation), or a caller-actor-inheriting `await
+/// bridge.run()` sits behind the busy-loop instead of returning `.timedOut` on schedule.
+nonisolated struct PluginBridgeTests {
 
     private func snapshot(documents: [PluginLibrarySnapshot.DocumentSummary] = [], tags: [String] = [], notebooks: [String] = []) -> PluginLibrarySnapshot {
         PluginLibrarySnapshot(documents: documents, tagNames: tags, notebookNames: notebooks)

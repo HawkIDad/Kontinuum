@@ -11,7 +11,7 @@ import Security
 /// The last successful entitlement verification, persisted so a previously-verified subscriber
 /// keeps working offline for the 7-day window (Resolution G10). Stored in the Keychain, not
 /// `UserDefaults`/a plist, because it is a security-relevant value (Resolution G20).
-struct CachedEntitlement: Codable, Sendable, Equatable {
+nonisolated struct CachedEntitlement: Codable, Sendable, Equatable {
     /// When the last live StoreKit verification succeeded.
     var lastVerified: Date
     /// The verified subscription's expiry at that time, if known.
@@ -24,7 +24,9 @@ struct CachedEntitlement: Codable, Sendable, Equatable {
 
 /// Read/write seam over the cached entitlement. Production uses `KeychainEntitlementCache`;
 /// tests and previews use `InMemoryEntitlementCache`.
-protocol EntitlementCaching: Sendable {
+/// `nonisolated` — the launch path reads the cache synchronously before the app is running
+/// (`EntitlementGateViewModel.launchShouldSuspendSync`, called in `NoteBytezApp.init`).
+nonisolated protocol EntitlementCaching: Sendable {
     func load() -> CachedEntitlement?
     func save(_ entitlement: CachedEntitlement)
     func clear()

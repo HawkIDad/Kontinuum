@@ -5,6 +5,8 @@
 //
 
 import SwiftUI
+import SwiftData
+
 
 /// S25 — Graph Insights (Decision 1). A read-only "answerable views" screen, not a
 /// force-directed graph: Orphans, Stale, Notes with Open Tasks, Hubs, and Clusters, each

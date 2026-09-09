@@ -265,7 +265,8 @@ enum BlockDAL {
 
     /// Not `private`: also used by `DocumentViewModel.resolveSectionLink`/`headingSuggestions`
     /// to slug a `[[Title#Heading]]` heading the same way a block's own anchor is slugged.
-    static func slugify(_ text: String) -> String {
+    /// `nonisolated` — pure text transform with no actor state, passed by reference to `map`.
+    nonisolated static func slugify(_ text: String) -> String {
         let allowed = CharacterSet.alphanumerics
         var scalars: [Unicode.Scalar] = []
         var lastWasHyphen = false

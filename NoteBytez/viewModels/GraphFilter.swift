@@ -22,6 +22,9 @@ nonisolated struct GraphFilter: Codable, Equatable {
     /// Filters a `GraphDAL.neighborhood` result down to the node types currently toggled on. A
     /// node can match more than one class (e.g. it has open tasks and also has no links of its
     /// own elsewhere in the library) — it's included if it matches any enabled class.
+    /// `@MainActor` — reads `@Model` state through `GraphNodeClassifier`; the struct itself
+    /// stays `nonisolated` so it round-trips as `Codable` through `SavedViewDAL`.
+    @MainActor
     func includedNodes(
         from candidates: [(document: Document, hopDistance: Int)],
         libraryId: UUID,
@@ -39,6 +42,7 @@ nonisolated struct GraphFilter: Codable, Equatable {
 
     /// Tag-scoped *highlighting*, not filtering (Decision 5) — a matching node is styled
     /// distinctly, never hidden, so a highlight scope can never shrink the visible graph.
+    @MainActor
     func isHighlighted(_ document: Document) -> Bool {
         guard let tagScope, !tagScope.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return false }
         return GraphNodeClassifier.matchesTag(document, tag: tagScope)

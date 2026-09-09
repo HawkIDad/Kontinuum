@@ -5,6 +5,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 /// S27 — Explore Hub. iPhone's 4th tab: a plain list pushing to every destination that has no
 /// dedicated tab of its own on iPhone (Decision 2) — Graph, Insights, Tasks, Saved Views,
