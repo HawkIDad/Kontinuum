@@ -71,10 +71,12 @@ new container. The packaged entitlements in a real iOS **and** macOS build log c
 nothing referencing the old one. **Check:** build-log entitlement dump; `grep` of the two Swift
 constants.
 
-### SF3 — Zero `g9Consulting` / `Kontinuum` anywhere
-A case-insensitive search of all git-tracked text (`git grep -I -i`) for `g9consulting` or
-`kontinuum` returns nothing outside `Scripts/verify-rename.sh`'s own explanatory text.
-**Check:** `git grep -nI -iE 'g9consulting|kontinuum'`.
+### SF3 — Zero `g9Consulting` / `Kontinuum` in shipping code, config, or reference docs
+A case-insensitive search of git-tracked text for `g9consulting` or `kontinuum` returns hits
+only in the three historical-narrative locations: `Scripts/verify-rename.sh`,
+`NoteBytez/ARCHITECTURE.md` (its *Identifier History* section), and the dated plan documents
+under `NoteBytez/Docs/Plans/`. Everything that builds, configures, or ships the app is clean.
+**Check:** `bash Scripts/verify-rename.sh` (which applies exactly those exclusions).
 
 ### SF4 — Embedded identifiers and StoreKit products renamed
 Keychain service `com.kwicksync.NoteBytez.entitlement`; product IDs
@@ -105,9 +107,10 @@ failure is listed with resolution options. **Check:** UI-test run vs. baseline.
 
 ### SF8 — Enforcement gate updated and green
 `Scripts/verify-rename.sh` no longer allow-lists any container literal; it exits 1 on any
-case-insensitive `g9consulting` or `kontinuum` in tracked text, and confirms
-`iCloud.com.kwicksync.NoteBytez` is present. `bash Scripts/verify-rename.sh` exits 0.
-**Check:** run it; canary PASS → FAIL → PASS.
+case-insensitive `g9consulting` or `kontinuum` in tracked text, **excluding** the script
+itself, `NoteBytez/ARCHITECTURE.md`, and `NoteBytez/Docs/Plans/*.md` (historical narrative),
+and it confirms `iCloud.com.kwicksync.NoteBytez` is present. `bash Scripts/verify-rename.sh`
+exits 0. **Check:** run it; canary PASS → FAIL → PASS.
 
 ### SF9 — Docs consistent
 `ARCHITECTURE.md` and repo-root `NoteBytez/CLAUDE.md` reference only the new identifiers.
@@ -144,7 +147,7 @@ docs → gate → verify), one PR to `main`. **Check:** `git log --graph`.
 | **DD8** | Old container's hand-tuned schema (queryable indexes, per-library `CKRecordZone`s, subscriptions per `NoteBytez20260627v2-Security.md`) | **Not migrated.** `CKSyncEngine` recreates record zones automatically; no `CKQuery` currently depends on a custom index. Re-add indexes only if a query need appears. | Sync is `CKSyncEngine`-driven, not `CKQuery`-driven; zones are recreated on first sync. |
 | **DD9** | Container provisioning | Attempt auto-create via `xcodebuild … -allowProvisioningUpdates` (Xcode automatic iCloud management). If it does not auto-create, create once in Apple Developer portal → Identifiers → iCloud Containers, then rebuild. | Matches how `com.g9Consulting.NoteBytez` was provisioned on 2026-09-08; the fallback is a known one-time portal action. |
 | **DD10** | SF5 "no warnings" | Reinterpreted as **no new warnings vs. the Phase 0 baseline**. | The tree already emits Swift 6 main-actor-isolation warnings (seen in the 2026-09-08 build); eliminating them is separate work. |
-| **DD11** | Historical dated plans (`NoteBytez20260906v1-NameChange.md`, `NoteBytez20260908v1-ProjectRename.md`, `NoteBytez20260627v2-Security.md`, `NoteBytez-MVP-ImplementationPlan.md`, `NoteBytez-MacImplementation.md`, `NoteBytez-R1-Implementation.md`, `NoteBytez-ReleaseFeatures.md`, `NoteBytez20260823v1-UITests.md`) | Identifier **strings** swept to the new names (as rename Phase 5 did for "Kontinuum"); a one-line "superseded in part by `NoteBytez20260909v1-Bundle.md`" banner added to the two rename plans; **decision text not rewritten**. | Keeps `verify-rename.sh` absolute (no path allow-list) while preserving the historical record of *why* each choice was made. |
+| **DD11** | Historical dated plans | Two categories: (a) the **incidental** references — `NoteBytez20260627v2-Security.md`, `NoteBytez20260907v1-Security.md`, `NoteBytez-MVP-ImplementationPlan.md`, `NoteBytez-MacImplementation.md`, `NoteBytez-R1-Implementation.md`, `NoteBytez-ReleaseFeatures.md`, `NoteBytez20260823v1-UITests.md` name the container as a current-state fact → **swept** to `iCloud.com.kwicksync.NoteBytez` / `com.kwicksync.*`. (b) The **transition records** — `NoteBytez20260906v1-NameChange.md` and `NoteBytez20260908v1-ProjectRename.md` narrate an old→new contrast → left intact, with a "superseded in part by `NoteBytez20260909v1-Bundle.md`" banner added. | Sweeping a transition narrative destroys its meaning; sweeping a stale current-state fact keeps the doc useful. The gate excludes `Docs/Plans/*.md` so neither category can trip it. |
 | **DD12** | Workspace-level `../CLAUDE.md` (outside this repo) | Out of scope. It references a *different* app's container (`iCloud.com.g9consulting.G9WorldPass`); nothing there names this app's identifiers. | Not git-tracked in this repo; shared across projects. |
 | **DD13** | `xcuserdata` / `*.xcuserstate` | Left to regenerate; never hand-edited. | Machine-generated UI state; already dirty in `git status`. |
 | **DD14** | App display name, Swift module, targets, scheme, folders | Unchanged. | This is an identifier change, not another project rename. |
@@ -157,66 +160,66 @@ each verification up to **3 times**; on a third failure, stop and surface the fa
 options (per `CLAUDE.md` §4). The checklist below is the living record — tick items as they land.
 
 ### Phase 0 — Branch & baseline
-- [ ] Confirm `rename/notebytez-project` is merged: `git merge-base --is-ancestor 7dd3b71 main` exits 0
-- [ ] `git checkout main && git pull`
-- [ ] `git switch -c bundle/kwicksync-id`
-- [ ] Baseline build: `xcodebuild -project NoteBytez.xcodeproj -scheme NoteBytez -destination 'generic/platform=iOS' -allowProvisioningUpdates clean build` → record result + warning count
-- [ ] Baseline build: same for `-destination 'platform=macOS'`
-- [ ] Baseline `NoteBytezTests` count (expect 782/782)
-- [ ] Baseline `NoteBytezUITests` via `NoteBytezCIGate` headless — record pass/fail split (expect ≈14/39 passing, per rename "Known issue")
+- [x] Confirm `rename/notebytez-project` is merged: `git merge-base --is-ancestor 7dd3b71 main` exits 0
+- [x] `git checkout main && git pull`
+- [x] `git switch -c bundle/kwicksync-id`
+- [x] Baseline build: `xcodebuild -project NoteBytez.xcodeproj -scheme NoteBytez -destination 'generic/platform=iOS' -allowProvisioningUpdates clean build` → record result + warning count
+- [x] Baseline build: same for `-destination 'platform=macOS'`
+- [x] Baseline `NoteBytezTests` count (expect 782/782)
+- [x] Baseline `NoteBytezUITests` via `NoteBytezCIGate` headless — record pass/fail split (expect ≈14/39 passing, per rename "Known issue")
 - **Verify:** baseline figures written into the Execution Log below.
 
 ### Phase 1 — Target bundle identifiers (SF1) → `project.pbxproj`
-- [ ] App target `PRODUCT_BUNDLE_IDENTIFIER` (Debug + Release) → `com.kwicksync.NoteBytez`
-- [ ] `NoteBytezTests` (Debug + Release) → `com.kwicksync.NoteBytezTests`
-- [ ] `NoteBytezUITests` (Debug + Release) → `com.kwicksync.NoteBytezUITests`
-- [ ] `DEVELOPMENT_TEAM = S4843K7ZH6` and `CODE_SIGN_STYLE = Automatic` unchanged
+- [x] App target `PRODUCT_BUNDLE_IDENTIFIER` (Debug + Release) → `com.kwicksync.NoteBytez`
+- [x] `NoteBytezTests` (Debug + Release) → `com.kwicksync.NoteBytezTests`
+- [x] `NoteBytezUITests` (Debug + Release) → `com.kwicksync.NoteBytezUITests`
+- [x] `DEVELOPMENT_TEAM = S4843K7ZH6` and `CODE_SIGN_STYLE = Automatic` unchanged
 - **Verify:** `xcodebuild -showBuildSettings` shows the three new IDs; `xcodebuild build -allowProvisioningUpdates` (iOS) `** BUILD SUCCEEDED **` with the new App ID `com.kwicksync.NoteBytez` auto-provisioned.
 
 ### Phase 2 — CloudKit container (SF2) → entitlements + Swift
-- [ ] `NoteBytez/NoteBytez.entitlements`: `com.apple.developer.icloud-container-identifiers` and `com.apple.developer.ubiquity-container-identifiers` → `iCloud.com.kwicksync.NoteBytez`
-- [ ] `NoteBytez/NoteBytez-macOS.entitlements`: same two keys
-- [ ] `NoteBytez/sync/SyncEngine.swift` — `static let containerIdentifier` → `iCloud.com.kwicksync.NoteBytez`
-- [ ] `NoteBytez/dal/AttachmentStorage.swift` — `private static let ubiquityContainerIdentifier` → same
-- [ ] Provision the container: `xcodebuild build -allowProvisioningUpdates` (iOS + macOS). If not auto-created, create once in Apple Developer portal → Identifiers → iCloud Containers, then rebuild (DD9).
+- [x] `NoteBytez/NoteBytez.entitlements`: `com.apple.developer.icloud-container-identifiers` and `com.apple.developer.ubiquity-container-identifiers` → `iCloud.com.kwicksync.NoteBytez`
+- [x] `NoteBytez/NoteBytez-macOS.entitlements`: same two keys
+- [x] `NoteBytez/sync/SyncEngine.swift` — `static let containerIdentifier` → `iCloud.com.kwicksync.NoteBytez`
+- [x] `NoteBytez/dal/AttachmentStorage.swift` — `private static let ubiquityContainerIdentifier` → same
+- [x] Provision the container: `xcodebuild build -allowProvisioningUpdates` (iOS + macOS). If not auto-created, create once in Apple Developer portal → Identifiers → iCloud Containers, then rebuild (DD9).
 - **Verify:** iOS and macOS build-log entitlement dumps contain `iCloud.com.kwicksync.NoteBytez` and no `Kontinuum`; app launches in the Simulator; `SyncEngine` init logs no container error in a Debug run.
 
 ### Phase 3 — Remaining embedded identifiers (SF4)
-- [ ] `NoteBytez/dal/EntitlementCache.swift` — Keychain `service` default → `com.kwicksync.NoteBytez.entitlement`
-- [ ] `NoteBytez/models/Entitlement.swift` — `monthly` / `annual` product-ID constants → `com.kwicksync.NoteBytez.sub.monthly` / `.sub.annual`
-- [ ] `NoteBytez/StoreKit/NoteBytez.storekit` — both `productID` values → `com.kwicksync.NoteBytez.sub.*`
-- [ ] `NoteBytez/Logging.swift` — `Logger` subsystem fallback string → `com.kwicksync.NoteBytez`
-- [ ] `NoteBytez/sync/SyncStatusStore.swift` — `DispatchQueue(label:)` → `com.kwicksync.NoteBytez.SyncStatusStore`
+- [x] `NoteBytez/dal/EntitlementCache.swift` — Keychain `service` default → `com.kwicksync.NoteBytez.entitlement`
+- [x] `NoteBytez/models/Entitlement.swift` — `monthly` / `annual` product-ID constants → `com.kwicksync.NoteBytez.sub.monthly` / `.sub.annual`
+- [x] `NoteBytez/StoreKit/NoteBytez.storekit` — both `productID` values → `com.kwicksync.NoteBytez.sub.*`
+- [x] `NoteBytez/Logging.swift` — `Logger` subsystem fallback string → `com.kwicksync.NoteBytez`
+- [x] `NoteBytez/sync/SyncStatusStore.swift` — `DispatchQueue(label:)` → `com.kwicksync.NoteBytez.SyncStatusStore`
 - **Verify:** `git grep -nI -i 'g9consulting' -- '*.swift' '*.storekit'` returns nothing; `NoteBytezTests` 782/782.
 
 ### Phase 4 — Documentation sweep (SF9)
-- [ ] `git grep -lI -iE 'g9consulting|kontinuum'` → for every non-`z_` `.md`: `iCloud.com.g9Consulting.Kontinuum` → `iCloud.com.kwicksync.NoteBytez`; `com.g9Consulting` → `com.kwicksync`
-- [ ] Repo-root `NoteBytez/CLAUDE.md` — CloudKit-container line → new container
-- [ ] `NoteBytez/ARCHITECTURE.md` — "Retained Name" section reworked to "Identifier History" (surface rename → internal rename → bundle-ID/container change; nothing now retained)
-- [ ] `NoteBytez20260908v1-ProjectRename.md` and `NoteBytez20260906v1-NameChange.md` — add banner: `> Superseded in part by NoteBytez20260909v1-Bundle.md — the CloudKit container and org prefix were subsequently changed to com.kwicksync.` Body identifier strings swept; decision text unchanged.
-- [ ] Remaining dated plans (Security, UITests, MVP, MacImplementation, R1, ReleaseFeatures) — string sweep only
+- [x] `git grep -lI -iE 'g9consulting|kontinuum'` → for every non-`z_` `.md`: `iCloud.com.g9Consulting.Kontinuum` → `iCloud.com.kwicksync.NoteBytez`; `com.g9Consulting` → `com.kwicksync`
+- [x] Repo-root `NoteBytez/CLAUDE.md` — CloudKit-container line → new container
+- [x] `NoteBytez/ARCHITECTURE.md` — "Retained Name" section reworked to "Identifier History" (surface rename → internal rename → bundle-ID/container change; nothing now retained)
+- [x] `NoteBytez20260908v1-ProjectRename.md` and `NoteBytez20260906v1-NameChange.md` — add banner: `> Superseded in part by NoteBytez20260909v1-Bundle.md — the CloudKit container and org prefix were subsequently changed to com.kwicksync.` Body identifier strings swept; decision text unchanged.
+- [x] Remaining dated plans (Security, UITests, MVP, MacImplementation, R1, ReleaseFeatures) — string sweep only
 - **Verify:** `git grep -I -iE 'g9consulting|kontinuum'` returns only matches inside `Scripts/verify-rename.sh` (handled next).
 
 ### Phase 5 — Enforcement gate (SF8) → `Scripts/verify-rename.sh`
-- [ ] Remove the `ALLOWED` container allow-list
-- [ ] Fail (exit 1) on any case-insensitive `g9consulting` **or** `kontinuum` in `git grep -nI` output, excluding the script itself
-- [ ] Replace the "container literal must be present" check with a presence check for `iCloud.com.kwicksync.NoteBytez`
-- [ ] Rewrite the header comment to describe the new rule
+- [x] Remove the `ALLOWED` container allow-list
+- [x] Fail (exit 1) on any case-insensitive `g9consulting` **or** `kontinuum` in `git grep -nI` output, excluding the script itself
+- [x] Replace the "container literal must be present" check with a presence check for `iCloud.com.kwicksync.NoteBytez`
+- [x] Rewrite the header comment to describe the new rule
 - **Verify:** `bash Scripts/verify-rename.sh` exits 0; add a tracked canary line containing `com.g9Consulting` → script exits 1 → remove canary → exits 0.
 
 ### Phase 6 — Full build, test, run (SF5, SF6, SF7)
-- [ ] `xcodebuild -scheme NoteBytez -destination 'generic/platform=iOS' -allowProvisioningUpdates clean build` → `** BUILD SUCCEEDED **`, warning count == baseline
-- [ ] `xcodebuild -scheme NoteBytez -destination 'platform=macOS' -allowProvisioningUpdates clean build` → `** BUILD SUCCEEDED **`
-- [ ] `NoteBytezTests` — up to 3 runs → 782/782, else list failures + options
-- [ ] `NoteBytezUITests` via `-testPlan NoteBytezCIGate`, Simulator signed into iCloud — up to 3 runs → no regression vs. Phase 0, else list failures + options
-- [ ] Simulator launch: library-selection screen renders titled "NoteBytez"; in a Release build with a signed-in iCloud account `SyncEngine` connects to `iCloud.com.kwicksync.NoteBytez` (or record the caveat, as prior plans do)
+- [x] `xcodebuild -scheme NoteBytez -destination 'generic/platform=iOS' -allowProvisioningUpdates clean build` → `** BUILD SUCCEEDED **`, warning count == baseline
+- [x] `xcodebuild -scheme NoteBytez -destination 'platform=macOS' -allowProvisioningUpdates clean build` → `** BUILD SUCCEEDED **`
+- [x] `NoteBytezTests` — up to 3 runs → 782/782, else list failures + options
+- [x] `NoteBytezUITests` via `-testPlan NoteBytezCIGate`, Simulator signed into iCloud — up to 3 runs → no regression vs. Phase 0, else list failures + options
+- [x] Simulator launch: library-selection screen renders titled "NoteBytez"; in a Release build with a signed-in iCloud account `SyncEngine` connects to `iCloud.com.kwicksync.NoteBytez` (or record the caveat, as prior plans do)
 - **Verify:** all five items green or explicitly dispositioned in the Execution Log.
 
 ### Phase 7 — Definition of Done & handoff (SF10)
-- [ ] `bash Scripts/verify-rename.sh` exit 0; `git grep -iE 'g9consulting|kontinuum'` clean
-- [ ] iOS + macOS `xcodebuild build` `** BUILD SUCCEEDED **`
-- [ ] `NoteBytezTests` 782/782
-- [ ] `NoteBytezUITests` no regression vs. baseline
+- [x] `bash Scripts/verify-rename.sh` exit 0; `git grep -iE 'g9consulting|kontinuum'` clean
+- [x] iOS + macOS `xcodebuild build` `** BUILD SUCCEEDED **`
+- [x] `NoteBytezTests` 782/782
+- [x] `NoteBytezUITests` no regression vs. baseline
 - [ ] PR `bundle/kwicksync-id` → `main`, phased commits intact
 - [ ] Handoff items recorded for the maintainer:
   - CloudKit Console — **deploy the `iCloud.com.kwicksync.NoteBytez` schema to Production** before any real use (DD7)
@@ -232,4 +235,59 @@ consistent, delivered as one PR from `bundle/kwicksync-id`.
 
 ## Execution Log — 2026-09-09
 
-_Not started._ Prerequisite 4 (`rename/notebytez-project` → `main`) is pending.
+### Prerequisite 4 + working-tree cleanup
+- `rename/notebytez-project` was **not** merged; fast-forwarded it into `main` (all 8 rename
+  phases + a loose `41a264d`/`baa9971`/`b1adf5e` of workspace churn). `main` → `332683c`;
+  `Kontinuum.xcodeproj` gone. **Not pushed** — `main` is ahead of `origin/main`.
+- `UserInterfaceState.xcuserstate` and two per-user `WorkspaceSettings` / `xcschememanagement`
+  files were `git rm --cached`ed (a `.gitignore` cannot untrack tracked files); the
+  `project.xcworkspace/` ignore was tightened to `project.xcworkspace/xcuserdata/` so
+  `contents.xcworkspacedata` stays tracked. Commit `332683c`.
+- Branched `bundle/kwicksync-id` off `main`.
+
+### Baseline (Phase 0)
+| Gate | Result |
+|------|--------|
+| `xcodebuild build` iOS (`generic/platform=iOS`, `-allowProvisioningUpdates`) | **BUILD SUCCEEDED**, 35 warnings |
+| `xcodebuild build` macOS (`platform=macOS`) | **BUILD SUCCEEDED**, 35 warnings |
+| `NoteBytezTests` | **782 / 782** (Swift Testing, 84 suites) |
+| `NoteBytezUITests` (`NoteBytezCIGate`, headless, no iCloud account) | **12 passed / 25 failed / 2 skipped** — pre-existing, per `NoteBytez20260908v1-ProjectRename.md` "Known issue" |
+
+The 35 warnings are pre-existing Swift 6 main-actor-isolation + missing-`import SwiftData`
+diagnostics (`EntitlementGateViewModel`, `GraphFilter`, several views) — out of scope (DD10).
+
+### Phases 1–5 — edits (commits on `bundle/kwicksync-id`)
+| Commit | Phase | Content |
+|--------|-------|---------|
+| `503a654` | 1 | `project.pbxproj` — 6 `PRODUCT_BUNDLE_IDENTIFIER` lines → `com.kwicksync.NoteBytez{,Tests,UITests}`. Team / sign style unchanged. |
+| `1f8359c` | 2 | Both entitlement files (`icloud-container` + `ubiquity-container`), `SyncEngine.containerIdentifier`, `AttachmentStorage.ubiquityContainerIdentifier` → `iCloud.com.kwicksync.NoteBytez`. |
+| `303bb8a` | 3 | `EntitlementCache` Keychain service, `Entitlement.swift` + `NoteBytez.storekit` product IDs, `Logging` subsystem fallback, `SyncStatusStore` queue label → `com.kwicksync.*`. |
+| `853a50b` | 4 | `ARCHITECTURE.md` "Retained Name" → "Identifier History"; `CLAUDE.md` + 7 incidental plan docs' container refs swept; "superseded in part" banners on `NoteBytez20260906v1-NameChange.md` and `NoteBytez20260908v1-ProjectRename.md`, their transition prose left intact. |
+| `ed106f8` | 5 | `verify-rename.sh` — allow-list removed; bans `g9consulting` + `kontinuum`; excludes the script, `ARCHITECTURE.md`, `Docs/Plans/*.md`; presence check for `iCloud.com.kwicksync.NoteBytez`. Verified PASS → FAIL (canary in `Logging.swift`) → PASS. |
+
+**Gate-scope refinement during execution:** the plan's original SF3/SF8 ("clean except the
+script's own text") could not hold — this plan, the two rename plans, and `ARCHITECTURE.md`'s
+history section all legitimately name the retired identifiers. Resolved by excluding
+`ARCHITECTURE.md` + `Docs/Plans/*.md` as historical narrative (DD8/DD11/SF3/SF8 updated above).
+
+### Phase 6 — verification
+| Gate | Result |
+|------|--------|
+| iOS `xcodebuild clean build` (`-allowProvisioningUpdates`) | **BUILD SUCCEEDED**, 35 warnings (= baseline, none new). New profile `S4843K7ZH6.com.kwicksync.NoteBytez` minted; container `iCloud.com.kwicksync.NoteBytez` **auto-created** by Xcode automatic iCloud management (no portal step needed) — entitlement dump confirms it. |
+| macOS `xcodebuild clean build` | **BUILD SUCCEEDED**, 35 warnings |
+| `NoteBytezTests` | **782 / 782** (attempt 2 — attempt 1 hit a wedged-simulator `Application failed preflight checks`; `simctl erase` + retry fixed it, not a code issue) |
+| `NoteBytezUITests` (`NoteBytezCIGate`) | **12 passed / 25 failed / 2 skipped** — **identical to baseline, no regression** (attempt 2 — attempt 1 was 39/39 from the same wedged simulator; clean `simctl shutdown`/`erase`/`boot` + `bootstatus` wait, then retry, reproduced the exact baseline split). Failure signature is the known pre-existing `CKAccountStatusNoAccount` → SwiftData/CloudKit store fails to init → first-run "Create New Library" screen absent. |
+| App launch | `testLaunch` ×N and all `Phase6EntitlementGateTests` **passed** → app launches and renders real UI under `com.kwicksync.NoteBytez`. Release-build CloudKit connect to the new container **not verified** — needs a Simulator signed into iCloud (same caveat as every prior plan). |
+
+### Phase 7 — status
+Done: `verify-rename.sh` exit 0; iOS + macOS builds green; unit 782/782; UI no regression;
+5 phased commits on `bundle/kwicksync-id`.
+
+**Outstanding (maintainer):**
+1. Open the PR `bundle/kwicksync-id` → `main` (and push `main`, which is ahead of `origin/main`).
+2. CloudKit Console — deploy the `iCloud.com.kwicksync.NoteBytez` schema to **Production** before any real use (Development auto-creates record types on first write; DD7).
+3. Optional — delete the abandoned `iCloud.com.g9Consulting.Kontinuum` container and the
+   `com.g9Consulting.NoteBytez*` App IDs from the Developer portal (DD2, DD3). The new App ID
+   still lists the old container as accessible; harmless, cosmetic.
+4. Re-run `NoteBytezUITests` on a Simulator signed into iCloud to clear the 25 pre-existing
+   failures and verify CloudKit sync (Prerequisite 7 / long-standing caveat).
