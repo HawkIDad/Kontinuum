@@ -33,7 +33,7 @@ final class SyncEngine: @unchecked Sendable {
     /// own direct `CKShare` CRUD, and duplicating the literal string would risk the two ever
     /// drifting (same rationale as this codebase's other `private` → `internal` widenings, e.g.
     /// `ExportDAL.sanitizedFilename`).
-    static let containerIdentifier = "iCloud.com.g9Consulting.Kontinuum"
+    static let containerIdentifier = "iCloud.com.kwicksync.NoteBytez"
 
     private let logger = Log.logger(.sync)
 

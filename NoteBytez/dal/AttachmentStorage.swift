@@ -16,7 +16,7 @@ import Foundation
 /// temp directory instead of resolving the real ubiquity container.
 enum AttachmentStorage {
 
-    private static let ubiquityContainerIdentifier = "iCloud.com.g9Consulting.Kontinuum"
+    private static let ubiquityContainerIdentifier = "iCloud.com.kwicksync.NoteBytez"
 
     /// Root of the app's iCloud ubiquity container, or `nil` if iCloud is unavailable (signed
     /// out, disabled, offline on first launch). Callers surface this as "can't attach files
