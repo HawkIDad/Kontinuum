@@ -1,0 +1,79 @@
+{
+  "" : {
+    "diagnostics" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/translate-strings-primary.dia",
+    "emit-module-dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/translate-strings-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/translate-strings-primary-emit-module.dia",
+    "pch" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/translate-strings-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/translate-strings-primary.swiftdeps"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/DriftReport.swift" : {
+    "const-values" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/DriftReport.swiftconstvalues",
+    "dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/DriftReport.d",
+    "diagnostics" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/DriftReport.dia",
+    "index-unit-output-path" : "/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/DriftReport.o",
+    "llvm-bc" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/DriftReport.bc",
+    "object" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/DriftReport.o",
+    "swift-dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/DriftReport.swiftdeps",
+    "swiftmodule" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/DriftReport~partial.swiftmodule"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Glossary.swift" : {
+    "const-values" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Glossary.swiftconstvalues",
+    "dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Glossary.d",
+    "diagnostics" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Glossary.dia",
+    "index-unit-output-path" : "/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Glossary.o",
+    "llvm-bc" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Glossary.bc",
+    "object" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Glossary.o",
+    "swift-dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Glossary.swiftdeps",
+    "swiftmodule" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Glossary~partial.swiftmodule"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Placeholders.swift" : {
+    "const-values" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Placeholders.swiftconstvalues",
+    "dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Placeholders.d",
+    "diagnostics" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Placeholders.dia",
+    "index-unit-output-path" : "/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Placeholders.o",
+    "llvm-bc" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Placeholders.bc",
+    "object" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Placeholders.o",
+    "swift-dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Placeholders.swiftdeps",
+    "swiftmodule" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Placeholders~partial.swiftmodule"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/StringCatalog.swift" : {
+    "const-values" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringCatalog.swiftconstvalues",
+    "dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringCatalog.d",
+    "diagnostics" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringCatalog.dia",
+    "index-unit-output-path" : "/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringCatalog.o",
+    "llvm-bc" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringCatalog.bc",
+    "object" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringCatalog.o",
+    "swift-dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringCatalog.swiftdeps",
+    "swiftmodule" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringCatalog~partial.swiftmodule"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/StringExtractor.swift" : {
+    "const-values" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringExtractor.swiftconstvalues",
+    "dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringExtractor.d",
+    "diagnostics" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringExtractor.dia",
+    "index-unit-output-path" : "/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringExtractor.o",
+    "llvm-bc" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringExtractor.bc",
+    "object" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringExtractor.o",
+    "swift-dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringExtractor.swiftdeps",
+    "swiftmodule" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/StringExtractor~partial.swiftmodule"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/TranslateStringsCommand.swift" : {
+    "const-values" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/TranslateStringsCommand.swiftconstvalues",
+    "dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/TranslateStringsCommand.d",
+    "diagnostics" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/TranslateStringsCommand.dia",
+    "index-unit-output-path" : "/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/TranslateStringsCommand.o",
+    "llvm-bc" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/TranslateStringsCommand.bc",
+    "object" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/TranslateStringsCommand.o",
+    "swift-dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/TranslateStringsCommand.swiftdeps",
+    "swiftmodule" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/TranslateStringsCommand~partial.swiftmodule"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Translator.swift" : {
+    "const-values" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Translator.swiftconstvalues",
+    "dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Translator.d",
+    "diagnostics" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Translator.dia",
+    "index-unit-output-path" : "/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Translator.o",
+    "llvm-bc" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Translator.bc",
+    "object" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Translator.o",
+    "swift-dependencies" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Translator.swiftdeps",
+    "swiftmodule" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/out/Intermediates.noindex/translate-strings.build/Debug/translate-strings-p.build/Objects-normal/arm64/Translator~partial.swiftmodule"
+  }
+}

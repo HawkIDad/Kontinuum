@@ -160,4 +160,71 @@ struct TemplatePackDALTests {
             #expect(aliases.filter { $0 == role }.count == 1, "\(role) must be covered by exactly one pack")
         }
     }
+
+    // MARK: - Seed-time localization (Phase 4, decision G2)
+
+    /// `addPack` resolves every pack literal through the String Catalog at the moment it
+    /// materializes the row, using whatever `locale` is passed in (production always passes the
+    /// device's current locale; tests pin one explicitly for a deterministic assertion). A
+    /// locale with no catalog entry for a given definition (any locale here, since `pack(...)`
+    /// builds a synthetic definition with no real translations) simply falls back to the source
+    /// literal — proving the mechanism is a no-op absent a translation, not a hard dependency on
+    /// one.
+    @Test func addPackResolvesGroupAndFieldNamesThroughTheLocaleAtSeedTime() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        let definition = pack("engineering", version: 1, templates: [
+            template("Design Doc", fields: [PackFieldDefinition(name: "Status", valueType: .text, defaultValue: "Draft")])
+        ])
+
+        // "Status" has a real Spanish catalog entry ("Estado") from Phase 4's starter-pack work,
+        // even though this synthetic "engineering" pack is unrelated to it — the catalog key is
+        // the word itself, shared across every context that uses it.
+        guard case .added(let group) = TemplatePackDAL.addPack(definition, libraryId: libraryId, locale: Locale(identifier: "es"), in: context) else {
+            Issue.record("expected .added"); return
+        }
+        let groupId = try #require(group.templateGroupId)
+        let template = try #require(TemplateDAL.fetchActiveTemplates(templateGroupId: groupId, in: context).first)
+        #expect(template.fields.first?.name == "Estado")
+    }
+
+    @Test func addPackFallsBackToTheSourceLiteralWhenNoTranslationExists() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        let definition = pack("engineering", version: 1, templates: [template("Design Doc")])
+
+        guard case .added(let group) = TemplatePackDAL.addPack(definition, libraryId: libraryId, locale: Locale(identifier: "es"), in: context) else {
+            Issue.record("expected .added"); return
+        }
+        #expect(group.name == "Engineering", "no catalog entry for this synthetic pack's own display name — falls back to itself")
+    }
+
+    @Test func addPackLocalizesTheThreeRealStarterPacksUnderSpanishAndGerman() throws {
+        for (locale, expectedName, expectedTemplateName, expectedFieldName) in [
+            ("es", "Escritura de Ficción", "Personaje", "Especie"),
+            ("de", "Romanschreiben", "Figur", "Spezies"),
+        ] {
+            let context = try makeContext()
+            let libraryId = UUID()
+            guard case .added(let group) = TemplatePackDAL.addPack(id: "fiction-writing", libraryId: libraryId, locale: Locale(identifier: locale), in: context) else {
+                Issue.record("expected .added"); return
+            }
+            #expect(group.name == expectedName)
+            let groupId = try #require(group.templateGroupId)
+            let character = try #require(TemplateDAL.fetchActiveTemplates(templateGroupId: groupId, in: context).first { $0.name == expectedTemplateName })
+            #expect(character.fields.first { $0.name == expectedFieldName } != nil)
+            #expect(character.bodyTemplate?.hasPrefix("#") == true, "body scaffold was resolved (non-empty) under \(locale)")
+        }
+    }
+
+    @Test func addPackNeverLocalizesACheckboxDefaultValue() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        guard case .added(let group) = TemplatePackDAL.addPack(id: "fiction-writing", libraryId: libraryId, locale: Locale(identifier: "es"), in: context) else {
+            Issue.record("expected .added"); return
+        }
+        let groupId = try #require(group.templateGroupId)
+        let character = try #require(TemplateDAL.fetchActiveTemplates(templateGroupId: groupId, in: context).first { $0.name == "Personaje" })
+        #expect(character.fields.first { $0.valueType == .checkbox }?.defaultValue == "true", "checkbox default is a canonical machine token, never translated")
+    }
 }

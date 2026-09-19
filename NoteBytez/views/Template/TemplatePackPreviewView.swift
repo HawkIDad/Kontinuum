@@ -57,7 +57,7 @@ struct TemplatePackPreviewView: View {
                 }
             }
         }
-        .navigationTitle(pack.displayName)
+        .navigationTitle(Text(LocalizedStringKey(pack.displayName)))
         .noteBytezInlineNavigationTitle()
         .safeAreaInset(edge: .bottom) {
             actionButton

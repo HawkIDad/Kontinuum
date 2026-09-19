@@ -182,7 +182,7 @@ feature. Checkbox convention: `[ ]` not started / in progress, `[x]` done and ve
 | 3. Migrate the 3 existing starter packs to the resource | 5 / 5 | Complete |
 | 4. Template Gallery screen (S28) | 7 / 7 | Complete (wireframe/UIUX-doc updates deferred; component added to styleGuide) |
 | 5. First-run role-picker onboarding | 5 / 6 | Complete — VM covered by `TemplateOnboardingViewModelTests`; the dedicated XCUITest (5.6) deferred to a manual pass (simulator tap flakiness, same as prior phases) |
-| 6. Localization wiring (after MultiLanguage Phase 0) | — | **Deferred — multi-language support is on hold. This build ships US English only.** |
+| 6. Localization wiring (after MultiLanguage Phase 0) | 2 / 6 | **Mostly still deferred — multi-language support is on hold overall.** 6.3/6.4's mechanism got built as a side effect of MultiLanguage Phase 4's own starter-pack seeding work (2026-09-13); 6.1/6.2/6.5/6.6 (translating the other 17 Gallery packs, Glossary entries, screenshot spot-check) remain open. See Phase 6's own update note. |
 | 7. Verification Gate | 6 / 6 | Complete — full `NoteBytezTests` (585 tests) green; iOS + macOS builds green |
 | **Total (ex-Phase 6)** | **46 / 47** | **~98%** |
 
@@ -198,9 +198,10 @@ feature. Checkbox convention: `[ ]` not started / in progress, `[x]` done and ve
 - **Pack content (Phase 2.2/2.3) is a first AI-draft** — 19 packs, 102 templates. It passes
   `TemplatePackLint` (canonical fields, role coverage, task-line format) but has **not** had the
   per-pack product-owner review of 2.4. `Docs/Templates/README.md` is the review entry point.
-- **Localization keys.** The resource carries literal English strings, not `*Key`s; `NoteTemplate`
-  / `TemplateGroup` and `TemplatePackDAL` are structured so Phase 6 can swap in a
-  `TemplatePacks.xcstrings` + `String(localized:)` resolution at add-time with no schema change.
+- **Localization keys.** The resource carries literal English strings, not `*Key`s. **Update
+  2026-09-13:** this held — `TemplatePackDAL.addPack` now actually resolves those literals at
+  add-time (Phase 6.3/6.4, done via MultiLanguage Phase 4) through the app's single
+  `Localizable.xcstrings`, not a separate `TemplatePacks.xcstrings` as originally sketched here.
 - **UIUX docs (task 4.1):** `styleGuide.md` gained `TemplatePackRow` + S28; the
   `UIUX/04/05/06` wireframe set was **not** updated (deferred with the rest of the ML-adjacent
   doc work).
@@ -367,20 +368,53 @@ Decision G6. Depends on Phase 4 (shares the pack list/preview).
 Decision G8. **Sequenced after [NoteBytez20260823v2-MultiLanguage.md](NoteBytez20260823v2-MultiLanguage.md)
 Phase 0** (String Catalog + `translate-strings` script exist).
 
-- [ ] **6.1** Create `TemplatePacks.xcstrings`; every `*Key` in every pack JSON
-  (`displayNameKey`, `nameKey`, `bodyTemplateKey`, canonical `field.*` keys) has an `en` entry
-  with a translator `comment`.
-- [ ] **6.2** Add `TemplatePacks.xcstrings` to the `translate-strings` script's target list and
-  add the pack product terms (canonical field names, "pack", "template group") to
-  `Docs/Localization/Glossary.md`.
-- [ ] **6.3** `TemplatePackDAL.addPack` confirmed to resolve keys in the **active app
-  language** at add-time and persist the resolved literals (frozen user data thereafter) —
-  matches MultiLanguage G2.
-- [ ] **6.4 Failing test.** Adding a pack under an `es` test locale materializes a
-  `TemplateGroup`/`NoteTemplate` with Spanish `name`s and Spanish `bodyTemplate`; switching the
-  app back to `en` leaves those rows Spanish (they're data now).
+**2026-09-13 update:** 6.3/6.4's actual mechanism (not the 3 starter packs' real translations,
+which are Phase 4's own scope — see below) was built and tested as a side effect of that
+MultiLanguage plan's **Phase 4** ("Seed-Content Localization at Creation Time"), which needed the
+exact same "resolve a pack literal at add-time, in whatever locale, then freeze it as data"
+behavior for its own starter-pack seeding. Two design points from this doc's original G13/6.1
+plan changed along the way, superseded by MultiLanguage Phase 4's actual decisions rather than
+this doc's:
+- **No `*Key` schema.** The bundled JSON (`TemplatePackDefinition`/`PackTemplateDefinition`/
+  `PackFieldDefinition`) still carries literal English strings, not `displayNameKey`/`nameKey`/
+  `bodyTemplateKey` fields — matching the "Localization keys" decision note below (which already
+  anticipated this), not 6.1's original schema sketch. The literal itself is the catalog key
+  (same convention `TemplatePackPreviewView` already used for Gallery previews).
+- **One catalog, not `TemplatePacks.xcstrings`.** Translations live in the app's single
+  `Localizable.xcstrings` (MultiLanguage Phase 4.2 offered either; this is what was chosen —
+  fewer moving parts, and it's where `translate-strings --extract` already points).
+- **A real Foundation gotcha to know before touching this code again:**
+  `String(localized:locale:)` silently ignores its own `locale:` argument — resolution has to go
+  through `LocalizedStringResource(_:locale:)` instead. Full writeup:
+  [Docs/Localization/TechnicalNotes.md](../Localization/TechnicalNotes.md).
+
+What's actually done vs. still open:
+- [x] **6.3** `TemplatePackDAL.addPack` resolves `displayName`/template `name`/field `name`/
+  `.text`-type field `defaultValue`/`bodyTemplate` via a new `localizedSeedString(_:locale:)`
+  helper at add-time, and persists the resolved literal (frozen user data thereafter) — matches
+  MultiLanguage G2. Done in MultiLanguage Phase 4.2 (`NoteBytez/dal/TemplatePackDAL.swift`).
+- [x] **6.4 Failing test, then green.** `TemplatePackDALTests`/`TemplateDALTests`/
+  `LibraryDALTests` (MultiLanguage Phase 4.1/4.5) cover exactly this: adding a pack under an `es`
+  locale materializes Spanish `name`s/`bodyTemplate`; a later call under a *different* locale
+  (`de`) does not retranslate or overwrite the first call's rows, since the "already seeded"
+  idempotency guard runs before any localization would happen. Manually verified end-to-end on a
+  booted simulator under `de_DE` too (group → template → field level).
+- [ ] **6.1** Still open, and now more accurately scoped: not a new catalog/schema (superseded,
+  see above) but extending real (non-English) catalog entries to the other **17** Gallery packs
+  beyond the 3 starter packs MultiLanguage Phase 4 actually translated (`fiction-writing`,
+  `wedding-planning`, `photography-client-work`). Every other pack already resolves through the
+  same `localizedSeedString` mechanism today — it's a no-op fallback-to-English until entries
+  exist for it, per `String(localized:)`'s normal untranslated-key behavior.
+- [ ] **6.2** Add the pack product terms (canonical field names, "pack", "template group") to
+  `Docs/Localization/Glossary.md` once 6.1's broader translation pass makes that a real
+  cross-pack consistency concern — the 3 starter packs' terms are creative-writing/personal
+  vocabulary (Character, Species, Vendor, …), not the app's own product terminology, so they
+  didn't need a Glossary entry.
 - [ ] **6.5** Run the translate script for the shipped tiers; commit the `.xcstrings` diff;
-  placeholder-safety + drift checks clean for pack strings.
+  placeholder-safety + drift checks clean for pack strings. (The 3 starter packs' `es`/`de`
+  entries were hand-authored, not run through `translate-strings`, since no
+  `ANTHROPIC_API_KEY` was configured when MultiLanguage Phase 4 shipped them — revisit once one
+  is.)
 - [ ] **6.6** Tests green; screenshot spot-check of the Gallery + a materialized pack in one
   non-Latin locale.
 

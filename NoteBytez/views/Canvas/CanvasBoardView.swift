@@ -115,7 +115,7 @@ struct CanvasBoardView: View {
         canvasContent
             .overlay(alignment: .bottomTrailing) { zoomControls }
             .overlay(alignment: .topLeading) { boundChrome }
-            .navigationTitle(board.name ?? "Canvas")
+            .navigationTitle(board.name.map(Text.init) ?? Text("Canvas"))
             .noteBytezInlineNavigationTitle()
             .toolbar { toolbarContent }
             .onAppear {
@@ -220,7 +220,7 @@ struct CanvasBoardView: View {
         } label: {
             Image(systemName: isConnecting ? "link.circle.fill" : "link.circle")
         }
-        .accessibilityLabel(isConnecting ? "Stop Connecting" : "Connect Cards")
+        .accessibilityLabel(isConnecting ? Text("Stop Connecting") : Text("Connect Cards"))
     }
 
     private var exportButton: some View {

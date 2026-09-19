@@ -40,7 +40,7 @@ struct LibrarySelectionView: View {
                                 Button {
                                     viewModel.select(library)
                                 } label: {
-                                    Text(library.name ?? "Untitled Library")
+                                    (library.name.map(Text.init) ?? Text("Untitled Library"))
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
                                 .padding(.vertical, 8)
@@ -79,7 +79,7 @@ struct LibrarySelectionView: View {
                 }
                 .padding(.top, 40)
             }
-            .navigationTitle("NoteBytez")
+            .navigationTitle(Text(verbatim: "NoteBytez"))
             .sheet(isPresented: $isPresentingCreateLibrary) {
                 CreateLibrarySheet(viewModel: viewModel, isPresented: $isPresentingCreateLibrary)
             }
@@ -144,6 +144,7 @@ private struct CreateLibrarySheet: View {
         NavigationStack {
             VStack(spacing: 16) {
                 TextField("Library Name", text: $name)
+                    .accessibilityIdentifier("newLibrary.nameField")
                     .textFieldStyle(.roundedBorder)
                     .padding(.horizontal)
 

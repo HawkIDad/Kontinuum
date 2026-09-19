@@ -277,11 +277,11 @@ enum TemplateDAL {
     /// `TemplatePacks.json` resource — one code path with the Gallery (`TemplatePackDAL`).
     /// Idempotent: a library that already has any `TemplateGroup` is left untouched, so this is
     /// safe to call more than once and never duplicates content.
-    static func seedStarterContent(libraryId: UUID, in context: ModelContext, bundle: Bundle = .main) {
+    static func seedStarterContent(libraryId: UUID, in context: ModelContext, bundle: Bundle = .main, locale: Locale = .current) {
         guard fetchActiveGroups(libraryId: libraryId, in: context).isEmpty else { return }
 
         for packId in starterPackIds {
-            TemplatePackDAL.addPack(id: packId, libraryId: libraryId, bundle: bundle, in: context)
+            TemplatePackDAL.addPack(id: packId, libraryId: libraryId, bundle: bundle, locale: locale, in: context)
         }
     }
 

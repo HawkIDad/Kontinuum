@@ -163,4 +163,48 @@ struct ExportDALTests {
         #expect(occurrences == 1)
     }
 
+    /// Phase 2.5 (G20/DoNotTranslate.md): the `notebooks:` frontmatter key and the
+    /// `#notebook/<kebab>` tag are machine-readable literals that must never be affected by
+    /// Phase 2's localization work — they are plain Swift string literals, never routed through
+    /// `Text`/`String(localized:)`, so no locale or translation can touch them.
+    @Test func exportableContentKeepsTheLiteralFrontmatterKeyAndTagRegardlessOfNotebookName() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        let document = DocumentDAL.create(title: "Note", content: "Body.", libraryId: libraryId, in: context)
+        let notebook = NotebookDAL.create(name: "Café Ideas", libraryId: libraryId, in: context)
+        NotebookDAL.attach(documentId: try #require(document.documentId), notebookId: try #require(notebook.notebookId), libraryId: libraryId, in: context)
+
+        let exported = ExportDAL.exportableContent(for: document, in: context)
+
+        #expect(exported.contains("notebooks: [\"Café Ideas\"]"))
+        #expect(exported.contains("#notebook/café-ideas"))
+    }
+
+    /// The synthetic tag's kebab-casing must be locale-**invariant** (the opposite direction of
+    /// most of Phase 1/2's work): a device set to Turkish would otherwise fold "I" to the
+    /// dotless "ı" via plain `.lowercased()`, producing a tag that desyncs from the same
+    /// notebook exported on an English-locale device. This asserts the exact output
+    /// `TextNormalization.invariantLowercased` (already covered directly by
+    /// `TextNormalizationTests.invariantLowercasedFoldsTurkishDottedCapitalIWithoutLeavingUppercaseLetters`)
+    /// produces for "İ" — note that's "i" + a combining dot above (U+0307), *not* a bare "i";
+    /// Unicode's locale-independent default casing keeps the dot rather than dropping it the
+    /// way the Turkish-specific rule would. What this test can't do, in a process whose own
+    /// `Locale.current` is English, is prove the *old* `.lowercased()` would have differed —
+    /// that only diverges from the invariant form on an actual Turkish-locale device. It does
+    /// prove `kebabCase` routes through the invariant helper rather than some other transform,
+    /// and pins the exact byte sequence so a future change can't silently alter it.
+    @Test func syntheticTagKebabCasingUsesInvariantLowercasingForTurkishDottedI() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        let document = DocumentDAL.create(title: "Note", content: "Body.", libraryId: libraryId, in: context)
+        let notebook = NotebookDAL.create(name: "İstanbul Ideas", libraryId: libraryId, in: context)
+        NotebookDAL.attach(documentId: try #require(document.documentId), notebookId: try #require(notebook.notebookId), libraryId: libraryId, in: context)
+
+        let exported = ExportDAL.exportableContent(for: document, in: context)
+        let expectedTag = "#notebook/\("İstanbul".lowercased(with: Locale(identifier: "en_US_POSIX")))-ideas"
+
+        #expect(exported.contains(expectedTag))
+        #expect(exported.contains("notebooks: [\"İstanbul Ideas\"]"), "the frontmatter list keeps the notebook's own casing — only the synthetic tag is kebab-cased")
+    }
+
 }

@@ -1,0 +1,825 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-stringsPackageTests.xctest/Contents/MacOS/translate-stringsPackageTests",
+      "packagePath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings",
+      "productName" : "translate-stringsPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.translate-strings-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/sources",
+      "importPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/DriftReport.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Glossary.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Placeholders.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/StringCatalog.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/StringExtractor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/TranslateStringsCommand.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Translator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "translate_strings",
+      "moduleOutputPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules/translate_strings.swiftmodule",
+      "objects" : [
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/DriftReport.swift.o",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Glossary.swift.o",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Placeholders.swift.o",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/StringCatalog.swift.o",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/StringExtractor.swift.o",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/TranslateStringsCommand.swift.o",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Translator.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "translate_strings_main",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "translate_strings"
+      ],
+      "outputFileMapPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/DriftReport.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Glossary.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Placeholders.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/StringCatalog.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/StringExtractor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/TranslateStringsCommand.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Translator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules/translate_strings.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/DriftReport.swift",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Glossary.swift",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Placeholders.swift",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/StringCatalog.swift",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/StringExtractor.swift",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/TranslateStringsCommand.swift",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Translator.swift"
+      ],
+      "tempsPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.translate-strings-tests-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/sources",
+      "importPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/GlossaryTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/PlaceholdersTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/StringCatalogTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/StringExtractorTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-strings"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "translate_strings_tests",
+      "moduleOutputPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules/translate_strings_tests.swiftmodule",
+      "objects" : [
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/GlossaryTests.swift.o",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/PlaceholdersTests.swift.o",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringCatalogTests.swift.o",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringExtractorTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx14.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "translate_strings"
+      ],
+      "outputFileMapPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/GlossaryTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/PlaceholdersTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringCatalogTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringExtractorTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules/translate_strings_tests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/GlossaryTests.swift",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/PlaceholdersTests.swift",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/StringCatalogTests.swift",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/StringExtractorTests.swift"
+      ],
+      "tempsPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.translate-stringsPackageTests-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build/sources",
+      "importPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-stringsPackageTests.derived/runner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules/translate_strings_tests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "translate_stringsPackageTests",
+      "moduleOutputPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules/translate_stringsPackageTests.swiftmodule",
+      "objects" : [
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build/runner.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j12",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build/include/translate-stringsPackageTests-Swift.h",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "translate_strings"
+      ],
+      "outputFileMapPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules/translate_stringsPackageTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-stringsPackageTests.derived/runner.swift"
+      ],
+      "tempsPath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "translate_strings" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "translate_strings",
+      "-package-name",
+      "translate_strings",
+      "-c",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/DriftReport.swift",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Glossary.swift",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Placeholders.swift",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/StringCatalog.swift",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/StringExtractor.swift",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/TranslateStringsCommand.swift",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Translator.swift",
+      "-I",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "translate_strings_main",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "translate_strings",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "translate_stringsPackageTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "translate_stringsPackageTests",
+      "-package-name",
+      "translate_strings",
+      "-c",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-stringsPackageTests.derived/runner.swift",
+      "-I",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build/include/translate-stringsPackageTests-Swift.h",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "translate_strings",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "translate_strings_tests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "translate_strings_tests",
+      "-package-name",
+      "translate_strings",
+      "-c",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/GlossaryTests.swift",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/PlaceholdersTests.swift",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/StringCatalogTests.swift",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/StringExtractorTests.swift",
+      "-I",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx14.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j12",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "translate_strings",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "translate_strings" : [
+
+    ],
+    "translate_stringsPackageTests" : [
+      "translate_strings_tests",
+      "translate_strings"
+    ],
+    "translate_strings_tests" : [
+      "translate_strings"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+    "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-stringsPackageTests.derived/runner.swift" : {
+      "inputs" : [
+
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-stringsPackageTests.derived/runner.swift"
+        }
+      ]
+    }
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    },
+    "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-strings-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-strings-entitlement.plist"
+    },
+    "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-strings.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/DriftReport.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Glossary.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Placeholders.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/StringCatalog.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/StringExtractor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/TranslateStringsCommand.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Translator.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-strings.product/Objects.LinkFileList"
+    },
+    "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-stringsPackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/DriftReport.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Glossary.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Placeholders.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/StringCatalog.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/StringExtractor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/TranslateStringsCommand.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/Translator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/GlossaryTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/PlaceholdersTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringCatalogTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringExtractorTests.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-stringsPackageTests.product/Objects.LinkFileList"
+    },
+    "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/DriftReport.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Glossary.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Placeholders.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/StringCatalog.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/StringExtractor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/TranslateStringsCommand.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Sources/translate-strings/Translator.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings.build/sources"
+    },
+    "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate-stringsPackageTests.derived/runner.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_stringsPackageTests.build/sources"
+    },
+    "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/GlossaryTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/PlaceholdersTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/StringCatalogTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/StringExtractorTests.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/sources"
+    }
+  }
+}

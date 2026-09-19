@@ -24,7 +24,7 @@ final class Phase1ImportMigrationEntryPointSmokeTests: NoteBytezUITestCase {
 
     @MainActor
     func testImportFolderEntryPointOpensSystemPicker() throws {
-        app.launch()
+        launch()
         let library = LibrarySelectionScreen(app: app)
         XCTAssertTrue(library.importFolderButton.waitForExistence(timeout: 5))
         library.importFolderButton.tap()
@@ -33,7 +33,7 @@ final class Phase1ImportMigrationEntryPointSmokeTests: NoteBytezUITestCase {
 
     @MainActor
     func testMigrationAssistantEntryPointOpensSystemPicker() throws {
-        app.launch()
+        launch()
         let library = LibrarySelectionScreen(app: app)
         XCTAssertTrue(library.migrationAssistantButton.waitForExistence(timeout: 5))
         library.migrationAssistantButton.tap()

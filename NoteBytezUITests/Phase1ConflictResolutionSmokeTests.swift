@@ -45,6 +45,45 @@ final class Phase1ConflictResolutionSmokeTests: NoteBytezUITestCase {
         XCTAssertTrue(conflict.keepBothVersionsButton.exists, "keepBothVersionsButton: " + String(app.debugDescription.prefix(3000)))
     }
 
+    /// 20260910v1-Sync.md SF 4 / SF 5 / SF 9 — resolving a conflict clears it from S9 (not just
+    /// the glyph count), S10 auto-dismisses back to S9, and once the last one is gone the calm
+    /// all-clear state replaces the list. Driven by `-SeedTestConflicts` (a `Document` conflict
+    /// "Draft Proposal" + a `Library` conflict "Sync Test"), no live CloudKit.
+    @MainActor
+    func testResolvingConflictsClearsThemFromSyncStatusAndReturnsToAllClear() throws {
+        launch(extraArguments: ["-SeedTestConflicts"])
+
+        // `-SeedTestConflicts` seeds + selects a library and pins the Keep-All-Versions
+        // strategy, so the app lands straight on the main shell with S10's manual UI in force —
+        // wait for the persistent sync glyph, then open S9 from it.
+        XCTAssertTrue(app.buttons["syncStatusGlyph"].waitForExistence(timeout: 15), "did not reach the main shell")
+
+        let sync = SyncStatusScreen(app: app).open()
+        XCTAssertTrue(sync.headline("Conflict on 2 notes").waitForExistence(timeout: 5))
+        XCTAssertTrue(sync.conflictRow(title: "Draft Proposal").waitForExistence(timeout: 5))
+
+        sync.conflictRow(title: "Draft Proposal").tap()
+        let conflict = ConflictResolutionScreen(app: app)
+        XCTAssertTrue(conflict.keepThisVersionButton.waitForExistence(timeout: 5))
+        conflict.keepThisVersionButton.tap()
+
+        // SF 5 — S10 popped on its own; SF 9 — the row is gone, not merely the count.
+        XCTAssertTrue(sync.navigationTitle.waitForExistence(timeout: 5))
+        // SF 7 — the transient Undo affordance is presented after a manual resolution.
+        XCTAssertTrue(sync.undoButton.waitForExistence(timeout: 3))
+        XCTAssertTrue(sync.conflictRow(title: "Draft Proposal").waitForNonExistence(timeout: 5))
+        XCTAssertTrue(sync.conflictRow(title: "Sync Test").exists)
+        XCTAssertTrue(sync.headline("Conflict on 1 note").waitForExistence(timeout: 5))
+
+        sync.conflictRow(title: "Sync Test").tap()
+        XCTAssertTrue(conflict.keepThisVersionButton.waitForExistence(timeout: 5))
+        conflict.keepThisVersionButton.tap()
+
+        // SF 4 — last conflict gone → calm all-clear state, glyph back to Synced.
+        XCTAssertTrue(sync.noConflictsRow.waitForExistence(timeout: 5))
+        XCTAssertTrue(sync.headline("Synced").waitForExistence(timeout: 5))
+    }
+
     @MainActor
     func testConflictResolutionRendersDiffMergeLayoutWhenStrategySelected() throws {
         launchAndCreateLibrary(extraArguments: ["-SeedTestConflict"])

@@ -1,0 +1,10 @@
+Target dependency graph (4 targets)
+Target 'AllIncludingTests' in project 'Aggregate'
+➜ Explicit dependency on target 'translate-strings-tests-product' in project 'translate-strings'
+➜ Dependency on target 'translate-strings-tests-product' in project 'translate-strings' via transitive dependency through 'translate-strings-tests-test-runner'
+➜ Explicit dependency on target 'translate-strings-product' in project 'translate-strings'
+Target 'translate-strings-tests-product' in project 'translate-strings'
+➜ Explicit dependency on target 'translate-strings-product' in project 'translate-strings'
+➜ Explicit dependency on target 'translate-strings' in project 'translate-strings'
+Target 'translate-strings' in project 'translate-strings' (no dependencies)
+Target 'translate-strings-product' in project 'translate-strings' (no dependencies)

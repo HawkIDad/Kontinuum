@@ -19,17 +19,17 @@ enum ConflictStrategy: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .keepAllVersions: return "Keep All Versions"
-        case .lastWriteWins: return "Last-Write-Wins + Banner"
-        case .diffMerge: return "Markdown Diff-Merge"
+        case .keepAllVersions: return String(localized: "Keep All Versions")
+        case .lastWriteWins: return String(localized: "Last-Write-Wins + Banner")
+        case .diffMerge: return String(localized: "Markdown Diff-Merge")
         }
     }
 
     var summary: String {
         switch self {
-        case .keepAllVersions: return "You resolve every conflict manually."
-        case .lastWriteWins: return "Newest edit wins; a banner lets you revert."
-        case .diffMerge: return "Auto-merges text; you review the diff."
+        case .keepAllVersions: return String(localized: "You resolve every conflict manually.")
+        case .lastWriteWins: return String(localized: "Newest edit wins; a banner lets you revert.")
+        case .diffMerge: return String(localized: "Auto-merges text; you review the diff.")
         }
     }
 

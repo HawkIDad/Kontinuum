@@ -66,7 +66,7 @@ struct DiffMergeView: View {
                 .foregroundStyle(.secondary)
 
             if lines.isEmpty {
-                Text("—")
+                Text(verbatim: "—")
                     .foregroundStyle(.tertiary)
             } else {
                 Text(lines.joined(separator: "\n"))

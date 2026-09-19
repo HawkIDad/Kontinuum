@@ -91,15 +91,18 @@ struct MigrationAssistantView: View {
 
     private var summaryLine: String {
         let result = viewModel.scanResult
-        var parts = ["\(result.noteCount) note\(result.noteCount == 1 ? "" : "s")", "\(result.linkCount) link\(result.linkCount == 1 ? "" : "s")"]
+        var parts = [
+            String(localized: "\(result.noteCount) note"),
+            String(localized: "\(result.linkCount) link"),
+        ]
         switch result.format {
         case .obsidian:
-            parts.append("\(result.canvasCount) canvas\(result.canvasCount == 1 ? "" : "es")")
+            parts.append(String(localized: "\(result.canvasCount) canvas"))
         case .logseq:
-            parts.append("\(result.taskCount) task\(result.taskCount == 1 ? "" : "s")")
-            parts.append("\(result.journalCount) journal entr\(result.journalCount == 1 ? "y" : "ies")")
+            parts.append(String(localized: "\(result.taskCount) task"))
+            parts.append(String(localized: "\(result.journalCount) journal entry"))
             if result.unsupportedCount > 0 {
-                parts.append("\(result.unsupportedCount) unsupported item\(result.unsupportedCount == 1 ? "" : "s") flagged")
+                parts.append(String(localized: "\(result.unsupportedCount) unsupported item flagged"))
             }
         }
         return parts.joined(separator: " · ")
@@ -127,7 +130,9 @@ struct MigrationSourceRow: View {
             .pickerStyle(.segmented)
             .labelsHidden()
 
-            Text(wasAutoDetected ? "Auto-detected: \(format.displayName) vault" : "Couldn't auto-detect this vault's format — confirm above")
+            Text(wasAutoDetected
+                ? String(localized: "Auto-detected: \(format.displayName) vault")
+                : String(localized: "Couldn't auto-detect this vault's format — confirm above"))
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }

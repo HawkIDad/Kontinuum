@@ -21,6 +21,10 @@ final class NoteBytezUITests: XCTestCase {
         continueAfterFailure = false
 
         app = XCUIApplication()
+        // MultiLanguage Phase 5.7 (R7): the first-launch language prompt now precedes S1 —
+        // this class launches directly (predates `NoteBytezUITestCase`), so it needs its own
+        // bypass rather than inheriting `launchAndCreateLibrary`'s.
+        app.launchArguments += ["-SkipLanguagePrompt"]
         app.launch()
     }
 
@@ -32,7 +36,7 @@ final class NoteBytezUITests: XCTestCase {
         XCTAssertTrue(createLibraryButton.waitForExistence(timeout: 5))
         createLibraryButton.tap()
 
-        let nameField = app.textFields["Library Name"]
+        let nameField = app.textFields["newLibrary.nameField"]
         XCTAssertTrue(nameField.waitForExistence(timeout: 5))
         nameField.tap()
         nameField.typeText("UI Test Library")
@@ -50,9 +54,12 @@ final class NoteBytezUITests: XCTestCase {
 
     @MainActor
     func testLaunchPerformance() throws {
-        // This measures how long it takes to launch your application.
+        // This measures how long it takes to launch your application. `-SkipLanguagePrompt` so
+        // the measurement reflects landing on S1, not the (now-first) language prompt.
         measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
+            let app = XCUIApplication()
+            app.launchArguments += ["-SkipLanguagePrompt"]
+            app.launch()
         }
     }
 }

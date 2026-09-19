@@ -23,6 +23,33 @@ struct NoteBytezApp: App {
 
     init() {
 
+#if DEBUG
+        // `-ResetLanguagePreference`: `LocalePreferenceStore` persists to `UserDefaults.standard`,
+        // which (unlike the in-memory SwiftData store) survives across launches on the same
+        // simulator — so a UI test that specifically exercises the first-launch prompt (Phase
+        // 5.8(a)) needs a way to force a clean slate rather than assume it's the first time
+        // this simulator has ever run the app. DEBUG-only, launch-argument-gated, mirroring
+        // `-SkipLanguagePrompt` below.
+        if ProcessInfo.processInfo.arguments.contains("-ResetLanguagePreference") {
+            LocalePreferenceStore.reset()
+        }
+
+        // `-SkipLanguagePrompt` (Phase 5.7, R7): every `NoteBytezUITestCase`-based launch (and
+        // this file's own `-SeedTestConflict(s)` fixtures) expects to land directly on S1 or the
+        // main shell — the first-launch language prompt would otherwise block all of them, since
+        // it now precedes everything else in `RootView`. Mirrors `-SeedTestConflict`'s DEBUG-only,
+        // launch-argument-gated seam.
+        if ProcessInfo.processInfo.arguments.contains("-SkipLanguagePrompt") {
+            LocalePreferenceStore.markPromptedForLanguage()
+        }
+#endif
+
+        // MultiLanguage Phase 5.6: re-assert whatever language preference is already stored
+        // into `AppleLanguages` before the `ModelContainer`/`WindowGroup` below are built — see
+        // `LocalePreferenceStore.reapplyPreferredLanguage` for why this is a defensive no-op
+        // rather than new behavior.
+        LocalePreferenceStore.reapplyPreferredLanguage()
+
         let schema = Schema([
             Library.self,
             Document.self,
@@ -118,6 +145,16 @@ struct NoteBytezApp: App {
                 clientRecord: client, serverRecord: server, ancestorRecord: nil, detectedOn: Date()
             ))
         }
+
+        // `-SeedTestConflicts` (plural) — the manual, two-simulator variant: stands up a
+        // ready-to-use "Sync Test" library with two *distinct* queued conflicts and one pending
+        // Last-Write-Wins auto-resolution, so S9/S10 and the `ConflictBanner` revert flow can be
+        // exercised on a device with no live CloudKit. Unlike `-SeedTestConflict` above it also
+        // writes real SwiftData rows (library + note), so the XCUITest suite deliberately does
+        // not opt into it.
+        if ProcessInfo.processInfo.arguments.contains("-SeedTestConflicts") {
+            Self.seedTestConflicts(into: self.sharedModelContainer)
+        }
 #endif
 
     }
@@ -175,3 +212,118 @@ struct NoteBytezApp: App {
     }
 
 }
+
+#if DEBUG
+// MARK: - Manual multi-issue sync fixture (`-SeedTestConflicts`)
+
+extension NoteBytezApp {
+
+    /// Seeds a selectable library plus a realistic mix of unresolved sync issues — two queued
+    /// conflicts (one diffable `Document`, one non-diffable `Library` root) and one pending
+    /// Last-Write-Wins auto-resolution on a real note. Drives the orange status glyph, S9's
+    /// "Needs Your Attention" list, S10, and S4's `ConflictBanner` without a live `CKSyncEngine`.
+    static func seedTestConflicts(into container: ModelContainer) {
+        let context = ModelContext(container)
+
+        let library = LibraryDAL.create(name: "Sync Test", in: context)
+        guard let libraryId = library.libraryId else { return }
+
+        let meetingNote = DocumentDAL.create(
+            title: "Meeting Notes",
+            content: "Kickoff moved to Thursday.\nOwners: TBD.",
+            libraryId: libraryId,
+            in: context
+        )
+        try? context.save()
+
+        LibraryDAL.setSelectedLibraryId(libraryId)
+        TemplateOnboardingStore.markCompleted()
+        // Pin the strategy so the fixture is self-contained — S10's manual keep-all UI is the
+        // one the "two queued conflicts" scenario is about (and `UserDefaults` otherwise
+        // carries over whatever a previous launch selected).
+        ConflictStrategyStore.setCurrentStrategy(.keepAllVersions)
+
+        let zoneID = CKRecordZone.ID.library(libraryId)
+
+        queueDocumentContentConflict(libraryId: libraryId, zoneID: zoneID)
+        queueLibraryRecordConflict(libraryId: libraryId, zoneID: zoneID)
+
+        if let documentId = meetingNote.documentId {
+            recordPendingAutoResolution(documentId: documentId, libraryId: libraryId, zoneID: zoneID)
+        }
+    }
+
+    /// Issue 1 — competing note bodies. `content` on both sides makes this diffable, so S10
+    /// offers Keep This / Keep Both / Markdown Diff-Merge.
+    private static func queueDocumentContentConflict(libraryId: UUID, zoneID: CKRecordZone.ID) {
+        let syncId = UUID()
+        let recordID = CKRecord.ID.record(syncId: syncId, zoneID: zoneID)
+
+        let client = CKRecord(recordType: Document.ckRecordType, recordID: recordID)
+        client["title"] = "Draft Proposal"
+        client["content"] = "Budget: $12k.\nTimeline: 6 weeks.\nOwner: Dana."
+        client["updatedOn"] = Date(timeIntervalSinceNow: -120)
+
+        let server = CKRecord(recordType: Document.ckRecordType, recordID: recordID)
+        server["title"] = "Draft Proposal"
+        server["content"] = "Budget: $15k.\nTimeline: 4 weeks.\nOwner: Dana."
+        server["updatedOn"] = Date(timeIntervalSinceNow: -300)
+
+        ConflictStore.shared.queue(Conflict(
+            recordType: Document.ckRecordType, syncId: syncId, libraryId: libraryId,
+            title: "Draft Proposal", clientRecord: client, serverRecord: server,
+            ancestorRecord: nil, detectedOn: Date()
+        ))
+        SyncStatusStore.shared.recordConflict(noteTitle: "Draft Proposal")
+    }
+
+    /// Issue 2 — a `Library` root-record conflict (e.g. renamed on two devices). No `content`,
+    /// so S10 falls back to last-write-wins with no Keep Both — the real Journey 3 path.
+    private static func queueLibraryRecordConflict(libraryId: UUID, zoneID: CKRecordZone.ID) {
+        let syncId = UUID()
+        let recordID = CKRecord.ID.record(syncId: syncId, zoneID: zoneID)
+
+        let client = CKRecord(recordType: Library.ckRecordType, recordID: recordID)
+        client["name"] = "Sync Test — renamed on this device"
+        client["updatedOn"] = Date(timeIntervalSinceNow: -60)
+
+        let server = CKRecord(recordType: Library.ckRecordType, recordID: recordID)
+        server["name"] = "Sync Test — renamed elsewhere"
+        server["updatedOn"] = Date(timeIntervalSinceNow: -200)
+
+        ConflictStore.shared.queue(Conflict(
+            recordType: Library.ckRecordType, syncId: syncId, libraryId: libraryId,
+            title: "Sync Test", clientRecord: client, serverRecord: server,
+            ancestorRecord: nil, detectedOn: Date()
+        ))
+        SyncStatusStore.shared.recordConflict(noteTitle: "Sync Test")
+    }
+
+    /// Issue 3 — a still-open auto-resolution on the seeded "Meeting Notes" note. Opening that
+    /// note shows `ConflictBanner` ("Kept this device's edit…") with a working Revert.
+    private static func recordPendingAutoResolution(documentId: UUID, libraryId: UUID, zoneID: CKRecordZone.ID) {
+        let recordID = CKRecord.ID.record(syncId: documentId, zoneID: zoneID)
+
+        let client = CKRecord(recordType: Document.ckRecordType, recordID: recordID)
+        client["title"] = "Meeting Notes"
+        client["content"] = "Kickoff moved to Thursday.\nOwners: TBD."
+        client["updatedOn"] = Date(timeIntervalSinceNow: -30)
+
+        let server = CKRecord(recordType: Document.ckRecordType, recordID: recordID)
+        server["title"] = "Meeting Notes"
+        server["content"] = "Kickoff still Monday."
+        server["updatedOn"] = Date(timeIntervalSinceNow: -90)
+
+        let conflict = Conflict(
+            recordType: Document.ckRecordType, syncId: documentId, libraryId: libraryId,
+            title: "Meeting Notes", clientRecord: client, serverRecord: server,
+            ancestorRecord: nil, detectedOn: Date()
+        )
+        ConflictStore.shared.recordAutoResolution(ConflictAutoResolution(
+            conflict: conflict, kept: .keepClient, keptLabel: "this device's edit"
+        ))
+        SyncStatusStore.shared.recordResolvedConflict(noteTitle: "Meeting Notes")
+    }
+
+}
+#endif

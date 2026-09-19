@@ -10,9 +10,9 @@ import SwiftUI
 /// explanation, per `Docs/styleGuide.md`'s convention of never leaving a category unexplained.
 struct InsightSectionHeader: View {
 
-    let title: String
+    let title: LocalizedStringKey
     let count: Int
-    let description: String
+    let description: LocalizedStringKey
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {

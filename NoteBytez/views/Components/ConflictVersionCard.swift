@@ -27,7 +27,7 @@ struct ConflictVersionCard: View {
                     }
                 }
 
-                Text(revision.snippet.isEmpty ? "(empty)" : revision.snippet)
+                (revision.snippet.isEmpty ? Text("(empty)") : Text(verbatim: revision.snippet))
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .lineLimit(3)

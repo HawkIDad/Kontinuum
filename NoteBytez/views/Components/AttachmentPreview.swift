@@ -40,7 +40,7 @@ struct AttachmentPreview: View {
                     .onAppear { if let localURL { AttachmentStorage.ensureDownloaded(url: localURL) } }
                 }
             }
-            .navigationTitle(attachment.fileName ?? "Attachment")
+            .navigationTitle(attachment.fileName.map(Text.init) ?? Text("Attachment"))
             .noteBytezInlineNavigationTitle()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

@@ -18,15 +18,16 @@ enum SearchDAL {
         var id: UUID { document.documentId ?? UUID() }
     }
 
-    /// Matches title or content (case-insensitive substring), ranked with title hits above
-    /// content-only hits, and more occurrences ranked above fewer.
+    /// Matches title or content (case- *and* diacritic-insensitive substring — `"cafe"` matches
+    /// `"café"`, G17), ranked with title hits above content-only hits, and more occurrences
+    /// ranked above fewer.
     static func searchContent(query: String, libraryId: UUID, in context: ModelContext) -> [SearchResult] {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return [] }
 
         let candidates = DocumentDAL.fetchActive(libraryId: libraryId, in: context).filter { document in
-            (document.title ?? "").localizedCaseInsensitiveContains(trimmed) ||
-            (document.content ?? "").localizedCaseInsensitiveContains(trimmed)
+            (document.title ?? "").containsIgnoringCaseAndDiacritics(trimmed) ||
+            (document.content ?? "").containsIgnoringCaseAndDiacritics(trimmed)
         }
 
         return candidates
@@ -42,7 +43,7 @@ enum SearchDAL {
         guard !trimmed.isEmpty else { return [] }
 
         return DocumentDAL.fetchActive(libraryId: libraryId, in: context)
-            .filter { ($0.title ?? "").localizedCaseInsensitiveContains(trimmed) }
+            .filter { ($0.title ?? "").containsIgnoringCaseAndDiacritics(trimmed) }
             .map { SearchResult(document: $0, snippet: $0.title ?? "") }
     }
 
@@ -53,7 +54,7 @@ enum SearchDAL {
         guard !trimmed.isEmpty else { return [] }
 
         let matchingTags = TagDAL.fetchActive(libraryId: libraryId, in: context)
-            .filter { ($0.name ?? "").localizedCaseInsensitiveContains(trimmed) }
+            .filter { ($0.name ?? "").containsIgnoringCaseAndDiacritics(trimmed) }
 
         var seenDocumentIds: Set<UUID> = []
         var results: [SearchResult] = []
@@ -146,7 +147,7 @@ enum SearchDAL {
         for document in documents {
             guard let documentId = document.documentId else { continue }
             let match = PropertyDAL.fetchProperties(for: documentId, in: context)
-                .first { $0.value.localizedCaseInsensitiveContains(trimmed) }
+                .first { $0.value.containsIgnoringCaseAndDiacritics(trimmed) }
             guard let match, seenDocumentIds.insert(documentId).inserted else { continue }
             results.append(SearchResult(document: document, snippet: "\(match.property.name ?? ""): \(match.value)"))
         }
@@ -165,18 +166,20 @@ enum SearchDAL {
 
     private static func relevance(_ document: Document, query: String) -> Int {
         var score = 0
-        if (document.title ?? "").localizedCaseInsensitiveContains(query) { score += 1000 }
+        if (document.title ?? "").containsIgnoringCaseAndDiacritics(query) { score += 1000 }
         score += occurrenceCount(of: query, in: document.content ?? "")
         return score
     }
 
     private static func occurrenceCount(of query: String, in text: String) -> Int {
         guard !query.isEmpty else { return 0 }
-        return text.lowercased().components(separatedBy: query.lowercased()).count - 1
+        let folding: String.CompareOptions = [.caseInsensitive, .diacriticInsensitive]
+        return text.folding(options: folding, locale: .current)
+            .components(separatedBy: query.folding(options: folding, locale: .current)).count - 1
     }
 
     private static func snippet(for content: String, query: String, contextLength: Int = 40, limit: Int = 140) -> String {
-        guard let range = content.range(of: query, options: .caseInsensitive) else {
+        guard let range = content.range(of: query, options: [.caseInsensitive, .diacriticInsensitive]) else {
             return truncate(content, limit: limit)
         }
 

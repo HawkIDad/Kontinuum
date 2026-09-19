@@ -1,0 +1,2 @@
+Target dependency graph (1 target)
+Target 'translate-strings-product' in project 'translate-strings' (no dependencies)

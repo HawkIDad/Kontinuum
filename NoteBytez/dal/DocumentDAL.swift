@@ -10,6 +10,8 @@ import SwiftData
 enum DocumentDAL {
 
     static func create(title: String, content: String, libraryId: UUID, in context: ModelContext) -> Document {
+        let title = TextNormalization.normalized(title)
+        let content = TextNormalization.normalized(content)
         let document = Document(title: title, content: content, libraryId: libraryId)
         context.insert(document)
         SyncEngine.shared.recordChanged(document, in: context)
@@ -26,6 +28,7 @@ enum DocumentDAL {
     }
 
     static func updateContent(_ document: Document, content: String, in context: ModelContext) {
+        let content = TextNormalization.normalized(content)
         document.content = content
         document.updatedOn = Date()
         SyncEngine.shared.recordChanged(document, in: context)
@@ -47,6 +50,7 @@ enum DocumentDAL {
     /// every other active document in the library, to `[[newTitle]]` — so links never break
     /// on rename.
     static func updateTitle(_ document: Document, title: String, in context: ModelContext) {
+        let title = TextNormalization.normalized(title)
         let oldTitle = document.title ?? ""
         document.title = title
         document.updatedOn = Date()

@@ -109,10 +109,12 @@ enum ExportDAL {
 
     /// Obsidian/Logseq tags can't contain whitespace — a notebook named "App Onboarding
     /// Revamp" becomes `app-onboarding-revamp`, per NoteBytez-ReleaseFeatures.md's Decisions
-    /// Log.
+    /// Log. `invariantLowercased` (not `.lowercased()`): this tag is a machine-readable literal
+    /// (G20/DoNotTranslate.md) that must kebab-case identically on every device regardless of
+    /// its locale — plain `.lowercased()` folds "I" to Turkish dotless "ı" under a `tr` locale,
+    /// which would silently desync the tag between devices.
     private static func kebabCase(_ name: String) -> String {
-        name.trimmingCharacters(in: .whitespacesAndNewlines)
-            .lowercased()
+        TextNormalization.invariantLowercased(name.trimmingCharacters(in: .whitespacesAndNewlines))
             .replacingOccurrences(of: #"\s+"#, with: "-", options: .regularExpression)
     }
 

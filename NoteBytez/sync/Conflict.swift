@@ -97,4 +97,31 @@ struct Conflict: Identifiable {
             ?? record.recordType
     }
 
+    /// Human-readable "which side was kept", for the resolved-history log entry
+    /// (`Docs/Bugs/20260910v1-Sync.md` SF 6). When the server version carries a resolvable
+    /// collaborator, it is named ("kept Dana's version"); otherwise it falls back to a generic
+    /// phrasing.
+    func resolutionSummary(for choice: ConflictResolutionChoice) -> String {
+        resolutionSummary(for: choice, collaboratorName: Self.collaboratorName(for: serverRecord))
+    }
+
+    /// Testable seam — the `collaboratorName` is passed in rather than resolved here, so the
+    /// named-collaborator branch is exercisable without a live, shared CloudKit record (which is
+    /// the only thing that ever populates `CKRecord.lastModifiedUserRecordID`).
+    func resolutionSummary(for choice: ConflictResolutionChoice, collaboratorName: String?) -> String {
+        switch choice {
+        case .keepClient:
+            return "kept this device's edit"
+        case .keepServer:
+            if let collaboratorName, !collaboratorName.isEmpty {
+                return "kept \(collaboratorName)'s version"
+            }
+            return "kept the version synced elsewhere"
+        case .keepBoth:
+            return "kept both versions"
+        case .merged:
+            return "kept a merged version"
+        }
+    }
+
 }

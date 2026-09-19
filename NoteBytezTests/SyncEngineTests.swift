@@ -161,4 +161,75 @@ struct SyncEngineTests {
         #expect(Bool(true))
     }
 
+    // MARK: - Manual conflict resolution is atomic without a live engine
+    //
+    // 20260910v1-Sync.md gap 6 / SF 9: resolving a queued conflict must clear it from
+    // `ConflictStore` *and* drop the `SyncStatusStore` count together, whether or not a
+    // `CKSyncEngine` is running. In this suite it never is, which is exactly the Debug / seeded
+    // path the defect lived in.
+
+    private func makeQueuedConflict(title: String) -> Conflict {
+        let libraryId = UUID()
+        let syncId = UUID()
+        let zoneID = CKRecordZone.ID.library(libraryId)
+        let recordID = CKRecord.ID.record(syncId: syncId, zoneID: zoneID)
+        return Conflict(
+            recordType: Document.ckRecordType,
+            syncId: syncId,
+            libraryId: libraryId,
+            title: title,
+            clientRecord: CKRecord(recordType: Document.ckRecordType, recordID: recordID),
+            serverRecord: CKRecord(recordType: Document.ckRecordType, recordID: recordID),
+            ancestorRecord: nil,
+            detectedOn: Date()
+        )
+    }
+
+    @Test func resolveConflictManuallyClearsTheQueueAndTheCountAndLogsTheOutcome() async throws {
+        let context = try makeContext()
+        let conflict = makeQueuedConflict(title: "Draft Proposal")
+
+        ConflictStore.shared.queue(conflict)
+        SyncStatusStore.shared.recordConflict(noteTitle: conflict.title)
+        let countBefore = SyncStatusStore.shared.conflictCount
+        defer {
+            ConflictStore.shared.remove(conflict)
+            ConflictStore.shared.clearAcknowledgement(syncId: conflict.syncId)
+            ConflictStore.shared.clearUndo()
+        }
+
+        let didResolve = await SyncEngine.shared.resolveConflictManually(conflict, choice: .keepClient, in: context)
+
+        #expect(didResolve)
+        #expect(ConflictStore.shared.conflict(syncId: conflict.syncId) == nil)
+        #expect(SyncStatusStore.shared.conflictCount == countBefore - 1)
+        #expect(SyncStatusStore.shared.logEntries.first?.message == "Resolved — \"Draft Proposal\" — kept this device's edit")
+        #expect(ConflictStore.shared.recentlyResolved[conflict.syncId]?.summary == "kept this device's edit")
+        #expect(ConflictStore.shared.pendingUndo?.conflict.syncId == conflict.syncId)
+    }
+
+    @Test func undoResolutionRequeuesTheConflictAndRestoresTheCount() async throws {
+        let context = try makeContext()
+        let conflict = makeQueuedConflict(title: "Sync Test")
+
+        ConflictStore.shared.queue(conflict)
+        SyncStatusStore.shared.recordConflict(noteTitle: conflict.title)
+        _ = await SyncEngine.shared.resolveConflictManually(conflict, choice: .keepServer, in: context)
+        let countAfterResolve = SyncStatusStore.shared.conflictCount
+        let undo = try #require(ConflictStore.shared.pendingUndo)
+        defer {
+            ConflictStore.shared.remove(conflict)
+            ConflictStore.shared.clearAcknowledgement(syncId: conflict.syncId)
+            ConflictStore.shared.clearUndo()
+            SyncStatusStore.shared.decrementConflictCount()
+        }
+
+        await SyncEngine.shared.undoResolution(undo, in: context)
+
+        #expect(ConflictStore.shared.conflict(syncId: conflict.syncId) != nil)
+        #expect(SyncStatusStore.shared.conflictCount == countAfterResolve + 1)
+        #expect(ConflictStore.shared.pendingUndo == nil)
+        #expect(SyncStatusStore.shared.logEntries.first?.message == "Resolution undone — \"Sync Test\"")
+    }
+
 }

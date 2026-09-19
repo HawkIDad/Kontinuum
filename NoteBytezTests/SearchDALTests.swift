@@ -43,6 +43,20 @@ struct SearchDALTests {
         #expect(results.map { $0.document.title } == ["Roadmap", "Weekly Review"])
     }
 
+    /// G17: search must be diacritic-insensitive as well as case-insensitive — a plain-ASCII
+    /// query still finds an accented match.
+    @Test func searchContentIsDiacriticInsensitive() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        _ = DocumentDAL.create(title: "Le Café", content: "Meet at the café at noon.", libraryId: libraryId, in: context)
+        _ = DocumentDAL.create(title: "Unrelated", content: "Nothing relevant here.", libraryId: libraryId, in: context)
+
+        let results = SearchDAL.searchContent(query: "cafe", libraryId: libraryId, in: context)
+
+        #expect(results.count == 1)
+        #expect(results.first?.document.title == "Le Café")
+    }
+
     @Test func searchContentReturnsEmptyForBlankQuery() throws {
         let context = try makeContext()
         let libraryId = UUID()

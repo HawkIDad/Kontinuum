@@ -62,6 +62,34 @@ struct TagParserTests {
         #expect(TagParser.canonicalize("  #Roadmap  ") == "roadmap")
     }
 
+    // MARK: - Unicode correctness (G17)
+
+    @Test func canonicalizeIsStableAcrossNFCAndNFDFormsOfTheSameText() {
+        let precomposed = "café"           // é as a single precomposed codepoint (U+00E9)
+        let decomposed = "cafe\u{0301}"    // e + combining acute accent (U+0065 U+0301)
+        // Swift's `==` already treats these as canonically equivalent, so the meaningful check
+        // is at the storage level: they differ in UTF-16 length until `canonicalize` normalizes
+        // both to the same representation.
+        #expect(precomposed.utf16.count != decomposed.utf16.count, "the two literals must actually differ at the storage level for this test to mean anything")
+        #expect(TagParser.canonicalize(precomposed) == TagParser.canonicalize(decomposed))
+        #expect(TagParser.canonicalize(decomposed).utf16.count == precomposed.utf16.count)
+    }
+
+    @Test func canonicalizeFoldsTurkishDottedCapitalIWithoutLeavingUppercaseLetters() {
+        // "İ" (U+0130, dotted capital I) is the classic case-folding trap: under
+        // `Locale.current` tailoring it folds differently on a Turkish device than anywhere
+        // else. Canonicalization must use a locale-*invariant* rule instead, so it fully folds
+        // regardless of which locale the test — or a real device — happens to run under.
+        let canonical = TagParser.canonicalize("İstanbul")
+        #expect(!canonical.contains(where: { $0.isUppercase }))
+    }
+
+    @Test func canonicalizeDoesNotMergeGermanSharpSWithDoubleS() {
+        // "straße" and "STRASSE" are different spellings, not case variants of one another —
+        // canonicalization must not accidentally collapse them into the same tag identity.
+        #expect(TagParser.canonicalize("straße") != TagParser.canonicalize("STRASSE"))
+    }
+
     @Test func activeQueryDetectsUnclosedTagAtEndOfContent() {
         #expect(TagParser.activeQuery(in: "Type #road") == "road")
     }

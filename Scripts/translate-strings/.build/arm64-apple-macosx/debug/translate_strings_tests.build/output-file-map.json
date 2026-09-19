@@ -1,0 +1,33 @@
+{
+  "": {
+    "swift-dependencies": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/primary.swiftdeps"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/GlossaryTests.swift": {
+    "dependencies": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/GlossaryTests.d",
+    "object": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/GlossaryTests.swift.o",
+    "swiftmodule": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/GlossaryTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/GlossaryTests.swiftdeps",
+    "diagnostics": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/GlossaryTests.dia"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/PlaceholdersTests.swift": {
+    "dependencies": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/PlaceholdersTests.d",
+    "object": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/PlaceholdersTests.swift.o",
+    "swiftmodule": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/PlaceholdersTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/PlaceholdersTests.swiftdeps",
+    "diagnostics": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/PlaceholdersTests.dia"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/StringCatalogTests.swift": {
+    "dependencies": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringCatalogTests.d",
+    "object": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringCatalogTests.swift.o",
+    "swiftmodule": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringCatalogTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringCatalogTests.swiftdeps",
+    "diagnostics": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringCatalogTests.dia"
+  },
+  "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/Tests/translate-strings-tests/StringExtractorTests.swift": {
+    "dependencies": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringExtractorTests.d",
+    "object": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringExtractorTests.swift.o",
+    "swiftmodule": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringExtractorTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringExtractorTests.swiftdeps",
+    "diagnostics": "/Users/davidcollison/DevProjects/xCodeWorkspace/Kontinuum/Scripts/translate-strings/.build/arm64-apple-macosx/debug/translate_strings_tests.build/StringExtractorTests.dia"
+  }
+}

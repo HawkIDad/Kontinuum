@@ -22,6 +22,9 @@ struct SettingsView: View {
             NavigationLink("Subscription") {
                 SubscriptionSettingsView()
             }
+            NavigationLink("Language") {
+                LanguageSettingsView()
+            }
             NavigationLink("Sync & Conflicts") {
                 ConflictStrategySettingsView()
             }
@@ -43,6 +46,9 @@ struct SettingsView: View {
             Button("Export Library") {
                 isPresentingExportFolderPicker = true
             }
+            NavigationLink("Report a Translation Issue") {
+                TranslationIssueReportView()
+            }
         }
         .navigationTitle("Settings")
         .fileImporter(isPresented: $isPresentingExportFolderPicker, allowedContentTypes: [.folder]) { result in
@@ -55,7 +61,7 @@ struct SettingsView: View {
         ) {
             Button("OK") { exportedNoteCount = nil }
         } message: {
-            Text("Exported \(exportedNoteCount ?? 0) note\((exportedNoteCount ?? 0) == 1 ? "" : "s").")
+            Text(String(localized: "Exported \(exportedNoteCount ?? 0) note."))
         }
         .sheet(isPresented: $isPresentingSharing) {
             SharingParticipantsView(viewModel: SharingViewModel(libraryId: library.libraryId ?? UUID(), libraryName: library.name ?? "Library"))

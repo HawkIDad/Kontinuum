@@ -40,18 +40,17 @@ final class SyncStatusViewModel {
     /// sync visual language explicitly wants this timestamp visible in every state, not just
     /// when synced.
     var lastSyncedText: String {
-        guard let lastSyncedOn = store.lastSyncedOn else { return "Never synced" }
-        return "Last synced: \(lastSyncedOn.formatted(.relative(presentation: .named)))"
+        guard let lastSyncedOn = store.lastSyncedOn else { return String(localized: "Never synced") }
+        return String(localized: "Last synced: \(lastSyncedOn.formatted(.relative(presentation: .named)))")
     }
 
     var statusHeadline: String {
         switch status {
-        case .synced: return "Synced"
-        case .syncing: return "Syncing…"
-        case .offline: return "Offline"
+        case .synced: return String(localized: "Synced")
+        case .syncing: return String(localized: "Syncing…")
+        case .offline: return String(localized: "Offline")
         case .conflict:
-            let count = store.conflictCount
-            return count == 1 ? "Conflict on 1 note" : "Conflict on \(count) notes"
+            return String(localized: "Conflict on \(store.conflictCount) note")
         }
     }
 

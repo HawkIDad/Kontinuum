@@ -19,7 +19,7 @@ struct FilterChipRow<Scope>: View where Scope: CaseIterable, Scope: Identifiable
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
                 ForEach(scopes) { scope in
-                    Button(scope.rawValue) {
+                    Button(LocalizedStringKey(scope.rawValue)) {
                         selected = scope
                     }
                     .buttonStyle(.bordered)

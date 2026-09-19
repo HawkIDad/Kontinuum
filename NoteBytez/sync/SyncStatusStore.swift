@@ -89,9 +89,8 @@ final class SyncStatusStore {
 
     func recordSyncedNotes(count: Int, received: Bool) {
         guard count > 0 else { return }
-        let noun = count == 1 ? "note" : "notes"
-        let verb = received ? "received" : "updated"
-        appendEntry(message: "Synced — \(count) \(noun) \(verb)", isError: false)
+        let verb = received ? String(localized: "received") : String(localized: "updated")
+        appendEntry(message: String(localized: "Synced — \(count) note \(verb)"), isError: false)
     }
 
     func recordConflict(noteTitle: String?) {
@@ -122,6 +121,24 @@ final class SyncStatusStore {
     /// unresolved.
     func decrementConflictCount() {
         conflictCount = max(0, conflictCount - 1)
+    }
+
+    /// Restores the count when a manual resolution is undone within its window
+    /// (`Docs/Bugs/20260910v1-Sync.md` SF 7).
+    func incrementConflictCount() {
+        conflictCount += 1
+    }
+
+    /// A conflict the user resolved by hand in S10 — logged with which side was kept
+    /// (`Docs/Bugs/20260910v1-Sync.md` SF 6). Distinct from `recordResolvedConflict`, which is
+    /// the automatic-strategy wording ("Auto-resolved — …").
+    func recordManualResolution(title: String, summary: String) {
+        appendEntry(message: "Resolved — \"\(title)\" — \(summary)", isError: false)
+    }
+
+    /// The user undid a manual resolution before its window lapsed.
+    func recordResolutionUndone(title: String) {
+        appendEntry(message: "Resolution undone — \"\(title)\"", isError: false)
     }
 
     private func appendEntry(message: String, isError: Bool) {

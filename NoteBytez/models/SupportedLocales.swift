@@ -39,6 +39,18 @@ enum SupportedLocales {
         SupportedLocale(id: "sv", endonym: "Svenska"),
         SupportedLocale(id: "fi", endonym: "Suomi"),
         SupportedLocale(id: "nb", endonym: "Norsk bokmål"),
+        // Phase 9 (Language Rollout Phase 4 — CJK), shipped 2026-09-16.
+        SupportedLocale(id: "zh-Hans", endonym: "简体中文"),
+        SupportedLocale(id: "ja", endonym: "日本語"),
+        SupportedLocale(id: "ko", endonym: "한국어"),
+        // Phase 10 (Language Rollout Phase 5 — remaining Success-Factor European languages), shipped 2026-09-17.
+        SupportedLocale(id: "pl", endonym: "Polski"),
+        SupportedLocale(id: "ro", endonym: "Română"),
+        SupportedLocale(id: "tr", endonym: "Türkçe"),
+        SupportedLocale(id: "hu", endonym: "Magyar"),
+        SupportedLocale(id: "cs", endonym: "Čeština"),
+        SupportedLocale(id: "sr-Cyrl", endonym: "Српски"),
+        SupportedLocale(id: "lt", endonym: "Lietuvių"),
     ]
 
     /// The device's own language if it's in `all`, else the first (always `en-US`) entry — G4b's

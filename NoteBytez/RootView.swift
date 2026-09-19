@@ -14,13 +14,25 @@ struct RootView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var libraryViewModel: LibraryViewModel?
     @State private var didFinishTemplateOnboarding = false
+    @State private var didConfirmLanguage = false
 
     var body: some View {
-        // App Store provenance + subscription gate (NoteBytez20260907v1-Security.md). Renders
-        // the app below only when entitled; otherwise a paywall / blocked screen.
-        EntitlementGateContainer(viewModel: .makeDefault()) {
-            libraryContent
+        // First-launch language prompt (MultiLanguage Phase 5, decision G4b) precedes
+        // *everything* else, including the entitlement gate below — a user should be able to
+        // read the paywall in their own language.
+        if shouldShowLanguagePrompt {
+            FirstLaunchLanguagePromptView(onConfirm: { didConfirmLanguage = true })
+        } else {
+            // App Store provenance + subscription gate (NoteBytez20260907v1-Security.md). Renders
+            // the app below only when entitled; otherwise a paywall / blocked screen.
+            EntitlementGateContainer(viewModel: .makeDefault()) {
+                libraryContent
+            }
         }
+    }
+
+    private var shouldShowLanguagePrompt: Bool {
+        !didConfirmLanguage && !LocalePreferenceStore.hasPromptedForLanguage()
     }
 
     private var libraryContent: some View {

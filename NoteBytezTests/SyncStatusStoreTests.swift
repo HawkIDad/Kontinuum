@@ -100,6 +100,36 @@ struct SyncStatusStoreTests {
         #expect(entry.message.contains("Roadmap"))
     }
 
+    // MARK: - Manual resolution logging + count (20260910v1-Sync.md SF 6 / SF 7 / SF 9)
+
+    @Test func recordManualResolutionLogsAnAttributedNonErrorEntry() {
+        let store = SyncStatusStore()
+        store.recordManualResolution(title: "Draft Proposal", summary: "kept Dana's version")
+
+        let entry = try! #require(store.logEntries.first)
+        #expect(entry.isError == false)
+        #expect(entry.message == "Resolved — \"Draft Proposal\" — kept Dana's version")
+    }
+
+    @Test func recordResolutionUndoneLogsANonErrorEntry() {
+        let store = SyncStatusStore()
+        store.recordResolutionUndone(title: "Draft Proposal")
+
+        #expect(store.logEntries.first?.message == "Resolution undone — \"Draft Proposal\"")
+        #expect(store.logEntries.first?.isError == false)
+    }
+
+    @Test func incrementConflictCountRestoresTheConflictStatusAfterAnUndo() {
+        let store = SyncStatusStore()
+        store.recordConflict(noteTitle: "Roadmap")
+        store.decrementConflictCount()
+        #expect(store.status == .synced)
+
+        store.incrementConflictCount()
+        #expect(store.conflictCount == 1)
+        #expect(store.status == .conflict)
+    }
+
     @Test func recordErrorSetsADismissibleErrorAndAppendsToTheLog() {
         let store = SyncStatusStore()
         store.recordError("Network unavailable")

@@ -21,6 +21,12 @@ final class ConflictResolutionViewModel {
 
     private(set) var isResolving = false
 
+    /// Flips to `true` once a resolution has actually been persisted — `ConflictResolutionView`
+    /// watches this to dismiss S10 back to the Sync Status panel
+    /// (`Docs/Bugs/20260910v1-Sync.md` SF 5). Stays `false` on a failed resolution so the user
+    /// keeps the screen and can retry.
+    private(set) var didResolve = false
+
     /// Only populated when `conflict.hasDiffableContent` — empty otherwise, so
     /// `ConflictResolutionView` falls back to the Keep-All-Versions UI for non-`Document`
     /// conflicts even if Diff-Merge is the active strategy.
@@ -56,11 +62,12 @@ final class ConflictResolutionViewModel {
         }
     }
 
-    /// Strategy 1 — the user picks a side (or both) explicitly.
+    /// Strategy 1 — the user picks a side (or both) explicitly. `SyncEngine` owns the
+    /// count/acknowledgement/history bookkeeping (single writer) so it can never diverge from
+    /// the queue — see `resolveConflictManually`.
     func resolve(choice: ConflictResolutionChoice) async {
         isResolving = true
-        await SyncEngine.shared.resolveConflict(conflict, choice: choice, in: modelContext)
-        SyncStatusStore.shared.decrementConflictCount()
+        didResolve = await SyncEngine.shared.resolveConflictManually(conflict, choice: choice, in: modelContext)
         isResolving = false
     }
 

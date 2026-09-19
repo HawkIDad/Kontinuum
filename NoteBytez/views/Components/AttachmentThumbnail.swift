@@ -48,7 +48,7 @@ struct AttachmentThumbnail: View {
             .clipShape(Capsule())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(attachment.fileName ?? "Attachment")
+        .accessibilityLabel(attachment.fileName.map(Text.init) ?? Text("Attachment"))
     }
 
 }

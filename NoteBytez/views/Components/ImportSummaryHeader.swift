@@ -16,11 +16,21 @@ struct ImportSummaryHeader: View {
     let notebookCount: Int
 
     var body: some View {
-        Text("\(noteCount) note\(noteCount == 1 ? "" : "s") · \(linkCount) wikilink\(linkCount == 1 ? "" : "s") · \(taskCount) task\(taskCount == 1 ? "" : "s") · \(notebookCount) notebook\(notebookCount == 1 ? "" : "s") found")
+        Text(summaryText)
             .font(.callout)
             .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
+    }
+
+    /// Composed from four independently plural-correct fragments (G14) rather than one literal
+    /// with four inline ternaries — each count gets its own String Catalog plural variation.
+    private var summaryText: String {
+        let notes = String(localized: "\(noteCount) note")
+        let links = String(localized: "\(linkCount) wikilink")
+        let tasks = String(localized: "\(taskCount) task")
+        let notebooks = String(localized: "\(notebookCount) notebook")
+        return String(localized: "\(notes) · \(links) · \(tasks) · \(notebooks) found")
     }
 
 }

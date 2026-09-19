@@ -22,7 +22,7 @@ struct ExploreHubView: View {
                 NavigationLink {
                     destinationView(for: destination)
                 } label: {
-                    Label(destination.rawValue, systemImage: destination.systemImage)
+                    Label(destination.displayName, systemImage: destination.systemImage)
                 }
             }
             Button {
@@ -55,7 +55,7 @@ struct ExploreHubView: View {
                 EmptyView()
             }
         } else {
-            Text(destination.rawValue)
+            Text(destination.displayName)
         }
     }
 

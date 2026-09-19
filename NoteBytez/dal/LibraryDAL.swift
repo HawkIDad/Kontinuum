@@ -14,12 +14,12 @@ enum LibraryDAL {
 
     private static let selectedLibraryIdKey = "selectedLibraryId"
 
-    static func create(name: String, in context: ModelContext) -> Library {
+    static func create(name: String, locale: Locale = .current, in context: ModelContext) -> Library {
         let library = Library(name: name)
         context.insert(library)
         if let libraryId = library.libraryId {
             SyncEngine.shared.ensureZone(forLibraryId: libraryId)
-            TemplateDAL.seedStarterContent(libraryId: libraryId, in: context)
+            TemplateDAL.seedStarterContent(libraryId: libraryId, in: context, locale: locale)
         }
         return library
     }

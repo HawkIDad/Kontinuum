@@ -72,6 +72,22 @@ struct BlockReferenceDALTests {
         #expect(resolved?.document.documentId == documentA.documentId)
     }
 
+    /// G17: the title tie-break must use locale-aware collation, not a raw Unicode-scalar `<`
+    /// — otherwise "Äpfel Note" (U+00C4 sorts after every ASCII letter) would incorrectly land
+    /// after "Zebra Note" instead of near "A".
+    @Test func resolveFallsBackUsesLocaleAwareCollationForTheTitleTieBreak() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        let documentZebra = DocumentDAL.create(title: "Zebra Note", content: "# Shared Anchor\n\nFrom Zebra.", libraryId: libraryId, in: context)
+        let documentApfel = DocumentDAL.create(title: "Äpfel Note", content: "# Shared Anchor\n\nFrom Äpfel.", libraryId: libraryId, in: context)
+        let documentZebraId = try #require(documentZebra.documentId)
+        let anchor = try #require(BlockDAL.fetchActive(documentId: documentZebraId, in: context).first?.anchor)
+
+        let resolved = BlockReferenceDAL.resolve(anchor: anchor, preferringDocumentId: nil, libraryId: libraryId, in: context)
+
+        #expect(resolved?.document.documentId == documentApfel.documentId)
+    }
+
     // MARK: - autocompleteMatches
 
     @Test func autocompleteMatchesFuzzyMatchesAnchorOrContent() throws {

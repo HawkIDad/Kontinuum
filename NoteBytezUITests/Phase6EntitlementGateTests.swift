@@ -17,8 +17,7 @@ final class Phase6EntitlementGateTests: NoteBytezUITestCase {
 
     @MainActor
     private func launch(simulating scenario: String) {
-        app.launchArguments += ["-SimulateEntitlement", scenario]
-        app.launch()
+        launch(extraArguments: ["-SimulateEntitlement", scenario])
     }
 
     // MARK: - Blocked: provenance failed

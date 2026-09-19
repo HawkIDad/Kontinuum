@@ -36,7 +36,7 @@ struct SearchView: View {
                 }
                 .buttonStyle(.plain)
                 .foregroundStyle(viewModel.isAdvancedMode ? Color.accentColor : .secondary)
-                .accessibilityLabel(viewModel.isAdvancedMode ? "Advanced Search: On" : "Advanced Search: Off")
+                .accessibilityLabel(viewModel.isAdvancedMode ? Text("Advanced Search: On") : Text("Advanced Search: Off"))
             }
             .padding(10)
             .background(Color.noteBytezSecondarySurface)

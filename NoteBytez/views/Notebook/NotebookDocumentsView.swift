@@ -33,7 +33,7 @@ struct NotebookDocumentsView: View {
                 }
             }
         }
-        .navigationTitle(notebook.name ?? "Notebook")
+        .navigationTitle(notebook.name.map(Text.init) ?? Text("Notebook"))
         .noteBytezInlineNavigationTitle()
         .toolbar {
             ToolbarItem(placement: .primaryAction) {

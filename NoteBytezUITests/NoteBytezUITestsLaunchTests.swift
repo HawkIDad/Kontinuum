@@ -20,6 +20,9 @@ final class NoteBytezUITestsLaunchTests: XCTestCase {
     @MainActor
     func testLaunch() throws {
         let app = XCUIApplication()
+        // MultiLanguage Phase 5.7 (R7) — keep this launch screenshot representative of S1, not
+        // the (now-first) language prompt.
+        app.launchArguments += ["-SkipLanguagePrompt"]
         app.launch()
 
         // Insert steps here to perform after app launch but before taking a screenshot,

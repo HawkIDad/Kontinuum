@@ -30,7 +30,7 @@ struct GraphInsightsView: View {
                     emptyState("No orphans — every note is connected.")
                 } else {
                     ForEach(viewModel.orphans) { document in
-                        row(for: document, detail: "Unconnected", systemImage: "questionmark.circle")
+                        row(for: document, detail: String(localized: "Unconnected"), systemImage: "questionmark.circle")
                     }
                 }
             }
@@ -60,7 +60,9 @@ struct GraphInsightsView: View {
                     ForEach(viewModel.notesWithOpenTasks, id: \.document.documentId) { entry in
                         row(
                             for: entry.document,
-                            detail: entry.nearestDueDate.map { "\(entry.openCount) open · due \($0.formatted(date: .abbreviated, time: .omitted))" } ?? "\(entry.openCount) open",
+                            detail: entry.nearestDueDate.map {
+                                String(localized: "\(entry.openCount) open · due \($0.formatted(date: .abbreviated, time: .omitted))")
+                            } ?? String(localized: "\(entry.openCount) open"),
                             systemImage: "checklist"
                         )
                     }
@@ -73,7 +75,7 @@ struct GraphInsightsView: View {
                     emptyState("No hubs yet — link some notes together.")
                 } else {
                     ForEach(viewModel.hubs, id: \.document.documentId) { entry in
-                        row(for: entry.document, detail: "\(entry.degree) links", systemImage: "point.3.connected.trianglepath.dotted")
+                        row(for: entry.document, detail: String(localized: "\(entry.degree) link"), systemImage: "point.3.connected.trianglepath.dotted")
                     }
                 }
             }
@@ -84,7 +86,7 @@ struct GraphInsightsView: View {
                     emptyState("No clusters yet.")
                 } else {
                     ForEach(viewModel.clusterGroups) { cluster in
-                        DisclosureGroup("Cluster: \(cluster.headline.title ?? "Untitled") — \(cluster.members.count) notes") {
+                        DisclosureGroup(clusterDisclosureTitle(for: cluster)) {
                             ForEach(cluster.members) { document in
                                 row(for: document, detail: "", systemImage: "doc.text")
                             }
@@ -128,10 +130,16 @@ struct GraphInsightsView: View {
         .buttonStyle(.plain)
     }
 
-    private func emptyState(_ message: String) -> some View {
+    private func emptyState(_ message: LocalizedStringKey) -> some View {
         Text(message)
             .font(.callout)
             .foregroundStyle(.secondary)
+    }
+
+    private func clusterDisclosureTitle(for cluster: GraphInsightsViewModel.ClusterGroup) -> String {
+        let title = cluster.headline.title ?? String(localized: "Untitled")
+        let noteCount = String(localized: "\(cluster.members.count) note")
+        return String(localized: "Cluster: \(title) — \(noteCount)")
     }
 
 }

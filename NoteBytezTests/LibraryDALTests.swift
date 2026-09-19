@@ -77,6 +77,27 @@ struct LibraryDALTests {
         #expect(Set(groups.compactMap { $0.name }) == ["Fiction Writing", "Wedding Planning", "Photography Client Work"])
     }
 
+    /// G2: seed content is emitted in the device's current language *at the moment the library
+    /// is created*, resolved via `LibraryDAL.create`'s `locale` parameter (defaults to
+    /// `.current`; Phase 5's in-app override will be what actually varies it in production).
+    @Test func createUnderSpanishSeedsSpanishStarterGroups() throws {
+        let context = try makeContext()
+        let library = LibraryDAL.create(name: "Personal", locale: Locale(identifier: "es"), in: context)
+        let libraryId = try #require(library.libraryId)
+
+        let groups = TemplateDAL.fetchActiveGroups(libraryId: libraryId, in: context)
+        #expect(Set(groups.compactMap { $0.name }) == ["Escritura de Ficción", "Planificación de Bodas", "Trabajo con Clientes de Fotografía"])
+    }
+
+    @Test func createUnderEnglishIsByteIdenticalToTheDocumentedBaseline() throws {
+        let context = try makeContext()
+        let library = LibraryDAL.create(name: "Personal", locale: Locale(identifier: "en"), in: context)
+        let libraryId = try #require(library.libraryId)
+
+        let groups = TemplateDAL.fetchActiveGroups(libraryId: libraryId, in: context)
+        #expect(Set(groups.compactMap { $0.name }) == ["Fiction Writing", "Wedding Planning", "Photography Client Work"])
+    }
+
     @Test func selectedLibraryIdRoundTripsThroughDefaults() {
         let defaults = makeDefaults()
         let libraryId = UUID()

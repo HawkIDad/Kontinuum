@@ -31,7 +31,7 @@ struct NoteTemplateFieldsView: View {
                         HStack {
                             Text(field.name)
                             Spacer()
-                            Text(field.valueType.rawValue.capitalized)
+                            Text(LocalizedStringKey(field.valueType.rawValue.capitalized))
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
@@ -48,7 +48,7 @@ struct NoteTemplateFieldsView: View {
                 TextField("Field name", text: $newFieldName)
                 Picker("Type", selection: $newFieldType) {
                     ForEach(PropertyValueType.allCases, id: \.self) { valueType in
-                        Text(valueType.rawValue.capitalized).tag(valueType)
+                        Text(LocalizedStringKey(valueType.rawValue.capitalized)).tag(valueType)
                     }
                 }
                 TextField("Default value (optional)", text: $newFieldDefault)
@@ -62,7 +62,7 @@ struct NoteTemplateFieldsView: View {
                 .disabled(newFieldName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
         }
-        .navigationTitle(template.name ?? "Template")
+        .navigationTitle(template.name.map(Text.init) ?? Text("Template"))
         .noteBytezInlineNavigationTitle()
         .onAppear { fields = template.fields }
     }

@@ -36,7 +36,7 @@ enum AppDestination: String, CaseIterable, Identifiable {
     enum Section: CaseIterable, Hashable {
         case capture, library, explore, settings
 
-        var title: String {
+        var title: LocalizedStringKey {
             switch self {
             case .capture: return "Capture"
             case .library: return "Library"
@@ -47,6 +47,28 @@ enum AppDestination: String, CaseIterable, Identifiable {
     }
 
     var id: String { rawValue }
+
+    /// The localized label a user sees (tab/sidebar row, nav title). `rawValue` itself stays a
+    /// plain, un-localized `String` — it is also this destination's `Identifiable` identity and
+    /// feeds every `accessibilityIdentifier("tabbar.\(destination.rawValue)")`-style structural
+    /// token (`Docs/Localization/DoNotTranslate.md`), so it must never change with the device's
+    /// language.
+    var displayName: LocalizedStringKey {
+        switch self {
+        case .today: return "Today"
+        case .notebooks: return "Notebooks"
+        case .allNotes: return "All Notes"
+        case .tags: return "Tags"
+        case .search: return "Search"
+        case .graph: return "Graph"
+        case .insights: return "Insights"
+        case .tasks: return "Tasks"
+        case .savedViews: return "Saved Views"
+        case .canvas: return "Canvas"
+        case .explore: return "Explore"
+        case .settings: return "Settings"
+        }
+    }
 
     var section: Section {
         switch self {
@@ -132,7 +154,7 @@ struct ContentView: View {
                                 }
                         }
                         .tabItem {
-                            Label(destination.rawValue, systemImage: destination.systemImage)
+                            Label(destination.displayName, systemImage: destination.systemImage)
                                 .accessibilityIdentifier("tabbar.\(destination.rawValue)")
                         }
                         .tag(destination)
@@ -145,17 +167,17 @@ struct ContentView: View {
                         ForEach(AppDestination.sidebarSections, id: \.self) { section in
                             Section(section.title) {
                                 ForEach(AppDestination.sidebarRows(in: section)) { destination in
-                                    Label(destination.rawValue, systemImage: destination.systemImage)
+                                    Label(destination.displayName, systemImage: destination.systemImage)
                                         .tag(destination)
                                         .accessibilityIdentifier("sidebar.\(destination.rawValue)")
                                 }
                             }
                         }
-                        Label(AppDestination.settings.rawValue, systemImage: AppDestination.settings.systemImage)
+                        Label(AppDestination.settings.displayName, systemImage: AppDestination.settings.systemImage)
                             .tag(AppDestination.settings)
                             .accessibilityIdentifier("sidebar.\(AppDestination.settings.rawValue)")
                     }
-                    .navigationTitle("NoteBytez")
+                    .navigationTitle(Text(verbatim: "NoteBytez"))
                     .toolbar { syncStatusToolbarItem }
                 } detail: {
                     NavigationStack {
@@ -307,71 +329,71 @@ private struct DestinationView: View {
             if let libraryId = library.libraryId {
                 TodayJournalView(libraryId: libraryId)
             } else {
-                Text(destination.rawValue)
-                    .navigationTitle(destination.rawValue)
+                Text(destination.displayName)
+                    .navigationTitle(destination.displayName)
             }
         case .allNotes:
             if let libraryId = library.libraryId {
                 DocumentListView(libraryId: libraryId)
             } else {
-                Text(destination.rawValue)
-                    .navigationTitle(destination.rawValue)
+                Text(destination.displayName)
+                    .navigationTitle(destination.displayName)
             }
         case .tags:
             if let libraryId = library.libraryId {
                 TagBrowserView(viewModel: TagViewModel(libraryId: libraryId, modelContext: modelContext))
             } else {
-                Text(destination.rawValue)
-                    .navigationTitle(destination.rawValue)
+                Text(destination.displayName)
+                    .navigationTitle(destination.displayName)
             }
         case .notebooks:
             if let libraryId = library.libraryId {
                 NotebookBrowserView(viewModel: NotebookViewModel(libraryId: libraryId, modelContext: modelContext))
             } else {
-                Text(destination.rawValue)
-                    .navigationTitle(destination.rawValue)
+                Text(destination.displayName)
+                    .navigationTitle(destination.displayName)
             }
         case .search:
             if let libraryId = library.libraryId {
                 SearchView(viewModel: SearchViewModel(libraryId: libraryId, modelContext: modelContext))
             } else {
-                Text(destination.rawValue)
-                    .navigationTitle(destination.rawValue)
+                Text(destination.displayName)
+                    .navigationTitle(destination.displayName)
             }
         case .graph:
             if let libraryId = library.libraryId {
                 TodayGraphView(libraryId: libraryId)
             } else {
-                Text(destination.rawValue)
-                    .navigationTitle(destination.rawValue)
+                Text(destination.displayName)
+                    .navigationTitle(destination.displayName)
             }
         case .canvas:
             if let libraryId = library.libraryId {
                 CanvasBoardListView(viewModel: CanvasViewModel(libraryId: libraryId, modelContext: modelContext))
             } else {
-                Text(destination.rawValue)
-                    .navigationTitle(destination.rawValue)
+                Text(destination.displayName)
+                    .navigationTitle(destination.displayName)
             }
         case .tasks:
             if let libraryId = library.libraryId {
                 TaskDashboardView(viewModel: TaskDashboardViewModel(libraryId: libraryId, modelContext: modelContext))
             } else {
-                Text(destination.rawValue)
-                    .navigationTitle(destination.rawValue)
+                Text(destination.displayName)
+                    .navigationTitle(destination.displayName)
             }
         case .savedViews:
             if let libraryId = library.libraryId {
                 SavedViewsListView(viewModel: SavedViewViewModel(libraryId: libraryId, modelContext: modelContext))
             } else {
-                Text(destination.rawValue)
-                    .navigationTitle(destination.rawValue)
+                Text(destination.displayName)
+                    .navigationTitle(destination.displayName)
             }
         case .insights:
             if let libraryId = library.libraryId {
                 GraphInsightsView(viewModel: GraphInsightsViewModel(libraryId: libraryId, modelContext: modelContext))
             } else {
-                Text(destination.rawValue)
-                    .navigationTitle(destination.rawValue)
+                Text(destination.displayName)
+                    .navigationTitle(destination.displayName)
             }
         case .explore:
             ExploreHubView(library: library)

@@ -102,10 +102,16 @@ enum LogseqImporter {
     /// `JournalDAL.fetchOrCreate`'s own `Calendar.current.startOfDay(for:)` normalization. Using
     /// UTC here instead would shift the parsed date to the wrong local day for any negative-UTC-
     /// offset timezone.
+    ///
+    /// `locale = en_US_POSIX` (G17/Apple's own fixed-format guidance, QA1480): this is a
+    /// machine filename format, not user-facing display — without pinning the locale, a device
+    /// set to a language with a non-Gregorian calendar or non-ASCII digits could fail to parse
+    /// (or generate) `yyyy_MM_dd`/`yyyy-MM-dd` correctly.
     private static func makeDateFormatter(format: String) -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }
 

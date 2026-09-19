@@ -201,6 +201,16 @@ re-decoding before returning.
 - Collections: plural names
 - Booleans: prefixed `is`/`has`/`can`/`should`
 - No single-letter variable names, no global variables
+- Structural/machine-readable tokens (frontmatter keys, URL schemes, accessibility
+  *identifiers*, the synthetic `#notebook/` export tag) are never wrapped in a localized
+  string — see [Docs/Localization/DoNotTranslate.md](Docs/Localization/DoNotTranslate.md).
+  Product terms that *do* get localized (Notebook, Backlink, Wikilink, Canvas, …) follow the
+  per-language translate/loanword/transliterate directive in
+  [Docs/Localization/Glossary.md](Docs/Localization/Glossary.md). Foundation API gotchas hit
+  while implementing localization (e.g. `String(localized:locale:)` silently ignoring its
+  `locale:` argument) are recorded in
+  [Docs/Localization/TechnicalNotes.md](Docs/Localization/TechnicalNotes.md) so they aren't
+  re-discovered the hard way.
 
 ## Identifier History
 
@@ -232,6 +242,56 @@ the historical plan documents under `Docs/Plans/`.
 - Unit tests per DAL (CRUD + soft-delete filtering) and per ViewModel.
 - Integration tests for cross-feature flows (e.g. Markdown import → parse → save).
 - Target: 100% coverage (`CLAUDE.md` §7).
+
+## Localization
+
+Product terms follow the per-language translate/loanword/transliterate directive in
+[Docs/Localization/Glossary.md](Docs/Localization/Glossary.md). Structural/machine-readable
+tokens (frontmatter keys, URL schemes, accessibility identifiers) are never localized — see
+[Docs/Localization/DoNotTranslate.md](Docs/Localization/DoNotTranslate.md). Foundation API
+gotchas hit while implementing localization are recorded in
+[Docs/Localization/TechnicalNotes.md](Docs/Localization/TechnicalNotes.md) so they aren't
+re-discovered the hard way. Full rollout plan and phase-by-phase status:
+[NoteBytez20260823v2-MultiLanguage.md](Docs/Plans/NoteBytez20260823v2-MultiLanguage.md). 23 of
+the 24 target locales are shipped as of that plan's Phase 13 (Verification Gate); `ar` (Arabic,
+RTL) is on hold pending Phase 11's layout/bidi-editor work.
+
+**Release-time loop** (that plan's Phase 12.2): whenever an `en` string in
+`Localizable.xcstrings` changes — a new key, an edited key, or a removed one — run
+`swift run translate-strings --report` (from `Scripts/translate-strings`) before merging. It
+prints a `missing`/`stale` warning per locale; non-blocking per PR (a string can ship
+English-only and fall back per G13), but every warning must eventually be run down. To clear
+one, run `translate-strings --locale <affected-locales>` (needs `ANTHROPIC_API_KEY`) or
+hand-author directly into `Localizable.xcstrings`, following the same merge-script pattern
+Phases 7–10 used when API credit wasn't available. Commit the catalog change, then do a
+screenshot spot-check of the touched screens in the affected locale(s).
+
+**Release-checklist gate** (Phase 12.3): `translate-strings --report` must be run and its
+output reviewed by the release engineer before every release — the same gate Phase 13.3 of the
+plan doc ("Drift report: 0 missing keys across all shipped phases; stale count reviewed")
+already codifies for the rollout itself. Treat it as standing policy for every release after
+Phase 13 ships, not a one-time pre-ship task; there's no CI pipeline in this repo yet to enforce
+it automatically, so it's a manual step until one exists.
+
+**Quarterly maintenance** (Phase 12.4): re-run the full `translate-strings` pass with the
+latest model against every shipped locale to pick up quality improvements on `stale`-marked or
+low-confidence keys — particularly the tiers that were hand-authored without a real AI pass at
+all (Phases 7–10, each documented in the plan doc as "no API credit available"); diff-review
+before committing.
+
+**New product terms** (Phase 12.5): add a row to
+[Docs/Localization/Glossary.md](Docs/Localization/Glossary.md) *before* a new term's strings
+reach `Localizable.xcstrings`, not after — a term with no glossary row still gets translated,
+just without the directive/context that keeps it rendered consistently across every locale and
+every occurrence.
+
+**Reporting a bad translation**: Settings → "Report a Translation Issue"
+(`TranslationIssueReportView`) lets a user describe a mistranslated or missing string. It opens
+a `mailto:` draft with the locale, app version, and the user's own description, with "Copy
+Report" always available alongside it as a no-mail-client fallback — no server, no automatic
+per-string capture (this app has no single reusable label/`Text` wrapper every string passes
+through, so instrumenting "any label" would mean touching every view file). Feeds decision G12's
+"AI-only, fix on report" translation-quality model.
 
 ## Template Packs
 
@@ -271,3 +331,8 @@ Every generated `.swift` file (except Swift standard control files like `Package
 - [NoteBytez-MacImplementation.md](Docs/Plans/NoteBytez-MacImplementation.md) — native macOS destination build-out plan
 - [UIUX/06-DesignSystem.md](Docs/Plans/UIUX/06-DesignSystem.md) — source for `docs/styleGuide.md` (not yet promoted)
 - This repo's `CLAUDE.md` — coding standards, enforced on every change
+- [NoteBytez20260823v2-MultiLanguage.md](Docs/Plans/NoteBytez20260823v2-MultiLanguage.md)
+  Phase 3 — local-package string audit: `MarkdownG9` and `SwiftRpt` are UI-string-free at
+  NoteBytez's actual integration boundary (`MarkdownG9`'s 2 hardcoded strings live in its bundled
+  view, which this app never instantiates; `SwiftRpt` isn't a build dependency of this project at
+  all yet), so neither needs a String Catalog today.

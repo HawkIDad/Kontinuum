@@ -17,7 +17,11 @@ struct GraphInsightRow: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            Label(title.isEmpty ? "Untitled" : title, systemImage: systemImage)
+            Label {
+                title.isEmpty ? Text("Untitled") : Text(verbatim: title)
+            } icon: {
+                Image(systemName: systemImage)
+            }
             Spacer()
             Text(detail)
                 .font(.caption)

@@ -113,9 +113,11 @@ struct ForceGraphCanvas: View {
     }
 
     private func accessibilityLabel(for document: Document, hopDistance: Int) -> String {
-        let title = document.title ?? "Untitled"
-        let position = hopDistance == 0 ? "focus note" : "\(hopDistance) hop\(hopDistance == 1 ? "" : "s") away"
-        let highlight = isHighlighted(document) ? ", matches tag scope" : ""
+        let title = document.title ?? String(localized: "Untitled")
+        let position = hopDistance == 0
+            ? String(localized: "focus note")
+            : String(localized: "\(hopDistance) hop away")
+        let highlight = isHighlighted(document) ? String(localized: ", matches tag scope") : ""
         return "\(title), \(position)\(highlight)"
     }
 

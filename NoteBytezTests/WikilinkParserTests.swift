@@ -94,4 +94,16 @@ struct WikilinkParserTests {
         #expect(WikilinkParser.fuzzyMatches("Anything", query: ""))
     }
 
+    /// G17: an NFD-decomposed candidate and an NFC-precomposed query for the same visible text
+    /// must still match — normalization happens before the character-by-character comparison.
+    @Test func fuzzyMatchesAcrossNFCAndNFDFormsOfTheSameCharacter() {
+        let decomposedCandidate = "cafe\u{0301} notes" // NFD é
+        #expect(WikilinkParser.fuzzyMatches(decomposedCandidate, query: "café")) // NFC é
+    }
+
+    /// G17: a plain-ASCII query fuzzy-matches an accented candidate.
+    @Test func fuzzyMatchesIsDiacriticInsensitive() {
+        #expect(WikilinkParser.fuzzyMatches("Café Notes", query: "cafe"))
+    }
+
 }

@@ -339,4 +339,47 @@ struct TemplateDALTests {
         #expect(TemplateDAL.fetchActiveGroups(libraryId: libraryTwo, in: context).isEmpty)
     }
 
+    // MARK: - Seed-time localization (Phase 4, decision G2)
+
+    /// The starter groups are seeded in whatever `locale` is passed at the moment of creation —
+    /// never retranslated afterward. Spanish is fully translated for these 3 packs today.
+    @Test func seedStarterContentUnderSpanishSeedsSpanishGroupNames() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+
+        TemplateDAL.seedStarterContent(libraryId: libraryId, in: context, locale: Locale(identifier: "es"))
+
+        let groups = TemplateDAL.fetchActiveGroups(libraryId: libraryId, in: context)
+        #expect(Set(groups.compactMap { $0.name }) == ["Escritura de Ficción", "Planificación de Bodas", "Trabajo con Clientes de Fotografía"])
+    }
+
+    /// Under `en` (the source language, and this suite's ambient default with no `locale:`
+    /// argument), seeding is byte-identical to the pre-Phase-4 behavior — a catalog lookup that
+    /// resolves to its own key is indistinguishable from never having looked anything up.
+    @Test func seedStarterContentUnderEnglishIsUnchangedFromBeforeLocalization() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+
+        TemplateDAL.seedStarterContent(libraryId: libraryId, in: context, locale: Locale(identifier: "en"))
+
+        let groups = TemplateDAL.fetchActiveGroups(libraryId: libraryId, in: context)
+        #expect(Set(groups.compactMap { $0.name }) == ["Fiction Writing", "Wedding Planning", "Photography Client Work"])
+    }
+
+    /// Re-seeding is a no-op regardless of locale (idempotency comes from the "library already
+    /// has a group" guard in `seedStarterContent`, which runs before any localization happens) —
+    /// so a second call under a *different* locale must not retranslate or duplicate the groups
+    /// the first call already created.
+    @Test func seedStarterContentIsIdempotentEvenWhenTheSecondCallUsesADifferentLocale() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+
+        TemplateDAL.seedStarterContent(libraryId: libraryId, in: context, locale: Locale(identifier: "es"))
+        TemplateDAL.seedStarterContent(libraryId: libraryId, in: context, locale: Locale(identifier: "de"))
+
+        let groups = TemplateDAL.fetchActiveGroups(libraryId: libraryId, in: context)
+        #expect(groups.count == 3)
+        #expect(Set(groups.compactMap { $0.name }) == ["Escritura de Ficción", "Planificación de Bodas", "Trabajo con Clientes de Fotografía"], "the first call's Spanish names must survive, not be overwritten by German")
+    }
+
 }

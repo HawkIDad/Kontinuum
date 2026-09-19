@@ -78,4 +78,59 @@ struct ConflictStoreTests {
         #expect(store.autoResolution(syncId: conflict.syncId) == nil)
     }
 
+    // MARK: - Manual-resolution acknowledgement + undo (20260910v1-Sync.md SF 4 / SF 7)
+
+    @Test func recordResolutionOpensBothTheAckAndTheUndoWindow() {
+        let store = ConflictStore()
+        let conflict = makeConflict(title: "Draft Proposal")
+
+        store.recordResolution(of: conflict, choice: .keepClient)
+
+        #expect(store.recentlyResolved[conflict.syncId]?.summary == "kept this device's edit")
+        #expect(store.pendingUndo?.conflict.syncId == conflict.syncId)
+        #expect(store.pendingUndo?.choice == .keepClient)
+    }
+
+    @Test func clearAcknowledgementRemovesOnlyTheAck() {
+        let store = ConflictStore()
+        let conflict = makeConflict()
+        store.recordResolution(of: conflict, choice: .keepServer)
+
+        store.clearAcknowledgement(syncId: conflict.syncId)
+
+        #expect(store.recentlyResolved[conflict.syncId] == nil)
+        #expect(store.pendingUndo != nil)
+    }
+
+    @Test func clearUndoRemovesOnlyThePendingUndo() {
+        let store = ConflictStore()
+        let conflict = makeConflict()
+        store.recordResolution(of: conflict, choice: .keepBoth)
+
+        store.clearUndo()
+
+        #expect(store.pendingUndo == nil)
+        #expect(store.recentlyResolved[conflict.syncId] != nil)
+    }
+
+    @Test func theAcknowledgementExpiresOnItsOwnAfterTheConfiguredDuration() async {
+        let store = ConflictStore(acknowledgementDuration: .milliseconds(50), undoWindow: .seconds(30))
+        let conflict = makeConflict()
+        store.recordResolution(of: conflict, choice: .keepClient)
+        #expect(store.recentlyResolved[conflict.syncId] != nil)
+
+        try? await Task.sleep(for: .milliseconds(250))
+        #expect(store.recentlyResolved[conflict.syncId] == nil)
+        #expect(store.pendingUndo != nil, "the longer undo window is unaffected")
+    }
+
+    @Test func theUndoWindowLapsesOnItsOwnAfterTheConfiguredDuration() async {
+        let store = ConflictStore(acknowledgementDuration: .seconds(30), undoWindow: .milliseconds(50))
+        store.recordResolution(of: makeConflict(), choice: .keepClient)
+        #expect(store.pendingUndo != nil)
+
+        try? await Task.sleep(for: .milliseconds(250))
+        #expect(store.pendingUndo == nil)
+    }
+
 }

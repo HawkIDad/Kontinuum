@@ -32,6 +32,35 @@ struct DocumentDALTests {
         #expect(BlockDAL.fetchActive(documentId: documentId, in: context).count == 2)
     }
 
+    /// G17: title/content are NFC-normalized at the persistence boundary — a decomposed (NFD)
+    /// title typed via `create` is stored precomposed, so it always compares/sorts/canonicalizes
+    /// identically to any precomposed (NFC) title elsewhere, regardless of input source.
+    @Test func createNormalizesTitleAndContentToNFC() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        let decomposedTitle = "cafe\u{0301}" // NFD é
+        let precomposedTitle = "café"        // NFC é
+
+        let document = DocumentDAL.create(title: decomposedTitle, content: decomposedTitle, libraryId: libraryId, in: context)
+
+        #expect(document.title == precomposedTitle)
+        #expect(document.title?.utf16.count == precomposedTitle.utf16.count)
+        #expect(document.content == precomposedTitle)
+    }
+
+    @Test func updateContentAndUpdateTitleNormalizeToNFC() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        let document = DocumentDAL.create(title: "Note", content: "Original.", libraryId: libraryId, in: context)
+        let decomposed = "cafe\u{0301}"
+
+        DocumentDAL.updateContent(document, content: decomposed, in: context)
+        DocumentDAL.updateTitle(document, title: decomposed, in: context)
+
+        #expect(document.content == "café")
+        #expect(document.title == "café")
+    }
+
     @Test func fetchActiveScopesToLibrary() throws {
         let context = try makeContext()
         let libraryId = UUID()

@@ -235,7 +235,7 @@ private struct JournalEntryEditor: View {
                             ForEach(suggestions) { block in
                                 VStack(alignment: .leading, spacing: 2) {
                                     HStack(spacing: 2) {
-                                        Text("!")
+                                        Text(verbatim: "!")
                                         BlockReferenceText(anchor: block.anchor ?? "") {
                                             documentViewModel.insertEmbedReference(anchor: block.anchor ?? "")
                                         }
@@ -284,7 +284,7 @@ private struct JournalEntryEditor: View {
                     isEditing.toggle()
                 } label: {
                     Image(systemName: isEditing ? "eye.fill" : "pencil")
-                    Text(isEditing ? "Preview" : "Edit")
+                    isEditing ? Text("Preview") : Text("Edit")
                 }
                 .buttonStyle(.bordered)
 

@@ -25,6 +25,6 @@ final class BlockedViewModel {
 
     func exportAll(to directory: URL) {
         let count = ExportDAL.exportAllActiveLibraries(to: directory, in: modelContext)
-        exportResultMessage = "Exported \(count) note\(count == 1 ? "" : "s") to your selected folder."
+        exportResultMessage = String(localized: "Exported \(count) note to your selected folder.")
     }
 }

@@ -49,7 +49,7 @@ struct NoteTemplateListView: View {
                 }
             }
         }
-        .navigationTitle(group.name ?? "Group")
+        .navigationTitle(group.name.map(Text.init) ?? Text("Group"))
         .noteBytezInlineNavigationTitle()
         .onAppear { reload() }
     }

@@ -34,7 +34,6 @@ struct LapsedBanner: View {
     }
 
     private var message: String {
-        let dayWord = daysRemaining == 1 ? "day" : "days"
-        return "Your NoteBytez subscription has lapsed — \(daysRemaining) \(dayWord) of access left."
+        String(localized: "Your NoteBytez subscription has lapsed — \(daysRemaining) day of access left.")
     }
 }

@@ -130,6 +130,16 @@ Source: [NoteBytez20260813-Research.md](NoteBytez20260813-Research.md) §8 Roadm
   - Obsidian importer: wikilinks, YAML properties, Canvas files
   - Logseq importer: blocks, journals, tasks, common query patterns
   - Originals preserved as read-only archive
+- **Multi-language support**
+  - In-app UI localized (iOS per-app language + an in-app override), first-launch language
+    prompt, AI-translated with a "Report a Translation Issue" feedback loop (no human review
+    gate); App Store metadata/screenshots explicitly out of scope
+  - **Delivered ([NoteBytez20260823v2-MultiLanguage.md](NoteBytez20260823v2-MultiLanguage.md)):**
+    23 of the 24 target locales shipped — `en-US`/`en-GB`, `es`, `fr`, `de`, `it`, `pt-BR`, `nl`,
+    `da`, `el`, `sv`, `fi`, `nb`, `zh-Hans`, `ja`, `ko`, `pl`, `ro`, `tr`, `hu`, `cs`, `sr-Cyrl`,
+    `lt`. `ar` (Arabic, RTL) remains on hold pending the layout-mirroring/bidi-editor work Phase
+    11 scopes — the app's own RTL pseudolocalization mode already mirrors correctly app-wide, so
+    that phase is UI-complete groundwork away, not a redesign, whenever it resumes
 - **Security-Local Files**
   - Any local files that store information when the iCloud storate is not avaliable, must be encrypted to protect the users information.
 - **Plugin SDK (preview)**

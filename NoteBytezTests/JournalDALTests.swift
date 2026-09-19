@@ -106,4 +106,12 @@ struct JournalDALTests {
         #expect(JournalDAL.canNavigateToNextDay(from: morning, today: evening) == false)
     }
 
+    /// Phase 4 (NoteBytez20260823v2-MultiLanguage.md, decision G2) audited `template(for:)` as
+    /// the journal's seed content. It has no English word to localize — a single bullet glyph,
+    /// same register as `DoNotTranslate.md`'s structural tokens — so this pins that finding as a
+    /// locale-invariant regression test rather than leaving it undocumented.
+    @Test func templateForDateIsLocaleInvariantBecauseItCarriesNoWords() {
+        #expect(JournalDAL.template(for: referenceDate) == "- ")
+    }
+
 }

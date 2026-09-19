@@ -27,11 +27,7 @@ struct PaywallView: View {
     @State private var paywallViewModel: PaywallViewModel?
     @State private var blockedViewModel: BlockedViewModel?
     @State private var isPresentingExportPicker = false
-
-    // TODO(product-owner): real Terms of Use (EULA) + Privacy Policy URLs — deferred item in
-    // NoteBytez20260907v1-Security.md.
-    private let termsURL = URL(string: "https://notebytez.app/terms")!
-    private let privacyURL = URL(string: "https://notebytez.app/privacy")!
+    @State private var presentedLegalDocument: LegalDocumentView.LegalDocument?
 
     var body: some View {
         NavigationStack {
@@ -62,8 +58,10 @@ struct PaywallView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                     VStack(alignment: .leading, spacing: 6) {
-                        Link("Terms of Use", destination: termsURL)
-                        Link("Privacy Policy", destination: privacyURL)
+                        Button("Terms of Use") { presentedLegalDocument = .eula }
+                            .accessibilityIdentifier("entitlement.termsOfUse")
+                        Button("Privacy Policy") { presentedLegalDocument = .dataUsePolicy }
+                            .accessibilityIdentifier("entitlement.privacyPolicy")
                         Text("Payment is charged to your Apple Account. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. Manage or cancel in Settings.")
                             .font(.caption)
                             .foregroundStyle(.secondary)
@@ -80,7 +78,7 @@ struct PaywallView: View {
                 .frame(maxWidth: 520, alignment: .leading)
                 .frame(maxWidth: .infinity)
             }
-            .navigationTitle("NoteBytez")
+            .navigationTitle(Text(verbatim: "NoteBytez"))
             .toolbar {
                 if showsDoneButton {
                     ToolbarItem(placement: .confirmationAction) {
@@ -101,6 +99,9 @@ struct PaywallView: View {
         .fileImporter(isPresented: $isPresentingExportPicker, allowedContentTypes: [.folder]) { result in
             guard case .success(let folderURL) = result else { return }
             blockedViewModel?.exportAll(to: folderURL)
+        }
+        .sheet(item: $presentedLegalDocument) { document in
+            LegalDocumentView(document: document)
         }
     }
 

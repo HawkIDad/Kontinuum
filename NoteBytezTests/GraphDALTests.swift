@@ -82,6 +82,21 @@ struct GraphDALTests {
         #expect(graphIds == backlinkIds)
     }
 
+    /// G17: `directLinks`' final sort must use locale-aware collation, not a raw Unicode-scalar
+    /// `<` — otherwise "Äpfel" (U+00C4 sorts after every ASCII letter under a raw comparison)
+    /// would land after "Zebra" instead of near "A".
+    @Test func directLinksSortsTitlesByLocaleAwareCollationNotRawUnicodeOrder() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        let hub = DocumentDAL.create(title: "Hub", content: "[[Äpfel]] [[Zebra]]", libraryId: libraryId, in: context)
+        _ = DocumentDAL.create(title: "Äpfel", content: "", libraryId: libraryId, in: context)
+        _ = DocumentDAL.create(title: "Zebra", content: "", libraryId: libraryId, in: context)
+
+        let links = GraphDAL.directLinks(for: hub, libraryId: libraryId, in: context)
+
+        #expect(links.map { $0.title } == ["Äpfel", "Zebra"])
+    }
+
     @Test func directLinksReturnsEmptyForBlankTitleAndContent() throws {
         let context = try makeContext()
         let libraryId = UUID()

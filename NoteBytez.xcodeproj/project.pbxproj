@@ -34,9 +34,52 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		29A589D3304EFBEC004AC5E7 /* Exceptions for "Wiki" folder in "NoteBytez" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"docs/plans/wiki20260907v1-Phase1.md",
+			);
+			target = 29F43E98302E258E00907F14 /* NoteBytez */;
+		};
 		29F43EBC302E258F00907F14 /* Exceptions for "NoteBytez" folder in "NoteBytez" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				ARCHITECTURE.md,
+				"Docs/Bugs/20260910v1-Sync.md",
+				Docs/Localization/DoNotTranslate.md,
+				Docs/Localization/Glossary.md,
+				Docs/Localization/TechnicalNotes.md,
+				"Docs/Plans/NoteBytez-MacImplementation.md",
+				"Docs/Plans/NoteBytez-MVP-ImplementationPlan.md",
+				"Docs/Plans/NoteBytez-PersonaAuthorValidation.md",
+				"Docs/Plans/NoteBytez-R1-Implementation.md",
+				"Docs/Plans/NoteBytez-ReleaseFeatures.md",
+				"Docs/Plans/NoteBytez20260627v2-Security.md",
+				"Docs/Plans/NoteBytez20260813-Research.md",
+				"Docs/Plans/NoteBytez20260813-UIUX-Research.md",
+				"Docs/Plans/NoteBytez20260823v1-UITests.md",
+				"Docs/Plans/NoteBytez20260823v2-MultiLanguage.md",
+				"Docs/Plans/NoteBytez20260824v1-Templates.md",
+				"Docs/Plans/NoteBytez20260827v1-Anchors.md",
+				"Docs/Plans/NoteBytez20260829v1-FlowEnhancements.md",
+				"Docs/Plans/NoteBytez20260829v2-Enhancements.md",
+				"Docs/Plans/NoteBytez20260831v1-Sharing.md",
+				"Docs/Plans/NoteBytez20260906v1-NameChange.md",
+				"Docs/Plans/NoteBytez20260907v1-Security.md",
+				"Docs/Plans/NoteBytez20260908v1-ProjectRename.md",
+				"Docs/Plans/NoteBytez20260909v1-Bundle.md",
+				"Docs/Plans/NoteBytez20260917v1-About.md",
+				"Docs/Plans/NoteBytez20260917v2-EULA-Agreement.md",
+				"Docs/Plans/NoteBytez20260918v1-Data-Use-Policy.md",
+				"Docs/Plans/UIUX/01-Personas.md",
+				"Docs/Plans/UIUX/02-Journeys.md",
+				"Docs/Plans/UIUX/03-FeatureMarriage.md",
+				"Docs/Plans/UIUX/04-InteractionDesign.md",
+				"Docs/Plans/UIUX/05-Wireframes.md",
+				"Docs/Plans/UIUX/06-DesignSystem.md",
+				Docs/PluginSDK.md,
+				Docs/styleGuide.md,
+				Docs/Templates/README.md,
 				"images/logos/NoteBytez-Artwork-1024x1024.png",
 				"images/logos/NoteBytez-Artwork-2048x2048.png",
 				"images/logos/NoteBytez-Artwork-2048x2048.psd",
@@ -57,6 +100,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		29A589D1304EFBEC004AC5E5 /* Wiki */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				29A589D3304EFBEC004AC5E7 /* Exceptions for "Wiki" folder in "NoteBytez" target */,
+			);
 			path = Wiki;
 			sourceTree = "<group>";
 		};
@@ -228,6 +274,29 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"en-GB",
+				es,
+				fr,
+				de,
+				it,
+				"pt-BR",
+				nl,
+				sv,
+				da,
+				nb,
+				fi,
+				pl,
+				cs,
+				hu,
+				ro,
+				tr,
+				el,
+				lt,
+				"sr-Cyrl",
+				"zh-Hans",
+				ja,
+				ko,
+				ar,
 				Base,
 			);
 			mainGroup = 29F43E90302E258E00907F14;
@@ -336,7 +405,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kwicksync.NoteBytez;
 				PRODUCT_MODULE_NAME = NoteBytez;
 				PRODUCT_NAME = NoteBytez;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -374,7 +443,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kwicksync.NoteBytez;
 				PRODUCT_MODULE_NAME = NoteBytez;
 				PRODUCT_NAME = NoteBytez;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -446,7 +515,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -507,7 +576,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;

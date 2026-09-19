@@ -19,6 +19,8 @@ struct ConflictResolutionView: View {
     var viewModel: ConflictResolutionViewModel
     var onResolved: () -> Void = {}
 
+    @Environment(\.dismiss) private var dismiss
+
     private var showsDiffMerge: Bool {
         viewModel.strategy == .diffMerge && viewModel.conflict.hasDiffableContent
     }
@@ -38,6 +40,14 @@ struct ConflictResolutionView: View {
             if viewModel.isResolving {
                 ProgressView()
             }
+        }
+        // SF 5 / SF 10 — once the choice is persisted, announce it for VoiceOver and pop back
+        // to the Sync Status panel where the "Resolved ✓" acknowledgement is shown. A failed
+        // resolution leaves `didResolve` false so the user keeps this screen and can retry.
+        .onChange(of: viewModel.didResolve) { _, didResolve in
+            guard didResolve else { return }
+            AccessibilityNotification.Announcement("Conflict resolved").post()
+            dismiss()
         }
     }
 

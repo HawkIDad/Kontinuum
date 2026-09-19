@@ -175,31 +175,80 @@ final class SyncEngine: @unchecked Sendable {
         }
     }
 
-    /// Applies `choice` for `conflict`: saves the resolved record directly against the
-    /// database (bypassing the normal pending-change batch — its stale entry for this record
-    /// is cleared here instead, since we're handling it out of band), then applies the result
-    /// to local SwiftData. `.keepBoth` additionally duplicates the client's content into a new
-    /// `Document` — the one model type worth literally duplicating.
-    func resolveConflict(_ conflict: Conflict, choice: ConflictResolutionChoice, in context: ModelContext) async {
+    /// Applies `choice` for `conflict`: when a live engine is running, saves the resolved record
+    /// directly against the database (bypassing the normal pending-change batch — its stale
+    /// entry for this record is cleared here instead, since we're handling it out of band) and
+    /// applies the result to local SwiftData; `.keepBoth` additionally duplicates the client's
+    /// content into a new `Document`. Returns whether the resolution was persisted — the caller
+    /// decides what to do with the queued conflict (`resolveConflictManually` clears it only on
+    /// success — `Docs/Bugs/20260910v1-Sync.md` SF 8).
+    ///
+    /// The conflict is dropped from `ConflictStore` here **regardless of whether a live engine
+    /// ran** — gating that clear on the engine (as an earlier early `return` did) is what left
+    /// S9's row and the glyph count out of step in Debug / seeded fixtures / tests
+    /// (`Docs/Bugs/20260910v1-Sync.md` gap 6 / SF 9).
+    @discardableResult
+    func resolveConflict(_ conflict: Conflict, choice: ConflictResolutionChoice, in context: ModelContext) async -> Bool {
         let isShared = SharedLibraryRegistry.shared.isShared(conflict.libraryId)
-        guard let targetEngine = isShared ? sharedEngine : engine,
-              let targetDatabase = isShared ? sharedDatabase : database else { return }
-        targetEngine.state.remove(pendingRecordZoneChanges: [.saveRecord(conflict.serverRecord.recordID)])
 
-        do {
-            let saved = try await targetDatabase.save(ConflictResolver.resolvedRecord(for: conflict, choice: choice))
-            SyncRecordFactory.applyIncoming(saved, in: context)
+        if let targetEngine = isShared ? sharedEngine : engine,
+           let targetDatabase = isShared ? sharedDatabase : database {
+            targetEngine.state.remove(pendingRecordZoneChanges: [.saveRecord(conflict.serverRecord.recordID)])
+            do {
+                let saved = try await targetDatabase.save(ConflictResolver.resolvedRecord(for: conflict, choice: choice))
+                SyncRecordFactory.applyIncoming(saved, in: context)
 
-            if choice == .keepBoth, conflict.recordType == Document.ckRecordType {
-                duplicateAsNewDocument(from: conflict, in: context)
+                if choice == .keepBoth, conflict.recordType == Document.ckRecordType {
+                    duplicateAsNewDocument(from: conflict, in: context)
+                }
+
+                try? context.save()
+            } catch {
+                logger.error("Failed to resolve conflict for \(conflict.recordType) \(conflict.syncId): \(error.localizedDescription)")
+                SyncStatusStore.shared.recordError("Couldn't resolve conflict on \"\(conflict.title)\": \(error.localizedDescription)")
+                return false
             }
+        }
 
+        ConflictStore.shared.remove(conflict)
+        ConflictStore.shared.clearAutoResolution(syncId: conflict.syncId)
+        return true
+    }
+
+    /// S10's entry point (`ConflictResolutionViewModel`). Persists via `resolveConflict`, then —
+    /// only if that succeeded — records the outcome for the user: decrements the pending count,
+    /// opens the in-place "Resolved ✓" acknowledgement and the ~5s undo window, and writes an
+    /// attributed history line. Kept out of `resolveConflict` itself so the automatic
+    /// Last-Write-Wins path (which never queued a conflict or bumped the count) is unaffected.
+    @discardableResult
+    func resolveConflictManually(_ conflict: Conflict, choice: ConflictResolutionChoice, in context: ModelContext) async -> Bool {
+        guard await resolveConflict(conflict, choice: choice, in: context) else { return false }
+        SyncStatusStore.shared.decrementConflictCount()
+        SyncStatusStore.shared.recordManualResolution(title: conflict.title, summary: conflict.resolutionSummary(for: choice))
+        ConflictStore.shared.recordResolution(of: conflict, choice: choice)
+        return true
+    }
+
+    /// Undo of a manual resolution inside its window (`Docs/Bugs/20260910v1-Sync.md` SF 7).
+    /// Re-queues the conflict, restores the count, and — with a live engine — best-effort
+    /// re-saves the pre-resolution server record. Without a live engine (Debug / seeded
+    /// fixtures / tests) the local re-queue is the whole operation.
+    func undoResolution(_ undo: ConflictResolutionUndo, in context: ModelContext) async {
+        ConflictStore.shared.clearAcknowledgement(syncId: undo.conflict.syncId)
+        ConflictStore.shared.clearUndo()
+        ConflictStore.shared.queue(undo.conflict)
+        SyncStatusStore.shared.incrementConflictCount()
+        SyncStatusStore.shared.recordResolutionUndone(title: undo.conflict.title)
+
+        let isShared = SharedLibraryRegistry.shared.isShared(undo.conflict.libraryId)
+        guard let targetDatabase = isShared ? sharedDatabase : database else { return }
+        do {
+            let restored = try await targetDatabase.save(undo.conflict.serverRecord)
+            SyncRecordFactory.applyIncoming(restored, in: context)
             try? context.save()
-            ConflictStore.shared.remove(conflict)
-            ConflictStore.shared.clearAutoResolution(syncId: conflict.syncId)
         } catch {
-            logger.error("Failed to resolve conflict for \(conflict.recordType) \(conflict.syncId): \(error.localizedDescription)")
-            SyncStatusStore.shared.recordError("Couldn't resolve conflict on \"\(conflict.title)\": \(error.localizedDescription)")
+            logger.error("Failed to undo resolution for \(undo.conflict.syncId): \(error.localizedDescription)")
+            SyncStatusStore.shared.recordError("Couldn't undo the resolution on \"\(undo.conflict.title)\": \(error.localizedDescription)")
         }
     }
 

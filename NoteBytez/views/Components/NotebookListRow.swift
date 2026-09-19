@@ -20,7 +20,7 @@ struct NotebookListRow: View {
             Text(name)
                 .font(.body)
             Spacer()
-            Text("\(documentCount) document\(documentCount == 1 ? "" : "s")")
+            Text(String(localized: "\(documentCount) document"))
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }

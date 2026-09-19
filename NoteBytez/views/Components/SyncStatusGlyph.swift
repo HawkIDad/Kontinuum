@@ -34,7 +34,7 @@ struct SyncStatusGlyph: View {
                     }
                 }
         }
-        .accessibilityLabel(viewModel.isSharedLibrary ? "\(viewModel.statusHeadline), Shared Library" : viewModel.statusHeadline)
+        .accessibilityLabel(viewModel.isSharedLibrary ? Text("\(viewModel.statusHeadline), Shared Library") : Text(viewModel.statusHeadline))
         .accessibilityIdentifier("syncStatusGlyph")
     }
 

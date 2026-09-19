@@ -20,7 +20,7 @@ struct LibrarySelectionScreen {
         XCTAssertTrue(createNewLibraryButton.waitForExistence(timeout: 5))
         createNewLibraryButton.tap()
 
-        let nameField = app.textFields["Library Name"]
+        let nameField = app.textFields["newLibrary.nameField"]
         XCTAssertTrue(nameField.waitForExistence(timeout: 5))
         nameField.tap()
         nameField.typeText(name)

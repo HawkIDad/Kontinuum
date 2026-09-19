@@ -72,12 +72,16 @@ enum WikilinkParser {
 
     /// Simple subsequence fuzzy match: every character of `query`, in order, appears
     /// somewhere in `candidate` (not necessarily contiguous) — the same lightweight
-    /// technique used by editor quick-open pickers.
+    /// technique used by editor quick-open pickers. Case- *and* diacritic-insensitive (G17):
+    /// both sides are NFC-normalized, then diacritic-folded, so a plain-ASCII query like "cafe"
+    /// matches "café", and a decomposed vs. precomposed form of the same accented character is
+    /// never silently treated as a mismatch.
     static func fuzzyMatches(_ candidate: String, query: String) -> Bool {
         guard !query.isEmpty else { return true }
 
-        var candidateIterator = candidate.lowercased().makeIterator()
-        for queryCharacter in query.lowercased() {
+        let foldingOptions: String.CompareOptions = [.caseInsensitive, .diacriticInsensitive]
+        var candidateIterator = TextNormalization.normalized(candidate).folding(options: foldingOptions, locale: .current).makeIterator()
+        for queryCharacter in TextNormalization.normalized(query).folding(options: foldingOptions, locale: .current) {
             var found = false
             while let candidateCharacter = candidateIterator.next() {
                 if candidateCharacter == queryCharacter {

@@ -36,7 +36,7 @@ enum GraphDAL {
             seenIds.insert(candidateId)
             result.append(candidate)
         }
-        return result.sorted { ($0.title ?? "") < ($1.title ?? "") }
+        return result.sorted { ($0.title ?? "").localizedStandardCompare($1.title ?? "") == .orderedAscending }
     }
 
     /// Generalizes `directLinks` to N hops via breadth-first search, for S8's force-graph mode
@@ -70,7 +70,7 @@ enum GraphDAL {
             return (document: document, hopDistance: hop)
         }.sorted { lhs, rhs in
             if lhs.hopDistance != rhs.hopDistance { return lhs.hopDistance < rhs.hopDistance }
-            return (lhs.document.title ?? "") < (rhs.document.title ?? "")
+            return (lhs.document.title ?? "").localizedStandardCompare(rhs.document.title ?? "") == .orderedAscending
         }
     }
 

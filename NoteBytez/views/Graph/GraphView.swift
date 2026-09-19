@@ -24,9 +24,9 @@ struct GraphView: View {
     @State private var isPresentingSaveAsView = false
     @State private var saveAsViewName = ""
 
-    private var titleText: String {
+    private var titleText: Text {
         let title = viewModel.document.title ?? ""
-        return title.isEmpty ? "Graph" : title
+        return title.isEmpty ? Text("Graph") : Text(verbatim: title)
     }
 
     /// Matches the A7 performance guard's ceiling — beyond this, force mode shows a calm
@@ -104,7 +104,7 @@ struct GraphView: View {
             ToolbarItem(placement: .principal) {
                 Picker("Mode", selection: $viewModel.mode) {
                     ForEach(GraphMode.allCases) { mode in
-                        Text(mode.title).tag(mode)
+                        Text(LocalizedStringKey(mode.title)).tag(mode)
                     }
                 }
                 .pickerStyle(.segmented)
@@ -170,7 +170,7 @@ private struct GraphFilterBar: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Stepper("Depth: \(filter.depth) hop\(filter.depth == 1 ? "" : "s")", value: $filter.depth, in: 1...3)
+            Stepper(String(localized: "Depth: \(filter.depth) hop"), value: $filter.depth, in: 1...3)
 
             HStack(spacing: 8) {
                 nodeTypeToggle("Notes", isOn: $filter.showPlainNotes)

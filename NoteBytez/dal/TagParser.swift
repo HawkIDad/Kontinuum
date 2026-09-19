@@ -70,12 +70,15 @@ enum TagParser {
         return result
     }
 
-    /// App-level tag identity: case-folded and trimmed, since CloudKit disallows
-    /// `.unique` — this is what dedupe (locally and on sync merge) keys off of.
+    /// App-level tag identity: NFC-normalized, case-folded (locale-invariant — see
+    /// `TextNormalization.invariantLowercased`), and trimmed, since CloudKit disallows
+    /// `.unique` — this is what dedupe (locally and on sync merge) keys off of. Stable
+    /// regardless of the device's language (G17): the same tag text always canonicalizes to
+    /// the same key, whether typed on a Turkish keyboard or any other.
     static func canonicalize(_ raw: String) -> String {
-        raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
             .trimmingCharacters(in: CharacterSet(charactersIn: "#\"'"))
-            .lowercased()
+        return TextNormalization.invariantLowercased(TextNormalization.normalized(trimmed))
     }
 
     private static func frontmatterBlock(in content: String) -> String? {

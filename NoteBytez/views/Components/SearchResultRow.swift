@@ -14,7 +14,7 @@ struct SearchResultRow: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(title.isEmpty ? "Untitled" : title)
+            (title.isEmpty ? Text("Untitled") : Text(verbatim: title))
                 .font(.body)
             if !snippet.isEmpty {
                 Text(snippet)

@@ -17,7 +17,7 @@ struct TagListRow: View {
             Text("#\(name)")
                 .font(.body)
             Spacer()
-            Text("\(noteCount) note\(noteCount == 1 ? "" : "s")")
+            Text(String(localized: "\(noteCount) note"))
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }

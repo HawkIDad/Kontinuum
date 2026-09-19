@@ -42,7 +42,7 @@ enum BlockReferenceDAL {
         let sorted = matches.sorted { lhs, rhs in
             let lhsTitle = lhs.documentId.flatMap { documentsById[$0]?.title } ?? ""
             let rhsTitle = rhs.documentId.flatMap { documentsById[$0]?.title } ?? ""
-            if lhsTitle != rhsTitle { return lhsTitle < rhsTitle }
+            if lhsTitle != rhsTitle { return lhsTitle.localizedStandardCompare(rhsTitle) == .orderedAscending }
             return (lhs.sortOrder ?? 0) < (rhs.sortOrder ?? 0)
         }
         guard let first = sorted.first, let documentId = first.documentId, let document = documentsById[documentId] else { return nil }

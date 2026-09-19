@@ -99,7 +99,7 @@ struct DocumentView: View {
                             TextField("Property name", text: $propertyViewModel.newKey)
                             Picker("Type", selection: $propertyViewModel.newValueType) {
                                 ForEach(PropertyValueType.allCases, id: \.self) { valueType in
-                                    Text(valueType.rawValue.capitalized).tag(valueType)
+                                    Text(LocalizedStringKey(valueType.rawValue.capitalized)).tag(valueType)
                                 }
                             }
                             .labelsHidden()
@@ -195,7 +195,7 @@ struct DocumentView: View {
                             ForEach(suggestions) { block in
                                 VStack(alignment: .leading, spacing: 2) {
                                     HStack(spacing: 2) {
-                                        Text("!")
+                                        Text(verbatim: "!")
                                         BlockReferenceText(anchor: block.anchor ?? "") {
                                             viewModel.insertEmbedReference(anchor: block.anchor ?? "")
                                         }
@@ -244,7 +244,7 @@ struct DocumentView: View {
                     isEditing.toggle()
                 } label: {
                     Image(systemName: isEditing ? "eye.fill" : "pencil")
-                    Text(isEditing ? "Preview" : "Edit")
+                    isEditing ? Text("Preview") : Text("Edit")
                 }
                 .buttonStyle(.bordered)
 
@@ -292,7 +292,7 @@ struct DocumentView: View {
             }
             .padding()
         }
-        .navigationTitle(viewModel.title.isEmpty ? "Untitled" : viewModel.title)
+        .navigationTitle(viewModel.title.isEmpty ? Text("Untitled") : Text(verbatim: viewModel.title))
         .noteBytezInlineNavigationTitle()
         .onAppear {
             if templateViewModel == nil, let libraryId = viewModel.document.libraryId {

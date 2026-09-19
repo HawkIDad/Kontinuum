@@ -12,9 +12,14 @@ import SwiftData
 /// `TemplateGroup`/`NoteTemplate` rows, and computes/applies non-destructive pack updates.
 /// Per NoteBytez20260824v1-Templates.md, Phase 1.
 ///
-/// English-only for now: pack resources carry literal strings. When multi-language support
-/// resumes (that plan's Phase 6), the literals become String Catalog keys resolved via
-/// `String(localized:)` here at add-time.
+/// Localized at add-time (NoteBytez20260823v2-MultiLanguage.md Phase 4 / decision G2): every
+/// pack literal materialized here is resolved through the String Catalog via `localizedSeedString`
+/// before it's written to the row, then never touched again — from that point on it's the user's
+/// ordinary, editable data. Only the 3 starter packs (`TemplateDAL.starterPackIds`) have real
+/// non-English catalog entries today; the other 17 Gallery packs resolve to their own English
+/// literal (the same value they'd have carried unlocalized) until a later rollout phase adds
+/// their translations — an untranslated key is not an error, it's `String(localized:)`'s normal
+/// fallback-to-source behavior.
 enum TemplatePackDAL {
 
     static let bundledResourceName = "TemplatePacks"
@@ -67,13 +72,13 @@ enum TemplatePackDAL {
     }
 
     @discardableResult
-    static func addPack(_ definition: TemplatePackDefinition, libraryId: UUID, in context: ModelContext) -> AddResult {
+    static func addPack(_ definition: TemplatePackDefinition, libraryId: UUID, locale: Locale = .current, in context: ModelContext) -> AddResult {
         guard !addedPackIds(libraryId: libraryId, in: context).contains(definition.packId) else {
             return .alreadyAdded
         }
 
         let group = TemplateGroup(
-            name: definition.displayName, libraryId: libraryId,
+            name: localizedSeedString(definition.displayName, locale: locale), libraryId: libraryId,
             sourcePackId: definition.packId, sourcePackVersion: definition.version
         )
         context.insert(group)
@@ -82,8 +87,9 @@ enum TemplatePackDAL {
         if let groupId = group.templateGroupId {
             for template in definition.templates {
                 TemplateDAL.createTemplate(
-                    name: template.name, templateGroupId: groupId, libraryId: libraryId,
-                    fields: template.noteTemplateFields, bodyTemplate: template.bodyTemplate, in: context
+                    name: localizedSeedString(template.name, locale: locale), templateGroupId: groupId, libraryId: libraryId,
+                    fields: localizedSeedFields(template.noteTemplateFields, locale: locale),
+                    bodyTemplate: template.bodyTemplate.map { localizedSeedString($0, locale: locale) }, in: context
                 )
             }
         }
@@ -91,9 +97,43 @@ enum TemplatePackDAL {
     }
 
     @discardableResult
-    static func addPack(id packId: String, libraryId: UUID, bundle: Bundle = .main, in context: ModelContext) -> AddResult {
+    static func addPack(id packId: String, libraryId: UUID, bundle: Bundle = .main, locale: Locale = .current, in context: ModelContext) -> AddResult {
         guard let definition = pack(withId: packId, bundle: bundle) else { return .notFound }
-        return addPack(definition, libraryId: libraryId, in: context)
+        return addPack(definition, libraryId: libraryId, locale: locale, in: context)
+    }
+
+    // MARK: - Seed-time localization
+
+    /// Resolves one bundled pack literal through the String Catalog at the moment it's
+    /// materialized. `raw` doubles as its own catalog key (same convention as
+    /// `Text(LocalizedStringKey(pack.displayName))` in `TemplatePackPreviewView`) — an empty
+    /// string or an untranslated key both fall back to `raw` itself, so this is a no-op until a
+    /// locale actually has a translation for it.
+    ///
+    /// Deliberately goes through `LocalizedStringResource`, not `String(localized:locale:)`
+    /// directly — the latter silently ignores its own `locale:` argument and resolves against
+    /// the process's ambient current locale instead. See
+    /// `Docs/Localization/TechnicalNotes.md` for the full empirical writeup (this is easy to
+    /// reintroduce by "simplifying" back to the more obvious-looking API).
+    private static func localizedSeedString(_ raw: String, locale: Locale) -> String {
+        guard !raw.isEmpty else { return raw }
+        let resource = LocalizedStringResource(String.LocalizationValue(raw), locale: locale)
+        return String(localized: resource)
+    }
+
+    /// Field *names* are always localized (they're short labels, like a template's own name).
+    /// A field's `defaultValue` is only localized when it's descriptive text a `.text` field
+    /// seeds with a real word (e.g. a Status field defaulting to "Drafting") — a `.checkbox`
+    /// default ("true"/"false") and a `.date`/`.number` default are canonical, machine-readable
+    /// tokens (the same register as `DoNotTranslate.md`'s frontmatter values), never words.
+    private static func localizedSeedFields(_ fields: [NoteTemplateField], locale: Locale) -> [NoteTemplateField] {
+        fields.map { field in
+            NoteTemplateField(
+                name: localizedSeedString(field.name, locale: locale),
+                valueType: field.valueType,
+                defaultValue: field.valueType == .text ? localizedSeedString(field.defaultValue, locale: locale) : field.defaultValue
+            )
+        }
     }
 
     // MARK: - Update

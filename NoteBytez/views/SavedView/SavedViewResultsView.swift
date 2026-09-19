@@ -29,7 +29,7 @@ struct SavedViewResultsView: View {
                 EmptyView()
             }
         }
-        .navigationTitle(savedView.name ?? "Saved View")
+        .navigationTitle(savedView.name.map(Text.init) ?? Text("Saved View"))
         .noteBytezInlineNavigationTitle()
     }
 

@@ -44,10 +44,10 @@ nonisolated enum RecurrenceRule: Equatable {
 
     var displayName: String {
         switch self {
-        case .daily: return "Daily"
-        case .weekly: return "Weekly"
-        case .monthly: return "Monthly"
-        case .everyNDays(let days): return "Every \(days) day\(days == 1 ? "" : "s")"
+        case .daily: return String(localized: "Daily")
+        case .weekly: return String(localized: "Weekly")
+        case .monthly: return String(localized: "Monthly")
+        case .everyNDays(let days): return String(localized: "Every \(days) day")
         }
     }
 

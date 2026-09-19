@@ -35,6 +35,21 @@ struct NotebookDALTests {
         #expect(active.first?.name == "Book Series")
     }
 
+    /// G17: `fetchActive`'s `SortDescriptor(\.name)` defaults to `.localizedStandard`
+    /// collation — confirming that default (not a raw byte/scalar order) rather than
+    /// hardcoding a comparator, since "Äpfel" (U+00C4) would otherwise sort after every ASCII
+    /// letter, including "Zebra".
+    @Test func fetchActiveSortsNamesByLocaleAwareCollationNotRawUnicodeOrder() throws {
+        let context = try makeContext()
+        let libraryId = UUID()
+        _ = NotebookDAL.create(name: "Zebra", libraryId: libraryId, in: context)
+        _ = NotebookDAL.create(name: "Äpfel", libraryId: libraryId, in: context)
+
+        let active = NotebookDAL.fetchActive(libraryId: libraryId, in: context)
+
+        #expect(active.map { $0.name } == ["Äpfel", "Zebra"])
+    }
+
     @Test func renameUpdatesName() throws {
         let context = try makeContext()
         let notebook = NotebookDAL.create(name: "Draft Title", libraryId: UUID(), in: context)

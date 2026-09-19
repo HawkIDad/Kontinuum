@@ -38,7 +38,7 @@ struct GraphNode: View {
         .onHover { isHovering = $0 }
         .animation(.easeOut(duration: 0.12), value: isHovering)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(isCenter ? "Current note, \(title)" : "Linked note, \(title)")
+        .accessibilityLabel(isCenter ? Text("Current note, \(title)") : Text("Linked note, \(title)"))
     }
 
 }

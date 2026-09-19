@@ -1,0 +1,4 @@
+module translate_strings {
+header "translate-strings-Swift.h"
+export *
+}

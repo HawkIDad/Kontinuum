@@ -116,6 +116,14 @@ Every list-bearing screen (S7 results, S9 log, S12 backups, S13 tags, S14 notebo
 - VoiceOver labels required on every icon-only control (sync glyph, graph zoom buttons, backlink toggle).
 - Dynamic Type up to accessibility sizes must not truncate journal/document text (reflow, don't clip).
 - Color is never the only signal — conflict/warning states always pair color with an icon and text label (see above).
+- An accessibility *label* (what VoiceOver speaks) is user-facing and gets localized like any
+  other string; an accessibility *identifier* (`sidebar.*`, `tabbar.*` — what UI tests target) is
+  structural and never is. See [Docs/Localization/DoNotTranslate.md](Localization/DoNotTranslate.md).
+- **Pseudolocalization**: run `Scripts/run-pseudolocalized.sh double-length` (every string
+  doubled/uppercased/bracketed — catches truncation) and `... rtl` (mirrors layout direction)
+  against a booted simulator before shipping any screen change — this catches hardcoded strings,
+  truncation, and layout breaks before real translations exist. See
+  `NoteBytez20260823v2-MultiLanguage.md` Phase 0.9 / R1.
 
 ---
 

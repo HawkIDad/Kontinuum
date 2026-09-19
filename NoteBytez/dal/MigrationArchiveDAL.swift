@@ -64,11 +64,16 @@ enum MigrationArchiveDAL {
         }
     }
 
+    /// `locale = en_US_POSIX` (G17/Apple's own fixed-format guidance, QA1480): this timestamp
+    /// is a machine-readable archive folder name, not user-facing display — without pinning the
+    /// locale, a device set to a language with a non-Gregorian calendar or non-ASCII digits
+    /// could generate a folder name that doesn't round-trip.
     private static let archiveTimestampFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd-HHmmss"
         formatter.calendar = Calendar(identifier: .gregorian)
         formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
 
