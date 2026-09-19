@@ -106,7 +106,7 @@
             "value" : ", se potrivește cu domeniul etichetei"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : ", одговара опсегу ознаке"
@@ -131,6 +131,9 @@
           }
         }
       }
+    },
+    "((%@))" : {
+
     },
     "(empty)" : {
       "extractionState" : "manual",
@@ -237,7 +240,7 @@
             "value" : "(gol)"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "(празно)"
@@ -369,7 +372,7 @@
             "value" : "# <Numele personajului>\n\n## Într-o frază\n\n## Aspect\n\n## Voce și manierisme\n\n## Dorințe vs. nevoi\n\n## Poveste de fundal\n\n## Relații\n\n## Evoluție de-a lungul poveștii\n"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "# <Име лика>\n\n## У једној реченици\n\n## Изглед\n\n## Глас и понашање\n\n## Жеље наспрам потреба\n\n## Позадинска прича\n\n## Односи\n\n## Развој кроз причу\n"
@@ -501,7 +504,7 @@
             "value" : "# <Numele locației>\n\n## Impresie senzorială\n\n## Istorie\n\n## Cine este aici și de ce contează\n\n## Scene care au loc aici\n"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "# <Назив локације>\n\n## Чулни утисак\n\n## Историја\n\n## Ко је овде и зашто је то важно\n\n## Сцене које се овде дешавају\n"
@@ -633,7 +636,7 @@
             "value" : "# Client: <nume>\n\n**Contact:**\n**Ocazie:**\n**Pachet:**\n**Sold rămas:**\n\n## Preferințe și cadre obligatorii\n\n## Logistică\n\n## Sarcini\n\n- [ ] Trimite contractul\n- [ ] Confirmă cronologia\n"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "# Клијент: <име>\n\n**Контакт:**\n**Прилика:**\n**Пакет:**\n**Преостали износ:**\n\n## Преференције и обавезни кадрови\n\n## Логистика\n\n## Ставке за извршење\n\n- [ ] Пошаљи уговор\n- [ ] Потврди распоред\n"
@@ -765,7 +768,7 @@
             "value" : "# Cronologia zilei\n\n| Ora | Ce | Cine | Locație |\n|---|---|---|---|\n|  |  |  |  |\n\n## Contacte cheie\n\n## Situații neprevăzute (vreme, întârzieri)\n"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "# Распоред дана\n\n| Време | Шта | Ко | Локација |\n|---|---|---|---|\n|  |  |  |  |\n\n## Кључни контакти\n\n## Непредвиђене ситуације (време, кашњења)\n"
@@ -897,7 +900,7 @@
             "value" : "# Invitat: <nume>\n\n**Parte:**\n**Invitație trimisă:** da / nu\n**Confirmare:** da / nu / în așteptare\n**Alegere meniu:**\n**Cerințe alimentare:**\n**Masă:**\n**Notițe:**\n"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "# Гост: <име>\n\n**Страна:**\n**Позивница послата:** да / не\n**Потврда доласка:** да / не / на чекању\n**Избор оброка:**\n**Дијететске потребе:**\n**Сто:**\n**Белешке:**\n"
@@ -1029,7 +1032,7 @@
             "value" : "# Scenă: <slug>\n\n**POV:**\n**Locație:**\n**Timp:**\n\n## Scop (al cui și ce)\n\n## Conflict / întorsătură\n\n## Rezultat / situație nouă\n\n## Notițe / continuitate\n"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "# Сцена: <ознака>\n\n**Тачка гледишта:**\n**Локација:**\n**Време:**\n\n## Циљ (чији, и који)\n\n## Сукоб / преокрет\n\n## Исход / нова ситуација\n\n## Белешке / континуитет\n"
@@ -1161,7 +1164,7 @@
             "value" : "# Locația ședinței foto: <nume>\n\n**Adresă:**\n**Permis necesar:** da / nu\n**Cea mai bună lumină / oră:**\n**Parcare / acces:**\n\n## Locație de rezervă\n\n## Notițe\n"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "# Локација снимања: <назив>\n\n**Адреса:**\n**Потребна дозвола:** да / не\n**Најбоље светло / време:**\n**Паркинг / приступ:**\n\n## Резервна локација\n\n## Белешке\n"
@@ -1293,7 +1296,7 @@
             "value" : "# Listă de cadre: <sesiune>\n\n## Obligatorii\n\n- [ ]\n- [ ]\n\n## De dorit\n\n- [ ]\n\n## Cadre de grup\n\n- [ ]\n"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "# Листа кадрова: <сесија>\n\n## Обавезно\n\n- [ ]\n- [ ]\n\n## Пожељно\n\n- [ ]\n\n## Групни снимци\n\n- [ ]\n"
@@ -1425,7 +1428,7 @@
             "value" : "# Furnizor: <nume>\n\n**Categorie:**\n**Telefon / e-mail:**\n**Ofertă:**\n**Avans plătit:** da / nu\n\n## Ce este inclus\n\n## Întrebări de pus\n\n## Sarcini\n\n- [ ]\n"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "# Добављач: <назив>\n\n**Категорија:**\n**Телефон / е-пошта:**\n**Понуда:**\n**Депозит уплаћен:** да / не\n\n## Шта је укључено\n\n## Питања за постављање\n\n## Ставке за извршење\n\n- [ ]\n"
@@ -1450,6 +1453,28 @@
           }
         }
       }
+    },
+    "#%@" : {
+
+    },
+    "#tag AND \"phrase\" NOT /regex/" : {
+
+    },
+    "%@ · %@ · %@ · %@ found" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@ · %3$@ · %4$@ found"
+          }
+        }
+      }
+    },
+    "%@, Shared Library" : {
+
+    },
+    "%lld" : {
+
     },
     "%lld canvas" : {
       "extractionState" : "manual",
@@ -1802,7 +1827,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -1881,6 +1906,9 @@
           }
         }
       }
+    },
+    "%lld days" : {
+
     },
     "%lld document" : {
       "extractionState" : "manual",
@@ -2233,7 +2261,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -2665,7 +2693,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -3096,7 +3124,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -3527,7 +3555,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -3958,7 +3986,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -4389,7 +4417,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -4465,6 +4493,20 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "%lld open" : {
+      "comment" : "The second line of the detail column in the list of notes with open tasks. The argument is the number of open tasks, and the second argument is the due date.",
+      "isCommentAutoGenerated" : true
+    },
+    "%lld open · due %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld open · due %2$@"
           }
         }
       }
@@ -4820,7 +4862,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -5251,7 +5293,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -5682,7 +5724,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -5761,6 +5803,19 @@
           }
         }
       }
+    },
+    "%lldL · %lldT" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lldL · %2$lldT"
+          }
+        }
+      }
+    },
+    "↔ %@" : {
+
     },
     "Add" : {
       "extractionState" : "manual",
@@ -5867,7 +5922,7 @@
             "value" : "Adaugă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај"
@@ -5892,6 +5947,12 @@
           }
         }
       }
+    },
+    "Add %lld groups" : {
+
+    },
+    "Add %lld template groups to your library?" : {
+
     },
     "Add a field below — every new note from this template starts with it pre-filled." : {
       "extractionState" : "manual",
@@ -5998,7 +6059,7 @@
             "value" : "Adaugă un câmp mai jos — fiecare notiță nouă din acest șablon va începe cu el precompletat."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додајте поље испод — свака нова белешка из овог шаблона почиње са њим унапред попуњеним."
@@ -6129,7 +6190,7 @@
             "value" : "Adaugă un grup mai jos pentru a începe să construiești șabloane reutilizabile."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додајте групу испод да бисте почели да правите шаблоне за поновну употребу."
@@ -6260,7 +6321,7 @@
             "value" : "Adaugă un șablon mai jos."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додајте шаблон испод."
@@ -6391,7 +6452,7 @@
             "value" : "Adaugă atașament"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај прилог"
@@ -6522,7 +6583,7 @@
             "value" : "Adaugă prin e-mail"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај путем е-поште"
@@ -6653,7 +6714,7 @@
             "value" : "Adaugă card"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај картицу"
@@ -6784,7 +6845,7 @@
             "value" : "Adaugă câmp"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај поље"
@@ -6916,7 +6977,7 @@
             "value" : "Adaugă grup"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај групу"
@@ -7047,7 +7108,7 @@
             "value" : "Adaugă grup…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај групу…"
@@ -7178,7 +7239,7 @@
             "value" : "Adaugă media"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај медиј"
@@ -7309,7 +7370,7 @@
             "value" : "Adaugă media…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај медиј…"
@@ -7440,7 +7501,7 @@
             "value" : "Adaugă notiță"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај белешку"
@@ -7571,7 +7632,7 @@
             "value" : "Adaugă notiță…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај белешку…"
@@ -7702,7 +7763,7 @@
             "value" : "Adaugă plugin"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај додатак"
@@ -7834,7 +7895,7 @@
             "value" : "Adaugă în bibliotecă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај у библиотеку"
@@ -7966,7 +8027,7 @@
             "value" : "Adaugă link web"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај веб везу"
@@ -8097,7 +8158,7 @@
             "value" : "Adaugă link web…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додај веб везу…"
@@ -8229,7 +8290,7 @@
             "value" : "Adăugat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додато"
@@ -8360,7 +8421,7 @@
             "value" : "Adăugat în această bibliotecă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додато у ову библиотеку"
@@ -8491,7 +8552,7 @@
             "value" : "Detalii suplimentare (opțional)"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додатни детаљи (опционо)"
@@ -8623,7 +8684,7 @@
             "value" : "Adresă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Адреса"
@@ -8754,7 +8815,7 @@
             "value" : "Căutare avansată: dezactivată"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Напредна претрага: искључено"
@@ -8885,7 +8946,7 @@
             "value" : "Căutare avansată: activată"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Напредна претрага: укључено"
@@ -9017,7 +9078,7 @@
             "value" : "Afiliere"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Припадност"
@@ -9149,7 +9210,7 @@
             "value" : "În viață"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Жив"
@@ -9281,7 +9342,7 @@
             "value" : "Toate"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Све"
@@ -9412,7 +9473,7 @@
             "value" : "Toate notițele"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Све белешке"
@@ -9437,6 +9498,9 @@
           }
         }
       }
+    },
+    "AND / OR / NOT · \"exact phrase\" · /regex/ · #tag — combine freely, e.g. #character AND #act2 NOT #resolved" : {
+
     },
     "AND / OR / NOT · \\\"exact phrase\\\" · /regex/ · #tag — combine freely, e.g. #character AND #act2 NOT #resolved" : {
       "extractionState" : "manual",
@@ -9543,7 +9607,7 @@
             "value" : "AND / OR / NOT · \\\"frază exactă\\\" · /regex/ · #tag — combină liber, ex. #character AND #act2 NOT #resolved"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "AND / OR / NOT · \\\"тачна фраза\\\" · /regex/ · #tag — комбинујте слободно, нпр. #character AND #act2 NOT #resolved"
@@ -9675,7 +9739,7 @@
             "value" : "Oricând"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Било када"
@@ -9806,7 +9870,7 @@
             "value" : "Orice altceva care ar putea ajuta"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Било шта друго што би могло да помогне"
@@ -9938,7 +10002,7 @@
             "value" : "E-mail Apple Account"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Е-пошта Apple налога"
@@ -10069,7 +10133,7 @@
             "value" : "Aplică șablonul"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Примени шаблон"
@@ -10200,7 +10264,7 @@
             "value" : "Mai întâi atașează un fișier la o notiță."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Прво прикачите фајл уз белешку."
@@ -10331,7 +10395,7 @@
             "value" : "Atașament"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Прилог"
@@ -10463,7 +10527,7 @@
             "value" : "Detectat automat: vault %@"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Аутоматски откривено: %@ vault"
@@ -10594,7 +10658,7 @@
             "value" : "Combină automat textul; tu revizuiești diferențele."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Аутоматски спаја текст; ви прегледате разлике."
@@ -10619,6 +10683,9 @@
           }
         }
       }
+    },
+    "Automatic" : {
+
     },
     "Backlinks" : {
       "extractionState" : "manual",
@@ -10725,7 +10792,7 @@
             "value" : "Backlinks"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Backlinks"
@@ -10856,7 +10923,7 @@
             "value" : "Copii de rezervă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Резервне копије"
@@ -10987,7 +11054,7 @@
             "value" : "Leagă de notiță"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Повежи са белешком"
@@ -11118,7 +11185,7 @@
             "value" : "Leagă de notiță…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Повежи са белешком…"
@@ -11249,7 +11316,7 @@
             "value" : "Block References"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Block References"
@@ -11381,7 +11448,7 @@
             "value" : "Nume tablă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назив табле"
@@ -11513,7 +11580,7 @@
             "value" : "Rezervat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Резервисано"
@@ -11538,6 +11605,9 @@
           }
         }
       }
+    },
+    "Bound to %@" : {
+
     },
     "Cancel" : {
       "extractionState" : "manual",
@@ -11644,7 +11714,7 @@
             "value" : "Anulează"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Откажи"
@@ -11775,7 +11845,7 @@
             "value" : "Canvas"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Canvas"
@@ -11906,7 +11976,7 @@
             "value" : "Canvas"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Canvas"
@@ -11931,6 +12001,9 @@
           }
         }
       }
+    },
+    "Capture" : {
+
     },
     "Category" : {
       "comment" : "Starter Note Template field name (Vendor, Wedding Planning pack).",
@@ -12038,7 +12111,7 @@
             "value" : "Categorie"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Категорија"
@@ -12169,7 +12242,7 @@
             "value" : "Schimbă sau începe abonamentul"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Промени или започни претплату"
@@ -12300,7 +12373,7 @@
             "value" : "Modificările intră în vigoare după repornire."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Промене ступају на снагу након поновног покретања."
@@ -12432,7 +12505,7 @@
             "value" : "Personaj"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Лик"
@@ -12564,7 +12637,7 @@
             "value" : "Casetă de bifat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поље за потврду"
@@ -12695,7 +12768,7 @@
             "value" : "Alege un caiet"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изаберите свеску"
@@ -12826,7 +12899,7 @@
             "value" : "Alege un șablon"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изаберите шаблон"
@@ -12957,7 +13030,7 @@
             "value" : "Alege limba ta"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изаберите свој језик"
@@ -13089,7 +13162,7 @@
             "value" : "Client"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Клијент"
@@ -13220,7 +13293,7 @@
             "value" : "Închide"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Затвори"
@@ -13242,6 +13315,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关闭"
+          }
+        }
+      }
+    },
+    "Cluster: %@ — %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cluster: %1$@ — %2$@"
           }
         }
       }
@@ -13352,7 +13435,7 @@
             "value" : "Grupuri"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кластери"
@@ -13483,7 +13566,7 @@
             "value" : "Paletă de comenzi"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Палета команди"
@@ -13614,7 +13697,7 @@
             "value" : "Paletă de comenzi…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Палета команди…"
@@ -13745,7 +13828,7 @@
             "value" : "Confirmă importul"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Потврди увоз"
@@ -13876,7 +13959,7 @@
             "value" : "Confirmă migrarea"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Потврди миграцију"
@@ -13901,6 +13984,9 @@
           }
         }
       }
+    },
+    "Conflict — \"%@\"" : {
+
     },
     "Conflict on %lld note" : {
       "extractionState" : "manual",
@@ -14253,7 +14339,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -14438,7 +14524,7 @@
             "value" : "Strategie de rezolvare a conflictelor"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Стратегија решавања сукоба"
@@ -14463,6 +14549,9 @@
           }
         }
       }
+    },
+    "Conflict: \"%@\"" : {
+
     },
     "Connect Cards" : {
       "extractionState" : "manual",
@@ -14569,7 +14658,7 @@
             "value" : "Conectează cardurile"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Повежи картице"
@@ -14594,6 +14683,9 @@
           }
         }
       }
+    },
+    "Connected groups of notes, headed by their most-linked member." : {
+
     },
     "Contact Email" : {
       "comment" : "Starter Note Template field name (Vendor, Wedding Planning pack).",
@@ -14701,7 +14793,7 @@
             "value" : "E-mail de contact"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Контакт е-пошта"
@@ -14833,7 +14925,7 @@
             "value" : "Conținut"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Садржај"
@@ -14965,7 +15057,7 @@
             "value" : "Continuă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настави"
@@ -15096,7 +15188,7 @@
             "value" : "Copiat în clipboard."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Копирано у клипборд."
@@ -15227,7 +15319,7 @@
             "value" : "Copiază raportul"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Копирај извештај"
@@ -15359,7 +15451,7 @@
             "value" : "Formatul acestui vault nu a putut fi detectat automat — confirmă mai sus"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Формат овог vault-а није могуће аутоматски открити — потврдите изнад"
@@ -15491,7 +15583,7 @@
             "value" : "Actualizarea partajării a eșuat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дељење није могуће ажурирати"
@@ -15623,7 +15715,7 @@
             "value" : "Creează"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Направи"
@@ -15754,7 +15846,7 @@
             "value" : "Creează o tablă sau importă un fișier .canvas."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Направите таблу или увезите .canvas фајл."
@@ -15885,7 +15977,7 @@
             "value" : "Creează o bibliotecă pentru a începe să notezi."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Направите библиотеку да бисте почели да бележите белешке."
@@ -16016,7 +16108,7 @@
             "value" : "Creează copie de rezervă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Направи резервну копију"
@@ -16147,7 +16239,7 @@
             "value" : "Creează link"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Направи везу"
@@ -16279,7 +16371,7 @@
             "value" : "Creezi linkul?"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Направити везу?"
@@ -16411,7 +16503,7 @@
             "value" : "Creează bibliotecă nouă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Направи нову библиотеку"
@@ -16436,6 +16528,9 @@
           }
         }
       }
+    },
+    "Current note, %@" : {
+
     },
     "Daily" : {
       "extractionState" : "manual",
@@ -16542,7 +16637,7 @@
             "value" : "Zilnic"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дневно"
@@ -16674,7 +16769,7 @@
             "value" : "Dată"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Датум"
@@ -16806,7 +16901,7 @@
             "value" : "Cronologia zilei"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Распоред дана"
@@ -16938,7 +17033,7 @@
             "value" : "Valoare implicită (opțional)"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Подразумевана вредност (опционо)"
@@ -17315,7 +17410,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -17500,7 +17595,7 @@
             "value" : "Descrie ce ai văzut și, dacă știi, ce ar trebui să scrie. Acest lucru este trimis direct de tine — nimic nu este colectat automat."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Опишите шта сте видели и, ако знате, шта би требало да пише. Ово шаљете директно ви — ништа се не прикупља аутоматски."
@@ -17632,7 +17727,7 @@
             "value" : "Descriere"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Опис"
@@ -17763,7 +17858,7 @@
             "value" : "Renunță"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Одбаци"
@@ -17895,7 +17990,7 @@
             "value" : "Gata"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Готово"
@@ -18027,7 +18122,7 @@
             "value" : "se descarcă…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "преузимање…"
@@ -18159,7 +18254,7 @@
             "value" : "Se descarcă…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Преузимање…"
@@ -18291,7 +18386,7 @@
             "value" : "În lucru"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "У изради"
@@ -18316,6 +18411,9 @@
           }
         }
       }
+    },
+    "Drag to resize" : {
+
     },
     "Due Date" : {
       "comment" : "Starter Note Template field name (Vendor, Wedding Planning pack).",
@@ -18423,7 +18521,7 @@
             "value" : "Data scadenței"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Датум доспећа"
@@ -18555,7 +18653,7 @@
             "value" : "Scadent săptămâna aceasta"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Рок ове недеље"
@@ -18687,7 +18785,7 @@
             "value" : "Scadent astăzi"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Рок данас"
@@ -18819,7 +18917,7 @@
             "value" : "Editează"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Уреди"
@@ -18950,7 +19048,7 @@
             "value" : "Editează blocul transcludat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Уреди уграђени блок"
@@ -19081,7 +19179,7 @@
             "value" : "Eroare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Грешка"
@@ -19458,7 +19556,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -19643,7 +19741,7 @@
             "value" : "Text așteptat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Очекивани текст"
@@ -19775,7 +19873,7 @@
             "value" : "Explorează"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Истражи"
@@ -19907,7 +20005,7 @@
             "value" : "Exportă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Извези"
@@ -20038,7 +20136,7 @@
             "value" : "Exportă Canvas…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Извези Canvas…"
@@ -20170,7 +20268,7 @@
             "value" : "Export finalizat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Извоз је завршен"
@@ -20301,7 +20399,7 @@
             "value" : "Exportă biblioteca"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Извези библиотеку"
@@ -20432,7 +20530,7 @@
             "value" : "Exportă notițele mele"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Извези моје белешке"
@@ -20809,7 +20907,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -21240,7 +21338,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -21426,7 +21524,7 @@
             "value" : "Scriere de ficțiune"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Писање прозе"
@@ -21558,7 +21656,7 @@
             "value" : "Nume câmp"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назив поља"
@@ -21689,7 +21787,7 @@
             "value" : "Câmpuri"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поља"
@@ -21821,7 +21919,7 @@
             "value" : "Filtrează după etichetă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Филтрирај по ознаци"
@@ -21952,7 +22050,7 @@
             "value" : "Filtre"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Филтери"
@@ -22084,7 +22182,7 @@
             "value" : "Încadrează pe ecran"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Прилагоди екрану"
@@ -22215,7 +22313,7 @@
             "value" : "notiță în focus"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "белешка у фокусу"
@@ -22347,7 +22445,7 @@
             "value" : "Bazat pe forțe"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Силе"
@@ -22478,7 +22576,7 @@
             "value" : "Grafic"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Граф"
@@ -22610,7 +22708,7 @@
             "value" : "Graficul este prea mare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Граф је превелик"
@@ -22742,7 +22840,7 @@
             "value" : "Grup"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Група"
@@ -22874,7 +22972,7 @@
             "value" : "Nume grup"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назив групе"
@@ -22899,6 +22997,9 @@
           }
         }
       }
+    },
+    "Grouped by note, with the count and nearest due date." : {
+
     },
     "Guest" : {
       "comment" : "Starter Note Template name (Wedding Planning pack).",
@@ -23006,7 +23107,7 @@
             "value" : "Invitat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Гост"
@@ -23138,7 +23239,7 @@
             "value" : "Evidențiază eticheta…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Истакни ознаку…"
@@ -23270,7 +23371,7 @@
             "value" : "Planeta natală"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Матична планета"
@@ -23295,6 +23396,9 @@
           }
         }
       }
+    },
+    "https://example.com" : {
+
     },
     "Hubs" : {
       "comment" : "Graph Insights section header — highly-connected notes.",
@@ -23402,7 +23506,7 @@
             "value" : "Noduri centrale"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Чворишта"
@@ -23533,7 +23637,7 @@
             "value" : "Dacă ai cumpărat NoteBytez din App Store, șterge această copie și reinstaleaz-o din App Store."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ако сте купили NoteBytez у App Store-у, обришите ову копију и поново је инсталирајте из App Store-а."
@@ -23664,7 +23768,7 @@
             "value" : "Importă Canvas…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Увези Canvas…"
@@ -23795,7 +23899,7 @@
             "value" : "Importă un folder Markdown existent"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Увези постојећу Markdown фасциклу"
@@ -23926,7 +24030,7 @@
             "value" : "Previzualizare import"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Преглед увоза"
@@ -24058,7 +24162,7 @@
             "value" : "Solicitare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Упит"
@@ -24189,7 +24293,7 @@
             "value" : "Perspective"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Увиди"
@@ -24320,7 +24424,7 @@
             "value" : "Instalează"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Инсталирај"
@@ -24451,7 +24555,7 @@
             "value" : "Instalează un plugin pentru a adăuga comenzi personalizate în NoteBytez."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Инсталирајте додатак да бисте додали прилагођене команде у NoteBytez."
@@ -24582,7 +24686,7 @@
             "value" : "Invită participant"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Позови учесника"
@@ -24607,6 +24711,9 @@
           }
         }
       }
+    },
+    "Invite someone to collaborate on \"%@\"." : {
+
     },
     "item, item" : {
       "comment" : "TextField placeholder showing the expected comma-separated format for a list-type Property value.",
@@ -24714,7 +24821,7 @@
             "value" : "element, element"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ставка, ставка"
@@ -24845,7 +24952,7 @@
             "value" : "Sari la sursă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Иди на извор"
@@ -24976,7 +25083,7 @@
             "value" : "Păstrează toate versiunile"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Задржи све верзије"
@@ -25107,7 +25214,7 @@
             "value" : "Păstrează ambele versiuni"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Задржи обе верзије"
@@ -25238,7 +25345,7 @@
             "value" : "Păstrează această versiune"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Задржи ову верзију"
@@ -25260,6 +25367,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保留此版本"
+          }
+        }
+      }
+    },
+    "Keeping Synced Edit" : {
+
+    },
+    "Keeping This Device's Edit" : {
+      "comment" : "A button label that indicates the user is keeping the edit made on this device.",
+      "isCommentAutoGenerated" : true
+    },
+    "Kept %@ for \"%@\"" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kept %1$@ for \"%2$@\""
           }
         }
       }
@@ -25370,7 +25494,7 @@
             "value" : "Etichetă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ознака"
@@ -25501,7 +25625,7 @@
             "value" : "Limbă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Језик"
@@ -25526,6 +25650,9 @@
           }
         }
       }
+    },
+    "Last synced: %@" : {
+
     },
     "Last-Write-Wins + Banner" : {
       "extractionState" : "manual",
@@ -25632,7 +25759,7 @@
             "value" : "Câștigă ultima scriere + banner"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Побеђује последњи упис + барер"
@@ -25657,6 +25784,9 @@
           }
         }
       }
+    },
+    "Library" : {
+
     },
     "Library Name" : {
       "comment" : "TextField placeholder on the New Library sheet.",
@@ -25764,7 +25894,7 @@
             "value" : "Nume bibliotecă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назив библиотеке"
@@ -25895,7 +26025,7 @@
             "value" : "Mențiuni conectate"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Повезана помињања"
@@ -25920,6 +26050,9 @@
           }
         }
       }
+    },
+    "Linked note, %@" : {
+
     },
     "List" : {
       "comment" : "PropertyValueType Picker option.",
@@ -26027,7 +26160,7 @@
             "value" : "Listă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Листа"
@@ -26159,7 +26292,7 @@
             "value" : "Locație"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Локација"
@@ -26290,7 +26423,7 @@
             "value" : "Gestionează abonamentul"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Управљај претплатом"
@@ -26315,6 +26448,10 @@
           }
         }
       }
+    },
+    "Manual" : {
+      "comment" : "A label for a backup snapshot that was created manually.",
+      "isCommentAutoGenerated" : true
     },
     "Markdown Diff-Merge" : {
       "extractionState" : "manual",
@@ -26421,7 +26558,7 @@
             "value" : "Îmbinare diferențe Markdown"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Спајање разлика Markdown"
@@ -26553,7 +26690,7 @@
             "value" : "Mediu"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Средње"
@@ -26684,7 +26821,7 @@
             "value" : "Asistent de migrare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Помоћник за миграцију"
@@ -26815,7 +26952,7 @@
             "value" : "Asistent de migrare (Obsidian/Logseq)"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Помоћник за миграцију (Obsidian/Logseq)"
@@ -26947,7 +27084,7 @@
             "value" : "Mod"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Режим"
@@ -27078,7 +27215,7 @@
             "value" : "Lunar"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Месечно"
@@ -27210,7 +27347,7 @@
             "value" : "Nume"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назив"
@@ -27341,7 +27478,7 @@
             "value" : "Restrânge filtrul — redu adâncimea sau tipurile de noduri — pentru a reda atâtea notițe ca grafic bazat pe forțe."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сузите филтер — смањите дубину или типове чворова — да бисте приказали толико белешки као граф сила."
@@ -27472,7 +27609,7 @@
             "value" : "Necesită atenția ta"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Захтева вашу пажњу"
@@ -27603,7 +27740,7 @@
             "value" : "Niciodată sincronizat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Никада синхронизовано"
@@ -27734,7 +27871,7 @@
             "value" : "Tablă nouă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нова табла"
@@ -27865,7 +28002,7 @@
             "value" : "Grup nou"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нова група"
@@ -27996,7 +28133,7 @@
             "value" : "Bibliotecă nouă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нова библиотека"
@@ -28127,7 +28264,7 @@
             "value" : "Notiță nouă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нова белешка"
@@ -28258,7 +28395,7 @@
             "value" : "Caiet nou"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нова свеска"
@@ -28389,7 +28526,7 @@
             "value" : "Șablon nou"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нови шаблон"
@@ -28520,7 +28657,7 @@
             "value" : "Câștigă cea mai recentă editare; un banner permite revenirea."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Побеђује најновија измена; барер омогућава враћање."
@@ -28651,7 +28788,7 @@
             "value" : "Ziua următoare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Следећи дан"
@@ -28783,7 +28920,7 @@
             "value" : "Niciun atașament încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема прилога"
@@ -28914,7 +29051,7 @@
             "value" : "Niciun backlink încă."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема backlink-ова."
@@ -29046,7 +29183,7 @@
             "value" : "Nicio copie de rezervă încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема резервних копија"
@@ -29178,7 +29315,7 @@
             "value" : "Nicio tablă Canvas încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема Canvas табли"
@@ -29203,6 +29340,10 @@
           }
         }
       }
+    },
+    "No clusters yet." : {
+      "comment" : "A description of the empty state when there are no clusters.",
+      "isCommentAutoGenerated" : true
     },
     "No conflicts — you're all synced" : {
       "extractionState" : "manual",
@@ -29309,7 +29450,7 @@
             "value" : "Niciun conflict — totul este sincronizat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нема сукоба — све је синхронизовано"
@@ -29441,7 +29582,7 @@
             "value" : "Niciun document"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нема докумената"
@@ -29466,6 +29607,10 @@
           }
         }
       }
+    },
+    "No documents are filed in %@." : {
+      "comment" : "A description of the empty state of the notebook documents view.",
+      "isCommentAutoGenerated" : true
     },
     "No Fields Yet" : {
       "comment" : "ContentUnavailableView title.",
@@ -29573,7 +29718,7 @@
             "value" : "Niciun câmp încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема поља"
@@ -29598,6 +29743,12 @@
           }
         }
       }
+    },
+    "No hubs yet — link some notes together." : {
+
+    },
+    "No incoming or outgoing links." : {
+
     },
     "No Libraries Yet" : {
       "comment" : "ContentUnavailableView title on S1 (Library Selection).",
@@ -29705,7 +29856,7 @@
             "value" : "Nicio bibliotecă încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема библиотека"
@@ -29837,7 +29988,7 @@
             "value" : "Niciun fișier Markdown găsit"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нису пронађени Markdown фајлови"
@@ -29968,7 +30119,7 @@
             "value" : "Nicio potrivire."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нема поклапања."
@@ -30100,7 +30251,7 @@
             "value" : "Niciun caiet încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема свески"
@@ -30232,7 +30383,7 @@
             "value" : "Nicio notiță"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нема белешки"
@@ -30254,6 +30405,19 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "没有笔记"
+          }
+        }
+      }
+    },
+    "No notes are tagged #%@." : {
+
+    },
+    "No notes match \"%@\" in %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No notes match \"%1$@\" in %2$@."
           }
         }
       }
@@ -30364,7 +30528,7 @@
             "value" : "Nicio notiță încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема белешки"
@@ -30389,6 +30553,12 @@
           }
         }
       }
+    },
+    "No open tasks anywhere." : {
+
+    },
+    "No orphans — every note is connected." : {
+
     },
     "No Plugins Installed" : {
       "comment" : "ContentUnavailableView title.",
@@ -30496,7 +30666,7 @@
             "value" : "Niciun plugin instalat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нема инсталираних додатака"
@@ -30628,7 +30798,7 @@
             "value" : "Niciun rezultat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нема резултата"
@@ -30760,7 +30930,7 @@
             "value" : "Nicio vizualizare salvată"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нема сачуваних приказа"
@@ -30892,7 +31062,7 @@
             "value" : "Nicio activitate de sincronizare încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема активности синхронизације"
@@ -31024,7 +31194,7 @@
             "value" : "Nicio etichetă încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема ознака"
@@ -31156,7 +31326,7 @@
             "value" : "Nicio sarcină"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нема задатака"
@@ -31288,7 +31458,7 @@
             "value" : "Niciun grup de șabloane încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема група шаблона"
@@ -31420,7 +31590,7 @@
             "value" : "Niciun șablon încă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Још нема шаблона"
@@ -31551,7 +31721,7 @@
             "value" : "Nicio mențiune neconectată."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нема неповезаних помињања."
@@ -31576,6 +31746,9 @@
           }
         }
       }
+    },
+    "Not done" : {
+
     },
     "Not Migrated — View Original Archive" : {
       "extractionState" : "manual",
@@ -31682,7 +31855,7 @@
             "value" : "Nemigrat — vezi arhiva originală"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Није мигрирано — прикажи оригиналну архиву"
@@ -31814,7 +31987,7 @@
             "value" : "Nepartajat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Није дељено"
@@ -31946,7 +32119,7 @@
             "value" : "Notița nu a fost găsită"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Белешка није пронађена"
@@ -32077,7 +32250,7 @@
             "value" : "Caiet"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Свеска"
@@ -32209,7 +32382,7 @@
             "value" : "Nume caiet"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назив свеске"
@@ -32340,7 +32513,7 @@
             "value" : "Caiete"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Свеске"
@@ -32365,6 +32538,9 @@
           }
         }
       }
+    },
+    "NoteBytez" : {
+
     },
     "Notes" : {
       "comment" : "Plural of the app's core content type (a note/document), used as both a graph filter label and a migration-scan section header — not notes-in-general.",
@@ -32472,7 +32648,7 @@
             "value" : "Notițe"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Белешке"
@@ -32604,7 +32780,7 @@
             "value" : "Notițe cu sarcini deschise"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Белешке са отвореним задацима"
@@ -32735,7 +32911,7 @@
             "value" : "Nimic nu se potrivește filtrelor curente."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ништа не одговара тренутним филтерима."
@@ -32760,6 +32936,9 @@
           }
         }
       }
+    },
+    "Nothing stale — every note that still matters has been touched recently." : {
+
     },
     "Nothing to Promote" : {
       "comment" : "ContentUnavailableView title.",
@@ -32867,7 +33046,7 @@
             "value" : "Nimic de promovat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нема ничега за унапређење"
@@ -32999,7 +33178,7 @@
             "value" : "Număr"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Број"
@@ -33130,7 +33309,7 @@
             "value" : "Text observat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Уочени текст"
@@ -33261,7 +33440,7 @@
             "value" : "Offline"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ван мреже"
@@ -33392,7 +33571,7 @@
             "value" : "OK"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "У реду"
@@ -33523,7 +33702,7 @@
             "value" : "Acordă doar ceea ce acest plugin are cu adevărat nevoie. Sandbox-ul impune fiecare permisiune individual — o permisiune neacordată aici nu va putea fi niciodată accesată de script, indiferent ce solicită."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Одобрите само оно што је овом додатку заиста потребно. Sandbox примењује свако овлашћење појединачно — овлашћење које овде није дато скрипта никада не може добити, без обзира шта тражи."
@@ -33655,7 +33834,7 @@
             "value" : "Deschis"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отворено"
@@ -33786,7 +33965,7 @@
             "value" : "Deschide ca Canvas"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отвори као Canvas"
@@ -33918,7 +34097,7 @@
             "value" : "Sarcini deschise"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отворени задаци"
@@ -34050,7 +34229,7 @@
             "value" : "Sau creează unul nou"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Или направи нови"
@@ -34182,7 +34361,7 @@
             "value" : "Notițe orfane"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Беседе без веза"
@@ -34314,7 +34493,7 @@
             "value" : "Restant"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пробијен рок"
@@ -34446,7 +34625,7 @@
             "value" : "Proprietar"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Власник"
@@ -34471,6 +34650,9 @@
           }
         }
       }
+    },
+    "P%lld" : {
+
     },
     "Package Type" : {
       "comment" : "Starter Note Template field name (Client, Photography Client Work pack).",
@@ -34578,7 +34760,7 @@
             "value" : "Tip pachet"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Врста пакета"
@@ -34709,7 +34891,7 @@
             "value" : "Participanți"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Учесници"
@@ -34841,7 +35023,7 @@
             "value" : "Cale"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Путања"
@@ -34972,7 +35154,7 @@
             "value" : "Plata este taxată pe Apple Account. Abonamentele se reînnoiesc automat, cu excepția cazului în care sunt anulate cu cel puțin 24 de ore înainte de sfârșitul perioadei. Gestionează sau anulează în Setări."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Плаћање се наплаћује на ваш Apple налог. Претплате се аутоматски обнављају осим ако се не откажу најмање 24 сата пре краја периода. Управљајте или откажите у Подешавањима."
@@ -35104,7 +35286,7 @@
             "value" : "Permisiune"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Овлашћење"
@@ -35235,7 +35417,7 @@
             "value" : "Permisiuni"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Овлашћења"
@@ -35367,7 +35549,7 @@
             "value" : "Lucru foto cu clienți"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Фотографски рад са клијентима"
@@ -35498,7 +35680,7 @@
             "value" : "Alege tipurile de muncă pe care le faci, iar NoteBytez va adăuga șabloane de notițe potrivite. Le poți schimba oricând din Setări → Galerie de șabloane."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изаберите врсте посла којим се бавите и NoteBytez ће додати одговарајуће шаблоне белешки. Ово можете променити у сваком тренутку у Подешавања → Галерија шаблона."
@@ -35629,7 +35811,7 @@
             "value" : "Plugin"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додатак"
@@ -35761,7 +35943,7 @@
             "value" : "Pluginuri"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додаци"
@@ -35892,7 +36074,7 @@
             "value" : "Pluginuri (previzualizare)"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додаци (преглед)"
@@ -36024,7 +36206,7 @@
             "value" : "Însoțitor"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пратилац"
@@ -36156,7 +36338,7 @@
             "value" : "Previzualizare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Преглед"
@@ -36287,7 +36469,7 @@
             "value" : "Ziua anterioară"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Претходни дан"
@@ -36419,7 +36601,7 @@
             "value" : "Prioritate"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Приоритет"
@@ -36444,6 +36626,9 @@
           }
         }
       }
+    },
+    "Privacy Policy" : {
+
     },
     "Promote" : {
       "comment" : "Toolbar button that promotes the current block/journal entry into a full notebook document, in the 'Promote to Notebook' sheet.",
@@ -36551,7 +36736,7 @@
             "value" : "Promovează"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Унапреди"
@@ -36682,7 +36867,7 @@
             "value" : "Promovează blocul"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Унапреди блок"
@@ -36813,7 +36998,7 @@
             "value" : "Promovează o intrare din jurnal sau creează una aici."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Унапредите унос из дневника или направите нови овде."
@@ -36944,7 +37129,7 @@
             "value" : "Promovează la caiet"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Унапреди у свеску"
@@ -37076,7 +37261,7 @@
             "value" : "Nume proprietate"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назив својства"
@@ -37207,7 +37392,7 @@
             "value" : "Comutator rapid"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Брзи преклопник"
@@ -37339,7 +37524,7 @@
             "value" : "Radial"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Радијално"
@@ -37364,6 +37549,9 @@
           }
         }
       }
+    },
+    "Ranked by combined incoming and outgoing links." : {
+
     },
     "Read & Write" : {
       "extractionState" : "manual",
@@ -37470,7 +37658,7 @@
             "value" : "Citire și scriere"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Читање и писање"
@@ -37601,7 +37789,7 @@
             "value" : "Doar citire"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Само за читање"
@@ -37732,7 +37920,7 @@
             "value" : "primit"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "примљено"
@@ -37863,7 +38051,7 @@
             "value" : "Activitate recentă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Недавна активност"
@@ -37994,7 +38182,7 @@
             "value" : "Revendică codul"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Искористи кôд"
@@ -38126,7 +38314,7 @@
             "value" : "Regiune"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Регион"
@@ -38257,7 +38445,7 @@
             "value" : "Elimină"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Уклони"
@@ -38282,6 +38470,9 @@
           }
         }
       }
+    },
+    "Remove %@" : {
+
     },
     "Report a Translation Issue" : {
       "extractionState" : "manual",
@@ -38388,7 +38579,7 @@
             "value" : "Raportează o problemă de traducere"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пријави проблем са преводом"
@@ -38519,7 +38710,7 @@
             "value" : "Redimensionează cardul"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Промени величину картице"
@@ -38544,6 +38735,16 @@
           }
         }
       }
+    },
+    "Resolved — %@" : {
+
+    },
+    "Resolved \"%@\"" : {
+
+    },
+    "Resolved %@. Undo available." : {
+      "comment" : "Accessibility label for the undo toast. The argument is the title of the resolved conflict.",
+      "isCommentAutoGenerated" : true
     },
     "Restore" : {
       "comment" : "Button that restores app data from a backup snapshot (distinct from 'Restore Purchases').",
@@ -38651,7 +38852,7 @@
             "value" : "Restaurează"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Врати"
@@ -38782,7 +38983,7 @@
             "value" : "Restaurează achizițiile"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Врати куповине"
@@ -38914,7 +39115,7 @@
             "value" : "Restaurezi această copie de rezervă?"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вратити ову резервну копију?"
@@ -39045,7 +39246,7 @@
             "value" : "Reabonează-te"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поново се претплати"
@@ -39176,7 +39377,7 @@
             "value" : "Reîncearcă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Покушај поново"
@@ -39307,7 +39508,7 @@
             "value" : "Revino"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Врати"
@@ -39439,7 +39640,7 @@
             "value" : "Verificat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Прегледано"
@@ -39570,7 +39771,7 @@
             "value" : "Salvează"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувај"
@@ -39701,7 +39902,7 @@
             "value" : "Salvează o căutare sau un filtru de sarcini pentru a-l fixa aici."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувајте претрагу или филтер задатака да бисте га закачили овде."
@@ -39832,7 +40033,7 @@
             "value" : "Salvează ca vizualizare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувај као приказ"
@@ -39964,7 +40165,7 @@
             "value" : "Salvează filtrul grafic"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувај филтер графа"
@@ -40095,7 +40296,7 @@
             "value" : "Salvează notița îmbinată"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувај спојену белешку"
@@ -40227,7 +40428,7 @@
             "value" : "Salvează căutarea"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувај претрагу"
@@ -40359,7 +40560,7 @@
             "value" : "Salvează vizualizarea sarcinilor"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувај приказ задатака"
@@ -40490,7 +40691,7 @@
             "value" : "Salvează aceste filtre"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувај ове филтере"
@@ -40621,7 +40822,7 @@
             "value" : "Salvează această căutare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувај ову претрагу"
@@ -40752,7 +40953,7 @@
             "value" : "Vizualizare salvată"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувани приказ"
@@ -40883,7 +41084,7 @@
             "value" : "Vizualizări salvate"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сачувани прикази"
@@ -41015,7 +41216,7 @@
             "value" : "Scenă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сцена"
@@ -41146,7 +41347,7 @@
             "value" : "Ecran (opțional)"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Екран (опционо)"
@@ -41277,7 +41478,7 @@
             "value" : "Căutare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Претрага"
@@ -41302,6 +41503,9 @@
           }
         }
       }
+    },
+    "Search notes" : {
+
     },
     "Search notes..." : {
       "comment" : "TextField placeholder on the Search screen.",
@@ -41409,7 +41613,7 @@
             "value" : "Caută notițe..."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Претражи белешке..."
@@ -41434,6 +41638,10 @@
           }
         }
       }
+    },
+    "Search packs or job titles" : {
+      "comment" : "A placeholder text for a search bar.",
+      "isCommentAutoGenerated" : true
     },
     "Send to Canvas" : {
       "extractionState" : "manual",
@@ -41540,7 +41748,7 @@
             "value" : "Trimite la Canvas"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пошаљи у Canvas"
@@ -41671,7 +41879,7 @@
             "value" : "Trimite prin e-mail"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пошаљи путем е-поште"
@@ -41802,7 +42010,7 @@
             "value" : "Setări"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Подешавања"
@@ -41933,7 +42141,7 @@
             "value" : "Setări…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Подешавања…"
@@ -41958,6 +42166,9 @@
           }
         }
       }
+    },
+    "Share \"%@\"" : {
+
     },
     "Sharing" : {
       "extractionState" : "manual",
@@ -42064,7 +42275,7 @@
             "value" : "Partajare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дељење"
@@ -42196,7 +42407,7 @@
             "value" : "Data ședinței foto"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Датум снимања"
@@ -42328,7 +42539,7 @@
             "value" : "Locația ședinței foto"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Локација снимања"
@@ -42460,7 +42671,7 @@
             "value" : "Listă de cadre"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Листа кадрова"
@@ -42591,7 +42802,7 @@
             "value" : "Omite"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Прескочи"
@@ -42722,7 +42933,7 @@
             "value" : "Instantaneele sunt create automat înainte de operațiuni riscante sau manual mai jos."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Снимци стања се праве аутоматски пре ризичних операција, или ручно испод."
@@ -42854,7 +43065,7 @@
             "value" : "Sursă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Извор"
@@ -42986,7 +43197,7 @@
             "value" : "Specie"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Врста"
@@ -43118,7 +43329,7 @@
             "value" : "Neactualizate"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Застарело"
@@ -43249,7 +43460,7 @@
             "value" : "Începe gol (fără șablon)"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Почни празно (без шаблона)"
@@ -43380,7 +43591,7 @@
             "value" : "Începe cu o perioadă de încercare gratuită. Abonamentul tău deblochează fiecare dispozitiv conectat la Apple Account, și familia ta prin Family Sharing."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Почните са бесплатним пробним периодом. Ваша претплата откључава сваки уређај пријављен на ваш Apple налог, као и вашу породицу путем Породичног дељења."
@@ -43512,7 +43723,7 @@
             "value" : "Stare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Статус"
@@ -43643,7 +43854,7 @@
             "value" : "Oprește conectarea"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заустави повезивање"
@@ -43774,7 +43985,7 @@
             "value" : "Oprește partajarea"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заустави дељење"
@@ -43905,7 +44116,7 @@
             "value" : "Abonează-te la NoteBytez"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Претплати се на NoteBytez"
@@ -44036,7 +44247,7 @@
             "value" : "Abonament"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Претплата"
@@ -44167,7 +44378,7 @@
             "value" : "Opțiunile de abonament nu sunt disponibile momentan."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Опције претплате тренутно нису доступне."
@@ -44298,7 +44509,7 @@
             "value" : "Sincronizare și conflicte"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Синхронизација и сукоби"
@@ -44429,7 +44640,7 @@
             "value" : "Evenimentele de sincronizare vor apărea aici."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Овде ће се приказати догађаји синхронизације."
@@ -44560,7 +44771,7 @@
             "value" : "Sincronizează acum"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Синхронизуј сада"
@@ -44691,7 +44902,7 @@
             "value" : "Stare sincronizare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Статус синхронизације"
@@ -44822,7 +45033,7 @@
             "value" : "Sincronizat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Синхронизовано"
@@ -45200,7 +45411,7 @@
             }
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "variations" : {
             "plural" : {
               "few" : {
@@ -45385,7 +45596,7 @@
             "value" : "Se sincronizează…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Синхронизација…"
@@ -45517,7 +45728,7 @@
             "value" : "Implicit din sistem"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Системски подразумевано"
@@ -45649,7 +45860,7 @@
             "value" : "Etichetă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ознака"
@@ -45780,7 +45991,7 @@
             "value" : "Etichete"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ознаке"
@@ -45911,7 +46122,7 @@
             "value" : "Atinge + pentru a crea prima ta notiță."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додирните + да бисте направили прву белешку."
@@ -46042,7 +46253,7 @@
             "value" : "Sarcini"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Задаци"
@@ -46173,7 +46384,7 @@
             "value" : "Șablon"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Шаблон"
@@ -46304,7 +46515,7 @@
             "value" : "Galerie de șabloane"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Галерија шаблона"
@@ -46436,7 +46647,7 @@
             "value" : "Nume șablon"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назив шаблона"
@@ -46567,7 +46778,7 @@
             "value" : "Șabloane"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Шаблони"
@@ -46592,6 +46803,9 @@
           }
         }
       }
+    },
+    "Terms of Use" : {
+
     },
     "Text" : {
       "comment" : "PropertyValueType Picker option — a plain-text field.",
@@ -46699,7 +46913,7 @@
             "value" : "Text"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Текст"
@@ -46830,7 +47044,7 @@
             "value" : "Acest folder nu conține niciun fișier .md."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ова фасцикла не садржи ниједан .md фајл."
@@ -46961,7 +47175,7 @@
             "value" : "Această bibliotecă este partajată"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ова библиотека је дељена"
@@ -47092,7 +47306,7 @@
             "value" : "Aceasta înlocuiește datele curente cu conținutul instantaneului."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ово замењује тренутне податке садржајем снимка стања."
@@ -47224,7 +47438,7 @@
             "value" : "Prag"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Праг"
@@ -47356,7 +47570,7 @@
             "value" : "Titlu"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Наслов"
@@ -47487,7 +47701,7 @@
             "value" : "Astăzi"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Данас"
@@ -47619,7 +47833,7 @@
             "value" : "Tip"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Тип"
@@ -47750,7 +47964,7 @@
             "value" : "Tastează # în orice notiță pentru a crea una."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Унесите # у било коју белешку да бисте га направили."
@@ -47882,7 +48096,7 @@
             "value" : "Tastează o comandă sau caută…"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Унесите команду или претражите…"
@@ -48013,7 +48227,7 @@
             "value" : "Deleagă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Раздвежи"
@@ -48144,7 +48358,7 @@
             "value" : "Neconectat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Неповезано"
@@ -48275,7 +48489,7 @@
             "value" : "Anulează"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Опозови"
@@ -48406,7 +48620,7 @@
             "value" : "Anulează editarea"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Опозови измену"
@@ -48537,7 +48751,7 @@
             "value" : "Mențiuni neconectate"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Неповезана помињања"
@@ -48668,7 +48882,7 @@
             "value" : "Fără titlu"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Без наслова"
@@ -48800,7 +49014,7 @@
             "value" : "Bibliotecă fără nume"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Библиотека без назива"
@@ -48825,6 +49039,9 @@
           }
         }
       }
+    },
+    "Untouched for a while, but still has open tasks or backlinks." : {
+
     },
     "Update" : {
       "comment" : "Small badge on a Template Gallery pack card meaning a newer bundled version is available to apply (not a button).",
@@ -48932,7 +49149,7 @@
             "value" : "Actualizare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ажурирање"
@@ -49063,7 +49280,7 @@
             "value" : "Actualizare disponibilă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доступно ажурирање"
@@ -49195,7 +49412,7 @@
             "value" : "Actualizare disponibilă — aplică"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доступно ажурирање — примени"
@@ -49326,7 +49543,7 @@
             "value" : "actualizat"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ажурирано"
@@ -49458,7 +49675,7 @@
             "value" : "Furnizor"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добављач"
@@ -49590,7 +49807,7 @@
             "value" : "Vizualizare"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Приказ"
@@ -49722,7 +49939,7 @@
             "value" : "Planificare de nuntă"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Планирање венчања"
@@ -49853,7 +50070,7 @@
             "value" : "Săptămânal"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Недељно"
@@ -49984,7 +50201,7 @@
             "value" : "Pentru ce folosești NoteBytez?"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "За шта користите NoteBytez?"
@@ -50115,7 +50332,7 @@
             "value" : "Ce ar trebui să scrie (opțional)"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Шта би требало да пише (опционо)"
@@ -50246,7 +50463,7 @@
             "value" : "Ce ai văzut"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Шта сте видели"
@@ -50377,7 +50594,7 @@
             "value" : "Unde"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Где"
@@ -50508,7 +50725,7 @@
             "value" : "Scrie ceva mai întâi în jurnalul de azi."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Прво напишите нешто у данашњем дневнику."
@@ -50639,7 +50856,7 @@
             "value" : "Poți schimba asta mai târziu în Setări."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ово можете променити касније у Подешавањима."
@@ -50770,7 +50987,7 @@
             "value" : "Rezolvi manual fiecare conflict."
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сваки сукоб решавате ручно."
@@ -50795,6 +51012,9 @@
           }
         }
       }
+    },
+    "Your NoteBytez subscription has lapsed — %lld day of access left." : {
+
     },
     "Zoom In" : {
       "extractionState" : "manual",
@@ -50901,7 +51121,7 @@
             "value" : "Mărește"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Увећај"
@@ -51032,7 +51252,7 @@
             "value" : "Micșorează"
           }
         },
-        "sr-Cyrl" : {
+        "sr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Умањи"
@@ -51059,5 +51279,5 @@
       }
     }
   },
-  "version" : "1.0"
+  "version" : "1.1"
 }
