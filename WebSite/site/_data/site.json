@@ -1,0 +1,10 @@
+{
+  "name": "NoteBytez",
+  "baseUrl": "https://TODO-DOMAIN",
+  "appStoreUrl": "https://apps.apple.com/app/TODO-APP-STORE-ID",
+  "price": "TODO-PRICE",
+  "trialLength": "TODO-TRIAL-LENGTH",
+  "tagline": "Native notes, linked and organised — local-first, synced with iCloud.",
+  "publisher": "KwickSync",
+  "supportEmail": "TODO-SUPPORT-EMAIL"
+}

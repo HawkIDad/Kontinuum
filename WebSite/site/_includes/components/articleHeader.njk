@@ -1,0 +1,8 @@
+<header class="article-header">
+  <h1>{{ title }}</h1>
+  <p class="lede">{{ description }}</p>
+  <p class="meta">
+    {% if appliesTo %}<span class="badge">Applies to: {{ appliesTo | join(", ") }} · {{ (platforms or ["iPhone", "iPad", "Mac"]) | join(", ") }}</span>{% endif %}
+    {% for persona in personas %}{% personaChip persona %}{% endfor %}
+  </p>
+</header>

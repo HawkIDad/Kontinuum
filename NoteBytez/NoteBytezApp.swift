@@ -155,6 +155,18 @@ struct NoteBytezApp: App {
         if ProcessInfo.processInfo.arguments.contains("-SeedTestConflicts") {
             Self.seedTestConflicts(into: self.sharedModelContainer)
         }
+
+        // `SeedScreenshotLibrary` (folder) or `SeedScreenshotNotes` (inline JSON) builds the website screenshot library from a folder
+        // of fixture .md files (WebSite20260919v1-WebSite.md Phase W4). DEBUG-only, like the
+        // seams above.
+        if ScreenshotSeeder.seedFromSettings(in: ModelContext(self.sharedModelContainer)) {
+            if let destination = ScreenshotSeeder.destination(named: ScreenshotSeeder.setting("ScreenshotDestination")) {
+                ScreenshotSeeder.scheduleNavigation(to: destination)
+            }
+            if let appearance = ScreenshotSeeder.Appearance(name: ScreenshotSeeder.setting("ScreenshotAppearance")) {
+                ScreenshotSeeder.apply(appearance)
+            }
+        }
 #endif
 
     }

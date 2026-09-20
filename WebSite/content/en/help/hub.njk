@@ -1,0 +1,11 @@
+---
+layout: layouts/hub.njk
+pagination:
+  data: helpHubs
+  size: 1
+  alias: hub
+permalink: /en/help/{{ hub.slug }}/
+eleventyComputed:
+  title: "{{ hub.title }}"
+  description: "Guides in {{ hub.title }} for NoteBytez."
+---

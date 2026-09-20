@@ -1,0 +1,42 @@
+---
+layout: base.njk
+---
+<article class="marketing">
+  {% if hero %}
+  <section class="hero">
+    <h1>{{ hero.headline }}</h1>
+    <p class="lede">{{ hero.sub }}</p>
+    {% include "components/cta.njk" %}
+  </section>
+  {% else %}
+  <h1>{{ title }}</h1>
+  {% endif %}
+  {{ content | safe }}
+  {% if features %}
+  <section aria-labelledby="feature-grid-heading">
+    <h2 id="feature-grid-heading">{{ featuresHeading or "What you can do" }}</h2>
+    <ul class="feature-grid">
+      {% for feature in features %}
+      <li class="feature-card">
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.text }}</p>
+        {% if feature.help %}<p><a class="help-link" href="/en/help/{{ feature.help }}/">Learn how: {{ feature.title }}</a></p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+  {% if faq %}
+  <section aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Frequently asked questions</h2>
+    {% for entry in faq %}
+    <h3>{{ entry.q }}</h3>
+    <p>{{ entry.a }}</p>
+    {% endfor %}
+  </section>
+  {% endif %}
+  <section class="cta-block" aria-labelledby="cta-heading">
+    <h2 id="cta-heading">Get {{ site.name }}</h2>
+    {% include "components/cta.njk" %}
+  </section>
+</article>

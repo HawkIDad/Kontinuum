@@ -1,0 +1,24 @@
+{
+  "seedFolder": "seedLibrary",
+  "devices": {
+    "iphone": {
+      "kind": "simulator",
+      "name": "NoteBytez Screenshots (iPhone 17 Pro)",
+      "deviceType": "iPhone 17 Pro"
+    },
+    "mac": {
+      "kind": "mac"
+    }
+  },
+  "appearances": [
+    "light",
+    "dark"
+  ],
+  "shots": [
+    {
+      "category": "notebooks",
+      "name": "notebook-browser",
+      "destination": "Notebooks"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Marketing / legal page front matter",
+  "type": "object",
+  "required": ["title", "layout"],
+  "additionalProperties": true,
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "layout": { "type": "string", "minLength": 1 }
+  }
+}

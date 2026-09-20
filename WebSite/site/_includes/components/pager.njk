@@ -1,0 +1,7 @@
+{% set peers = collections.helpPages | siblings(page.url) %}
+{% if peers.previous or peers.next %}
+<nav class="pager" aria-label="Pager" data-pagefind-ignore>
+  {% if peers.previous %}<a class="pager-prev" rel="prev" href="{{ peers.previous.url }}"><span aria-hidden="true">←</span> Previous: {{ peers.previous.data.title }}</a>{% endif %}
+  {% if peers.next %}<a class="pager-next" rel="next" href="{{ peers.next.url }}">Next: {{ peers.next.data.title }} <span aria-hidden="true">→</span></a>{% endif %}
+</nav>
+{% endif %}

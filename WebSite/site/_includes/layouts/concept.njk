@@ -1,0 +1,9 @@
+---
+layout: base.njk
+schemaType: TechArticle
+---
+<article class="article article-concept">
+  {% include "components/articleHeader.njk" %}
+  {{ content | safe }}
+  {% include "components/pager.njk" %}
+</article>

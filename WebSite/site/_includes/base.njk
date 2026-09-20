@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} · {{ site.name }}</title>
+  <meta name="description" content="{{ description or site.tagline }}">
+  <link rel="canonical" href="{{ site.baseUrl }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description or site.tagline }}">
+  <meta property="og:url" content="{{ site.baseUrl }}{{ page.url }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description or site.tagline }}">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+  {% include "components/jsonld.njk" %}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="/">{{ site.name }}</a>
+    <nav aria-label="Primary">
+      <ul class="nav-list">
+        {% for item in nav.primary %}
+        <li><a href="{{ item.url }}"{% if item.url | isCurrent(page.url) %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <div id="search" role="search" data-pagefind-ignore></div>
+  </header>
+  {% if page.url != "/" %}
+  {% include "components/breadcrumb.njk" %}
+  {% endif %}
+  <main id="main" data-pagefind-body>
+    {{ content | safe }}
+  </main>
+  <footer class="site-footer" data-pagefind-ignore>
+    <nav aria-label="Footer">
+      <ul class="nav-list">
+        {% for item in nav.footer %}<li><a href="{{ item.url }}">{{ item.title }}</a></li>{% endfor %}
+      </ul>
+    </nav>
+    <p><small>© 2026 {{ site.publisher }}. {{ site.name }} is a trademark of {{ site.publisher }}.</small></p>
+  </footer>
+  <script src="/pagefind/pagefind-ui.js"></script>
+  <script src="/assets/search.js"></script>
+</body>
+</html>

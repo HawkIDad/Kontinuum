@@ -1,0 +1,129 @@
+{
+  "categories": [
+    { "slug": "getting-started", "title": "Getting Started", "features": [
+      ["Install & platforms", "install-and-platforms"],
+      ["Create / select a library", "create-select-library"],
+      ["The onboarding role picker", "onboarding-role-picker"],
+      ["Anatomy of the app", "app-anatomy"] ] },
+    { "slug": "capture-and-journal", "title": "Capture & Journal", "features": [
+      ["Today's journal page", "todays-journal"],
+      ["Previous/next-day navigation", "journal-day-navigation"],
+      ["The journal template", "journal-template"],
+      ["Quick capture", "quick-capture"] ] },
+    { "slug": "documents-and-blocks", "title": "Documents & Blocks", "features": [
+      ["Create a document", "create-document"],
+      ["Markdown formatting supported", "markdown-formatting"],
+      ["Stable block anchors", "block-anchors"],
+      ["External links", "external-links"] ] },
+    { "slug": "linking", "title": "Linking", "features": [
+      ["Wikilinks + autocomplete", "wikilinks"],
+      ["Section links", "section-links"],
+      ["The Backlinks pane", "backlinks-pane"],
+      ["Unlinked mentions", "unlinked-mentions"],
+      ["Links auto-updating on rename", "links-update-on-rename"],
+      ["Block references", "block-references"],
+      ["Live transclusion", "transclusion"],
+      ["Editing a transclusion in place", "transclusion-edit-in-place"] ] },
+    { "slug": "tags", "title": "Tags", "features": [
+      ["Inline #tag and frontmatter tags", "add-tags"],
+      ["The tag browser", "tag-browser"],
+      ["Jump to tagged notes", "jump-to-tagged-notes"] ] },
+    { "slug": "tasks", "title": "Tasks", "features": [
+      ["Checkbox tasks in notes", "checkbox-tasks"],
+      ["Due dates & priority", "task-due-dates-priority"],
+      ["The Task Dashboard", "task-dashboard"],
+      ["Recurring tasks", "recurring-tasks"],
+      ["Filtering the dashboard", "filter-task-dashboard"] ] },
+    { "slug": "notebooks", "title": "Organising — Notebooks", "features": [
+      ["Create a notebook", "create-notebook"],
+      ["Add/remove documents", "notebook-membership"],
+      ["Promote a journal block to a Notebook", "promote-journal-block"],
+      ["Notebook browser", "notebook-browser"] ] },
+    { "slug": "search-and-navigation", "title": "Search & Navigation", "features": [
+      ["Exact / full-text search", "full-text-search"],
+      ["Scoped filters", "scoped-search-filters"],
+      ["Advanced search operators", "advanced-search-operators"],
+      ["Quick Switcher", "quick-switcher"],
+      ["Command Palette", "command-palette"],
+      ["Saved Views", "saved-views"] ] },
+    { "slug": "graph", "title": "Graph", "features": [
+      ["Local graph (radial)", "local-graph"],
+      ["Force mode + drag-to-pin", "graph-force-mode"],
+      ["Graph filter bar + save as view", "graph-filter-bar"],
+      ["Graph Insights", "graph-insights"] ] },
+    { "slug": "canvas", "title": "Canvas", "features": [
+      ["Create a board", "create-canvas-board"],
+      ["Note / media / web cards", "canvas-cards"],
+      ["Connectors & groups", "canvas-connectors-groups"],
+      ["Pan / zoom", "canvas-pan-zoom"],
+      ["JSON Canvas import/export", "json-canvas-import-export"],
+      ["Bind a board to a note", "canvas-bind-note"],
+      ["Connector creates link", "canvas-connector-creates-link"] ] },
+    { "slug": "properties-and-templates", "title": "Properties & Templates", "features": [
+      ["Add typed Properties", "add-properties"],
+      ["Search/filter by property", "filter-by-property"],
+      ["Template Groups", "template-groups"],
+      ["Note Templates", "note-templates"],
+      ["Attach a group to a Notebook / the Journal", "attach-template-group"],
+      ["The Template Gallery & role packs", "template-gallery"],
+      ["Update available for packs", "template-pack-updates"],
+      ["The Template Manager", "template-manager"] ] },
+    { "slug": "attachments", "title": "Attachments", "features": [
+      ["Embed an image / PDF", "embed-attachment"],
+      ["Preview an attachment", "preview-attachment"],
+      ["Where attachments are stored", "attachment-storage"] ] },
+    { "slug": "sync-and-conflicts", "title": "Sync & Conflicts", "features": [
+      ["Sync status & last-synced", "sync-status"],
+      ["Manual Sync now", "sync-now"],
+      ["The visible sync log", "sync-log"],
+      ["Choosing a conflict strategy", "choose-conflict-strategy"],
+      ["Resolving a conflict", "resolve-conflicts"] ] },
+    { "slug": "backup-and-restore", "title": "Backup & Restore", "features": [
+      ["Automatic snapshots", "automatic-snapshots"],
+      ["Restoring from a snapshot", "restore-snapshot"] ] },
+    { "slug": "sharing", "title": "Sharing", "features": [
+      ["Share a library", "share-library"],
+      ["Invite participants", "invite-participants"],
+      ["Per-participant permission levels", "permission-levels"],
+      ["Multi-party conflict resolution", "multi-party-conflicts"] ] },
+    { "slug": "plugins", "title": "Plugins", "features": [
+      ["Enable a plugin", "enable-plugin"],
+      ["The plugin permission model", "plugin-permissions"],
+      ["What the plugin SDK can and can't do", "plugin-sdk-overview"] ] },
+    { "slug": "migration", "title": "Migration", "features": [
+      ["Obsidian importer", "import-obsidian"],
+      ["Logseq importer", "import-logseq"],
+      ["Auto-detect", "migration-auto-detect"],
+      ["Verifying the import", "verify-import"],
+      ["The read-only originals archive", "originals-archive"] ] },
+    { "slug": "markdown-import-export", "title": "Markdown Import/Export", "features": [
+      ["Import .md files", "import-markdown"],
+      ["Per-note export", "export-note"],
+      ["Full-library export", "export-library"],
+      ["Notebook membership round-trip", "notebook-round-trip"] ] },
+    { "slug": "subscription-and-account", "title": "Subscription & Account", "features": [
+      ["Start a subscription / free trial", "start-subscription"],
+      ["Restore Purchases", "restore-purchases"],
+      ["Manage Subscription", "manage-subscription"],
+      ["The post-lapse grace banner", "lapse-grace-banner"],
+      ["The read-only export escape hatch", "read-only-export"],
+      ["What each blocked state means", "blocked-states"] ] },
+    { "slug": "concepts", "title": "Concepts", "features": [
+      ["The local-first + CloudKit sync model", "sync-model"],
+      ["Blocks & anchors", "blocks-and-anchors"],
+      ["The three conflict strategies compared", "conflict-strategies-compared"],
+      ["The entitlement model", "entitlement-model"],
+      ["Your data is plain Markdown", "plain-markdown-data"] ] },
+    { "slug": "reference", "title": "Reference", "features": [
+      ["Full Markdown syntax table", "markdown-syntax"],
+      ["Keyboard shortcuts", "keyboard-shortcuts"],
+      ["Glossary", "glossary"],
+      ["SF Symbol to feature index", "symbol-index"] ] }
+  ],
+  "journeys": [
+    { "persona": "New Arrival", "slug": "your-first-week", "title": "Your first week" },
+    { "persona": "Switcher", "slug": "bring-your-vault-across", "title": "Bring your vault across" },
+    { "persona": "Power User", "slug": "model-your-world", "title": "Model your world" },
+    { "persona": "Collaborator", "slug": "share-a-space", "title": "Share a space" }
+  ]
+}

@@ -1,0 +1,9 @@
+---
+layout: base.njk
+schemaType: HowTo
+---
+<article class="article article-howto">
+  {% include "components/articleHeader.njk" %}
+  {{ content | safe }}
+  {% include "components/pager.njk" %}
+</article>

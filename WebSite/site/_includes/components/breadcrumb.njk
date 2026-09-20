@@ -1,0 +1,8 @@
+{% set crumbs = page.url | breadcrumbs(title) %}
+<nav class="breadcrumb" aria-label="Breadcrumb" data-pagefind-ignore>
+  <ol>
+    {% for crumb in crumbs %}
+    <li>{% if loop.last %}<span aria-current="page">{{ crumb.name }}</span>{% else %}<a href="{{ crumb.url }}">{{ crumb.name }}</a>{% endif %}</li>
+    {% endfor %}
+  </ol>
+</nav>

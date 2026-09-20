@@ -1,0 +1,13 @@
+{%- set crumbs = page.url | breadcrumbs(title) -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{% for crumb in crumbs %}{"@type":"ListItem","position":{{ loop.index }},"name":{{ crumb.name | jsonLd | safe }},"item":{{ (site.baseUrl + crumb.url) | jsonLd | safe }}}{% if not loop.last %},{% endif %}{% endfor %}]}</script>
+{% if page.url == "/" %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":{{ site.name | jsonLd | safe }},"url":{{ site.baseUrl | jsonLd | safe }},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":{{ (site.baseUrl + "/en/help/?q={search_term_string}") | jsonLd | safe }}},"query-input":"required name=search_term_string"}}</script>
+{% endif %}
+{% if schemaType == "HowTo" %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":{{ title | jsonLd | safe }},"description":{{ description | jsonLd | safe }},"step":[{% for stepText in content | howToSteps %}{"@type":"HowToStep","position":{{ loop.index }},"text":{{ stepText | jsonLd | safe }}}{% if not loop.last %},{% endif %}{% endfor %}]{% if totalTime %},"totalTime":{{ totalTime | jsonLd | safe }}{% endif %}}</script>
+{% elif schemaType == "TechArticle" %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":{{ title | jsonLd | safe }},"description":{{ description | jsonLd | safe }},"url":{{ (site.baseUrl + page.url) | jsonLd | safe }}}</script>
+{% endif %}
+{% if faq %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for entry in faq %}{"@type":"Question","name":{{ entry.q | jsonLd | safe }},"acceptedAnswer":{"@type":"Answer","text":{{ entry.a | jsonLd | safe }}}}{% if not loop.last %},{% endif %}{% endfor %}]}</script>
+{% endif %}

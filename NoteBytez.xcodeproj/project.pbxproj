@@ -189,7 +189,6 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				29A589D1304EFBEC004AC5E5 /* WebSite */,
 				29F43E9B302E258E00907F14 /* NoteBytez */,
 			);
 			name = NoteBytez;
@@ -298,6 +297,7 @@
 				ko,
 				ar,
 				Base,
+				sr,
 			);
 			mainGroup = 29F43E90302E258E00907F14;
 			minimizedProjectReferenceProxies = 1;
