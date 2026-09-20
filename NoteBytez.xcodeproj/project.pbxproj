@@ -34,7 +34,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		29A589D3304EFBEC004AC5E7 /* Exceptions for "Wiki" folder in "NoteBytez" target */ = {
+		29A589D3304EFBEC004AC5E7 /* Exceptions for "WebSite" folder in "NoteBytez" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"docs/plans/wiki20260907v1-Phase1.md",
@@ -98,12 +98,12 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		29A589D1304EFBEC004AC5E5 /* Wiki */ = {
+		29A589D1304EFBEC004AC5E5 /* WebSite */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				29A589D3304EFBEC004AC5E7 /* Exceptions for "Wiki" folder in "NoteBytez" target */,
+				29A589D3304EFBEC004AC5E7 /* Exceptions for "WebSite" folder in "NoteBytez" target */,
 			);
-			path = Wiki;
+			path = WebSite;
 			sourceTree = "<group>";
 		};
 		29F43E9B302E258E00907F14 /* NoteBytez */ = {
@@ -158,7 +158,7 @@
 				29F43E9B302E258E00907F14 /* NoteBytez */,
 				29F43EAD302E258F00907F14 /* NoteBytezTests */,
 				29F43EB7302E258F00907F14 /* NoteBytezUITests */,
-				29A589D1304EFBEC004AC5E5 /* Wiki */,
+				29A589D1304EFBEC004AC5E5 /* WebSite */,
 				29F43E9A302E258E00907F14 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -189,7 +189,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				29A589D1304EFBEC004AC5E5 /* Wiki */,
+				29A589D1304EFBEC004AC5E5 /* WebSite */,
 				29F43E9B302E258E00907F14 /* NoteBytez */,
 			);
 			name = NoteBytez;
@@ -394,6 +394,7 @@
 				INFOPLIST_FILE = NoteBytez/Info.plist;
 				"INFOPLIST_FILE[sdk=macosx*]" = "NoteBytez/Info-macOS.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = NoteBytez;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -433,6 +434,7 @@
 				INFOPLIST_FILE = NoteBytez/Info.plist;
 				"INFOPLIST_FILE[sdk=macosx*]" = "NoteBytez/Info-macOS.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = NoteBytez;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
