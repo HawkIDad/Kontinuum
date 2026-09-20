@@ -8,6 +8,9 @@
 {% elif schemaType == "TechArticle" %}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":{{ title | jsonLd | safe }},"description":{{ description | jsonLd | safe }},"url":{{ (site.baseUrl + page.url) | jsonLd | safe }}}</script>
 {% endif %}
+{% if type == "concept" %}{% set conceptFaq = content | faqFromHeadings %}{% if conceptFaq.length %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for entry in conceptFaq %}{"@type":"Question","name":{{ entry.q | jsonLd | safe }},"acceptedAnswer":{"@type":"Answer","text":{{ entry.a | jsonLd | safe }}}}{% if not loop.last %},{% endif %}{% endfor %}]}</script>
+{% endif %}{% endif %}
 {% if faq %}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for entry in faq %}{"@type":"Question","name":{{ entry.q | jsonLd | safe }},"acceptedAnswer":{"@type":"Answer","text":{{ entry.a | jsonLd | safe }}}}{% if not loop.last %},{% endif %}{% endfor %}]}</script>
 {% endif %}

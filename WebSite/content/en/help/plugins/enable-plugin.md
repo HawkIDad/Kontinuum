@@ -30,6 +30,8 @@ You have a plugin to install.
 
 {% admonition "note" %}Plugins are in preview.{% endadmonition %}
 
+{% screenshot "plugins/plugin-list-iphone-light.png", "The Plugins screen in preview, with an Add button.", "The Plugins screen." %}
+
 ## Expected result
 
 The plugin appears in the list and adds its commands.

@@ -28,6 +28,10 @@ Today's journal has some text.
 3. In **Promote to Notebook**, choose a notebook under **Choose a notebook**, or type a name under **Or create new**.
 4. Choose **Promote**.
 
+{% screenshot "notebooks/promote-block-picker-iphone-light.png", "The Promote a Block screen listing the blocks of today's journal.", "Choosing the block to promote." %}
+
+{% screenshot "notebooks/promote-to-notebook-iphone-light.png", "The Promote to Notebook screen with a list of notebooks and a field to create a new one.", "Choosing the destination notebook." %}
+
 ## Expected result
 
 A new note is created in the notebook, with a link back to the journal entry, and it opens.

@@ -27,6 +27,8 @@ The graph is open.
 2. Drag a node to move it. A node you drag stays pinned where you drop it.
 3. Use the zoom buttons or fit to screen to see the whole graph.
 
+{% screenshot "graph/graph-force-mode-iphone-light.png", "The graph in Force mode, with linked notes spread out and the Radial and Force mode picker at the top.", "Force mode." %}
+
 ## Expected result
 
 The graph settles into a layout with your pinned nodes fixed in place.

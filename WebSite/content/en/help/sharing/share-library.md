@@ -27,6 +27,8 @@ You are signed in to iCloud and have a library.
 2. In the sharing sheet titled with your library's name, read who already has access under **Participants**.
 3. Continue with **Invite participants**.
 
+{% screenshot "sharing/share-library-iphone-light.png", "The sharing sheet for a library.", "The sharing sheet." %}
+
 ## Expected result
 
 The sharing sheet is open and ready for invitations.

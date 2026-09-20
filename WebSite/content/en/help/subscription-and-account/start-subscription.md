@@ -27,6 +27,8 @@ An Apple Account.
 2. Choose the monthly or annual plan.
 3. Confirm with Apple. Your free trial starts.
 
+{% screenshot "subscription-and-account/subscription-settings-iphone-light.png", "The Subscription settings screen showing status and the Change or Start Subscription and Restore Purchases buttons.", "Subscription settings." %}
+
 ## Expected result
 
 NoteBytez is unlocked on all devices signed in to your Apple Account, and through Family Sharing.

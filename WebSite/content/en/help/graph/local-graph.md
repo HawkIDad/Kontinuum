@@ -27,6 +27,8 @@ A note with links.
 2. Use the mode picker at the top to choose **Radial**.
 3. Use the zoom in, zoom out and fit to screen buttons, and tap a node to open that note.
 
+{% screenshot "graph/local-graph-iphone-light.png", "A graph with the current note in the centre and linked notes around it, with zoom controls.", "The graph of a note." %}
+
 ## Expected result
 
 You see the current note in the centre and its direct links around it.

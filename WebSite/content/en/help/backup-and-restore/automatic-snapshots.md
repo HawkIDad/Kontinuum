@@ -29,6 +29,8 @@ None.
 
 {% admonition "tip" %}You can also create a snapshot yourself with **Create Backup**.{% endadmonition %}
 
+{% screenshot "backup-and-restore/backups-empty-iphone-light.png", "The Backups screen reading No Backups Yet, with a Create Backup button.", "The Backups screen." %}
+
 ## Expected result
 
 A snapshot exists that you can restore.

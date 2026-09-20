@@ -27,6 +27,8 @@ Some notes contain tasks.
 2. Read the list. Each row shows the task, its note and, when set, its due date and priority.
 3. Tap a checkbox to mark a task done, or tap a task's note to open it.
 
+{% screenshot "tasks/task-dashboard-iphone-light.png", "The Task Dashboard with status and date filter chips and a list of tasks with their notes.", "The Task Dashboard." %}
+
 ## Expected result
 
 You see all tasks from all notes, and can complete them from here.

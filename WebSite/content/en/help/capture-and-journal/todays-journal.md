@@ -27,6 +27,8 @@ A library is open.
 2. Write in the editor. Use Markdown, `[[wikilinks]]` and `#tags` as you like.
 3. Choose **Preview** to see the formatted page, and **Edit** to return to writing.
 
+{% screenshot "capture-and-journal/todays-journal-iphone-light.png", "Today's journal page with the date, previous and next day arrows, and the editor.", "Today's journal." %}
+
 ## Expected result
 
 Your entry is saved as you write and appears under today's date.

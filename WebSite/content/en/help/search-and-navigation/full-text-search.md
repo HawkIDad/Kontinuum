@@ -27,6 +27,8 @@ A library with some notes.
 2. Type in the search box.
 3. Choose a result to open the note.
 
+{% screenshot "search-and-navigation/search-results-iphone-light.png", "The Search screen with a query typed and matching notes listed.", "Search results." %}
+
 ## Expected result
 
 Results list the matching notes with a snippet, ranked by relevance.

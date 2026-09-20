@@ -28,6 +28,8 @@ A library is open.
 3. Open a pack to preview its templates.
 4. Choose **Add to Library**.
 
+{% screenshot "properties-and-templates/template-gallery-iphone-light.png", "The Template Gallery with a search field and packs grouped by category.", "The Template Gallery." %}
+
 ## Expected result
 
 The pack is added, and its templates appear when you create a note. The pack shows **Added to this library**.

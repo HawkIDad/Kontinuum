@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% set metaDescription = description or site.tagline %}
+  {% if type and category %}{% set metaDescription = description + " A step-by-step NoteBytez help guide in " + (category | categoryTitle) + "." %}{% endif %}
   <title>{{ title }} · {{ site.name }}</title>
-  <meta name="description" content="{{ description or site.tagline }}">
+  <meta name="description" content="{{ metaDescription }}">
   <link rel="canonical" href="{{ site.baseUrl }}{{ page.url }}">
+  <link rel="alternate" hreflang="en" href="{{ site.baseUrl }}{{ page.url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ site.baseUrl }}{{ page.url }}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ site.name }}">
   <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ description or site.tagline }}">
+  <meta property="og:description" content="{{ metaDescription }}">
   <meta property="og:url" content="{{ site.baseUrl }}{{ page.url }}">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{{ title }}">
-  <meta name="twitter:description" content="{{ description or site.tagline }}">
+  <meta name="twitter:description" content="{{ metaDescription }}">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="/assets/site.css">

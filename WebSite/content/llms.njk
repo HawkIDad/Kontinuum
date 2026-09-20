@@ -1,0 +1,22 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.name }}
+
+> {{ site.tagline }} {{ site.name }} is a native notes app for iPhone, iPad and Mac. This site describes the app and documents every feature step by step.
+
+## About {{ site.name }}
+
+- [Home]({{ site.baseUrl }}/): What NoteBytez is, who it is for, and how to get it.
+- [Features]({{ site.baseUrl }}/features/): A tour of every capability, linking to the how-to for each.
+- [Pricing]({{ site.baseUrl }}/pricing/): Subscription, free trial, lapse behaviour and export.
+- [Support]({{ site.baseUrl }}/support/): Where to get help.
+- [Privacy Policy]({{ site.baseUrl }}/privacy/): How data is handled.
+- [Terms of Use]({{ site.baseUrl }}/terms/): The End User License Agreement.
+
+## Help
+
+- [Help home]({{ site.baseUrl }}/en/help/): All help topics.
+{% for hub in helpHubs %}- [{{ hub.title }}]({{ site.baseUrl }}/en/help/{{ hub.slug }}/): Guides in {{ hub.title }}; page index at {{ site.baseUrl }}/en/help/{{ hub.slug }}/llms.txt
+{% endfor %}

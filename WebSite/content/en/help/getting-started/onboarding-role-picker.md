@@ -27,6 +27,8 @@ You have just created your first library. The role picker is shown once.
 2. Choose **Add** (the button shows how many groups it will add), or choose **Skip** to add nothing.
 3. To see or add packs later, open Settings and choose **Template Gallery**.
 
+{% screenshot "getting-started/role-picker-iphone-light.png", "The What do you use NoteBytez for screen listing kinds of work to choose from.", "Choosing your kinds of work." %}
+
 ## Expected result
 
 Matching template groups are added to your library and appear when you create a note.

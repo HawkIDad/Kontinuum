@@ -21,9 +21,16 @@ ${markdown.render(content)}</aside>`;
 
   // path is relative to /en/_assets/; a 2x asset is expected at <name>@2x.<ext>
   eleventyConfig.addShortcode("screenshot", (path, alt, caption) => {
-    const src = `/en/_assets/${path}`;
-    const retina = src.replace(/(\.\w+)$/, "@2x$1");
-    return `<figure class="screenshot"><img src="${src}" srcset="${src} 1x, ${retina} 2x" alt="${escape(alt)}" loading="lazy" decoding="async"><figcaption>${escape(caption)}</figcaption></figure>`;
+    const source = (file) => {
+      const src = `/en/_assets/${file}`;
+      return { src, retina: src.replace(/(\.\w+)$/, "@2x$1") };
+    };
+    const light = source(path);
+    const dark = source(path.replace("-light.", "-dark."));
+    const darkSource = path.includes("-light.")
+      ? `<source media="(prefers-color-scheme: dark)" srcset="${dark.src} 1x, ${dark.retina} 2x">`
+      : "";
+    return `<figure class="screenshot"><picture>${darkSource}<img src="${light.src}" srcset="${light.src} 1x, ${light.retina} 2x" alt="${escape(alt)}" loading="lazy" decoding="async"></picture><figcaption>${escape(caption)}</figcaption></figure>`;
   });
 
   eleventyConfig.addShortcode("personaChip", (persona) => `<span class="persona-chip">${escape(persona)}</span>`);

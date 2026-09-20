@@ -26,6 +26,8 @@ An active subscription.
 1. Open **Settings** and choose **Subscription**.
 2. Choose **Manage Subscription** to change or cancel in your Apple Account settings, or **Redeem Code** to use an offer code.
 
+{% screenshot "subscription-and-account/settings-list-iphone-light.png", "The Settings list with Subscription, Language, Sync and Conflicts, Backups, Templates and more.", "Settings." %}
+
 ## Expected result
 
 Your plan changes as you chose.

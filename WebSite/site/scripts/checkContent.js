@@ -24,3 +24,16 @@ export function validateHowToStructure(body, fileName) {
   }
   return errors;
 }
+
+export function findScreenshotRefs(text) {
+  return [...text.matchAll(/\{% screenshot "([^"]+)"/g)].map((match) => match[1]);
+}
+
+/** Every referenced figure needs 1x + @2x, and the dark pair when the reference is a "-light" image. */
+export function validateScreenshotRefs(references, fileExists, fileName) {
+  return references.flatMap((reference) => {
+    const variants = [reference, reference.replace(/(\.\w+)$/, "@2x$1")];
+    if (reference.includes("-light.")) variants.push(...variants.map((file) => file.replace("-light", "-dark")));
+    return variants.filter((file) => !fileExists(file)).map((file) => `${fileName}: missing image: ${file}`);
+  });
+}

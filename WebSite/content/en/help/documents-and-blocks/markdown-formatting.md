@@ -27,6 +27,10 @@ A note is open in edit mode.
 2. Choose **Preview** to see the formatted result.
 3. Choose **Edit** to go back to the source.
 
+{% screenshot "documents-and-blocks/note-edit-iphone-light.png", "A note in edit mode showing the Markdown source, with a Preview button.", "Writing Markdown in edit mode." %}
+
+{% screenshot "documents-and-blocks/note-preview-iphone-light.png", "The same note in preview, with headings, links, tags and checkbox tasks formatted.", "The formatted preview." %}
+
 ## Expected result
 
 The preview shows headings, emphasis, lists, quotes and code formatted.

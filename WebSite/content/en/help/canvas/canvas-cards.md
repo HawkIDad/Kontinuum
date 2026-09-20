@@ -28,6 +28,10 @@ A board is open.
 3. Pick the note or media, or type the web address, and confirm.
 4. Drag a card to move it, and resize it as needed.
 
+{% screenshot "canvas/board-empty-iphone-light.png", "An open canvas board with the Add Card button in the toolbar.", "An open board." %}
+
+{% screenshot "canvas/add-card-menu-iphone-light.png", "The Add Card menu offering Add Note, Add Media, Add Web Link and Add Group.", "The Add Card menu." %}
+
 ## Expected result
 
 The card appears on the board.

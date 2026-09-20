@@ -51,42 +51,79 @@ Done when **all** pass. Each maps to a verification gate in the Implementation P
 # Implementation Plan
 Reuse the Wiki plan's phases for Help content; this plan adds the marketing/legal layer and remaps paths. No behavioural app code changes, so TDD applies to build tooling only (lint, schema checks, link check written first and run red against seed content). Each phase must pass its verify step.
 
-### Phase W0 — Reconcile plans
-- Note in `wiki20260907v1-Phase1.md` that `Wiki/` paths map to `WebSite/` (D1) and Phase 1.8 is deferred (D7).
-- Create `WebSite/site/_data/site.json` (site name, base URL, App Store URL, price, trial length — placeholders).
-- → **verify:** no remaining `Wiki/` path references in active plan steps without the remap note.
+Legend: **[x]** done and verified · **[ ]** open. Status as of 2026-09-19.
 
-### Phase W1 — Foundations (= Wiki 1.0)
-- Eleventy project at `WebSite/site/`; Pagefind post-build; layout `WebSite/content/en/`, `WebSite/docs/`.
-- Promote the derived style guide to `WebSite/docs/styleGuide.md`.
-- → **verify:** empty build succeeds; Pagefind runs; style guide reviewed against app guide.
+### Phase W0 — Reconcile plans — DONE
+- [x] Note in `wiki20260907v1-Phase1.md` that `Wiki/` paths map to `WebSite/` (D1) and Phase 1.8 is deferred (D7). One remap note at the top of the file covers every `Wiki/` reference.
+- [x] Create `WebSite/site/_data/site.json` (site name, base URL, App Store URL, price, trial length; later also tagline, publisher, support email).
+- [x] → **verify:** no remaining `Wiki/` path references in active plan steps without the remap note.
 
-### Phase W2 — Information architecture
-- Top nav: Home · Features · Pricing · Help · Support; footer: Privacy · Terms · Support.
-- URL scheme: `/`, `/features/`, `/pricing/`, `/support/`, `/privacy/`, `/terms/`, `/en/help/<category>/<slug>/` (Wiki 1.1 front-matter schema for Help; lighter schema for marketing pages).
-- → **verify:** every Feature Inventory row maps to ≥ 1 slug; every page is in nav or linked; taxonomy sign-off.
+### Phase W1 — Foundations (= Wiki 1.0) — DONE
+- [x] Eleventy project at `WebSite/site/`; Pagefind post-build; layout `WebSite/content/en/`, `WebSite/docs/`.
+- [x] Promote the derived style guide to `WebSite/docs/styleGuide.md`.
+- [x] → **verify:** empty build succeeds; Pagefind runs; style guide reviewed against app guide (all 11 WCAG 2.2 AA rows present).
 
-### Phase W3 — Templates & components (= Wiki 1.2, plus marketing)
-- Help layouts and components as in Wiki 1.2.
-- Add `marketing` layout (hero, feature grid, CTA block sourcing App Store URL from `site.json`), `legal` layout, and a Features-overview → Help deep-link component.
-- → **verify:** axe + Lighthouse ≥ 95 (a11y, SEO, Best Practices) on sample pages of every layout; JSON-LD validates.
+### Phase W2 — Information architecture — DONE except sign-off
+- [x] Top nav: Home · Features · Pricing · Help · Support; footer: Privacy · Terms · Support (`_data/nav.json`).
+- [x] URL scheme and front-matter schemas (`featureMap.json`, help + marketing JSON Schemas, `npm run lint`).
+- [x] → **verify:** every Feature Inventory row maps to ≥ 1 slug (98 slugs, 21 categories); every marketing page is in nav or footer; lint enforced.
+- [ ] Taxonomy sign-off by the product owner.
 
-### Phase W4 — Screenshot pipeline (= Wiki 1.3)
-- Seed library, capture script, naming/retina convention; output to `WebSite/content/en/_assets/`.
-- → **verify:** one category regenerates byte-stable on a clean machine.
+### Phase W3 — Templates & components (= Wiki 1.2, plus marketing) — DONE except external validator
+- [x] Help layouts (howto, concept, reference, journey) and components (admonition, screenshot figure, Applies-to badge, persona chip, pager, breadcrumb, skip link, Pagefind search).
+- [x] `marketing` layout (hero, feature grid, CTA from `site.json`, FAQ), `legal` layout, Features → Help deep-link component.
+- [x] → **verify:** axe + Lighthouse ≥ 95 (a11y, SEO, Best Practices) on sample pages of every layout; JSON-LD structurally valid.
+- [ ] Run Google's Rich Results Test on a sample of pages (external tool; our check is structural only).
 
-### Phase W5 — Marketing & support content
-- Write Home (value proposition, audiences, CTA), Features overview (capability tour linking into Help), Pricing (trial, subscription, lapse and read-only export; values from `site.json`).
-- Write Privacy Policy, Terms of Use / EULA, Support / Contact. **Legal text is drafted for your review; have counsel confirm before publish.**
-- → **verify:** SF2 walkthrough (*what / who / cost / how to get it* in ≤ 2 clicks); footer links present on every page.
+### Phase W4 — Screenshot pipeline (= Wiki 1.3) — DONE for iPhone; Mac window capture built
+- [x] Seed library (`tools/screenshots/seedLibrary/`), capture script (`capture.sh`), naming/retina convention (styleGuide.md), output to `WebSite/content/en/_assets/`.
+- [x] DEBUG launch seams in the app: `SeedScreenshotLibrary` / `SeedScreenshotNotes`, `ScreenshotDestination`, `ScreenshotAppearance`, `ResetTemplateOnboarding` (unit-tested).
+- [x] Mac window capture (`screencapture -l`, environment-based launch, appearance set in-app).
+- [x] → **verify:** iPhone `notebooks` category byte-identical over 3 runs (light + dark). Mac: visually stable, not byte-stable (liquid-glass controls).
+- [ ] Re-verify byte stability on a clean machine.
 
-### Phase W6 — Help content authoring (= Wiki 1.4)
-- All how-tos, four journeys, concept and reference pages; internal-link pass.
-- → **verify:** Wiki SF1 — coverage 100%, structure lint, link-check clean, no orphans.
+### Phase W5 — Marketing & support content — DONE except counsel review
+- [x] Home, Features overview, Pricing (values from `site.json`, no numbers while placeholders), Support.
+- [x] Privacy Policy and Terms of Use / EULA rendered from the in-app v1.0 legal text (single source of truth), plus a website addendum (no analytics, no cookies).
+- [x] → **verify:** walkthrough (`docs/prospectWalkthrough.md`); footer links + App Store CTA checked on every page (`npm run check:pages`).
+- [ ] Counsel confirms the legal text before publish.
+- [ ] Fill `site.json`: App Store URL, price, trial length, support email, base URL.
 
-### Phase W7 — SEO / AI-retrieval wiring (= Wiki 1.5, site-wide)
-- Sitemap, robots, canonicals, meta, OG/Twitter, `llms.txt` covering marketing + Help; question-shaped headings in Help.
-- → **verify:** schema validates; Lighthouse SEO / Best Practices ≥ 95 everywhere; no page needs JS to read.
+### Phase W6 — Help content authoring (= Wiki 1.4) — DONE
+- [x] 98 how-tos, 4 journeys, 5 concept pages, 4 reference pages; generated category and Help hubs; internal-link pass.
+- [x] → **verify:** coverage 100% of the feature map; structure lint (Purpose, Prerequisites, Steps, Expected result, Related) passes; 131 pages with no broken internal links and no orphans (`npm run check:links`).
+- Notes: five features have no in-app control (due dates/priority, recurrence, attaching a template group to a notebook or the journal, property filter, removing a note from a notebook); their pages say so.
+- [ ] Verify page details against the running app (steps were written from source); covered by the W9 usability test.
+
+### Phase W6.5 — UI-automation screenshots — iPhone DONE; Mac deep flows open
+Closes the screenshot gap left by W4/W6: the launch-arg seam only reaches top-level screens, so every sheet and sub-screen (see `WebSite/docs/screenPaths.md`) needs a driven UI.
+- [x] **Approach:** `WebsiteScreenshotTests` in `NoteBytezUITests` (six flows), built on `NoteBytezUITestCase` and the page objects; each shot is an `XCTAttachment` named `<category>__<name>__<device>-<appearance>`.
+- [x] **Isolation:** skips unless `WEBSITE_SCREENSHOTS=1`; settings go in as launch environment.
+- [x] **Export:** `capture-ui.sh` runs `xcodebuild test`, exports attachments from the `.xcresult` (`exportShots.mjs`), resizes to the W4 convention.
+- [x] **iPhone:** 39 screens × light/dark, zero failed steps.
+- [x] **Embed:** 37 `{% screenshot %}` figures in Help pages (`embeds.json`, `embedShots.mjs`); light/dark `<picture>` sources; lint fails on a missing image.
+- [x] **Mac (sidebar screens):** 10 screens × light/dark.
+- [x] Guarded the one iOS-only call (`XCUIDevice.orientation`) in `Phase2TemplatesAndPropertiesFeatureTests` so the UI-test target builds for macOS.
+- **Mac deep flows — open items** (root causes found in the first Mac probe: sidebar rows report *Disabled*, so the app window may not be key; Settings rows are table cells, not buttons; a coordinate tap does not focus the editor; some toolbar items sit in the overflow menu):
+  - [ ] Activate the app and confirm a key window before each flow (`app.activate()`); confirm sidebar navigation then registers.
+  - [ ] Mac interaction helpers: `click()` for taps, focus the editor by clicking it, find rows by any element type (cells), close sheets with Escape.
+  - [ ] Toolbar overflow: enlarge the window or use menu-bar commands (New Note, Command Palette, Quick Switcher, View menu) where a toolbar item is hidden.
+  - [ ] Fix each flow from its exported window dump: notes/linking, journal/promote, explore (incl. canvas), search (advanced toggle label), settings (rows, backups, plugins, sharing, sync status), getting started.
+  - [ ] Decide which iPhone-only screens are excluded on Mac and record them (file pickers, share and StoreKit system UI).
+  - [ ] Decide whether Help pages show Mac figures beside iPhone ones (extend the `screenshot` shortcode and `embeds.json` with a device).
+  - [ ] → **verify (Mac):** every iPhone shot name exists for Mac in both appearances at 1x and 2x, except a documented exclusion list; the normal UI-test run still skips the capture class.
+- **Known limits:** screens that show today's date (journal, graph) are not byte-stable across days; Mac liquid-glass controls vary by a few pixels.
+
+### Phase W7 — SEO / AI-retrieval wiring (= Wiki 1.5, site-wide) — DONE except final audit sign-off
+- [x] `sitemap.xml` (every page, incl. generated hubs; `lastmod` from `lastReviewed`), `robots.txt` with the sitemap line.
+- [x] Per-page canonical, meta description (help pages get a category suffix so all are 50–300 chars), Open Graph + Twitter tags, `hreflang` (`en`, `x-default`).
+- [x] `llms.txt` at the root (marketing + Help hubs) and a per-section index at `/en/help/<category>/llms.txt`.
+- [x] JSON-LD: `FAQPage` now also generated from concept pages' question headings; `HowTo`, `TechArticle`, `BreadcrumbList`, `WebSite` + `SearchAction` from W3.
+- [x] `npm run check:seo` (tests first): tags, one h1, sitemap coverage, robots, llms.txt links resolve, readable content without JavaScript, JSON-LD structure.
+- Deviation: how-to pages keep the fixed Article Standard headings (Purpose, Prerequisites, Steps, Expected result, Related); question-shaped headings are used on concept pages, marketing FAQs and the page titles. Say if you want how-to headings rewritten as questions.
+- [x] → **verify:** `check:seo` passes on all 131 pages; Lighthouse SEO / Best Practices ≥ 95 everywhere (`npm run audit`).
+- [ ] Set `baseUrl` in `site.json` (sitemap, canonicals and llms.txt still point at `TODO-DOMAIN`).
+- [ ] Rich Results Test / Schema.org validator on a sample of pages (external).
 
 ### Phase W8 — Accessibility audit (= Wiki 1.6, site-wide)
 - CI budgets on every page; manual keyboard, VoiceOver + Safari, NVDA + Firefox, 200%/400% zoom, reduced-motion, forced-colors; 2.4.11, 2.5.8, 1.4.1 checks.

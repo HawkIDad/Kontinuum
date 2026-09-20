@@ -27,6 +27,8 @@ At least two notes exist in your library.
 2. Choose the note you want from the suggestions to insert the link.
 3. Choose **Preview**, then tap the link to open the linked note.
 
+{% screenshot "linking/wikilink-suggestions-iphone-light.png", "Typing double brackets in a note, with matching note titles suggested above the keyboard.", "Wikilink suggestions." %}
+
 ## Expected result
 
 The link is inserted, and the target note lists your note under Backlinks.

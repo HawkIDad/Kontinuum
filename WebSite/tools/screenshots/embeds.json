@@ -1,0 +1,230 @@
+[
+  {
+    "shot": "getting-started/library-picker",
+    "page": "getting-started/create-select-library",
+    "alt": "The library screen reads No Libraries Yet and offers Create New Library, Import Existing Markdown Folder and Migration Assistant.",
+    "caption": "The library screen on first launch."
+  },
+  {
+    "shot": "getting-started/create-library-sheet",
+    "page": "getting-started/create-select-library",
+    "alt": "The New Library sheet with a Library Name field and Create and Cancel buttons.",
+    "caption": "Naming your library."
+  },
+  {
+    "shot": "getting-started/role-picker",
+    "page": "getting-started/onboarding-role-picker",
+    "alt": "The What do you use NoteBytez for screen listing kinds of work to choose from.",
+    "caption": "Choosing your kinds of work."
+  },
+  {
+    "shot": "capture-and-journal/todays-journal",
+    "page": "capture-and-journal/todays-journal",
+    "alt": "Today's journal page with the date, previous and next day arrows, and the editor.",
+    "caption": "Today's journal."
+  },
+  {
+    "shot": "search-and-navigation/quick-switcher",
+    "page": "search-and-navigation/quick-switcher",
+    "alt": "The Quick Switcher sheet with a search field for note titles.",
+    "caption": "The Quick Switcher."
+  },
+  {
+    "shot": "notebooks/promote-block-picker",
+    "page": "notebooks/promote-journal-block",
+    "alt": "The Promote a Block screen listing the blocks of today's journal.",
+    "caption": "Choosing the block to promote."
+  },
+  {
+    "shot": "notebooks/promote-to-notebook",
+    "page": "notebooks/promote-journal-block",
+    "alt": "The Promote to Notebook screen with a list of notebooks and a field to create a new one.",
+    "caption": "Choosing the destination notebook."
+  },
+  {
+    "shot": "notebooks/notebook-browser",
+    "page": "notebooks/notebook-browser",
+    "alt": "The Notebooks list showing Getting Started and Projects with two documents each.",
+    "caption": "Your notebooks."
+  },
+  {
+    "shot": "notebooks/new-notebook-sheet",
+    "page": "notebooks/create-notebook",
+    "alt": "The New Notebook sheet with a Notebook Name field and Create and Cancel buttons.",
+    "caption": "Naming a notebook."
+  },
+  {
+    "shot": "notebooks/notebook-documents",
+    "page": "notebooks/notebook-membership",
+    "alt": "The Projects notebook listing its notes, with a plus button to add a note.",
+    "caption": "A notebook's notes."
+  },
+  {
+    "shot": "documents-and-blocks/note-edit",
+    "page": "documents-and-blocks/markdown-formatting",
+    "alt": "A note in edit mode showing the Markdown source, with a Preview button.",
+    "caption": "Writing Markdown in edit mode."
+  },
+  {
+    "shot": "documents-and-blocks/note-preview",
+    "page": "documents-and-blocks/markdown-formatting",
+    "alt": "The same note in preview, with headings, links, tags and checkbox tasks formatted.",
+    "caption": "The formatted preview."
+  },
+  {
+    "shot": "linking/wikilink-suggestions",
+    "page": "linking/wikilinks",
+    "alt": "Typing double brackets in a note, with matching note titles suggested above the keyboard.",
+    "caption": "Wikilink suggestions."
+  },
+  {
+    "shot": "linking/backlinks-pane",
+    "page": "linking/backlinks-pane",
+    "alt": "The Backlinks sheet with Linked Mentions, Unlinked Mentions and Block References sections.",
+    "caption": "The Backlinks pane."
+  },
+  {
+    "shot": "tags/tag-browser",
+    "page": "tags/tag-browser",
+    "alt": "The Tags screen listing each tag with its note count.",
+    "caption": "The tag browser."
+  },
+  {
+    "shot": "tasks/task-dashboard",
+    "page": "tasks/task-dashboard",
+    "alt": "The Task Dashboard with status and date filter chips and a list of tasks with their notes.",
+    "caption": "The Task Dashboard."
+  },
+  {
+    "shot": "graph/local-graph",
+    "page": "graph/local-graph",
+    "alt": "A graph with the current note in the centre and linked notes around it, with zoom controls.",
+    "caption": "The graph of a note."
+  },
+  {
+    "shot": "graph/graph-insights",
+    "page": "graph/graph-insights",
+    "alt": "The Insights screen with Orphans, Stale, Notes with Open Tasks, Hubs and Clusters sections.",
+    "caption": "Graph Insights."
+  },
+  {
+    "shot": "search-and-navigation/search-results",
+    "page": "search-and-navigation/full-text-search",
+    "alt": "The Search screen with a query typed and matching notes listed.",
+    "caption": "Search results."
+  },
+  {
+    "shot": "search-and-navigation/advanced-search",
+    "page": "search-and-navigation/advanced-search-operators",
+    "alt": "The Search screen with advanced search switched on and a hint showing the operators.",
+    "caption": "Advanced search."
+  },
+  {
+    "shot": "search-and-navigation/saved-views",
+    "page": "search-and-navigation/saved-views",
+    "alt": "The Saved Views screen.",
+    "caption": "Saved Views."
+  },
+  {
+    "shot": "canvas/board-list",
+    "page": "canvas/create-canvas-board",
+    "alt": "The Canvas screen with New Board and Import Canvas buttons and no boards yet.",
+    "caption": "The Canvas boards list."
+  },
+  {
+    "shot": "subscription-and-account/settings-list",
+    "page": "subscription-and-account/manage-subscription",
+    "alt": "The Settings list with Subscription, Language, Sync and Conflicts, Backups, Templates and more.",
+    "caption": "Settings."
+  },
+  {
+    "shot": "sync-and-conflicts/choose-conflict-strategy",
+    "page": "sync-and-conflicts/choose-conflict-strategy",
+    "alt": "The Sync and Conflicts settings with three conflict strategies to choose from.",
+    "caption": "Choosing a conflict strategy."
+  },
+  {
+    "shot": "backup-and-restore/backups-empty",
+    "page": "backup-and-restore/automatic-snapshots",
+    "alt": "The Backups screen reading No Backups Yet, with a Create Backup button.",
+    "caption": "The Backups screen."
+  },
+  {
+    "shot": "backup-and-restore/backups-list",
+    "page": "backup-and-restore/restore-snapshot",
+    "alt": "The Backups screen listing a snapshot that can be restored.",
+    "caption": "A snapshot to restore."
+  },
+  {
+    "shot": "properties-and-templates/template-groups",
+    "page": "properties-and-templates/template-groups",
+    "alt": "The Templates screen with a New Group section.",
+    "caption": "Template groups."
+  },
+  {
+    "shot": "properties-and-templates/template-gallery",
+    "page": "properties-and-templates/template-gallery",
+    "alt": "The Template Gallery with a search field and packs grouped by category.",
+    "caption": "The Template Gallery."
+  },
+  {
+    "shot": "plugins/plugin-list",
+    "page": "plugins/enable-plugin",
+    "alt": "The Plugins screen in preview, with an Add button.",
+    "caption": "The Plugins screen."
+  },
+  {
+    "shot": "plugins/add-plugin",
+    "page": "plugins/plugin-permissions",
+    "alt": "The Add Plugin screen with a name field and a switch for each permission.",
+    "caption": "Plugin permissions."
+  },
+  {
+    "shot": "graph/graph-force-mode",
+    "page": "graph/graph-force-mode",
+    "alt": "The graph in Force mode, with linked notes spread out and the Radial and Force mode picker at the top.",
+    "caption": "Force mode."
+  },
+  {
+    "shot": "canvas/board-empty",
+    "page": "canvas/canvas-cards",
+    "alt": "An open canvas board with the Add Card button in the toolbar.",
+    "caption": "An open board."
+  },
+  {
+    "shot": "canvas/add-card-menu",
+    "page": "canvas/canvas-cards",
+    "alt": "The Add Card menu offering Add Note, Add Media, Add Web Link and Add Group.",
+    "caption": "The Add Card menu."
+  },
+  {
+    "shot": "documents-and-blocks/template-picker",
+    "page": "documents-and-blocks/create-document",
+    "alt": "The Choose a Template screen with template groups and a Start Blank option.",
+    "caption": "Choosing a template."
+  },
+  {
+    "shot": "search-and-navigation/command-palette",
+    "page": "search-and-navigation/command-palette",
+    "alt": "The Command Palette listing screens and actions.",
+    "caption": "The Command Palette."
+  },
+  {
+    "shot": "sync-and-conflicts/sync-status",
+    "page": "sync-and-conflicts/sync-status",
+    "alt": "The Sync Status sheet with conflicts, recent activity and a Sync Now button.",
+    "caption": "Sync Status."
+  },
+  {
+    "shot": "sharing/share-library",
+    "page": "sharing/share-library",
+    "alt": "The sharing sheet for a library.",
+    "caption": "The sharing sheet."
+  },
+  {
+    "shot": "subscription-and-account/subscription-settings",
+    "page": "subscription-and-account/start-subscription",
+    "alt": "The Subscription settings screen showing status and the Change or Start Subscription and Restore Purchases buttons.",
+    "caption": "Subscription settings."
+  }
+]

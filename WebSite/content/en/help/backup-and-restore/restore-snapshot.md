@@ -30,6 +30,8 @@ At least one snapshot exists.
 
 {% admonition "warning" %}Restoring replaces your current data with the snapshot. Create a backup first if you might want the current state back.{% endadmonition %}
 
+{% screenshot "backup-and-restore/backups-list-iphone-light.png", "The Backups screen listing a snapshot that can be restored.", "A snapshot to restore." %}
+
 ## Expected result
 
 Your library matches the snapshot.

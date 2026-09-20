@@ -28,6 +28,10 @@ NoteBytez is installed and open.
 3. If you already have libraries, they are listed on this screen; choose the one you want to open.
 4. You can also start a library from existing files with **Import Existing Markdown Folder** or **Migration Assistant (Obsidian/Logseq)**.
 
+{% screenshot "getting-started/library-picker-iphone-light.png", "The library screen reads No Libraries Yet and offers Create New Library, Import Existing Markdown Folder and Migration Assistant.", "The library screen on first launch." %}
+
+{% screenshot "getting-started/create-library-sheet-iphone-light.png", "The New Library sheet with a Library Name field and Create and Cancel buttons.", "Naming your library." %}
+
 ## Expected result
 
 Your library opens on the Today screen, ready for your first note.

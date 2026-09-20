@@ -1,11 +1,11 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 // Information-architecture lint (W2): feature map, nav coverage, front-matter schema.
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import matter from "gray-matter";
-import { validateHowToStructure } from "./checkContent.js";
+import { validateHowToStructure, findScreenshotRefs, validateScreenshotRefs } from "./checkContent.js";
 
 const slugPattern = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const marketingUrls = ["/", "/features/", "/pricing/", "/support/", "/privacy/", "/terms/"];
@@ -79,9 +79,14 @@ function validateContent(featureMap) {
     const isHelpArticle = relativePath.startsWith(join("en", "help")) && !relativePath.endsWith("index.md");
     const kind = isHelpArticle ? "help" : "marketing";
     const frontMatterErrors = validateFrontMatter(matter.read(path).data, kind).map((error) => `${relativePath}: ${error}`);
+    const screenshotErrors = validateScreenshotRefs(
+      findScreenshotRefs(readFileSync(path, "utf8")),
+      (file) => existsSync(join(contentDir, "en", "_assets", file)),
+      relativePath,
+    );
     const parsed = matter.read(path);
     const structureErrors = isHelpArticle && parsed.data.type === "howto" ? validateHowToStructure(parsed.content, relativePath) : [];
-    return [...frontMatterErrors, ...helpErrors, ...structureErrors];
+    return [...frontMatterErrors, ...helpErrors, ...structureErrors, ...screenshotErrors];
   });
 }
 

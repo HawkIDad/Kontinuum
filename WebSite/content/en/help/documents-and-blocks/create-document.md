@@ -29,6 +29,8 @@ A library is open.
 
 {% admonition "note" %}A note created inside a notebook is filed in that notebook.{% endadmonition %}
 
+{% screenshot "documents-and-blocks/template-picker-iphone-light.png", "The Choose a Template screen with template groups and a Start Blank option.", "Choosing a template." %}
+
 ## Expected result
 
 The new note opens for editing, and appears in All Notes and in its notebook.

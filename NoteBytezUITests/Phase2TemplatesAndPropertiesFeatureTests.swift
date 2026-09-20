@@ -35,7 +35,9 @@ final class Phase2TemplatesAndPropertiesFeatureTests: NoteBytezUITestCase {
 
     @MainActor
     func testCustomNoteTemplateAppliesPropertyDefaultOnCreate() throws {
+#if os(iOS)
         XCUIDevice.shared.orientation = .landscapeLeft
+#endif
         launchAndCreateLibrary()
         // The regular-width `NavigationSplitView` sidebar takes a beat longer to finish laying
         // out right after the library-creation transition than `MainShellScreen.navigate`'s own

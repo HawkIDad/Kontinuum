@@ -27,6 +27,8 @@ The Search screen is open.
 2. Type an expression such as `#character AND #act2 NOT #resolved`. You can use `AND`, `OR`, `NOT`, `"an exact phrase"`, `/regex/` and `#tag`.
 3. Choose a result to open it.
 
+{% screenshot "search-and-navigation/advanced-search-iphone-light.png", "The Search screen with advanced search switched on and a hint showing the operators.", "Advanced search." %}
+
 ## Expected result
 
 Results match the whole expression. A `#tag` term always matches the note's tags; other terms use the scope you chose.

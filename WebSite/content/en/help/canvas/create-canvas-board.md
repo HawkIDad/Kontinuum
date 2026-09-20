@@ -27,6 +27,8 @@ A library is open.
 2. Choose **New Board**.
 3. Type a name in **Board Name** and choose **Create**.
 
+{% screenshot "canvas/board-list-iphone-light.png", "The Canvas screen with New Board and Import Canvas buttons and no boards yet.", "The Canvas boards list." %}
+
 ## Expected result
 
 The board appears in the list; open it to start adding cards.

@@ -27,6 +27,8 @@ None.
 2. Each permission is a separate switch: **Read library**, **Write current note** and **Add command**.
 3. Grant only what the plugin needs.
 
+{% screenshot "plugins/add-plugin-iphone-light.png", "The Add Plugin screen with a name field and a switch for each permission.", "Plugin permissions." %}
+
 ## Expected result
 
 A plugin can do only what you have switched on.

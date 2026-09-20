@@ -26,6 +26,8 @@ A library is open.
 1. On iPhone, choose **Explore**, then **Tags**. On iPad and Mac, choose **Tags** under Library.
 2. Read the list of tags with the number of notes each has.
 
+{% screenshot "tags/tag-browser-iphone-light.png", "The Tags screen listing each tag with its note count.", "The tag browser." %}
+
 ## Expected result
 
 You see all tags in the library.

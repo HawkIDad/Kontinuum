@@ -27,6 +27,8 @@ You have a search, a Task Dashboard filter or a graph filter you want to keep.
 2. Type a name and choose **Save**.
 3. Open **Saved Views** (under Explore) and choose the view.
 
+{% screenshot "search-and-navigation/saved-views-iphone-light.png", "The Saved Views screen.", "Saved Views." %}
+
 ## Expected result
 
 The view opens and re-runs its query, so it always shows current results.

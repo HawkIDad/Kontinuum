@@ -1,0 +1,291 @@
+Optional(Attributes: Application, 0x77f1935900, pid: 7887, title: 'NoteBytez', Disabled
+Element subtree:
+ →Application, 0x77f1935900, pid: 7887, title: 'NoteBytez', Disabled
+    Window (Main), 0x77f1935a40, {{46.0, 127.0}, {1000.0, 700.0}}, identifier: 'SwiftUI.WindowGroup<NoteBytez.RootView>-1-AppWindow-1', title: 'Today', Keyboard Focused, Disabled
+      Group, 0x77f1935b80, {{46.0, 127.0}, {1000.0, 700.0}}, Disabled
+        SplitGroup, 0x77f1935cc0, {{46.0, 127.0}, {1000.0, 700.0}}, identifier: 'SwiftUI.WindowGroup<NoteBytez.RootView>-1-AppWindow-1, SidebarNavigationSplitView', Disabled
+          Group, 0x77f1935e00, {{46.0, 127.0}, {144.0, 700.0}}, Disabled
+            ScrollView, 0x77f1935f40, {{46.0, 179.0}, {144.0, 648.0}}, Disabled
+              Outline, 0x77f1936080, {{45.0, 178.0}, {146.0, 650.0}}, label: 'Sidebar'
+                OutlineRow, 0x77f19361c0, {{46.0, 179.0}, {144.0, 19.0}}, Disabled
+                  Cell, 0x77f1936300, {{56.0, 179.0}, {124.0, 19.0}}, Keyboard Focused
+                    Group, 0x77f1936440, {{60.0, 179.0}, {128.0, 19.0}}, Disabled
+                      StaticText, 0x77f1934c80, {{60.0, 181.5}, {44.0, 14.0}}, label: 'Capture'
+                OutlineRow, 0x77f1934dc0, {{46.0, 198.0}, {144.0, 40.0}}, Selected, Disabled
+                  Cell, 0x77f1934f00, {{56.0, 198.0}, {124.0, 40.0}}, Keyboard Focused, Selected
+                    StaticText, 0x77f1935040, {{67.5, 208.0}, {69.5, 20.8}}, identifier: 'sidebar.Today', value: Today
+                OutlineRow, 0x77f1935180, {{46.0, 251.0}, {144.0, 19.0}}, Disabled
+                  Cell, 0x77f19352c0, {{56.0, 251.0}, {124.0, 19.0}}, Keyboard Focused
+                    Group, 0x77f1935400, {{60.0, 251.0}, {128.0, 19.0}}, Disabled
+                      StaticText, 0x77f1935540, {{60.0, 253.5}, {39.0, 14.0}}, label: 'Library'
+                OutlineRow, 0x77f1935680, {{46.0, 270.0}, {144.0, 40.0}}, Disabled
+                  Cell, 0x77f19357c0, {{56.0, 270.0}, {124.0, 40.0}}, Keyboard Focused
+                    StaticText, 0x77f1936580, {{64.5, 279.5}, {104.0, 21.5}}, identifier: 'sidebar.Notebooks', value: Notebooks
+                OutlineRow, 0x77f19366c0, {{46.0, 310.0}, {144.0, 40.0}}, Disabled
+                  Cell, 0x77f1936800, {{56.0, 310.0}, {124.0, 40.0}}, Keyboard Focused
+                    StaticText, 0x77f1936940, {{68.0, 320.0}, {88.0, 20.5}}, identifier: 'sidebar.All Notes', value: All Notes
+                OutlineRow, 0x77f1936a80, {{46.0, 350.0}, {144.0, 40.0}}, Disabled
+                  Cell, 0x77f1936bc0, {{56.0, 350.0}, {124.0, 40.0}}, Keyboard Focused
+                    StaticText, 0x77f1936d00, {{65.0, 359.0}, {61.5, 22.0}}, identifier: 'sidebar.Tags', value: Tags
+                OutlineRow, 0x77f1936e40, {{46.0, 403.0}, {144.0, 19.0}}, Disabled
+                  Cell, 0x77f1936f80, {{56.0, 403.0}, {124.0, 19.0}}, Keyboard Focused
+                    Group, 0x77f19370c0, {{60.0, 403.0}, {128.0, 19.0}}, Disabled
+                      StaticText, 0x77f1937200, {{60.0, 405.5}, {41.5, 14.0}}, label: 'Explore'
+                OutlineRow, 0x77f1937340, {{46.0, 422.0}, {144.0, 40.0}}, Disabled
+                  Cell, 0x77f1937480, {{56.0, 422.0}, {124.0, 40.0}}, Keyboard Focused
+                    StaticText, 0x77f19375c0, {{67.0, 432.5}, {75.0, 19.0}}, identifier: 'sidebar.Search', value: Search
+                OutlineRow, 0x77f1937700, {{46.0, 462.0}, {144.0, 40.0}}, Disabled
+                  Cell, 0x77f1937840, {{56.0, 462.0}, {124.0, 40.0}}, Keyboard Focused
+                    StaticText, 0x77f1937980, {{65.0, 471.0}, {71.0, 22.5}}, identifier: 'sidebar.Graph', value: Graph
+                OutlineRow, 0x77f1937ac0, {{46.0, 502.0}, {144.0, 40.0}}, Disabled
+                  Cell, 0x77f1937c00, {{56.0, 502.0}, {124.0, 40.0}}, Keyboard Focused
+                    StaticText, 0x77f1937d40, {{69.5, 511.0}, {78.5, 22.5}}, identifier: 'sidebar.Insights', value: Insights
+                OutlineRow, 0x77f1937e80, {{46.0, 542.0}, {144.0, 40.0}}, Disabled
+                  Cell, 0x77f2018000, {{56.0, 542.0}, {124.0, 40.0}}, Keyboard Focused
+                    StaticText, 0x77f2018140, {{65.5, 552.3}, {67.5, 19.7}}, identifier: 'sidebar.Tasks', value: Tasks
+                OutlineRow, 0x77f2018280, {{46.0, 582.0}, {144.0, 40.0}}, Disabled
+                  Cell, 0x77f20183c0, {{56.0, 582.0}, {124.0, 40.0}}, Keyboard Focused
+                    StaticText, 0x77f2018500, {{68.5, 591.0}, {105.0, 22.5}}, identifier: 'sidebar.Saved Views', value: Saved Views
+                OutlineRow, 0x77f2018640, {{46.0, 622.0}, {144.0, 40.0}}, Disabled
+                  Cell, 0x77f2018780, {{56.0, 622.0}, {124.0, 40.0}}, Keyboard Focused
+                    StaticText, 0x77f20188c0, {{67.5, 632.3}, {77.0, 19.0}}, identifier: 'sidebar.Canvas', value: Canvas
+                OutlineRow, 0x77f2018a00, {{46.0, 662.0}, {144.0, 40.0}}, Disabled
+                  Cell, 0x77f2018b40, {{56.0, 662.0}, {124.0, 40.0}}, Keyboard Focused
+                    StaticText, 0x77f2018c80, {{66.0, 672.0}, {85.0, 20.5}}, identifier: 'sidebar.Settings', value: Settings
+                TableColumn, 0x77f2018dc0, {{56.0, 179.0}, {124.0, 648.0}}, identifier: 'ListColumn', Disabled
+          Splitter, 0x77f2018f00, {{190.0, 179.0}, {0.5, 648.0}}, value: 144, Disabled
+          Group, 0x77f2019040, {{46.0, 127.0}, {1000.0, 700.0}}, Disabled
+            Button, 0x77f2019180, {{207.0, 189.5}, {6.5, 11.5}}, identifier: 'chevron.left', label: 'Previous day'
+            StaticText, 0x77f20192c0, {{519.5, 187.0}, {197.0, 16.0}}, value: Saturday, Septembe...
+            Button, 0x77f2019400, {{1022.5, 189.5}, {6.5, 11.5}}, identifier: 'chevron.right', label: 'Next day', Disabled
+            ScrollView, 0x77f2019540, {{190.0, 212.0}, {856.0, 558.0}}, Disabled
+              TextView, 0x77f2019680, {{190.0, 212.0}, {856.0, 558.0}}, value: - , Disabled
+              ScrollBar, 0x77f20197c0, {{1028.0, 211.0}, {19.0, 560.0}}, value: 0, Disabled
+            Button, 0x77f2019900, {{206.0, 787.0}, {96.5, 24.0}}, label: 'Preview'
+      Toolbar, 0x77f2019a40, {{46.0, 127.0}, {1000.0, 52.0}}, Disabled
+        Button, 0x77f2019b80, {{138.0, 127.0}, {44.0, 52.0}}, label: 'Hide Sidebar'
+        Button, 0x77f2019cc0, {{917.0, 127.0}, {41.0, 52.0}}, label: 'Quick Switcher'
+        Button, 0x77f2019e00, {{958.0, 127.0}, {40.0, 52.0}}, label: 'Promote to Notebook'
+        Button, 0x77f2019f40, {{998.0, 127.0}, {44.0, 52.0}}, label: 'Tasks'
+      Button, 0x77f201a080, {{64.0, 145.0}, {16.0, 16.0}}, identifier: '_XCUI:CloseWindow'
+      Button, 0x77f201a1c0, {{110.0, 145.0}, {16.0, 16.0}}, identifier: '_XCUI:FullScreenWindow'
+        Group, 0x77f201a300, {{111.0, 146.0}, {14.0, 14.0}}, Disabled
+          Group, 0x77f201a440, {{111.0, 146.0}, {14.0, 14.0}}, Disabled
+      Button, 0x77f201a580, {{87.0, 145.0}, {16.0, 16.0}}, identifier: '_XCUI:MinimizeWindow'
+      StaticText, 0x77f201a6c0, {{194.0, 127.0}, {723.0, 52.0}}, value: Today
+    MenuBar, 0x77f201a800, {{0.0, 0.0}, {1728.0, 33.0}}
+      MenuBarItem, 0x77f201a940, {{10.0, 0.0}, {34.0, 33.0}}, title: 'Apple'
+        Menu, 0x77f201aa80, {{0.0, 1117.0}, {0.0, 0.0}}
+          MenuItem, 0x77f201abc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_aboutThisMacRequested:', title: 'About This Mac'
+          MenuItem, 0x77f201ad00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_systemInformationRequested:', title: 'System Information'
+          MenuItem, 0x77f201ae40, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f201af80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_systemSettingsRequested:', title: 'System Settings…'
+          MenuItem, 0x77f201b0c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_locationRequested:', title: 'Location'
+            Menu, 0x77f201b200, {{0.0, 1117.0}, {0.0, 0.0}}
+              MenuItem, 0x77f201b340, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_networkLocationSwitchRequested:', title: 'Automatic'
+              MenuItem, 0x77f201b480, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_networkLocationSwitchRequested:', title: 'Home Ethernet'
+              MenuItem, 0x77f201b5c0, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+              MenuItem, 0x77f201b700, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_networkPreferencesRequested:', title: 'Network Settings…'
+          MenuItem, 0x77f201b840, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_appStoreRequested:', title: 'App Store'
+          MenuItem, 0x77f201b980, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f201bac0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentsRequested:', title: 'Recent Items'
+            Menu, 0x77f201bc00, {{0.0, 1117.0}, {0.0, 0.0}}
+              MenuItem, 0x77f201bd40, {{0.0, 1117.0}, {0.0, 0.0}}, title: 'Applications', Disabled
+              MenuItem, 0x77f201be80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Device Hub.app'
+              MenuItem, 0x77f201c000, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “Device Hub.app” in Finder'
+              MenuItem, 0x77f201c140, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'News.app'
+              MenuItem, 0x77f201c280, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “News.app” in Finder'
+              MenuItem, 0x77f201c3c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'NoteBytez.app'
+              MenuItem, 0x77f201c500, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “NoteBytez.app” in Finder'
+              MenuItem, 0x77f201c640, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'NoteBytez.app'
+              MenuItem, 0x77f201c780, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “NoteBytez.app” in Finder'
+              MenuItem, 0x77f201c8c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Passwords.app'
+              MenuItem, 0x77f201ca00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “Passwords.app” in Finder'
+              MenuItem, 0x77f201cb40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Podcasts.app'
+              MenuItem, 0x77f201cc80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “Podcasts.app” in Finder'
+              MenuItem, 0x77f201cdc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Safari.app'
+              MenuItem, 0x77f201cf00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “Safari.app” in Finder'
+              MenuItem, 0x77f201d040, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Stocks.app'
+              MenuItem, 0x77f201d180, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “Stocks.app” in Finder'
+              MenuItem, 0x77f201d2c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Terminal.app'
+              MenuItem, 0x77f201d400, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “Terminal.app” in Finder'
+              MenuItem, 0x77f201d540, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Xcode.app'
+              MenuItem, 0x77f201d680, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “Xcode.app” in Finder'
+              MenuItem, 0x77f201d7c0, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+              MenuItem, 0x77f201d900, {{0.0, 1117.0}, {0.0, 0.0}}, title: 'Documents', Disabled
+              MenuItem, 0x77f201da40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'capture-ui.sh'
+              MenuItem, 0x77f201db80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “capture-ui.sh” in Finder'
+              MenuItem, 0x77f201dcc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'checkContent.test.js'
+              MenuItem, 0x77f201de00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “checkContent.test.js” in Finder'
+              MenuItem, 0x77f201df40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'checkIA.js'
+              MenuItem, 0x77f201e080, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “checkIA.js” in Finder'
+              MenuItem, 0x77f201e1c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'embeds.json'
+              MenuItem, 0x77f201e300, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “embeds.json” in Finder'
+              MenuItem, 0x77f201e440, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'embedShots.mjs'
+              MenuItem, 0x77f201e580, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “embedShots.mjs” in Finder'
+              MenuItem, 0x77f201e6c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'exportShots.mjs'
+              MenuItem, 0x77f201e800, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “exportShots.mjs” in Finder'
+              MenuItem, 0x77f201e940, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'NoteBytezApp.swift'
+              MenuItem, 0x77f201ea80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “NoteBytezApp.swift” in Finder'
+              MenuItem, 0x77f201ebc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Phase2TemplatesAndPropertiesFeatureTests.swift'
+              MenuItem, 0x77f201ed00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “Phase2TemplatesAndPropertiesFeatureTests.swift” in Finder'
+              MenuItem, 0x77f201ee40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'shortcodes.js'
+              MenuItem, 0x77f201ef80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “shortcodes.js” in Finder'
+              MenuItem, 0x77f201f0c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'WebsiteScreenshotTests.swift'
+              MenuItem, 0x77f201f200, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Show “WebsiteScreenshotTests.swift” in Finder'
+              MenuItem, 0x77f201f340, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+              MenuItem, 0x77f201f480, {{0.0, 1117.0}, {0.0, 0.0}}, title: 'Servers', Disabled
+              MenuItem, 0x77f201f5c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Backup Vol2'
+              MenuItem, 0x77f201f700, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'dlcollison@192.168.1.100'
+              MenuItem, 0x77f201f840, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'dlcollison@192.168.1.100'
+              MenuItem, 0x77f201f980, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Macintosh HD'
+              MenuItem, 0x77f201fac0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'Public'
+              MenuItem, 0x77f201fc00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'SharedPublic'
+              MenuItem, 0x77f201fd40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_recentItemRequested:', title: 'USB_Storage'
+              MenuItem, 0x77f201fe80, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+              MenuItem, 0x77f2020000, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_clearRecentItemsRequested:', title: 'Clear Menu'
+          MenuItem, 0x77f2020140, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f2020280, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_forceQuitPanelRequested:', title: 'Force Quit…'
+          MenuItem, 0x77f20203c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_forceQuitRequested:', title: 'Force Quit NoteBytez'
+          MenuItem, 0x77f2020500, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f2020640, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_sleepRequested:', title: 'Sleep'
+          MenuItem, 0x77f2020780, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_restartRequested:', title: 'Restart…'
+          MenuItem, 0x77f20208c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_restartNowRequested:', title: 'Restart'
+          MenuItem, 0x77f2020a00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_shutDownRequested:', title: 'Shut Down…'
+          MenuItem, 0x77f2020b40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_shutDownNowRequested:', title: 'Shut Down'
+          MenuItem, 0x77f2020c80, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f2020dc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_lockScreenRequested:', title: 'Lock Screen'
+          MenuItem, 0x77f2020f00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_logOutRequested:', title: 'Log Out David Collison…'
+          MenuItem, 0x77f2021040, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_logOutNowRequested:', title: 'Log Out David Collison'
+          MenuItem, 0x77f2021180, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+      MenuBarItem, 0x77f20212c0, {{43.0, 0.0}, {89.0, 33.0}}, title: 'NoteBytez'
+        Menu, 0x77f2021400, {{0.0, 1117.0}, {0.0, 0.0}}
+          MenuItem, 0x77f2021540, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'orderFrontStandardAboutPanel:', title: 'About NoteBytez'
+          MenuItem, 0x77f2021680, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f20217c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'menuAction:', title: 'Settings…'
+          MenuItem, 0x77f2021900, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f2021a40, {{0.0, 1117.0}, {0.0, 0.0}}, title: 'Services'
+            Menu, 0x77f2021b80, {{0.0, 1117.0}, {0.0, 0.0}}
+              MenuItem, 0x77f2021cc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'Activity Monitor'
+              MenuItem, 0x77f2021e00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'Allocations & Leaks'
+              MenuItem, 0x77f2021f40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'File Activity'
+              MenuItem, 0x77f2022080, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'System Trace'
+              MenuItem, 0x77f20221c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'Time Profile Active Application'
+              MenuItem, 0x77f2022300, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'Time Profile App Under Mouse'
+              MenuItem, 0x77f2022440, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'Time Profile Entire System'
+              MenuItem, 0x77f2022580, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'Toggle Instruments Recording'
+              MenuItem, 0x77f20226c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'Ask Claude'
+              MenuItem, 0x77f2022800, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'New Claude Code Session Here'
+              MenuItem, 0x77f2022940, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_processRequest:', title: 'Send to Claude'
+              MenuItem, 0x77f2022a80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_configureServicesMenu:', title: 'Services Settings…'
+          MenuItem, 0x77f2022bc0, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f2022d00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'hide:', title: 'Hide NoteBytez'
+          MenuItem, 0x77f2022e40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'hideOtherApplications:', title: 'Hide Others'
+          MenuItem, 0x77f2022f80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'unhideAllApplications:', title: 'Show All'
+          MenuItem, 0x77f20230c0, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f2023200, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'terminate:', title: 'Quit NoteBytez'
+          MenuItem, 0x77f2023340, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'NSAlternateQuitMenuItem', title: 'Quit and Keep Windows'
+      MenuBarItem, 0x77f2023480, {{131.0, 0.0}, {42.0, 33.0}}, title: 'File'
+        Menu, 0x77f20235c0, {{0.0, 1117.0}, {0.0, 0.0}}
+          MenuItem, 0x77f2023700, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'menuAction:', title: 'New Note'
+          MenuItem, 0x77f2023840, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f2023980, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f2023ac0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'performClose:', title: 'Close'
+          MenuItem, 0x77f2023c00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'closeAll:', title: 'Close All'
+      MenuBarItem, 0x77f2023d40, {{172.0, 0.0}, {44.0, 33.0}}, title: 'Edit'
+        Menu, 0x77f2023e80, {{0.0, 1117.0}, {0.0, 0.0}}
+          MenuItem, 0x77f202c000, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'undo:', title: 'Undo', Disabled
+          MenuItem, 0x77f202c140, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'redo:', title: 'Redo', Disabled
+          MenuItem, 0x77f202c280, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f202c3c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'cut:', title: 'Cut', Disabled
+          MenuItem, 0x77f202c500, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'copy:', title: 'Copy', Disabled
+          MenuItem, 0x77f202c640, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'paste:', title: 'Paste', Disabled
+          MenuItem, 0x77f202c780, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'delete:', title: 'Delete', Disabled
+          MenuItem, 0x77f202c8c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'selectAll:', title: 'Select All', Disabled
+          MenuItem, 0x77f202ca00, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f202cb40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_NSMenuItemAutoFillIdentifier', title: 'AutoFill'
+            Menu, 0x77f202cc80, {{0.0, 1117.0}, {0.0, 0.0}}
+              MenuItem, 0x77f202cdc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_handleInsertFromContactsCommand:', title: 'Contact…', Disabled
+              MenuItem, 0x77f202cf00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_handleInsertFromPasswordsCommand:', title: 'Passwords…', Disabled
+              MenuItem, 0x77f202d040, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_handleInsertFromCreditCardsCommand:', title: 'Credit Card…', Disabled
+          MenuItem, 0x77f202d180, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'startDictation:', title: 'Start Dictation…'
+          MenuItem, 0x77f202d2c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'orderFrontCharacterPalette:', title: 'Emoji & Symbols'
+      MenuBarItem, 0x77f202d400, {{215.0, 0.0}, {50.0, 33.0}}, title: 'View'
+        Menu, 0x77f202d540, {{0.0, 1117.0}, {0.0, 0.0}}
+          MenuItem, 0x77f202d680, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'toggleTabBar:', title: 'Show Tab Bar'
+          MenuItem, 0x77f202d7c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'toggleTabOverview:', title: 'Show All Tabs'
+          MenuItem, 0x77f202d900, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f202da40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'menuAction:', title: 'Command Palette…'
+          MenuItem, 0x77f202db80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'menuAction:', title: 'Quick Switcher'
+          MenuItem, 0x77f202dcc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'toggleFullScreen:', title: 'Enter Full Screen'
+      MenuBarItem, 0x77f202de00, {{264.0, 0.0}, {50.0, 33.0}}, title: 'View'
+        Menu, 0x77f202df40, {{0.0, 1117.0}, {0.0, 0.0}}
+          MenuItem, 0x77f202e080, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'menuAction:', title: 'Today'
+          MenuItem, 0x77f202e1c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'menuAction:', title: 'Notebooks'
+          MenuItem, 0x77f202e300, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'menuAction:', title: 'Graph'
+          MenuItem, 0x77f202e440, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'menuAction:', title: 'Insights'
+      MenuBarItem, 0x77f202e580, {{313.0, 0.0}, {70.0, 33.0}}, title: 'Window'
+        Menu, 0x77f202e6c0, {{0.0, 1117.0}, {0.0, 0.0}}
+          MenuItem, 0x77f202e800, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'performMiniaturize:', title: 'Minimize'
+          MenuItem, 0x77f202e940, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'miniaturizeAll:', title: 'Minimize All'
+          MenuItem, 0x77f202ea80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'performZoom:', title: 'Zoom'
+          MenuItem, 0x77f202ebc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'zoomAll:', title: 'Zoom All'
+          MenuItem, 0x77f202ed00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomFill:', title: 'Fill'
+          MenuItem, 0x77f202ee40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomCenter:', title: 'Center'
+          MenuItem, 0x77f202ef80, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f202f0c0, {{0.0, 1117.0}, {0.0, 0.0}}, title: 'Move & Resize'
+            Menu, 0x77f202f200, {{0.0, 1117.0}, {0.0, 0.0}}
+              MenuItem, 0x77f202f340, {{0.0, 1117.0}, {0.0, 0.0}}, title: 'Halves', Disabled
+              MenuItem, 0x77f202f480, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomLeft:', title: 'Left'
+              MenuItem, 0x77f202f5c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomRight:', title: 'Right'
+              MenuItem, 0x77f202f700, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomTop:', title: 'Top'
+              MenuItem, 0x77f202f840, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomBottom:', title: 'Bottom'
+              MenuItem, 0x77f202f980, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+              MenuItem, 0x77f202fac0, {{0.0, 1117.0}, {0.0, 0.0}}, title: 'Quarters', Disabled
+              MenuItem, 0x77f202fc00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomTopLeft:', title: 'Top Left'
+              MenuItem, 0x77f202fd40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomTopRight:', title: 'Top Right'
+              MenuItem, 0x77f202fe80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomBottomLeft:', title: 'Bottom Left'
+              MenuItem, 0x77f2034000, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomBottomRight:', title: 'Bottom Right'
+              MenuItem, 0x77f2034140, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+              MenuItem, 0x77f2034280, {{0.0, 1117.0}, {0.0, 0.0}}, title: 'Arrange', Disabled
+              MenuItem, 0x77f20343c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomLeftAndRight:', title: 'Left & Right'
+              MenuItem, 0x77f2034500, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomLeftThreeUp:', title: 'Left & Quarters'
+              MenuItem, 0x77f2034640, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomRightAndLeft:', title: 'Right & Left'
+              MenuItem, 0x77f2034780, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomRightThreeUp:', title: 'Right & Quarters'
+              MenuItem, 0x77f20348c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomTopAndBottom:', title: 'Top & Bottom'
+              MenuItem, 0x77f2034a00, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomTopThreeUp:', title: 'Top & Quarters'
+              MenuItem, 0x77f2034b40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomBottomAndTop:', title: 'Bottom & Top'
+              MenuItem, 0x77f2034c80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomBottomThreeUp:', title: 'Bottom & Quarters'
+              MenuItem, 0x77f2034dc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomQuarters:', title: 'Quarters'
+              MenuItem, 0x77f2034f00, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+              MenuItem, 0x77f2035040, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_zoomUntile:', title: 'Return to Previous Size', Disabled
+          MenuItem, 0x77f2035180, {{0.0, 1117.0}, {0.0, 0.0}}, title: 'Full Screen Tile'
+            Menu, 0x77f20352c0, {{0.0, 1117.0}, {0.0, 0.0}}
+              MenuItem, 0x77f2035400, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_tileLeft:', title: 'Left of Screen'
+              MenuItem, 0x77f2035540, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_tileRight:', title: 'Right of Screen'
+          MenuItem, 0x77f2035680, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f20357c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_toggleIPad:', title: 'Move to iPad Pro'
+          MenuItem, 0x77f2035900, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f2035a40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'arrangeInFront:', title: 'Bring All to Front'
+          MenuItem, 0x77f2035b80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'alternateArrangeInFront:', title: 'Arrange in Front'
+          MenuItem, 0x77f2035cc0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: '_removeWindowFromStageManagerSet:', title: 'Remove Window from Set', Disabled
+          MenuItem, 0x77f2035e00, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f2035f40, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'makeKeyAndOrderFront:', title: 'Today'
+          MenuItem, 0x77f2036080, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+          MenuItem, 0x77f20361c0, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'selectPreviousTab:', title: 'Show Previous Tab', Disabled
+          MenuItem, 0x77f2036300, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'selectNextTab:', title: 'Show Next Tab', Disabled
+          MenuItem, 0x77f2036440, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'moveTabToNewWindow:', title: 'Move Tab to New Window', Disabled
+          MenuItem, 0x77f2036580, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'mergeAllWindows:', title: 'Merge All Windows', Disabled
+          MenuItem, 0x77f20366c0, {{0.0, 1117.0}, {0.0, 0.0}}, Disabled
+      MenuBarItem, 0x77f2036800, {{382.0, 0.0}, {49.0, 33.0}}, title: 'Help'
+        Menu, 0x77f2036940, {{0.0, 1117.0}, {0.0, 0.0}}
+          MenuItem, 0x77f2036a80, {{0.0, 1117.0}, {0.0, 0.0}}, identifier: 'showHelp:', title: 'NoteBytez Help'
+    TouchBar, 0x77f2036bc0, {{80.0, 0.0}, {685.0, 30.0}}, Disabled
+Path to element:
+ →Application, 0x77f1935900, pid: 7887, title: 'NoteBytez', Disabled
+Query chain:
+ →Find: Target Application 'com.kwicksync.NoteBytez'
+  Output: {
+    Application, 0x77f2036d00, pid: 7887, title: 'NoteBytez', Disabled
+  }
+)

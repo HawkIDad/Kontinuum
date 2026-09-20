@@ -26,6 +26,8 @@ None.
 1. Open **Settings** and choose **Sync & Conflicts**.
 2. Under **Conflict resolution strategy**, choose one: **Keep All Versions** (you resolve every conflict), **Last-Write-Wins + Banner** (the newest edit wins and a banner lets you revert) or **Markdown Diff-Merge** (text is auto-merged and you review the diff).
 
+{% screenshot "sync-and-conflicts/choose-conflict-strategy-iphone-light.png", "The Sync and Conflicts settings with three conflict strategies to choose from.", "Choosing a conflict strategy." %}
+
 ## Expected result
 
 Future conflicts follow the strategy you chose.

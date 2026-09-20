@@ -29,6 +29,8 @@ A notebook exists.
 
 {% admonition "note" %}A note can belong to several notebooks. Notebook membership is also read from a `notebooks:` list in front matter when you import Markdown.{% endadmonition %}
 
+{% screenshot "notebooks/notebook-documents-iphone-light.png", "The Projects notebook listing its notes, with a plus button to add a note.", "A notebook's notes." %}
+
 ## Expected result
 
 The notebook lists the note and its count goes up.

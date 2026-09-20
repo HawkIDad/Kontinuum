@@ -27,6 +27,8 @@ A library with linked notes.
 2. Read the sections: **Orphans** (no links), **Stale** (untouched for a while but still relevant), **Notes with Open Tasks**, **Hubs** and **Clusters**.
 3. In **Stale**, choose a threshold in days. Tap a note to open it, or choose **Open as Canvas** (swipe or long-press) to see it as a canvas.
 
+{% screenshot "graph/graph-insights-iphone-light.png", "The Insights screen with Orphans, Stale, Notes with Open Tasks, Hubs and Clusters sections.", "Graph Insights." %}
+
 ## Expected result
 
 You know which notes are disconnected, neglected or central.

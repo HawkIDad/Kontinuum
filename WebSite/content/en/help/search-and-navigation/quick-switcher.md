@@ -27,6 +27,8 @@ A library with some notes.
 2. Type part of the title.
 3. Choose the note to open it.
 
+{% screenshot "search-and-navigation/quick-switcher-iphone-light.png", "The Quick Switcher sheet with a search field for note titles.", "The Quick Switcher." %}
+
 ## Expected result
 
 The note opens.

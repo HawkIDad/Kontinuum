@@ -27,6 +27,8 @@ A library is open.
 2. Choose **+** (New Notebook).
 3. Type a name in **Notebook Name** and choose **Create**.
 
+{% screenshot "notebooks/new-notebook-sheet-iphone-light.png", "The New Notebook sheet with a Notebook Name field and Create and Cancel buttons.", "Naming a notebook." %}
+
 ## Expected result
 
 The notebook appears in the list with 0 documents.

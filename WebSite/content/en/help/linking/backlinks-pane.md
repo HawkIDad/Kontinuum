@@ -27,6 +27,8 @@ A note is open.
 2. Read the **Linked Mentions** section: each row is a note that links here, with a snippet.
 3. Tap a row to open that note.
 
+{% screenshot "linking/backlinks-pane-iphone-light.png", "The Backlinks sheet with Linked Mentions, Unlinked Mentions and Block References sections.", "The Backlinks pane." %}
+
 ## Expected result
 
 You see every note that links to this one.

@@ -34,13 +34,21 @@ export function extractSteps(html) {
   return items.map((match) => match[1].replace(/<figure[\s\S]*?<\/figure>/g, "").replace(/<[^>]+>/g, "").trim());
 }
 
+/** Q&A pairs from "<h2>question?</h2><p>answer</p>" — the shape concept pages use, for FAQPage JSON-LD. */
+export function faqFromHeadings(html) {
+  const strip = (text) => text.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  return [...(html ?? "").matchAll(/<h2[^>]*>([^<]*\?)<\/h2>\s*<p>([\s\S]*?)<\/p>/g)].map((match) => ({ q: strip(match[1]), a: strip(match[2]) }));
+}
+
 export function addFilters(eleventyConfig, featureMap) {
   eleventyConfig.addFilter("breadcrumbs", (url, title) => buildBreadcrumbs(url, title, featureMap));
   eleventyConfig.addFilter("siblings", siblingsOf);
   eleventyConfig.addFilter("howToSteps", extractSteps);
+  eleventyConfig.addFilter("faqFromHeadings", faqFromHeadings);
   eleventyConfig.addFilter("isCurrent", (itemUrl, pageUrl) => (itemUrl === "/" ? pageUrl === "/" : pageUrl.startsWith(itemUrl)));
   eleventyConfig.addFilter("pagesIn", (collection, category) =>
     collection.filter((item) => item.data.category === category).sort((first, second) => first.data.order - second.data.order));
+  eleventyConfig.addFilter("categoryTitle", (slug) => featureMap.categories.find((entry) => entry.slug === slug)?.title ?? "Journeys");
   eleventyConfig.addFilter("isSet", (value) => Boolean(value) && !String(value).startsWith("TODO"));
   eleventyConfig.addFilter("jsonLd", (value) => JSON.stringify(value).replace(/</g, "\\u003c"));
 }

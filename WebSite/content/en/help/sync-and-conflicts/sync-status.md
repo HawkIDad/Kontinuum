@@ -27,6 +27,8 @@ You are signed in to iCloud.
 2. Choose the icon to open **Sync Status**.
 3. Read **Needs Your Attention** for conflicts, and **Recent Activity** for the log. The last-synced time stays visible when you are offline.
 
+{% screenshot "sync-and-conflicts/sync-status-iphone-light.png", "The Sync Status sheet with conflicts, recent activity and a Sync Now button.", "Sync Status." %}
+
 ## Expected result
 
 You know whether your notes are up to date.

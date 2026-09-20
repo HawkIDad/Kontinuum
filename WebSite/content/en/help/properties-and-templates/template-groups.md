@@ -27,6 +27,8 @@ A library is open.
 2. Under **New Group**, type a name and choose **Add**.
 3. Choose the group to open it.
 
+{% screenshot "properties-and-templates/template-groups-iphone-light.png", "The Templates screen with a New Group section.", "Template groups." %}
+
 ## Expected result
 
 The group appears in the list, ready for templates.

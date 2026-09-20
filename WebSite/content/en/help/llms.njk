@@ -1,0 +1,16 @@
+---
+pagination:
+  data: helpHubs
+  size: 1
+  alias: hub
+permalink: /en/help/{{ hub.slug }}/llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.name }} Help — {{ hub.title }}
+
+> Step-by-step guides for {{ hub.title }} in {{ site.name }}.
+
+## Pages
+{% for item in collections.helpPages | pagesIn(hub.slug) %}
+- [{{ item.data.title }}]({{ site.baseUrl }}{{ item.url }}): {{ item.data.description }}
+{%- endfor %}
