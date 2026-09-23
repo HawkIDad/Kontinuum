@@ -95,7 +95,7 @@ Legend: **[x]** done and verified · **[ ]** open. Status as of 2026-09-19.
 - Notes: five features have no in-app control (due dates/priority, recurrence, attaching a template group to a notebook or the journal, property filter, removing a note from a notebook); their pages say so.
 - [ ] Verify page details against the running app (steps were written from source); covered by the W9 usability test.
 
-### Phase W6.5 — UI-automation screenshots — iPhone DONE; Mac deep flows open
+### Phase W6.5 — UI-automation screenshots — DONE except embedding Mac figures
 Closes the screenshot gap left by W4/W6: the launch-arg seam only reaches top-level screens, so every sheet and sub-screen (see `WebSite/docs/screenPaths.md`) needs a driven UI.
 - [x] **Approach:** `WebsiteScreenshotTests` in `NoteBytezUITests` (six flows), built on `NoteBytezUITestCase` and the page objects; each shot is an `XCTAttachment` named `<category>__<name>__<device>-<appearance>`.
 - [x] **Isolation:** skips unless `WEBSITE_SCREENSHOTS=1`; settings go in as launch environment.
@@ -104,17 +104,18 @@ Closes the screenshot gap left by W4/W6: the launch-arg seam only reaches top-le
 - [x] **Embed:** 37 `{% screenshot %}` figures in Help pages (`embeds.json`, `embedShots.mjs`); light/dark `<picture>` sources; lint fails on a missing image.
 - [x] **Mac (sidebar screens):** 10 screens × light/dark.
 - [x] Guarded the one iOS-only call (`XCUIDevice.orientation`) in `Phase2TemplatesAndPropertiesFeatureTests` so the UI-test target builds for macOS.
-- **Mac deep flows — open items** (root causes found in the first Mac probe: sidebar rows report *Disabled*, so the app window may not be key; Settings rows are table cells, not buttons; a coordinate tap does not focus the editor; some toolbar items sit in the overflow menu):
-  - [ ] Activate the app and confirm a key window before each flow (`app.activate()`); confirm sidebar navigation then registers.
-  - [ ] Mac interaction helpers: `click()` for taps, focus the editor by clicking it, find rows by any element type (cells), close sheets with Escape.
-  - [ ] Toolbar overflow: enlarge the window or use menu-bar commands (New Note, Command Palette, Quick Switcher, View menu) where a toolbar item is hidden.
-  - [ ] Fix each flow from its exported window dump: notes/linking, journal/promote, explore (incl. canvas), search (advanced toggle label), settings (rows, backups, plugins, sharing, sync status), getting started.
-  - [ ] Decide which iPhone-only screens are excluded on Mac and record them (file pickers, share and StoreKit system UI).
-  - [ ] Decide whether Help pages show Mac figures beside iPhone ones (extend the `screenshot` shortcode and `embeds.json` with a device).
-  - [ ] → **verify (Mac):** every iPhone shot name exists for Mac in both appearances at 1x and 2x, except a documented exclusion list; the normal UI-test run still skips the capture class.
+- [x] **Mac deep flows** (`WebsiteScreenshotMacTests`, Mac-only class on a shared `WebsiteScreenshotCase` base): driven by sidebar rows, menu-bar shortcuts (Command-P), toolbar buttons by label and list rows as buttons; every step asserts its target and stops the flow with a hierarchy dump attached.
+  - [x] Activate the app and confirm the sidebar before each flow (`app.activate()`) — this was the root cause of the earlier navigation failures.
+  - [x] Mac helpers: `click()`, editor focus by click, list rows found as buttons (`BEGINSWITH`/`CONTAINS`), Escape to close sheets, wait-until-hittable.
+  - [x] Toolbar overflow (`more toolbar items` pop-up) handled; the board's Add Card menu is clicked by its position.
+  - [x] Faster loop: `capture-ui.sh` now uses `build-for-testing` once and `test-without-building` per run (`SKIP_BUILD=1`, `APPEARANCES=light`, per-flow test name).
+  - [x] All six flows fixed from their dumps (notes/linking, journal, explore/canvas, search, settings, getting started) plus a sidebar-screens test.
+  - [x] Exclusions recorded (iPhone-only): `notebooks/promote-block-picker`, `notebooks/promote-to-notebook` (the Mac Promote a Block sheet lays its list out at zero size: rows exist but are not hittable — possible app layout bug worth a look), `graph/graph-force-mode` (Radial/Force picker not exposed to XCUITest on Mac), `sync-and-conflicts/sync-status` (sync glyph not exposed in the Mac toolbar).
+  - [x] → **verify (Mac):** every iPhone shot name exists for Mac in both appearances at 1x and 2x, except the four exclusions above; the normal UI-test run still skips the capture class (`WEBSITE_SCREENSHOTS=1` gate).
+  - [ ] Decide whether Help pages show Mac figures beside the iPhone ones (extend the `screenshot` shortcode and `embeds.json` with a device). Mac images are captured but not embedded yet.
 - **Known limits:** screens that show today's date (journal, graph) are not byte-stable across days; Mac liquid-glass controls vary by a few pixels.
 
-### Phase W7 — SEO / AI-retrieval wiring (= Wiki 1.5, site-wide) — DONE except final audit sign-off
+### Phase W7 — SEO / AI-retrieval wiring (= Wiki 1.5, site-wide) — DONE except `baseUrl`
 - [x] `sitemap.xml` (every page, incl. generated hubs; `lastmod` from `lastReviewed`), `robots.txt` with the sitemap line.
 - [x] Per-page canonical, meta description (help pages get a category suffix so all are 50–300 chars), Open Graph + Twitter tags, `hreflang` (`en`, `x-default`).
 - [x] `llms.txt` at the root (marketing + Help hubs) and a per-section index at `/en/help/<category>/llms.txt`.
@@ -122,22 +123,46 @@ Closes the screenshot gap left by W4/W6: the launch-arg seam only reaches top-le
 - [x] `npm run check:seo` (tests first): tags, one h1, sitemap coverage, robots, llms.txt links resolve, readable content without JavaScript, JSON-LD structure.
 - Deviation: how-to pages keep the fixed Article Standard headings (Purpose, Prerequisites, Steps, Expected result, Related); question-shaped headings are used on concept pages, marketing FAQs and the page titles. Say if you want how-to headings rewritten as questions.
 - [x] → **verify:** `check:seo` passes on all 131 pages; Lighthouse SEO / Best Practices ≥ 95 everywhere (`npm run audit`).
-- [ ] Set `baseUrl` in `site.json` (sitemap, canonicals and llms.txt still point at `TODO-DOMAIN`).
-- [ ] Rich Results Test / Schema.org validator on a sample of pages (external).
+- [x] Re-verified 2026-09-21 after the W6.5 Mac screenshot batch landed (new/updated PNGs under `content/en/_assets/`, still unembedded per W6.5): rebuilt (131 pages, unchanged), `check:seo`, `check:links`, `lint`, `test`, `check:pages` all pass; `audit` spot-checked on `/`, `/pricing/`, `/privacy/`, `/terms/`, and the `getting-started` Help pages (axe + Lighthouse ≥ 0.95, no regressions). The new assets don't touch any page HTML, so they're inert for SEO until W6.5's embedding decision ships.
+- [x] Rich Results Test / Schema.org validator on a sample of pages (external). Google's Rich Results Test now requires sign-in for the code-paste path, so used `validator.schema.org`'s code-snippet mode instead against the rendered JSON-LD from the home page (BreadcrumbList, WebSite+SearchAction, FAQPage), a HowTo page (`getting-started/create-select-library`), and a concept page (`concepts/blocks-and-anchors`, TechArticle+FAQPage): 0 errors, 0 warnings on every block, across every JSON-LD type the site emits.
+- [ ] Set `baseUrl` in `site.json` (sitemap, canonicals and llms.txt still point at `TODO-DOMAIN`) — blocked on the host/domain decision (D6); not something to fill with a placeholder.
 
-### Phase W8 — Accessibility audit (= Wiki 1.6, site-wide)
-- CI budgets on every page; manual keyboard, VoiceOver + Safari, NVDA + Firefox, 200%/400% zoom, reduced-motion, forced-colors; 2.4.11, 2.5.8, 1.4.1 checks.
-- → **verify:** signed checklist, zero AA violations, CI green.
+### Phase W8 — Accessibility audit (= Wiki 1.6, site-wide) — DONE except VoiceOver/NVDA
+- [x] CI budgets: `npm run audit` (axe-core + Lighthouse ≥ 0.95) run on all 131 pages — zero violations.
+- [x] 2.4.11, 2.5.8, 1.4.1, `prefers-reduced-motion`, `forced-colors` — verified by code review of `assets/site.css` and the shared layout.
+- [x] Keyboard-only pass: tab order, focus visibility, Pagefind search, no traps. **Found and fixed a real defect the automated budget missed:** the skip-link's target (`<main>`) had no `tabindex`, so activating "Skip to content" scrolled the page but never moved keyboard focus off the link — the next Tab restarted at the top of the document instead of landing in the content. Fixed with `tabindex="-1"` in `_includes/base.njk`; regression-tested (`checkPages.js` → `skipLinkTargetIsFocusable`, wired into `npm run check:pages`).
+- [x] 200%/400% zoom reflow (320px / 640px) — no horizontal scroll or content loss, including a table-heavy reference page.
+- Full detail and the sign-off table: `WebSite/docs/accessibilityAudit.md`.
+- [ ] VoiceOver + Safari and NVDA + Firefox — genuinely need a human with real assistive tech (no Mac VoiceOver driver or Windows/NVDA available in this environment); checklist and suggested pages are in the audit doc.
+- → **verify:** signed checklist (pending the two AT passes above), zero AA violations ✔, CI green ✔.
 
-### Phase W9 — Usability test (= Wiki 1.7 plus prospect tasks)
-- 5 participants, fixed task list (Help tasks + ≥ 2 prospect tasks), site-only.
-- → **verify:** ≥ 80% completion; failures fixed and re-tested; report filed in `WebSite/docs/`.
+### Phase W9 — Usability test (= Wiki 1.7 plus prospect tasks) — task list ready; N=5 run pending
+- [x] Fixed task list drafted: 2 prospect tasks (cost/trial, sync-conflict — D5/SF2) + one anchor task per persona journey + one general-search task. `WebSite/docs/usabilityTest.md`.
+- [x] Solo dry run against the live site (not a substitute for the real test — see below): found and fixed a double-escaped `&` on all 7 "X & Y" category hub pages (title, meta description, OG tags, on-page H1); added a site-wide regression guard (`check:seo` now fails on any double-escaped entity). Also found, and left for a product call rather than a blind fix: Pagefind ranks "connect two notes" toward Canvas ahead of Linking/wikilinks.
+- [ ] **Run the actual N=5 test.** This needs five real people unfamiliar with the product — nothing in this environment can substitute for that. Instructions, recruiting notes, and the results table to fill in are in `usabilityTest.md`.
+- → **verify:** ≥ 80% completion; failures fixed and re-tested; report filed in `WebSite/docs/` — blocked on running the test with real participants.
 
-### Phase W10 — Build, CI, release gate (= Wiki 1.9)
-- CI: build → axe/Lighthouse budgets → HTML validate → link-check → JSON-LD validate → Pagefind → publish `WebSite/site/_site/`.
-- Release gate for `appliesTo` per Wiki R5 (paths remapped).
-- Dry-run deploy to a preview URL on any candidate host.
-- → **verify:** CI green on a sample content PR; preview renders correctly.
+### Phase W10 — Build, CI, release gate (= Wiki 1.9) — preview deploy done; CI pipeline + release gate not started
+- [x] **Dry-run deploy to a preview host**, 2026-09-22: the household Raspberry Pi (`g9Wiki`, `192.168.1.81`, Debian 12/Docker, already running Wiki.js + Postgres in containers). Steps taken:
+  1. **Access.** SSH to the Pi was password-only; generated a dedicated local key (`~/.ssh/notebytez_pi`, alias `notebytez-pi` in `~/.ssh/config`, user `dlcollison`) and authorized it (`ssh-copy-id`) so later steps don't need a password each time.
+  2. **Surveyed first, changed nothing yet.** Confirmed `/media/data1` and `/media/data2` are the two NVMe mounts; Wiki.js (`requarks/wiki`, port 3000) and Postgres (port 5432) run as Docker Compose services under `<drive>/docker/<service>/docker-compose.yml`, with their data under `<drive>/<service>/`. No web server (nginx/Apache/Caddy) on the host; no port conflict with 8080.
+  3. **Built a preview copy.** Temporarily set `baseUrl` in `site/_data/site.json` to `http://192.168.1.81:8080` so canonical/sitemap/OG tags resolve on the preview host, ran `npm run build`, then reverted `baseUrl` back to `https://TODO-DOMAIN` and rebuilt again once the preview copy was shipped — the repo's working tree still reflects the deferred production-domain decision (D6, W7).
+  4. **Shipped it**, following the host's own convention: `rsync -az --delete` the built `_site/` to `/media/data1/notebytez-website/site/` (43 MB); a new `docker-compose.yml` (nginx:alpine, read-only bind mount of that directory, `restart: unless-stopped`, same logging config as the existing services) to `/media/data1/docker/notebytez-website/docker-compose.yml` — kept in the repo too, at `WebSite/docs/deploy/notebytez-website.docker-compose.yml`. `docker compose up -d` on the Pi started it as container `notebytez-website` on port **8080**, isolated from `wikinetwork` (no need for it to talk to Wiki.js or Postgres).
+  5. **Verified**: HTTP 200 for `/`, `/en/help/`, and a Pagefind asset, both from the Pi itself and from the Mac; loaded it in a browser from the Mac and confirmed navigation and live search work.
+  - **Access from your Mac:** **http://192.168.1.81:8080/** — works from any device on the same LAN, no VPN or port-forwarding involved.
+  - **To redeploy after content changes:** rebuild (`cd WebSite/site && npm run build`) and `rsync -az --delete WebSite/site/_site/ notebytez-pi:/media/data1/notebytez-website/site/` — the running container serves the directory live, no restart needed. Say the word if you'd like this wrapped in a one-line script.
+  - **To stop/remove:** `ssh notebytez-pi 'cd /media/data1/docker/notebytez-website && docker compose down'` (site files under `/media/data1/notebytez-website/` are untouched by this).
+  - [ ] **CI pipeline** (build → axe/Lighthouse budgets → HTML validate → link-check → JSON-LD validate → Pagefind → publish) — not started. All the underlying checks exist and pass as `npm` scripts (`build`, `audit`, `check:seo` (includes JSON-LD), `check:links`, `lint`); what's missing is wiring them into an actual CI workflow (e.g. `.github/workflows/`) that gates on them.
+  - [ ] **Release gate for `appliesTo`** (Wiki R5, paths remapped) — not started, no script exists yet.
+  - → **verify:** CI green on a sample content PR (blocked on the pipeline above); preview renders correctly ✔ (this Pi deploy).
+
+### Phase W10.5 — Redeploy automation — DONE
+- [x] `WebSite/tools/deploy/redeploy-pi.sh`: rebuild the site with the Pi's `baseUrl`, rsync `_site/` to `/media/data1/notebytez-website/site/`, then always restore the repo's real (deferred) `baseUrl` — via `trap ... EXIT`, so it restores even if the rsync fails partway. One command, no arguments; the running container serves the directory live, so no container restart is needed.
+- [x] Run 2026-09-23: rebuilt (131 pages) and pushed. `git status` shows no diff on `site.json` afterward; verified `http://192.168.1.81:8080/` returns 200 with the current build.
+- → **verify:** `tools/deploy/redeploy-pi.sh` run clean; site reachable at `http://192.168.1.81:8080/` afterward; `site.json` unchanged in the repo ✔.
+
+### Phase W10.5 - Logo
+1. Incorporate the NoteBytez Logo NoteBytex/images/logo/NoteByterz-Artwork-1024x1024.png into the header of the web page.
 
 ### Phase W11 — Definition of Done
 - Success Factors 1–8 pass; style guide promoted; release-gate check active.

@@ -1,5 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
-// Built-site checks (W5): footer legal/support links on every page; App Store CTA on marketing pages.
+// Built-site checks: footer legal/support links (W5) and App Store CTA (W5) on every page;
+// skip-link target is actually focusable (W8) — axe-core's own skip-link rule only checks the
+// target exists and is visible to screen readers, not that it can receive keyboard focus.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -14,6 +16,13 @@ export function missingFooterLinks(html) {
 
 export function hasAppStoreCta(html, appStoreUrl) {
   return html.includes(`href="${appStoreUrl}"`);
+}
+
+export function skipLinkTargetIsFocusable(html) {
+  const targetId = /<a class="skip-link" href="#([^"]+)"/.exec(html)?.[1];
+  if (!targetId) return false;
+  const tag = new RegExp(`<[a-z0-9]+\\b[^>]*\\bid="${targetId}"[^>]*>`, "i").exec(html)?.[0] ?? "";
+  return /\btabindex="-1"/.test(tag);
 }
 
 function pages(directory = siteDir) {
@@ -33,10 +42,11 @@ function main() {
     const relative = path.slice(siteDir.length);
     missingFooterLinks(html).forEach((link) => errors.push(`${relative}: footer missing ${link}`));
     if (ctaPages.includes(relative) && !hasAppStoreCta(html, appStoreUrl)) errors.push(`${relative}: no App Store CTA`);
+    if (!skipLinkTargetIsFocusable(html)) errors.push(`${relative}: skip-link target is not focusable (needs tabindex="-1")`);
   }
   errors.forEach((error) => console.error(`✖ ${error}`));
   if (errors.length > 0) process.exit(1);
-  console.log("✔ footer links and App Store CTA present");
+  console.log("✔ footer links, App Store CTA, and a focusable skip-link target are present");
 }
 
 if (process.argv[1] === new URL(import.meta.url).pathname) main();

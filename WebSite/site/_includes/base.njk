@@ -40,7 +40,7 @@
   {% if page.url != "/" %}
   {% include "components/breadcrumb.njk" %}
   {% endif %}
-  <main id="main" data-pagefind-body>
+  <main id="main" tabindex="-1" data-pagefind-body>
     {{ content | safe }}
   </main>
   <footer class="site-footer" data-pagefind-ignore>

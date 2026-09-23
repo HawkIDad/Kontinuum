@@ -6,20 +6,10 @@
 
 import XCTest
 
-/// Captures the website's Help screenshots (WebSite20260919v1-WebSite.md Phase W6.5). Not a
-/// regression test: it skips unless `WEBSITE_SCREENSHOTS=1`, and `WebSite/tools/screenshots/capture.sh`
-/// runs it, then extracts the attachments named `<category>__<name>__<device>-<appearance>`.
-/// Settings reach the app as launch *environment* (a Mac `-Key value` launch argument suppresses the window).
-final class WebsiteScreenshotTests: NoteBytezUITestCase {
-
-    private let environment = ProcessInfo.processInfo.environment
-
-    override func setUpWithError() throws {
-        try XCTSkipUnless(environment["WEBSITE_SCREENSHOTS"] == "1", "Website screenshot capture only")
-        try super.setUpWithError()
-        continueAfterFailure = true
-        XCUIDevice.shared.appearance = isDark ? .dark : .light
-    }
+/// iPhone flows for the website screenshots (see `WebsiteScreenshotCase`). Not a regression test:
+/// it skips unless `WEBSITE_SCREENSHOTS=1`; `WebSite/tools/screenshots/capture-ui.sh` runs it.
+#if os(iOS)
+final class WebsiteScreenshotTests: WebsiteScreenshotCase {
 
     // MARK: - Flows (one launch per flow, several screens each)
 
@@ -157,16 +147,6 @@ final class WebsiteScreenshotTests: NoteBytezUITestCase {
 
     // MARK: - Helpers
 
-    private var isDark: Bool { environment["WEBSITE_APPEARANCE"] == "dark" }
-
-    private var deviceName: String {
-#if os(macOS)
-        "mac"
-#else
-        "iphone"
-#endif
-    }
-
     /// The Explore tab has no accessibility identifier on iPhone, so open it by its label.
     /// Tab bar buttons carry no identifier on iPhone, so open them by label (sidebar rows on Mac/iPad).
     private func openTab(_ name: String) {
@@ -195,12 +175,6 @@ final class WebsiteScreenshotTests: NoteBytezUITestCase {
     private func launchEmpty() {
         app.launchEnvironment["ResetTemplateOnboarding"] = "1"
         launch()
-    }
-
-    private func launchSeeded() {
-        app.launchEnvironment["SeedScreenshotNotes"] = environment["WEBSITE_SEED_NOTES"] ?? "{}"
-        launch()
-        sleep(4)
     }
 
     private func open(_ row: String, shot: (String, String), keepOpen: Bool = false) {
@@ -236,17 +210,5 @@ final class WebsiteScreenshotTests: NoteBytezUITestCase {
         sleep(1)
     }
 
-    private func shoot(_ category: String, _ name: String) {
-        sleep(1)
-#if os(macOS)
-        let screenshot = app.windows.firstMatch.screenshot()
-#else
-        let screenshot = app.screenshot()
-#endif
-        let attachment = XCTAttachment(screenshot: screenshot)
-        attachment.name = "\(category)__\(name)__\(deviceName)-\(isDark ? "dark" : "light")"
-        attachment.lifetime = .keepAlways
-        add(attachment)
-    }
-
 }
+#endif

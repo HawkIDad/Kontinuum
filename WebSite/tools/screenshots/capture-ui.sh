@@ -2,6 +2,7 @@
 # capture-ui.sh — drives the app with UI automation (WebsiteScreenshotTests) and exports the
 # screenshots for every sheet and sub-screen. WebSite20260919v1-WebSite.md Phase W6.5.
 # Usage: capture-ui.sh [iphone|mac] [TestName]   (default: iphone, all flows)
+# Env:   APPEARANCES="light" to run one appearance; SKIP_BUILD=1 to reuse the last build (fast iteration).
 set -euo pipefail
 
 device="${1:-iphone}"
@@ -24,14 +25,23 @@ if [ "$device" = "iphone" ]; then
 else
   destination="platform=macOS"
 fi
-target="NoteBytezUITests/WebsiteScreenshotTests${only:+/$only}"
+if [ "$device" = "mac" ]; then suite="WebsiteScreenshotMacTests"; else suite="WebsiteScreenshotTests"; fi
+target="NoteBytezUITests/$suite${only:+/$only}"
+build_dir="$here/.build-ui"
+
+# Build once; every run below reuses it (the UI-test bundle rebuilds only when sources change).
+if [ -z "${SKIP_BUILD:-}" ]; then
+  echo "▶ Building tests for $device…"
+  xcodebuild build-for-testing -quiet -project "$repo/NoteBytez.xcodeproj" -scheme NoteBytez \
+    -destination "$destination" -derivedDataPath "$build_dir" >"$work/build.log" 2>&1 || { tail -20 "$work/build.log"; exit 1; }
+fi
 
 for appearance in ${APPEARANCES:-light dark}; do
   echo "▶ $device / $appearance"
   result="$work/$appearance.xcresult"
   TEST_RUNNER_WEBSITE_SCREENSHOTS=1 TEST_RUNNER_WEBSITE_APPEARANCE="$appearance" TEST_RUNNER_WEBSITE_SEED_NOTES="$notes" \
-    xcodebuild test -quiet -project "$repo/NoteBytez.xcodeproj" -scheme NoteBytez -destination "$destination" \
-    -only-testing:"$target" -resultBundlePath "$result" >"$work/$appearance.log" 2>&1 || echo "  (some steps failed; see $work/$appearance.log)"
+    xcodebuild test-without-building -quiet -project "$repo/NoteBytez.xcodeproj" -scheme NoteBytez -destination "$destination" \
+    -derivedDataPath "$build_dir" -only-testing:"$target" -resultBundlePath "$result" >"$work/$appearance.log" 2>&1 || echo "  (some steps failed; see $work/$appearance.log)"
   xcrun xcresulttool export attachments --path "$result" --output-path "$work/$appearance-att" >/dev/null
   node "$here/exportShots.mjs" "$work/$appearance-att" "$assets" "$device"
 done

@@ -21,6 +21,11 @@ test("page seo: reports missing canonical, second h1, short description and thin
   assert.match(errors, /no readable content/);
 });
 
+test("page seo: reports a double-escaped entity", () => {
+  const bad = goodPage.replace("<h1>T</h1>", "<h1>Search &amp;amp; Navigation</h1>");
+  assert.match(checkPageSeo(bad, "/a/").join(), /double-escaped/);
+});
+
 test("sitemap, llms and robots parsing", () => {
   assert.deepEqual(sitemapUrls("<urlset><url><loc>https://x.test/a/</loc></url><url><loc>https://x.test/b/</loc></url></urlset>"), ["https://x.test/a/", "https://x.test/b/"]);
   assert.deepEqual(llmsLinks("# T\n- [A](https://x.test/a/): desc\n- [B](https://x.test/b/)"), ["https://x.test/a/", "https://x.test/b/"]);

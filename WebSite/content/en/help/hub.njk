@@ -6,6 +6,9 @@ pagination:
   alias: hub
 permalink: /en/help/{{ hub.slug }}/
 eleventyComputed:
-  title: "{{ hub.title }}"
-  description: "Step-by-step NoteBytez help guides for {{ hub.title }}: every how-to in this topic, with prerequisites, steps and the expected result."
+  # | safe: this front-matter string is itself rendered through njk (which autoescapes), and
+  # title/description are escaped again wherever base.njk outputs them — without | safe, a title
+  # like "Search & Navigation" becomes "Search &amp;amp; Navigation" on the page.
+  title: "{{ hub.title | safe }}"
+  description: "Step-by-step NoteBytez help guides for {{ hub.title | safe }}: every how-to in this topic, with prerequisites, steps and the expected result."
 ---

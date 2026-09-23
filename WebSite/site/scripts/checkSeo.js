@@ -13,6 +13,7 @@ export function checkPageSeo(html, url) {
   const fail = (message) => errors.push(`${url}: ${message}`);
   if (!/<html lang="[a-z-]+"/.test(html)) fail("missing lang on <html>");
   if (!/<link rel="canonical" href="[^"]+"/.test(html)) fail("missing canonical link");
+  if (/&amp;(amp;|lt;|gt;|quot;|#39;)/.test(html)) fail("double-escaped HTML entity (e.g. &amp;amp;) — check for a raw {{ }} interpolation missing | safe in front matter");
   const description = /<meta name="description" content="([^"]*)"/.exec(html)?.[1] ?? "";
   if (description.length < 50 || description.length > 300) fail(`meta description length ${description.length} (want 50–300)`);
   for (const tag of ['property="og:title"', 'property="og:description"', 'property="og:url"', 'name="twitter:card"']) {

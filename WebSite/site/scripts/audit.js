@@ -53,7 +53,11 @@ async function main() {
   const base = `http://localhost:${server.address().port}`;
   const browser = await puppeteer.launch({ executablePath: chromePath, headless: true });
   let failureCount = 0;
-  for (const path of pagePaths()) {
+  // AUDIT_FILTER: comma-separated substrings (page must include at least one). "/" matches only the
+  // home page exactly; a leading "=" requires an exact match (e.g. "=/en/help/" for just the hub page).
+  const filters = (process.env.AUDIT_FILTER ?? "").split(",").filter(Boolean);
+  const matches = (page, filter) => (filter === "/" || filter.startsWith("=") ? page === filter.replace(/^=/, "") : page.includes(filter));
+  for (const path of pagePaths().filter((page) => filters.length === 0 || filters.some((filter) => matches(page, filter)))) {
     const html = readFileSync(join(siteDir, path, "index.html"), "utf8");
     const failures = [...validateJsonLd(html), ...(await axeViolations(browser, base + path)), ...(await lighthouseFailures(browser, base + path))];
     failureCount += failures.length;
