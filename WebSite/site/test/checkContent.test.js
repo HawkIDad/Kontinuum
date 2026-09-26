@@ -1,7 +1,7 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
 import test from "node:test";
 import assert from "node:assert/strict";
-import { validateHowToStructure, findScreenshotRefs, validateScreenshotRefs } from "../scripts/checkContent.js";
+import { validateHowToStructure, findScreenshotRefs, validateScreenshotRefs, findPluginSampleRefs, validatePluginSampleRefs } from "../scripts/checkContent.js";
 import { extractInternalLinks, findBrokenLinks, findOrphans } from "../scripts/checkLinks.js";
 
 const good = "## Purpose\n\nx\n\n## Prerequisites\n\ny\n\n## Steps\n\n1. a\n2. b\n\n## Expected result\n\nz\n\n## Related\n\n- l\n";
@@ -38,4 +38,11 @@ test("screenshots: references are found and each needs a 1x, @2x and dark varian
   assert.deepEqual(validateScreenshotRefs(["tags/tag-browser-iphone-light.png"], (file) => present.has(file), "p.md"), []);
   present.delete("tags/tag-browser-iphone-dark@2x.png");
   assert.match(validateScreenshotRefs(["tags/tag-browser-iphone-light.png"], (file) => present.has(file), "p.md").join(), /missing image: tags\/tag-browser-iphone-dark@2x.png/);
+});
+
+test("plugin samples: references are found and each must exist", () => {
+  const text = 'Run {% pluginSample "first-plugin" %} then {% pluginSample "library-report" %}';
+  assert.deepEqual(findPluginSampleRefs(text), ["first-plugin", "library-report"]);
+  assert.deepEqual(validatePluginSampleRefs(["first-plugin"], () => true, "p.md"), []);
+  assert.match(validatePluginSampleRefs(["gone"], () => false, "p.md").join(), /missing plugin sample: gone\.js/);
 });

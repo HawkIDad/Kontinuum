@@ -12,6 +12,7 @@ import SwiftUI
 struct PluginPermissionRow: View {
 
     let plugin: Plugin
+    var registrationFailure: String?
     let onToggleEnabled: (Bool) -> Void
 
     private var isEnabled: Bool { plugin.isEnabled ?? false }
@@ -32,6 +33,13 @@ struct PluginPermissionRow: View {
             Text(grantedPermissionNames)
                 .font(.caption)
                 .foregroundStyle(.secondary)
+
+            if let registrationFailure {
+                Label(registrationFailure, systemImage: "exclamationmark.triangle")
+                    .font(.caption)
+                    .foregroundStyle(.orange)
+                    .accessibilityIdentifier("plugin.registrationFailure")
+            }
         }
         .padding(.vertical, 2)
     }

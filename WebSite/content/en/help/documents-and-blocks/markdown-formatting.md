@@ -39,3 +39,4 @@ The preview shows headings, emphasis, lists, quotes and code formatted.
 
 - [Markdown and link syntax](/en/help/reference/markdown-syntax/)
 - [Your data is plain Markdown](/en/help/concepts/plain-markdown-data/)
+- [Learn Markdown](/en/help/journeys/learn-markdown/)

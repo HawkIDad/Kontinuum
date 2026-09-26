@@ -41,6 +41,12 @@ extension Notification.Name {
     /// picker in place, same shape as `noteBytezTriggerNewCanvasBoard`.
     static let noteBytezTriggerBindCanvas = Notification.Name("noteBytezTriggerBindCanvas")
 
+    /// Posted by `ContentView` with a `PluginCommand` as the notification's `object` when one is
+    /// picked in the Command Palette. Handled by whichever note view is visible
+    /// (`.pluginCommandRunner`), since only it owns the live `DocumentViewModel` the plugin's
+    /// writes must go through.
+    static let noteBytezRunPluginCommand = Notification.Name("noteBytezRunPluginCommand")
+
     /// Posted by `DocumentView`/`TodayJournalView` on appear (with the `Document` as `object`)
     /// and disappear (`object: nil`), so `ContentView` knows whether "Send current note's map
     /// to Canvas" (Decision 4, Phase 5.5) has a document to act on.

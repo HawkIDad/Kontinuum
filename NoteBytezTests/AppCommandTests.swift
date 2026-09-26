@@ -5,6 +5,7 @@
 //
 
 import Testing
+import Foundation
 @testable import NoteBytez
 
 struct AppCommandTests {
@@ -50,6 +51,34 @@ struct AppCommandTests {
 
     @Test func anActionCommandsSystemImageMatchesItsAction() {
         #expect(AppCommand.action(.syncNow).systemImage == AppAction.syncNow.systemImage)
+    }
+
+    // MARK: Plugin commands
+
+    private var wordCount: PluginCommand {
+        PluginCommand(pluginId: UUID(), pluginName: "Word Count", commandName: "Insert Word Count")
+    }
+
+    @Test func aPluginCommandIsNotPartOfTheStaticAllCasesSet() {
+        let command = AppCommand.plugin(wordCount)
+        #expect(!AppCommand.allCases.contains { $0.id == command.id })
+    }
+
+    @Test func aPluginCommandsTitleIsPluginNameColonCommandName() {
+        #expect(AppCommand.plugin(wordCount).title == "Word Count: Insert Word Count")
+    }
+
+    @Test func aPluginCommandsIdIsUniquePerPluginAndCommand() {
+        let first = PluginCommand(pluginId: UUID(), pluginName: "A", commandName: "Run")
+        let second = PluginCommand(pluginId: UUID(), pluginName: "A", commandName: "Run")
+        #expect(AppCommand.plugin(first).id != AppCommand.plugin(second).id)
+    }
+
+    @Test func aPluginCommandHasANonEmptySystemImageAndFuzzyMatchesItsTitle() {
+        let command = AppCommand.plugin(wordCount)
+        #expect(!command.systemImage.isEmpty)
+        #expect(command.matches(query: "wordcount"))
+        #expect(!command.matches(query: "xyz"))
     }
 
 }

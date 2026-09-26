@@ -38,3 +38,4 @@ You can reach every part of the app from the tab bar or the sidebar.
 - [Write in today's journal](/en/help/capture-and-journal/todays-journal/)
 - [Browse your notebooks](/en/help/notebooks/notebook-browser/)
 - [Check sync status](/en/help/sync-and-conflicts/sync-status/)
+- [Learn Markdown](/en/help/journeys/learn-markdown/)

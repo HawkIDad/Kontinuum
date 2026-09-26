@@ -8,9 +8,10 @@
 
 # NoteBytez Plugin SDK (Preview)
 
-> **Breaking change (pre-release rename):** the bridge global was named `noteBytez` in earlier
-> pre-release builds. It is now `noteBytez`. Update any script written against the old name —
-> there is no compatibility alias.
+> **Breaking change (pre-release rename):** the bridge global was renamed during the app's
+> pre-release rename and is now `noteBytez`. Update any script written against a build from before
+> that rename — there is no compatibility alias. (The old name is not repeated here: the rename
+> gate, `Scripts/verify-rename.sh`, rejects it in shipping docs.)
 
 A plugin is a small `JavaScriptCore` script, sandboxed behind a minimal, explicitly-permissioned
 bridge. There is no filesystem access, no network access, and no background execution — a script

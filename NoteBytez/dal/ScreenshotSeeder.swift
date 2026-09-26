@@ -50,13 +50,41 @@ enum ScreenshotSeeder {
         return seed(folderURL: folderURL, in: context, defaults: defaults)
     }
 
-    /// Seeds from whichever launch setting is present; returns whether a library was created.
-    static func seedFromSettings(in context: ModelContext) -> Bool {
-        if let notesJSON = setting("SeedScreenshotNotes") {
-            return seed(notesJSON: notesJSON, in: context) != nil
+    /// Installs plugins from a JSON array of `{ "name", "script", "permissions": ["addCommand", ...] }`
+    /// (`SeedScreenshotPlugins`), so plugin-command flows don't depend on typing scripts into the
+    /// install sheet. Unknown permission names are skipped. Returns how many were installed.
+    @discardableResult
+    static func seedPlugins(json: String, libraryId: UUID, in context: ModelContext) -> Int {
+        struct Seed: Decodable {
+            let name: String
+            let script: String
+            let permissions: [String]
         }
-        guard let folderPath = setting("SeedScreenshotLibrary") else { return false }
-        return seed(folderURL: URL(fileURLWithPath: folderPath, isDirectory: true), in: context) != nil
+        guard let seeds = try? JSONDecoder().decode([Seed].self, from: Data(json.utf8)) else { return 0 }
+        for seed in seeds {
+            let permissions = Set(seed.permissions.compactMap(PluginPermission.init(rawValue:)))
+            PluginDAL.install(name: seed.name, entryScript: seed.script, permissions: permissions, libraryId: libraryId, in: context)
+        }
+        try? context.save()
+        return seeds.count
+    }
+
+    /// Seeds from whichever launch setting is present (plus `SeedScreenshotPlugins` into the
+    /// seeded library); returns whether a library was created.
+    static func seedFromSettings(in context: ModelContext, environment: [String: String] = ProcessInfo.processInfo.environment, defaults: UserDefaults = .standard) -> Bool {
+        let libraryId: UUID?
+        if let notesJSON = setting("SeedScreenshotNotes", environment: environment, defaults: defaults) {
+            libraryId = seed(notesJSON: notesJSON, in: context, defaults: defaults)
+        } else if let folderPath = setting("SeedScreenshotLibrary", environment: environment, defaults: defaults) {
+            libraryId = seed(folderURL: URL(fileURLWithPath: folderPath, isDirectory: true), in: context, defaults: defaults)
+        } else {
+            return false
+        }
+        guard let libraryId else { return false }
+        if let pluginsJSON = setting("SeedScreenshotPlugins", environment: environment, defaults: defaults) {
+            seedPlugins(json: pluginsJSON, libraryId: libraryId, in: context)
+        }
+        return true
     }
 
     static func destination(named name: String?) -> AppDestination? {

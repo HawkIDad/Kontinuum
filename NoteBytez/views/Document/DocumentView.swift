@@ -289,6 +289,14 @@ struct DocumentView: View {
                 }
                 .buttonStyle(.bordered)
                 .accessibilityLabel("Add Attachment")
+
+                Button {
+                    NotificationCenter.default.post(name: .noteBytezOpenCommandPalette, object: nil)
+                } label: {
+                    Image(systemName: "command")
+                }
+                .buttonStyle(.bordered)
+                .accessibilityLabel("Command Palette")
             }
             .padding()
         }
@@ -304,6 +312,7 @@ struct DocumentView: View {
             viewModel.save()
             NotificationCenter.default.post(name: .noteBytezActiveDocumentChanged, object: nil)
         }
+        .pluginCommandRunner(documentViewModel: viewModel)
         .sheet(isPresented: $isPresentingTemplatePicker) {
             if let templateViewModel {
                 TemplatePickerView(scope: viewModel.templatePickerScope(), viewModel: templateViewModel, onSelect: { template in

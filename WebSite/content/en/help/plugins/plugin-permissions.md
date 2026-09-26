@@ -26,6 +26,7 @@ None.
 1. When adding a plugin, look at **Permissions**.
 2. Each permission is a separate switch: **Read library**, **Write current note** and **Add command**.
 3. Grant only what the plugin needs.
+4. Choose your permissions carefully: they are fixed when you add the plugin. To change them, remove the plugin and add it again.
 
 {% screenshot "plugins/add-plugin-iphone-light.png", "The Add Plugin screen with a name field and a switch for each permission.", "Plugin permissions." %}
 
@@ -37,3 +38,5 @@ A plugin can do only what you have switched on.
 
 - [Add and enable a plugin](/en/help/plugins/enable-plugin/)
 - [What plugins can and cannot do](/en/help/plugins/plugin-sdk-overview/)
+- [What scripts can see](/en/help/plugins/what-scripts-can-see/)
+- [Scripting API overview](/en/help/plugins/scripting-api/)

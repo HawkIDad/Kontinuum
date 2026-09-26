@@ -30,3 +30,4 @@ Wikilinks and tags use the same syntax as Obsidian and Logseq. Notebook membersh
 - [Export your whole library](/en/help/markdown-import-export/export-library/)
 - [How notebooks survive export and import](/en/help/markdown-import-export/notebook-round-trip/)
 - [Markdown and link syntax](/en/help/reference/markdown-syntax/)
+- [Learn Markdown](/en/help/journeys/learn-markdown/)

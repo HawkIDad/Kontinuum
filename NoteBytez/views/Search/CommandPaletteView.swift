@@ -47,6 +47,7 @@ struct CommandPaletteView: View {
             }
             .navigationTitle("Command Palette")
             .noteBytezInlineNavigationTitle()
+            .task { await viewModel.loadPluginCommands() }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }

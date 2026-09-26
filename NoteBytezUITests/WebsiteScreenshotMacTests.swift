@@ -153,6 +153,30 @@ final class WebsiteScreenshotMacTests: WebsiteScreenshotCase {
         shoot("getting-started", "role-picker")
     }
 
+    /// Plugin commands end to end (NoteBytez20260924v1-PluginCommands.md): with three seeded plugins,
+    /// see the registration failure, run one command from the palette and see the note change, then
+    /// see the run-time failure alert.
+    func testPluginCommandFlow() throws {
+        launchSeeded(withPlugins: true)
+        app.activate()
+        _ = try require(app.sidebarRow("Today"), "sidebar row Today")
+        try openSidebar("Settings")
+        try click(text: "Plugins")
+        _ = try require(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@ OR value CONTAINS %@", "no commands for you", "no commands for you")).firstMatch, "registration failure caption")
+        shoot("plugins", "plugin-registration-error")
+
+        try openSidebar("Today")
+        let editor = try require(app.textViews.firstMatch, "journal editor")
+        try runPaletteCommand("Say Hello", screenshot: "palette-plugin-command")
+        let hasAppended = NSPredicate(format: "value CONTAINS %@", "Hello from a plugin")
+        wait(for: [expectation(for: hasAppended, evaluatedWith: editor)], timeout: 8)
+
+        try runPaletteCommand("Explode", screenshot: nil)
+        _ = try require(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@ OR value CONTAINS %@", "boom", "boom")).firstMatch, "alert text names the error")
+        shoot("plugins", "plugin-run-error")
+        try require(app.sheets.buttons["OK"], "alert OK").click() // scoped: the Touch Bar also has an OK
+    }
+
     // MARK: - Helpers
 
     private func launchAndActivate() throws {
@@ -225,6 +249,18 @@ final class WebsiteScreenshotMacTests: WebsiteScreenshotCase {
             guard Date() < deadline else { XCTFail("Never became hittable: \(element)"); throw MacFlowError.missing("hittable \(element)") }
             usleep(300_000)
         }
+    }
+
+    /// ⌘P, filter to `title`, optionally capture the palette, then Return to run the top hit.
+    private func runPaletteCommand(_ title: String, screenshot: String?) throws {
+        app.typeKey("p", modifierFlags: .command)
+        let field = try require(app.textFields["Type a command or search…"], "palette field")
+        field.click()
+        field.typeText(title)
+        _ = try require(app.buttons.matching(NSPredicate(format: "label CONTAINS %@", title)).firstMatch, "palette row \(title)")
+        if let screenshot { shoot("plugins", screenshot) }
+        app.typeKey(.return, modifierFlags: [])
+        sleep(2)
     }
 
     private func closeSheet() {

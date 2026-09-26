@@ -56,14 +56,26 @@ enum AppAction: String, CaseIterable, Identifiable {
 
 }
 
-/// One entry in the Command Palette: either a jump to an `AppDestination` or a primary
-/// `AppAction`. Manually `CaseIterable` (an associated-value enum can't derive it) — `allCases`
-/// is every destination followed by the fixed action set, matching Decision 6's "static
-/// registry, no plugin surface."
+/// A command an enabled plugin registered via `noteBytez.addCommand(name)`. Plain `Sendable`
+/// values (not a live `Plugin` model) so the palette can hold and route them off `MainActor`.
+struct PluginCommand: Equatable, Hashable, Sendable {
+
+    let pluginId: UUID
+    let pluginName: String
+    let commandName: String
+
+}
+
+/// One entry in the Command Palette: a jump to an `AppDestination`, a primary `AppAction`, or a
+/// plugin-registered command. Manually `CaseIterable` (an associated-value enum can't derive
+/// it) — `allCases` is every destination followed by the fixed action set; plugin commands are
+/// dynamic (per installed plugin), so `CommandPaletteViewModel` appends them at load time. This
+/// reverses Decision 6's "no plugin surface" — see `NoteBytez20260924v1-PluginCommands.md`.
 enum AppCommand: CaseIterable, Identifiable {
 
     case navigate(AppDestination)
     case action(AppAction)
+    case plugin(PluginCommand)
 
     static var allCases: [AppCommand] {
         AppDestination.allCases.map(AppCommand.navigate) + AppAction.allCases.map(AppCommand.action)
@@ -73,6 +85,7 @@ enum AppCommand: CaseIterable, Identifiable {
         switch self {
         case .navigate(let destination): return "navigate.\(destination.rawValue)"
         case .action(let action): return "action.\(action.rawValue)"
+        case .plugin(let command): return "plugin.\(command.pluginId.uuidString).\(command.commandName)"
         }
     }
 
@@ -80,6 +93,7 @@ enum AppCommand: CaseIterable, Identifiable {
         switch self {
         case .navigate(let destination): return destination.rawValue
         case .action(let action): return action.title
+        case .plugin(let command): return "\(command.pluginName): \(command.commandName)"
         }
     }
 
@@ -87,6 +101,7 @@ enum AppCommand: CaseIterable, Identifiable {
         switch self {
         case .navigate(let destination): return destination.systemImage
         case .action(let action): return action.systemImage
+        case .plugin: return "puzzlepiece.extension"
         }
     }
 

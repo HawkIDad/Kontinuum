@@ -14,6 +14,12 @@ struct PluginManagementView: View {
     var viewModel: PluginViewModel
 
     @State private var isPresentingInstallSheet = false
+    @State private var registrationFailures: [UUID: String] = [:]
+
+    /// Changes whenever a plugin is added, removed or toggled, so the registration pass re-runs.
+    private var pluginStateKey: [String] {
+        viewModel.plugins.map { "\($0.id)-\($0.isEnabled ?? false)" }
+    }
 
     var body: some View {
         List {
@@ -25,7 +31,7 @@ struct PluginManagementView: View {
                 )
             } else {
                 ForEach(viewModel.plugins) { plugin in
-                    PluginPermissionRow(plugin: plugin) { isEnabled in
+                    PluginPermissionRow(plugin: plugin, registrationFailure: registrationFailures[plugin.id]) { isEnabled in
                         viewModel.setEnabled(plugin, isEnabled: isEnabled)
                     }
                 }
@@ -36,6 +42,9 @@ struct PluginManagementView: View {
         }
         .navigationTitle("Plugins (Preview)")
         .noteBytezInlineNavigationTitle()
+        .task(id: pluginStateKey) {
+            registrationFailures = await viewModel.registrationFailures()
+        }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button("Add", systemImage: "plus") {

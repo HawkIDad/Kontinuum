@@ -196,7 +196,9 @@ struct ContentView: View {
         .sheet(isPresented: $isPresentingCommandPalette) {
             CommandPaletteView(viewModel: CommandPaletteViewModel(
                 onNavigate: { navigate(to: $0) },
-                onAction: { run($0) }
+                onAction: { run($0) },
+                onPluginCommand: { run($0) },
+                loadPluginCommands: { await PluginViewModel(libraryId: library.libraryId ?? UUID(), modelContext: modelContext).availableCommands() }
             ))
         }
         .sheet(isPresented: $isPresentingQuickSwitcher) {
@@ -294,6 +296,16 @@ struct ContentView: View {
             }
             sentCanvasBoard = CanvasDAL.boundBoard(for: document, libraryId: libraryId, in: modelContext)
         }
+    }
+
+    /// A plugin command's only output channel is the open note, so it needs one; the visible note
+    /// view runs it (`.pluginCommandRunner`) against its own live `DocumentViewModel`.
+    private func run(_ command: PluginCommand) {
+        guard activeDocument != nil else {
+            infoAlertMessage = "Open a note first, then run \(command.commandName)."
+            return
+        }
+        NotificationCenter.default.post(name: .noteBytezRunPluginCommand, object: command)
     }
 
     /// Persistent across every destination (not just Today/Document) so sync/conflict state —

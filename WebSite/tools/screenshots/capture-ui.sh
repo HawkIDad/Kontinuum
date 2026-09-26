@@ -31,7 +31,7 @@ build_dir="$here/.build-ui"
 
 # Build once; every run below reuses it (the UI-test bundle rebuilds only when sources change).
 if [ -z "${SKIP_BUILD:-}" ]; then
-  echo "▶ Building tests for $device…"
+  echo "▶ Building tests for ${device}…"
   xcodebuild build-for-testing -quiet -project "$repo/NoteBytez.xcodeproj" -scheme NoteBytez \
     -destination "$destination" -derivedDataPath "$build_dir" >"$work/build.log" 2>&1 || { tail -20 "$work/build.log"; exit 1; }
 fi

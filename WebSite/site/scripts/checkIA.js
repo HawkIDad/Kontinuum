@@ -5,7 +5,7 @@ import { join, relative, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import matter from "gray-matter";
-import { validateHowToStructure, findScreenshotRefs, validateScreenshotRefs } from "./checkContent.js";
+import { validateHowToStructure, findScreenshotRefs, validateScreenshotRefs, findPluginSampleRefs, validatePluginSampleRefs } from "./checkContent.js";
 
 const slugPattern = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const marketingUrls = ["/", "/features/", "/pricing/", "/support/", "/privacy/", "/terms/"];
@@ -84,9 +84,14 @@ function validateContent(featureMap) {
       (file) => existsSync(join(contentDir, "en", "_assets", file)),
       relativePath,
     );
+    const sampleErrors = validatePluginSampleRefs(
+      findPluginSampleRefs(readFileSync(path, "utf8")),
+      (file) => existsSync(join(contentDir, "en", "_plugin-samples", file)),
+      relativePath,
+    );
     const parsed = matter.read(path);
     const structureErrors = isHelpArticle && parsed.data.type === "howto" ? validateHowToStructure(parsed.content, relativePath) : [];
-    return [...frontMatterErrors, ...helpErrors, ...structureErrors, ...screenshotErrors];
+    return [...frontMatterErrors, ...helpErrors, ...structureErrors, ...screenshotErrors, ...sampleErrors];
   });
 }
 

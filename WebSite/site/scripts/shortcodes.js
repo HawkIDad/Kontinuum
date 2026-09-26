@@ -1,5 +1,11 @@
 // © Copyright, 2026 David L. Collison, All Rights Reserved.
-// Shortcodes: admonition, screenshot figure, persona chip, Features → Help deep link.
+// Shortcodes: admonition, screenshot figure, plugin sample, persona chip, Features → Help deep link.
+import { existsSync, readFileSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import { renderSample } from "./pluginSamples.js";
+
+const samplesDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "content", "en", "_plugin-samples");
 
 // Lucide (ISC) icon paths; decorative, so aria-hidden.
 const icons = {
@@ -31,6 +37,13 @@ ${markdown.render(content)}</aside>`;
       ? `<source media="(prefers-color-scheme: dark)" srcset="${dark.src} 1x, ${dark.retina} 2x">`
       : "";
     return `<figure class="screenshot"><picture>${darkSource}<img src="${light.src}" srcset="${light.src} 1x, ${light.retina} 2x" alt="${escape(alt)}" loading="lazy" decoding="async"></picture><figcaption>${escape(caption)}</figcaption></figure>`;
+  });
+
+  // name is the file under content/en/_plugin-samples/ without ".js"; a missing file fails the build.
+  eleventyConfig.addShortcode("pluginSample", (name) => {
+    const path = join(samplesDir, `${name}.js`);
+    if (!existsSync(path)) throw new Error(`pluginSample: no such sample ${name}.js`);
+    return renderSample(readFileSync(path, "utf8"), name);
   });
 
   eleventyConfig.addShortcode("personaChip", (persona) => `<span class="persona-chip">${escape(persona)}</span>`);

@@ -36,3 +36,4 @@ permalink: /en/help/reference/markdown-syntax/
 
 - [Format a note with Markdown](/en/help/documents-and-blocks/markdown-formatting/)
 - [Link two notes with wikilinks](/en/help/linking/wikilinks/)
+- [Learn Markdown](/en/help/journeys/learn-markdown/)

@@ -133,7 +133,7 @@ final class WebsiteScreenshotTests: WebsiteScreenshotCase {
         goBack()
         open("Templates", shot: ("properties-and-templates", "template-groups"))
         open("Template Gallery", shot: ("properties-and-templates", "template-gallery"))
-        open("Plugins", shot: ("plugins", "plugin-list"), keepOpen: true)
+        app.button(labeled: "Plugins").tap() // no plugin-list shot here: that image already exists (empty list)
         app.navigationBars["Plugins (Preview)"].buttons.element(boundBy: 1).tap()
         shoot("plugins", "add-plugin")
         app.button(labeled: "Cancel").tap()
@@ -145,7 +145,48 @@ final class WebsiteScreenshotTests: WebsiteScreenshotCase {
         shoot("sync-and-conflicts", "sync-status")
     }
 
+    /// Plugin commands end to end (NoteBytez20260924v1-PluginCommands.md): with three seeded plugins,
+    /// see the registration failure, run one command from the palette and see the note change, then
+    /// see the run-time failure alert. The palette opens from the note's own toolbar button.
+    func testPluginCommandFlow() {
+        launchSeeded(withPlugins: true)
+        openTab("Settings")
+        app.button(labeled: "Plugins").tap() // no plugin-list shot here: that image already exists (empty list)
+        XCTAssertTrue(app.element(labeledContaining: "no commands for you").waitForExistence(timeout: 10), "registration failure caption")
+        shoot("plugins", "plugin-registration-error")
+        goBack()
+
+        openTab("Today")
+        let editor = app.textViews.firstMatch
+        XCTAssertTrue(editor.waitForExistence(timeout: 8), "journal editor")
+        runPaletteCommand("Hello: Say Hello", screenshot: "palette-plugin-command")
+        let hasAppended = NSPredicate(format: "value CONTAINS %@", "Hello from a plugin")
+        wait(for: [expectation(for: hasAppended, evaluatedWith: editor)], timeout: 10)
+
+        runPaletteCommand("Explode: Explode", screenshot: nil)
+        // The alert is matched by its text, not `app.alerts`, which does not surface it on this iOS.
+        XCTAssertTrue(app.element(labeledContaining: "failed: Error: boom").waitForExistence(timeout: 10), "plugin failure alert names the error")
+        shoot("plugins", "plugin-run-error")
+        app.button(labeled: "OK").tap()
+    }
+
     // MARK: - Helpers
+
+    /// Opens the palette from the open note's toolbar, filters to `title` ("Plugin: Command"), optionally captures it,
+    /// then taps the matching row to run it.
+    private func runPaletteCommand(_ title: String, screenshot: String?) {
+        app.button(labeled: "Command Palette").tap()
+        let field = app.textFields["Type a command or search…"]
+        XCTAssertTrue(field.waitForExistence(timeout: 5), "palette field")
+        field.tap()
+        field.typeText(title)
+        // Exact "Plugin: Command" label — a contains-match also hits the keyboard's "Explode" suggestion.
+        let row = app.button(labeled: title)
+        XCTAssertTrue(row.waitForExistence(timeout: 8), "palette row \(title)")
+        if let screenshot { shoot("plugins", screenshot) }
+        row.tap()
+        sleep(2)
+    }
 
     /// The Explore tab has no accessibility identifier on iPhone, so open it by its label.
     /// Tab bar buttons carry no identifier on iPhone, so open them by label (sidebar rows on Mac/iPad).

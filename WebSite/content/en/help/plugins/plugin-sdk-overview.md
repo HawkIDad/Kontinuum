@@ -24,7 +24,7 @@ None.
 ## Steps
 
 1. A plugin runs in a sandbox.
-2. It can read your library, write to the current note and add commands, each only if you granted that permission.
+2. It can read the titles of your notes and the names of your tags and notebooks, add text to the note you have open, and add commands, each only if you granted that permission.
 3. It cannot do anything outside those permissions.
 
 ## Expected result
@@ -34,3 +34,6 @@ You know the limits of a plugin before you install one.
 ## Related
 
 - [Understand plugin permissions](/en/help/plugins/plugin-permissions/)
+- [How scripts run](/en/help/plugins/how-scripts-run/)
+- [What scripts can see](/en/help/plugins/what-scripts-can-see/)
+- [Plugin limits and gotchas](/en/help/plugins/plugin-limits/)

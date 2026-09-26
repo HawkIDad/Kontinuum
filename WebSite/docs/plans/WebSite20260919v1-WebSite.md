@@ -72,7 +72,8 @@ Legend: **[x]** done and verified · **[ ]** open. Status as of 2026-09-19.
 ### Phase W3 — Templates & components (= Wiki 1.2, plus marketing) — DONE except external validator
 - [x] Help layouts (howto, concept, reference, journey) and components (admonition, screenshot figure, Applies-to badge, persona chip, pager, breadcrumb, skip link, Pagefind search).
 - [x] `marketing` layout (hero, feature grid, CTA from `site.json`, FAQ), `legal` layout, Features → Help deep-link component.
-- [x] → **verify:** axe + Lighthouse ≥ 95 (a11y, SEO, Best Practices) on sample pages of every layout; JSON-LD structurally valid.
+- [x] **Logo/favicon**, 2026-09-23 (raised by the product owner viewing the Pi preview — the header and browser tab had never had an icon, only the styled `NoteBytez` wordmark). Sourced from the app's own `AppIcon.appiconset` (light/dark/tinted variants already exist there, no new art needed): `favicon-32.png` + `apple-touch-icon.png` for the browser tab, and a light/dark `brand-mark` pair in the header next to the wordmark (`<picture>` + `prefers-color-scheme`, same technique as the screenshot shortcode) so it blends with the site's own theme switching, not just the OS favicon chrome. Decorative `alt=""` since the adjacent text already names the site. Header mark sized up 2× same day (56px display, 112px @2x source) per product owner feedback. Regenerate the PNGs from `NoteBytez/Assets.xcassets/AppIcon.appiconset/AppIcon-1024[-dark].png` with `sips -Z <size>` if the app icon or its display size ever changes.
+- [x] → **verify:** axe + Lighthouse ≥ 95 (a11y, SEO, Best Practices) on sample pages of every layout; JSON-LD structurally valid; logo verified in both color schemes locally and confirmed live on the Pi preview after redeploy.
 - [ ] Run Google's Rich Results Test on a sample of pages (external tool; our check is structural only).
 
 ### Phase W4 — Screenshot pipeline (= Wiki 1.3) — DONE for iPhone; Mac window capture built

@@ -34,9 +34,11 @@ You have a plugin to install.
 
 ## Expected result
 
-The plugin appears in the list and adds its commands.
+The plugin appears in the list, and its commands appear in the Command Palette as **Plugin name: Command name**.
 
 ## Related
 
 - [Understand plugin permissions](/en/help/plugins/plugin-permissions/)
 - [What plugins can and cannot do](/en/help/plugins/plugin-sdk-overview/)
+- [Your first plugin](/en/help/plugins/first-plugin/)
+- [Write your first plugin](/en/help/journeys/write-your-first-plugin/)

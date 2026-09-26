@@ -24,3 +24,4 @@ permalink: /en/help/journeys/model-your-world/
 ## Related
 
 - [Explore the graph of a note](/en/help/graph/local-graph/)
+- [Build a useful plugin](/en/help/journeys/build-a-useful-plugin/)

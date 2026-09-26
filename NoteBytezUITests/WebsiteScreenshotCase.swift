@@ -34,8 +34,24 @@ class WebsiteScreenshotCase: NoteBytezUITestCase {
 #endif
     }
 
-    func launchSeeded() {
+    /// The plugins the plugin-command flow needs, installed with `SeedScreenshotPlugins` (typing a
+    /// script into the install sheet is unreliable: smart quotes, keyboard-covered toggles).
+    /// `Hello` appends to the note; `Explode` fails when run; `Broken` fails to register.
+    static let seededPluginsJSON: String = {
+        let plugins: [[String: Any]] = [
+            ["name": "Hello", "permissions": ["addCommand", "writeCurrentNote"],
+             "script": "if (noteBytez.invokedCommand === null) { noteBytez.addCommand(\"Say Hello\"); } else { noteBytez.appendToCurrentNote(\"Hello from a plugin\"); }"],
+            ["name": "Explode", "permissions": ["addCommand"],
+             "script": "if (noteBytez.invokedCommand === null) { noteBytez.addCommand(\"Explode\"); } else { throw new Error(\"boom\"); }"],
+            ["name": "Broken", "permissions": ["addCommand"],
+             "script": "throw new Error(\"no commands for you\");"],
+        ]
+        return (try? JSONSerialization.data(withJSONObject: plugins)).flatMap { String(data: $0, encoding: .utf8) } ?? "[]"
+    }()
+
+    func launchSeeded(withPlugins: Bool = false) {
         app.launchEnvironment["SeedScreenshotNotes"] = environment["WEBSITE_SEED_NOTES"] ?? "{}"
+        if withPlugins { app.launchEnvironment["SeedScreenshotPlugins"] = Self.seededPluginsJSON }
         launch()
         sleep(4)
     }

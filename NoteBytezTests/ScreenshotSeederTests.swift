@@ -106,4 +106,66 @@ struct ScreenshotSeederTests {
         #expect(documents.compactMap(\.title).sorted() == ["Alpha", "Beta"])
         #expect(documents.allSatisfy { $0.libraryId == libraryId })
     }
+
+    // MARK: Plugins (SeedScreenshotPlugins)
+
+    /// CloudKit mirroring is switched off: `seedPlugins` saves, and a save on a mirrored in-memory
+    /// store raises "No eligible connection available" and takes the test host down. The container
+    /// is returned (not just a context) so each test can keep it alive with `withExtendedLifetime`.
+    private func makePluginContainer() throws -> ModelContainer {
+        try ModelContainer(
+            for: Library.self, Document.self, Block.self, Tag.self, DocumentTag.self, Notebook.self, DocumentNotebook.self, TaskItem.self, Property.self, DocumentProperty.self, Plugin.self,
+            configurations: ModelConfiguration(isStoredInMemoryOnly: true, cloudKitDatabase: .none)
+        )
+    }
+
+    @Test func seedingPluginsInstallsEachWithItsScriptAndPermissions() throws {
+        let container = try makePluginContainer()
+        try withExtendedLifetime(container) {
+            let context = ModelContext(container)
+            let libraryId = UUID()
+            let json = #"[{"name":"Hello","script":"noteBytez.addCommand(`Hi`);","permissions":["addCommand","writeCurrentNote"]},{"name":"Bare","script":"1;","permissions":[]}]"#
+
+            #expect(ScreenshotSeeder.seedPlugins(json: json, libraryId: libraryId, in: context) == 2)
+
+            let plugins = PluginDAL.fetchActive(libraryId: libraryId, in: context)
+            let hello = try #require(plugins.first { $0.name == "Hello" })
+            #expect(hello.entryScript == "noteBytez.addCommand(`Hi`);")
+            #expect(hello.grantedPermissions == [.addCommand, .writeCurrentNote])
+            #expect(hello.isEnabled == true)
+            #expect(plugins.first { $0.name == "Bare" }?.grantedPermissions.isEmpty == true)
+        }
+    }
+
+    @Test func seedingPluginsIgnoresUnknownPermissionsAndBadJSON() throws {
+        let container = try makePluginContainer()
+        withExtendedLifetime(container) {
+            let context = ModelContext(container)
+            let libraryId = UUID()
+
+            #expect(ScreenshotSeeder.seedPlugins(json: "not json", libraryId: libraryId, in: context) == 0)
+
+            let json = #"[{"name":"Odd","script":"1;","permissions":["addCommand","teleport"]}]"#
+            #expect(ScreenshotSeeder.seedPlugins(json: json, libraryId: libraryId, in: context) == 1)
+            #expect(PluginDAL.fetchActive(libraryId: libraryId, in: context).first?.grantedPermissions == [.addCommand])
+        }
+    }
+
+    @Test func settingsSeedingAlsoInstallsPluginsIntoTheSeededLibrary() throws {
+        let container = try makePluginContainer()
+        let defaults = try #require(UserDefaults(suiteName: UUID().uuidString))
+        try withExtendedLifetime(container) {
+            let context = ModelContext(container)
+            let environment = [
+                "SeedScreenshotNotes": #"{"Alpha.md":"Body"}"#,
+                "SeedScreenshotPlugins": #"[{"name":"Hello","script":"1;","permissions":[]}]"#,
+            ]
+
+            #expect(ScreenshotSeeder.seedFromSettings(in: context, environment: environment, defaults: defaults))
+
+            let library = try #require(try context.fetch(FetchDescriptor<Library>()).first)
+            let libraryId = try #require(library.libraryId)
+            #expect(PluginDAL.fetchActive(libraryId: libraryId, in: context).map(\.name) == ["Hello"])
+        }
+    }
 }

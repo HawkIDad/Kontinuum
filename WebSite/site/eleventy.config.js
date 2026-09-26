@@ -2,6 +2,7 @@
 // Eleventy config — content lives in ../content, output in ./_site (host-agnostic).
 import { readFileSync } from "node:fs";
 import markdownIt from "markdown-it";
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import { addFilters } from "./scripts/filters.js";
 import { addShortcodes } from "./scripts/shortcodes.js";
 
@@ -13,6 +14,9 @@ export default function (eleventyConfig) {
 
   // Sample pages (one per layout) are built only for audits: SAMPLES=1 npm run build
   if (!process.env.SAMPLES) eleventyConfig.ignores.add("../content/_samples/**");
+
+  // Build-time highlighting of fenced code blocks (no client JS); token colours are in assets/site.css.
+  eleventyConfig.addPlugin(syntaxHighlight, { preAttributes: { tabindex: 0 } });
 
   addFilters(eleventyConfig, featureMap);
   addShortcodes(eleventyConfig, markdownIt({ html: true }));

@@ -3,6 +3,7 @@
   --primary: #000; --secondary: #5c5c66; --accent: #0f766e; --on-accent: #fff;
   --bg: #fff; --surface: #f4f5f7; --rule: #6b7280;
   --success: #15803d; --warning: #b45309; --danger: #b91c1c;
+  --code-comment: #565b66; --code-punct: #3f4450; --code-keyword: #7e22ce; --code-string: #0f6b3e; --code-number: #a04a06; --code-function: #0b5cad;
   --space: 8px; --measure: 72ch;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --pagefind-ui-scale: 1; --pagefind-ui-primary: var(--accent); --pagefind-ui-text: var(--primary);
@@ -13,6 +14,7 @@
     --primary: #fff; --secondary: #b4b4be; --accent: #2dd4bf; --on-accent: #000;
     --bg: #0b0f10; --surface: #1a1d1f; --rule: #8b929b;
     --success: #4ade80; --warning: #fb923c; --danger: #f87171;
+    --code-comment: #a0a7b0; --code-punct: #c9ced6; --code-keyword: #d8b4fe; --code-string: #86efac; --code-number: #fdba74; --code-function: #93c5fd;
   }
 }
 * { box-sizing: border-box; }
@@ -30,7 +32,8 @@ a { color: var(--accent); text-decoration: underline; text-underline-offset: 0.1
 .skip-link { position: absolute; left: var(--space); top: -4rem; background: var(--bg); padding: var(--space); z-index: 10; }
 .skip-link:focus { top: var(--space); }
 .site-header { display: flex; flex-wrap: wrap; align-items: center; gap: calc(var(--space) * 2); }
-.brand { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: #0f454a; }
+.brand { display: inline-flex; align-items: center; gap: var(--space); min-height: 44px; font-weight: 700; font-size: 1.25rem; text-decoration: none; color: #0f454a; }
+.brand img { border-radius: 6px; }
 @media (prefers-color-scheme: dark) { .brand { color: var(--accent); } }
 .nav-list { display: flex; flex-wrap: wrap; gap: var(--space); list-style: none; margin: 0; padding: 0; }
 .nav-list a { display: inline-block; min-height: 44px; line-height: 44px; padding-inline: var(--space); text-decoration: none; }
@@ -66,3 +69,14 @@ th, td { border: 1px solid var(--rule); padding: var(--space); text-align: start
 .search-label { display: block; font-size: 0.875rem; color: var(--secondary); }
 .hub-list { list-style: none; padding: 0; }
 .hub-list li { margin-block: calc(var(--space) * 2); }
+/* Code — Prism token colours are build-time classes; every colour is >= 4.5:1 on --surface in both modes. */
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9375rem; }
+:not(pre) > code { background: var(--surface); padding: 1px 6px; border-radius: 4px; }
+pre { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: calc(var(--space) * 2); overflow-x: auto; line-height: 1.5; }
+.sample-permissions { margin-block-end: var(--space); }
+.token.comment { color: var(--code-comment); font-style: italic; }
+.token.punctuation, .token.operator { color: var(--code-punct); }
+.token.keyword, .token.boolean, .token.null { color: var(--code-keyword); }
+.token.string { color: var(--code-string); }
+.token.number { color: var(--code-number); }
+.token.function, .token.class-name { color: var(--code-function); }

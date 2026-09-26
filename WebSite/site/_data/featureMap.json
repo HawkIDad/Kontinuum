@@ -15,6 +15,16 @@
       ["Markdown formatting supported", "markdown-formatting"],
       ["Stable block anchors", "block-anchors"],
       ["External links", "external-links"] ] },
+    { "slug": "markdown-basics", "title": "Markdown Basics", "features": [
+      ["Headings", "headings"],
+      ["Emphasis (bold and italic)", "emphasis"],
+      ["Lists", "lists"],
+      ["Blockquotes", "blockquotes"],
+      ["Inline and fenced code", "code-blocks"],
+      ["Links to a web page", "web-links"],
+      ["Images", "images"],
+      ["Tables", "tables"],
+      ["Horizontal rules", "horizontal-rules"] ] },
     { "slug": "linking", "title": "Linking", "features": [
       ["Wikilinks + autocomplete", "wikilinks"],
       ["Section links", "section-links"],
@@ -89,7 +99,22 @@
     { "slug": "plugins", "title": "Plugins", "features": [
       ["Enable a plugin", "enable-plugin"],
       ["The plugin permission model", "plugin-permissions"],
-      ["What the plugin SDK can and can't do", "plugin-sdk-overview"] ] },
+      ["What the plugin SDK can and can't do", "plugin-sdk-overview"],
+      ["How scripts run", "how-scripts-run"],
+      ["What scripts can see", "what-scripts-can-see"],
+      ["Scripting API overview", "scripting-api"],
+      ["listDocuments", "list-documents"],
+      ["searchDocuments", "search-documents"],
+      ["listTags", "list-tags"],
+      ["listNotebooks", "list-notebooks"],
+      ["appendToCurrentNote", "append-to-current-note"],
+      ["insertAtCursor", "insert-at-cursor"],
+      ["addCommand", "add-command"],
+      ["Plugin limits and gotchas", "plugin-limits"],
+      ["Troubleshoot a plugin", "troubleshoot-plugin"],
+      ["Your first plugin", "first-plugin"],
+      ["Library report plugin", "library-report-plugin"],
+      ["Search-driven digest plugin", "search-digest-plugin"] ] },
     { "slug": "migration", "title": "Migration", "features": [
       ["Obsidian importer", "import-obsidian"],
       ["Logseq importer", "import-logseq"],
@@ -121,9 +146,12 @@
       ["SF Symbol to feature index", "symbol-index"] ] }
   ],
   "journeys": [
+    { "persona": "New Arrival", "slug": "learn-markdown", "title": "Learn Markdown" },
     { "persona": "New Arrival", "slug": "your-first-week", "title": "Your first week" },
     { "persona": "Switcher", "slug": "bring-your-vault-across", "title": "Bring your vault across" },
     { "persona": "Power User", "slug": "model-your-world", "title": "Model your world" },
+    { "persona": "Power User", "slug": "write-your-first-plugin", "title": "Write your first plugin" },
+    { "persona": "Power User", "slug": "build-a-useful-plugin", "title": "Build a useful plugin" },
     { "persona": "Collaborator", "slug": "share-a-space", "title": "Share a space" }
   ]
 }

@@ -37,3 +37,12 @@ export function validateScreenshotRefs(references, fileExists, fileName) {
     return variants.filter((file) => !fileExists(file)).map((file) => `${fileName}: missing image: ${file}`);
   });
 }
+
+export function findPluginSampleRefs(text) {
+  return [...text.matchAll(/\{% pluginSample "([^"]+)"/g)].map((match) => match[1]);
+}
+
+/** Every `pluginSample` reference needs its script under content/en/_plugin-samples/. */
+export function validatePluginSampleRefs(references, fileExists, fileName) {
+  return references.filter((name) => !fileExists(`${name}.js`)).map((name) => `${fileName}: missing plugin sample: ${name}.js`);
+}

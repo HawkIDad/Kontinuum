@@ -42,6 +42,7 @@ struct TodayJournalView: View {
                 .onDisappear {
                     viewModel.documentViewModel.save()
                 }
+                .pluginCommandRunner(documentViewModel: viewModel.documentViewModel)
             } else {
                 ProgressView()
             }
@@ -74,6 +75,15 @@ struct TodayJournalView: View {
                     isPresentingTasks = true
                 } label: {
                     Label("Tasks", systemImage: "checklist")
+                }
+            }
+            // On iPhone the palette is otherwise only reachable from the Explore tab, which leaves
+            // this note — and a plugin command needs an open note to write into.
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    NotificationCenter.default.post(name: .noteBytezOpenCommandPalette, object: nil)
+                } label: {
+                    Label("Command Palette", systemImage: "command")
                 }
             }
         }
